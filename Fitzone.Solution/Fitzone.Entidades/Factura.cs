@@ -7,11 +7,16 @@ using System.Threading.Tasks;
 
 namespace Fitzone.Entidades
 {
-    public  class Barrio
+    public class Factura
     {
         [Key]
-        public int idBarrio { get; set; }
+        public int idFactura { get; set; }
+
+        public DateTime fecha { get; set; }
+
         [MaxLength(50)]
-        public string? nombre { get; set; }
+        public string? metodoDePago { get; set; }
+
+        public decimal total { get; set; }
     }
 }
