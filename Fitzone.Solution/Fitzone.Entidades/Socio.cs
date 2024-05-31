@@ -23,7 +23,7 @@ namespace Fitzone.Entidades
         [MaxLength(10)]
         public string numeroDocumento { get; set; }
         [MaxLength(50)]
-        public string? telefono1 { get; set; }
+        public string telefono1 { get; set; }
         [MaxLength(50)]
         public string? telefono2 { get; set; }
         [MaxLength(100)]
