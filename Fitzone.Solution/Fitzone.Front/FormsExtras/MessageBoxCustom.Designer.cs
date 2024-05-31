@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             thunderForm1 = new ReaLTaiizor.Forms.ThunderForm();
-            lblMensaje = new ReaLTaiizor.Controls.ThunderLabel();
+            lblMensaje2 = new Label();
             btn2 = new ReaLTaiizor.Controls.CyberButton();
             btn1 = new ReaLTaiizor.Controls.CyberButton();
             botonesForms1 = new UserControls.BotonesForms();
@@ -43,7 +43,7 @@
             thunderForm1.BodyColorB = Color.Black;
             thunderForm1.BodyColorC = Color.FromArgb(209, 196, 234);
             thunderForm1.BodyColorD = Color.FromArgb(209, 196, 234);
-            thunderForm1.Controls.Add(lblMensaje);
+            thunderForm1.Controls.Add(lblMensaje2);
             thunderForm1.Controls.Add(btn2);
             thunderForm1.Controls.Add(btn1);
             thunderForm1.Controls.Add(botonesForms1);
@@ -58,15 +58,17 @@
             thunderForm1.TabIndex = 1;
             thunderForm1.Text = "Fitzone";
             // 
-            // lblMensaje
+            // lblMensaje2
             // 
-            lblMensaje.BackColor = Color.FromArgb(209, 196, 234);
-            lblMensaje.ForeColor = Color.BlueViolet;
-            lblMensaje.Location = new Point(26, 43);
-            lblMensaje.Name = "lblMensaje";
-            lblMensaje.Size = new Size(391, 57);
-            lblMensaje.TabIndex = 20;
-            lblMensaje.Text = "¿Desea salir del sistema?";
+            lblMensaje2.AutoSize = true;
+            lblMensaje2.BackColor = Color.Transparent;
+            lblMensaje2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblMensaje2.ForeColor = Color.FromArgb(81, 45, 168);
+            lblMensaje2.Location = new Point(28, 58);
+            lblMensaje2.Name = "lblMensaje2";
+            lblMensaje2.Size = new Size(172, 19);
+            lblMensaje2.TabIndex = 21;
+            lblMensaje2.Text = "¿Desea salir del sistema?";
             // 
             // btn2
             // 
@@ -76,16 +78,16 @@
             btn2.Background = true;
             btn2.Background_WidthPen = 4F;
             btn2.BackgroundPen = true;
-            btn2.ColorBackground = Color.FromArgb(37, 52, 68);
-            btn2.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            btn2.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            btn2.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            btn2.ColorLighting = Color.FromArgb(29, 200, 238);
-            btn2.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            btn2.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btn2.ColorBackground = Color.Black;
+            btn2.ColorBackground_1 = Color.Black;
+            btn2.ColorBackground_2 = Color.Gray;
+            btn2.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btn2.ColorLighting = Color.FromArgb(81, 45, 168);
+            btn2.ColorPen_1 = Color.Black;
+            btn2.ColorPen_2 = Color.Gray;
             btn2.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             btn2.Effect_1 = true;
-            btn2.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btn2.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
             btn2.Effect_1_Transparency = 25;
             btn2.Effect_2 = true;
             btn2.Effect_2_ColorBackground = Color.White;
@@ -118,16 +120,16 @@
             btn1.Background = true;
             btn1.Background_WidthPen = 4F;
             btn1.BackgroundPen = true;
-            btn1.ColorBackground = Color.FromArgb(37, 52, 68);
-            btn1.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            btn1.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            btn1.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            btn1.ColorLighting = Color.FromArgb(29, 200, 238);
-            btn1.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            btn1.ColorPen_2 = Color.FromArgb(41, 63, 86);
+            btn1.ColorBackground = Color.Black;
+            btn1.ColorBackground_1 = Color.Black;
+            btn1.ColorBackground_2 = Color.Gray;
+            btn1.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btn1.ColorLighting = Color.FromArgb(81, 45, 168);
+            btn1.ColorPen_1 = Color.Black;
+            btn1.ColorPen_2 = Color.Gray;
             btn1.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
             btn1.Effect_1 = true;
-            btn1.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
+            btn1.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
             btn1.Effect_1_Transparency = 25;
             btn1.Effect_2 = true;
             btn1.Effect_2_ColorBackground = Color.White;
@@ -173,6 +175,7 @@
             TransparencyKey = Color.Fuchsia;
             Load += MessageBoxCustom_Load;
             thunderForm1.ResumeLayout(false);
+            thunderForm1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -182,6 +185,6 @@
         private UserControls.BotonesForms botonesForms1;
         private ReaLTaiizor.Controls.CyberButton btn2;
         private ReaLTaiizor.Controls.CyberButton btn1;
-        private ReaLTaiizor.Controls.ThunderLabel lblMensaje;
+        private Label lblMensaje2;
     }
 }

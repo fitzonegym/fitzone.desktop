@@ -50,13 +50,20 @@ namespace Fitzone.Front.FormsExtras
                 btn2.TextButton = "Aceptar";
             }
 
-            lblMensaje.Text = _mensaje;
+            if (_modo == EnumModoMessageBoxCustom.SeEncontraronErrores)
+            {
+                btn1.Visible = false;
+                btn2.TextButton = "Aceptar";
+                _mensaje = "Se encontraron los siguientes errores: \n" + _mensaje;
+                this.Size = new Size(this.Width,this.Height+100);
+            }
+
+            lblMensaje2.Text = _mensaje;
             if (_modo == EnumModoMessageBoxCustom.ConfirmaGuardar)
-                lblMensaje.Text = "¿Confirma guardar los datos?";
+                lblMensaje2.Text = "¿Confirma guardar los datos?";
             if (_modo == EnumModoMessageBoxCustom.DatosGuardadosCorrectamente)
-                lblMensaje.Text = "Los datos se guardaron correctamente";
-
-
+                lblMensaje2.Text = "Los datos se guardaron correctamente";
+           
         }
 
         private void btn1_Click(object sender, EventArgs e)
