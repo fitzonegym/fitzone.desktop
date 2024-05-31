@@ -118,11 +118,12 @@
             // 
             txtNroDoc.BorderStyle = BorderStyle.None;
             txtNroDoc.Font = new Font("Segoe UI", 9F);
-            txtNroDoc.Location = new Point(160, 161);
+            txtNroDoc.Location = new Point(159, 161);
             txtNroDoc.Mask = "99.999.999";
             txtNroDoc.Name = "txtNroDoc";
             txtNroDoc.Size = new Size(89, 16);
             txtNroDoc.TabIndex = 2;
+            txtNroDoc.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txtNroDoc.Click += txtNroDoc_Click_1;
             txtNroDoc.Validating += _Validating;
             // 
@@ -135,6 +136,7 @@
             txtCelular.Name = "txtCelular";
             txtCelular.Size = new Size(89, 16);
             txtCelular.TabIndex = 3;
+            txtCelular.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             txtCelular.Click += txtCelular_Click;
             txtCelular.Validating += _Validating;
             // 
@@ -253,7 +255,7 @@
             txtCalle.Font = new Font("Segoe UI", 9F);
             txtCalle.ForeColor = Color.Black;
             txtCalle.Location = new Point(460, 79);
-            txtCalle.MaxLength = 100;
+            txtCalle.MaxLength = 30;
             txtCalle.MultiLine = false;
             txtCalle.Name = "txtCalle";
             txtCalle.ReadOnly = false;
@@ -280,7 +282,7 @@
             txtMail.Font = new Font("Segoe UI", 9F);
             txtMail.ForeColor = Color.Black;
             txtMail.Location = new Point(149, 260);
-            txtMail.MaxLength = 100;
+            txtMail.MaxLength = 30;
             txtMail.MultiLine = false;
             txtMail.Name = "txtMail";
             txtMail.ReadOnly = false;
@@ -307,7 +309,7 @@
             txtTelefono.Font = new Font("Segoe UI", 9F);
             txtTelefono.ForeColor = Color.Black;
             txtTelefono.Location = new Point(149, 225);
-            txtTelefono.MaxLength = 50;
+            txtTelefono.MaxLength = 10;
             txtTelefono.MultiLine = false;
             txtTelefono.Name = "txtTelefono";
             txtTelefono.ReadOnly = false;
@@ -315,7 +317,7 @@
             txtTelefono.TabIndex = 4;
             txtTelefono.TextAlign = HorizontalAlignment.Left;
             txtTelefono.UseSystemPasswordChar = false;
-            txtTelefono.TextChanged += txtTelefono_TextChanged;            
+            txtTelefono.TextChanged += txtTelefono_TextChanged;
             // 
             // thunderLabel6
             // 
