@@ -41,6 +41,7 @@
             altaToolStripMenuItem = new ToolStripMenuItem();
             informesToolStripMenuItem = new ToolStripMenuItem();
             clasesToolStripMenuItem = new ToolStripMenuItem();
+            administraciónToolStripMenuItem1 = new ToolStripMenuItem();
             instructoresToolStripMenuItem = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
@@ -120,7 +121,7 @@
             menuStrip1.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(160, 220);
+            menuStrip1.Size = new Size(160, 201);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -137,7 +138,8 @@
             // 
             // administraciónToolStripMenuItem
             // 
-            administraciónToolStripMenuItem.ForeColor = Color.FromArgb(81, 45, 168);
+            administraciónToolStripMenuItem.BackColor = Color.FromArgb(81, 45, 168);
+            administraciónToolStripMenuItem.ForeColor = Color.White;
             administraciónToolStripMenuItem.Name = "administraciónToolStripMenuItem";
             administraciónToolStripMenuItem.Size = new Size(213, 30);
             administraciónToolStripMenuItem.Text = "Administración";
@@ -145,7 +147,8 @@
             // 
             // altaToolStripMenuItem
             // 
-            altaToolStripMenuItem.ForeColor = Color.FromArgb(81, 45, 168);
+            altaToolStripMenuItem.BackColor = Color.FromArgb(81, 45, 168);
+            altaToolStripMenuItem.ForeColor = Color.White;
             altaToolStripMenuItem.Name = "altaToolStripMenuItem";
             altaToolStripMenuItem.Size = new Size(213, 30);
             altaToolStripMenuItem.Text = "Alta";
@@ -153,13 +156,15 @@
             // 
             // informesToolStripMenuItem
             // 
-            informesToolStripMenuItem.ForeColor = Color.FromArgb(81, 45, 168);
+            informesToolStripMenuItem.BackColor = Color.FromArgb(81, 45, 168);
+            informesToolStripMenuItem.ForeColor = Color.White;
             informesToolStripMenuItem.Name = "informesToolStripMenuItem";
             informesToolStripMenuItem.Size = new Size(213, 30);
             informesToolStripMenuItem.Text = "Informes";
             // 
             // clasesToolStripMenuItem
             // 
+            clasesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { administraciónToolStripMenuItem1 });
             clasesToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             clasesToolStripMenuItem.ForeColor = Color.White;
             clasesToolStripMenuItem.Margin = new Padding(5);
@@ -167,6 +172,14 @@
             clasesToolStripMenuItem.Size = new Size(143, 29);
             clasesToolStripMenuItem.Text = "Clases";
             clasesToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // administraciónToolStripMenuItem1
+            // 
+            administraciónToolStripMenuItem1.BackColor = Color.FromArgb(81, 45, 168);
+            administraciónToolStripMenuItem1.ForeColor = Color.White;
+            administraciónToolStripMenuItem1.Name = "administraciónToolStripMenuItem1";
+            administraciónToolStripMenuItem1.Size = new Size(213, 30);
+            administraciónToolStripMenuItem1.Text = "Administración";
             // 
             // instructoresToolStripMenuItem
             // 
@@ -278,6 +291,7 @@
         private ToolStripMenuItem altaToolStripMenuItem;
         private ToolStripMenuItem informesToolStripMenuItem;
         private ToolStripMenuItem salirToolStripMenuItem;
+        private ToolStripMenuItem administraciónToolStripMenuItem1;
     }
 }
 

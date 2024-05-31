@@ -23,7 +23,8 @@ namespace Fitzone.Front
 
         private void FrmContenedorPrincipal_Load(object sender, EventArgs e)
         {
-
+            MyRenderer rend = new MyRenderer();
+            menuStrip1.Renderer = rend;
         }
         private void administraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
