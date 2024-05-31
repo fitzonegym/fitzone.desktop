@@ -49,16 +49,12 @@
             thunderLabel4 = new ReaLTaiizor.Controls.ThunderLabel();
             cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
             cyberButton2 = new ReaLTaiizor.Controls.CyberButton();
-            btnCancelar = new ReaLTaiizor.Controls.CyberButton();
-            btnAceptar = new ReaLTaiizor.Controls.CyberButton();
             txtNroDoc = new ReaLTaiizor.Controls.AloneTextBox();
             thunderLabel3 = new ReaLTaiizor.Controls.ThunderLabel();
             txtApellido = new ReaLTaiizor.Controls.AloneTextBox();
             thunderLabel2 = new ReaLTaiizor.Controls.ThunderLabel();
             txtNombre = new ReaLTaiizor.Controls.AloneTextBox();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
-            botonesForms2 = new UserControls.BotonesForms();
-            botonesForms1 = new UserControls.BotonesForms();
             thunderForm1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             SuspendLayout();
@@ -87,16 +83,12 @@
             thunderForm1.Controls.Add(thunderLabel4);
             thunderForm1.Controls.Add(cyberButton1);
             thunderForm1.Controls.Add(cyberButton2);
-            thunderForm1.Controls.Add(btnCancelar);
-            thunderForm1.Controls.Add(btnAceptar);
             thunderForm1.Controls.Add(txtNroDoc);
             thunderForm1.Controls.Add(thunderLabel3);
             thunderForm1.Controls.Add(txtApellido);
             thunderForm1.Controls.Add(thunderLabel2);
             thunderForm1.Controls.Add(txtNombre);
             thunderForm1.Controls.Add(thunderLabel1);
-            thunderForm1.Controls.Add(botonesForms2);
-            thunderForm1.Controls.Add(botonesForms1);
             thunderForm1.Dock = DockStyle.Fill;
             thunderForm1.ForeColor = Color.WhiteSmoke;
             thunderForm1.Image = Properties.Resources.ico1;
@@ -395,88 +387,6 @@
             cyberButton2.Timer_RGB = 300;
             cyberButton2.Click += cyberButton2_Click;
             // 
-            // btnCancelar
-            // 
-            btnCancelar.Alpha = 20;
-            btnCancelar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnCancelar.BackColor = Color.Transparent;
-            btnCancelar.Background = true;
-            btnCancelar.Background_WidthPen = 4F;
-            btnCancelar.BackgroundPen = true;
-            btnCancelar.ColorBackground = Color.FromArgb(37, 52, 68);
-            btnCancelar.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            btnCancelar.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            btnCancelar.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            btnCancelar.ColorLighting = Color.FromArgb(29, 200, 238);
-            btnCancelar.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            btnCancelar.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            btnCancelar.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            btnCancelar.Effect_1 = true;
-            btnCancelar.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            btnCancelar.Effect_1_Transparency = 25;
-            btnCancelar.Effect_2 = true;
-            btnCancelar.Effect_2_ColorBackground = Color.White;
-            btnCancelar.Effect_2_Transparency = 20;
-            btnCancelar.Font = new Font("Arial", 11F);
-            btnCancelar.ForeColor = Color.FromArgb(245, 245, 245);
-            btnCancelar.Lighting = false;
-            btnCancelar.LinearGradient_Background = false;
-            btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(1194, 744);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.PenWidth = 15;
-            btnCancelar.Rounding = true;
-            btnCancelar.RoundingInt = 70;
-            btnCancelar.Size = new Size(99, 40);
-            btnCancelar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            btnCancelar.TabIndex = 19;
-            btnCancelar.Tag = "Cyber";
-            btnCancelar.TextButton = "Cancelar";
-            btnCancelar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            btnCancelar.Timer_Effect_1 = 5;
-            btnCancelar.Timer_RGB = 300;
-            // 
-            // btnAceptar
-            // 
-            btnAceptar.Alpha = 20;
-            btnAceptar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            btnAceptar.BackColor = Color.Transparent;
-            btnAceptar.Background = true;
-            btnAceptar.Background_WidthPen = 4F;
-            btnAceptar.BackgroundPen = true;
-            btnAceptar.ColorBackground = Color.FromArgb(37, 52, 68);
-            btnAceptar.ColorBackground_1 = Color.FromArgb(37, 52, 68);
-            btnAceptar.ColorBackground_2 = Color.FromArgb(41, 63, 86);
-            btnAceptar.ColorBackground_Pen = Color.FromArgb(29, 200, 238);
-            btnAceptar.ColorLighting = Color.FromArgb(29, 200, 238);
-            btnAceptar.ColorPen_1 = Color.FromArgb(37, 52, 68);
-            btnAceptar.ColorPen_2 = Color.FromArgb(41, 63, 86);
-            btnAceptar.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            btnAceptar.Effect_1 = true;
-            btnAceptar.Effect_1_ColorBackground = Color.FromArgb(29, 200, 238);
-            btnAceptar.Effect_1_Transparency = 25;
-            btnAceptar.Effect_2 = true;
-            btnAceptar.Effect_2_ColorBackground = Color.White;
-            btnAceptar.Effect_2_Transparency = 20;
-            btnAceptar.Font = new Font("Arial", 11F);
-            btnAceptar.ForeColor = Color.FromArgb(245, 245, 245);
-            btnAceptar.Lighting = false;
-            btnAceptar.LinearGradient_Background = false;
-            btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(1089, 744);
-            btnAceptar.Name = "btnAceptar";
-            btnAceptar.PenWidth = 15;
-            btnAceptar.Rounding = true;
-            btnAceptar.RoundingInt = 70;
-            btnAceptar.Size = new Size(99, 40);
-            btnAceptar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            btnAceptar.TabIndex = 18;
-            btnAceptar.Tag = "Cyber";
-            btnAceptar.TextButton = "Aceptar";
-            btnAceptar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            btnAceptar.Timer_Effect_1 = 5;
-            btnAceptar.Timer_RGB = 300;
-            // 
             // txtNroDoc
             // 
             txtNroDoc.BackColor = Color.Transparent;
@@ -555,24 +465,6 @@
             thunderLabel1.TabIndex = 2;
             thunderLabel1.Text = "Nombre";
             // 
-            // botonesForms2
-            // 
-            botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(1231, 5);
-            botonesForms2.Name = "botonesForms2";
-            botonesForms2.Size = new Size(69, 20);
-            botonesForms2.TabIndex = 1;
-            // 
-            // botonesForms1
-            // 
-            botonesForms1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            botonesForms1.BackColor = Color.Transparent;
-            botonesForms1.Location = new Point(1763, 4);
-            botonesForms1.Name = "botonesForms1";
-            botonesForms1.Size = new Size(69, 20);
-            botonesForms1.TabIndex = 0;
-            // 
             // FrmSociosAlta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -592,16 +484,12 @@
         #endregion
 
         private ReaLTaiizor.Forms.ThunderForm thunderForm1;
-        private ReaLTaiizor.Controls.CyberButton btnCancelar;
-        private ReaLTaiizor.Controls.CyberButton btnAceptar;
         private ReaLTaiizor.Controls.AloneTextBox txtNroDoc;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel3;
         private ReaLTaiizor.Controls.AloneTextBox txtApellido;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel2;
         private ReaLTaiizor.Controls.AloneTextBox txtNombre;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel1;
-        private UserControls.BotonesForms botonesForms2;
-        private UserControls.BotonesForms botonesForms1;
         private ReaLTaiizor.Controls.CyberButton cyberButton1;
         private ReaLTaiizor.Controls.CyberButton cyberButton2;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel4;
