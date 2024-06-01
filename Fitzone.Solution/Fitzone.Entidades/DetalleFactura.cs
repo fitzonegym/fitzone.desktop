@@ -15,8 +15,10 @@ namespace Fitzone.Entidades
 
         public int cantidad { get; set; }
 
+        [Column(TypeName = "decimal(8,2)")]
         public decimal precioUnitario { get; set; }
 
+        [Column(TypeName = "decimal(8,2)")]
         public decimal total { get; set; }
 
         [ForeignKey("Factura")]

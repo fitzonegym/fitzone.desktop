@@ -13,6 +13,7 @@ namespace Fitzone.Entidades
         [Key]
         public int idMembresia { get; set; }
 
+        [Column(TypeName = "decimal(8,2)")]
         public decimal precioMembresia { get; set; }
 
         public DateTime fechaDesde { get; set; }

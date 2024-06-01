@@ -12,6 +12,6 @@ namespace Fitzone.Entidades
         [Key]
         public int idBarrio { get; set; }
         [MaxLength(50)]
-        public string? nombre { get; set; }
+        public string nombre { get; set; }
     }
 }

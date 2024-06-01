@@ -13,7 +13,7 @@ namespace Fitzone.Entidades
         public int idActividad { get; set; }
 
         [MaxLength(50)]
-        public string? nombreActividad { get; set; }
+        public string nombreActividad { get; set; }
 
         [MaxLength(500)]
         public string? detalleActividad { get; set; }

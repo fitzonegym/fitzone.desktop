@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Fitzone.Entidades
         [MaxLength(50)]
         public string? metodoDePago { get; set; }
 
+        [Column(TypeName = "decimal(8,2)")]
         public decimal total { get; set; }
     }
 }

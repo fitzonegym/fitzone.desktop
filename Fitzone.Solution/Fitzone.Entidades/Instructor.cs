@@ -14,7 +14,7 @@ namespace Fitzone.Entidades
         public int idInstructor { get; set; }
 
         [MaxLength(50)]
-        public string? nombre { get; set; }
+        public string nombre { get; set; }
 
         [MaxLength(50)]
         public string? telefono { get; set; }
@@ -23,10 +23,10 @@ namespace Fitzone.Entidades
         public string? mail { get; set; }
 
         [MaxLength(10)]
-        public string? tipoDocumento { get; set; }
+        public string tipoDocumento { get; set; }
 
         [MaxLength(20)]
-        public string? numeroDocumento { get; set; }
+        public string numeroDocumento { get; set; }
 
         [ForeignKey("Barrio")]
         public int idBarrio { get; set; }

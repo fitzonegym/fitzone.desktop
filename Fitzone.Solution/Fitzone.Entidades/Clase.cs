@@ -14,11 +14,11 @@ namespace Fitzone.Entidades
         public int idClase { get; set; }
 
         [MaxLength(50)]
-        public string? nombreClase { get; set; }
+        public string nombreClase { get; set; }
 
         public DateTime fecha { get; set; }
 
-        public TimeSpan hora { get; set; }
+        public DateTime hora { get; set; }
 
         public int cupoClase { get; set; }
 
