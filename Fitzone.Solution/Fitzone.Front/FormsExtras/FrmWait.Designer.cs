@@ -34,7 +34,7 @@
             // lblMensaje2
             // 
             lblMensaje2.AutoSize = true;
-            lblMensaje2.BackColor = Color.Transparent;
+            lblMensaje2.BackColor = Color.FromArgb(81, 45, 168);
             lblMensaje2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblMensaje2.ForeColor = Color.White;
             lblMensaje2.Location = new Point(108, 41);

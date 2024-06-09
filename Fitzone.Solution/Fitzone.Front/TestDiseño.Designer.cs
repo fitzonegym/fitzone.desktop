@@ -68,7 +68,7 @@
             thunderLabel2 = new ReaLTaiizor.Controls.ThunderLabel();
             txtNombre = new ReaLTaiizor.Controls.AloneTextBox();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
-            botonesForms1 = new UserControls.BotonesForms();
+            botonesForms1 = new UserControls.UCBotonesForms();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImagen).BeginInit();
             groupBox1.SuspendLayout();
@@ -751,6 +751,6 @@
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel2;
         private ReaLTaiizor.Controls.AloneTextBox txtNombre;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel1;
-        private UserControls.BotonesForms botonesForms1;
+        private UserControls.UCBotonesForms botonesForms1;
     }
 }

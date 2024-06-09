@@ -1,6 +1,6 @@
 ﻿namespace Fitzone.Front.UserControls
 {
-    partial class UCTitleBar
+    partial class UCTituloLabel
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -28,31 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            botonesForms1 = new UCBotonesForms();
+            lblTitulo = new Label();
             SuspendLayout();
             // 
-            // botonesForms1
+            // lblTitulo
             // 
-            botonesForms1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            botonesForms1.BackColor = Color.Transparent;
-            botonesForms1.Location = new Point(352, 3);
-            botonesForms1.Name = "botonesForms1";
-            botonesForms1.Size = new Size(69, 20);
-            botonesForms1.TabIndex = 0;
+            lblTitulo.AutoSize = true;
+            lblTitulo.BackColor = Color.Transparent;
+            lblTitulo.Dock = DockStyle.Top;
+            lblTitulo.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline);
+            lblTitulo.ForeColor = Color.White;
+            lblTitulo.Location = new Point(0, 0);
+            lblTitulo.Name = "lblTitulo";
+            lblTitulo.Padding = new Padding(5);
+            lblTitulo.Size = new Size(65, 31);
+            lblTitulo.TabIndex = 50;
+            lblTitulo.Text = "Titulo";
             // 
-            // UCTitleBar
+            // UCTituloLabel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(81, 45, 168);
-            Controls.Add(botonesForms1);
-            Name = "UCTitleBar";
-            Size = new Size(424, 26);
+            BackColor = Color.FromArgb(103, 58, 183);
+            Controls.Add(lblTitulo);
+            Name = "UCTituloLabel";
+            Size = new Size(143, 34);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private UCBotonesForms botonesForms1;
+        public Label lblTitulo;
     }
 }

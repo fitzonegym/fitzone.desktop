@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             thunderForm1 = new ReaLTaiizor.Forms.ThunderForm();
-            botonesForms1 = new UserControls.BotonesForms();
+            botonesForms1 = new UserControls.UCBotonesForms();
             thunderForm1.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,6 +77,6 @@
         #endregion
 
         private ReaLTaiizor.Forms.ThunderForm thunderForm1;
-        private UserControls.BotonesForms botonesForms1;
+        private UserControls.UCBotonesForms botonesForms1;
     }
 }

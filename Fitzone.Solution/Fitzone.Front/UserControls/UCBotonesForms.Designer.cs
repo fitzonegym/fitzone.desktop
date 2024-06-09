@@ -1,6 +1,6 @@
 ﻿namespace Fitzone.Front.UserControls
 {
-    partial class BotonesForms
+    partial class UCBotonesForms
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -28,29 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnMin = new PictureBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCBotonesForms));
             btnMax = new PictureBox();
             btnClose = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)btnMin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnMax).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).BeginInit();
             SuspendLayout();
             // 
-            // btnMin
-            // 
-            btnMin.Image = Properties.Resources.min;
-            btnMin.Location = new Point(0, 0);
-            btnMin.Name = "btnMin";
-            btnMin.Size = new Size(20, 20);
-            btnMin.SizeMode = PictureBoxSizeMode.StretchImage;
-            btnMin.TabIndex = 2;
-            btnMin.TabStop = false;
-            btnMin.Click += btnMin_Click;
-            // 
             // btnMax
             // 
-            btnMax.Image = Properties.Resources.max;
-            btnMax.Location = new Point(23, 0);
+            btnMax.Image = (Image)resources.GetObject("btnMax.Image");
+            btnMax.Location = new Point(0, 0);
             btnMax.Name = "btnMax";
             btnMax.Size = new Size(20, 20);
             btnMax.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -60,8 +48,8 @@
             // 
             // btnClose
             // 
-            btnClose.Image = Properties.Resources.close;
-            btnClose.Location = new Point(46, 0);
+            btnClose.Image = (Image)resources.GetObject("btnClose.Image");
+            btnClose.Location = new Point(23, 0);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(20, 20);
             btnClose.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -69,26 +57,22 @@
             btnClose.TabStop = false;
             btnClose.Click += btnClose_Click;
             // 
-            // BotonesForms
+            // UCBotonesForms
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             Controls.Add(btnClose);
             Controls.Add(btnMax);
-            Controls.Add(btnMin);
-            Name = "BotonesForms";
-            Size = new Size(69, 20);
+            Name = "UCBotonesForms";
+            Size = new Size(43, 20);
             Load += BotonesForms_Load;
-            ((System.ComponentModel.ISupportInitialize)btnMin).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnMax).EndInit();
             ((System.ComponentModel.ISupportInitialize)btnClose).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private PictureBox btnMin;
         private PictureBox btnMax;
         private PictureBox btnClose;
     }

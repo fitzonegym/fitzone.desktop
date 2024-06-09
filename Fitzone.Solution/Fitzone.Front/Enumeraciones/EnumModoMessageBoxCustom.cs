@@ -13,7 +13,8 @@ namespace Fitzone.Front.Enumeraciones
         ConfirmaGuardar = 3,
         DatosGuardadosCorrectamente = 4,
         SeEncontraronErrores = 5,
-        Aceptar = 2
+        Aceptar = 6,
+        NoSeEncontraronDatos = 7
 
     }
 }

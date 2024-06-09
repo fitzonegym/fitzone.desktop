@@ -28,35 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            thunderForm1 = new ReaLTaiizor.Forms.ThunderForm();
             lblMensaje2 = new Label();
             btn2 = new ReaLTaiizor.Controls.CyberButton();
             btn1 = new ReaLTaiizor.Controls.CyberButton();
-            botonesForms1 = new UserControls.BotonesForms();
-            thunderForm1.SuspendLayout();
+            botonesForms1 = new UserControls.UCBotonesForms();
             SuspendLayout();
-            // 
-            // thunderForm1
-            // 
-            thunderForm1.BackColor = Color.FromArgb(255, 192, 128);
-            thunderForm1.BodyColorA = Color.Black;
-            thunderForm1.BodyColorB = Color.Black;
-            thunderForm1.BodyColorC = Color.FromArgb(209, 196, 234);
-            thunderForm1.BodyColorD = Color.FromArgb(209, 196, 234);
-            thunderForm1.Controls.Add(lblMensaje2);
-            thunderForm1.Controls.Add(btn2);
-            thunderForm1.Controls.Add(btn1);
-            thunderForm1.Controls.Add(botonesForms1);
-            thunderForm1.Dock = DockStyle.Fill;
-            thunderForm1.ForeColor = Color.WhiteSmoke;
-            thunderForm1.Image = Properties.Resources.ico1;
-            thunderForm1.Location = new Point(0, 0);
-            thunderForm1.MinimumSize = new Size(270, 50);
-            thunderForm1.Name = "thunderForm1";
-            thunderForm1.Padding = new Padding(11, 29, 11, 6);
-            thunderForm1.Size = new Size(433, 185);
-            thunderForm1.TabIndex = 1;
-            thunderForm1.Text = "Fitzone";
             // 
             // lblMensaje2
             // 
@@ -64,7 +40,7 @@
             lblMensaje2.BackColor = Color.Transparent;
             lblMensaje2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblMensaje2.ForeColor = Color.FromArgb(81, 45, 168);
-            lblMensaje2.Location = new Point(28, 58);
+            lblMensaje2.Location = new Point(12, 25);
             lblMensaje2.Name = "lblMensaje2";
             lblMensaje2.Size = new Size(172, 19);
             lblMensaje2.TabIndex = 21;
@@ -97,7 +73,7 @@
             btn2.Lighting = false;
             btn2.LinearGradient_Background = false;
             btn2.LinearGradientPen = false;
-            btn2.Location = new Point(316, 133);
+            btn2.Location = new Point(215, 77);
             btn2.Name = "btn2";
             btn2.PenWidth = 15;
             btn2.Rounding = true;
@@ -139,7 +115,7 @@
             btn1.Lighting = false;
             btn1.LinearGradient_Background = false;
             btn1.LinearGradientPen = false;
-            btn1.Location = new Point(211, 133);
+            btn1.Location = new Point(115, 77);
             btn1.Name = "btn1";
             btn1.PenWidth = 15;
             btn1.Rounding = true;
@@ -158,7 +134,7 @@
             // 
             botonesForms1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms1.BackColor = Color.Transparent;
-            botonesForms1.Location = new Point(889, 4);
+            botonesForms1.Location = new Point(759, -29);
             botonesForms1.Name = "botonesForms1";
             botonesForms1.Size = new Size(69, 20);
             botonesForms1.TabIndex = 0;
@@ -167,22 +143,25 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(433, 185);
-            Controls.Add(thunderForm1);
+            BackColor = Color.FromArgb(209, 196, 234);
+            ClientSize = new Size(319, 122);
+            Controls.Add(lblMensaje2);
+            Controls.Add(btn2);
+            Controls.Add(btn1);
+            Controls.Add(botonesForms1);
             FormBorderStyle = FormBorderStyle.None;
+            KeyPreview = true;
             Name = "MessageBoxCustom";
             StartPosition = FormStartPosition.CenterParent;
             TransparencyKey = Color.Fuchsia;
             Load += MessageBoxCustom_Load;
-            thunderForm1.ResumeLayout(false);
-            thunderForm1.PerformLayout();
+            KeyPress += MessageBoxCustom_KeyPress;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private ReaLTaiizor.Forms.ThunderForm thunderForm1;
-        private UserControls.BotonesForms botonesForms1;
+        private UserControls.UCBotonesForms botonesForms1;
         private ReaLTaiizor.Controls.CyberButton btn2;
         private ReaLTaiizor.Controls.CyberButton btn1;
         private Label lblMensaje2;

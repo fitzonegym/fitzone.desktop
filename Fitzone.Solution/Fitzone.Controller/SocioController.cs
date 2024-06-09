@@ -8,7 +8,8 @@ namespace Fitzone.Controller
 {
     public class SocioController : IControllersClasesPrincipales<Socio>
     {
-        Contexto? contexto = new Contexto();            
+        Contexto? contexto = new Contexto();
+
 
         /// <summary>
         /// Obtener todos los socios
@@ -16,7 +17,20 @@ namespace Fitzone.Controller
         /// <returns></returns>
         public List<Socio>? GetAll()
         {
-            return contexto.Socio.Include("Barrio").Where(i=>i.anulado == false).ToList();
+            return contexto.Socio.Include("Barrio").Where(i => i.anulado == false).ToList();
+        }
+
+        public List<Socio>? GetAll(Socio socio)
+        {
+            
+            var listaresultado = contexto.Socio.Include("Barrio")
+                .Where(i => i.anulado == false)
+                .Where(i => socio.nombre == null || i.nombre.Contains(socio.nombre.Trim()))
+                .Where(i => socio.apellido == null || i.apellido.Contains(socio.apellido.Trim()))
+                .Where(i => socio.numeroDocumento == null || i.numeroDocumento.Contains(socio.numeroDocumento.Trim()))
+                .ToList();
+
+            return listaresultado;
         }
 
         /// <summary>
@@ -94,6 +108,10 @@ namespace Fitzone.Controller
                 actualizar.numeroDocumento = entidad.numeroDocumento;
                 actualizar.mail = entidad.mail;
                 actualizar.imagen = entidad.imagen;
+
+                actualizar.telefono1 = entidad.telefono1;
+                actualizar.telefono2 = entidad.telefono2;
+                actualizar.idBarrio = entidad.idBarrio;
 
                 contexto.SaveChanges(true);
 

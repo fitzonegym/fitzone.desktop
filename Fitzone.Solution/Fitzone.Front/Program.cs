@@ -15,8 +15,8 @@ namespace Fitzone.Front
             ApplicationConfiguration.Initialize();
             //Application.Run(new FrmSociosAdmin());            
             //Application.Run(new FrmSociosAlta());
-            Application.Run(new TestDiseño());
-            //Application.Run(new test2());
+            //Application.Run(new TestDiseño());
+            Application.Run(new FrmContenedorPrincipal());
         }
     }
 }

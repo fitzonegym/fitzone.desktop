@@ -41,5 +41,21 @@ namespace Fitzone.Entidades
         public bool anulado { get; set; } = false;
         public byte[]? imagen { get; set; }
 
+        [NotMapped]
+        public string BarrioNombre { 
+            get
+            {
+                return Barrio == null ? "" : Barrio.nombre ;
+            }
+        }
+
+        [NotMapped]
+        public bool TieneImagen
+        {
+            get
+            {
+                return imagen == null ? false : true;
+            }
+        }
     }
 }

@@ -11,6 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Socios\FrmSociosAlta.cs~RFe5265a.TMP" />
     <None Remove="Test.Designer.cs~RFf88120.TMP" />
   </ItemGroup>
 

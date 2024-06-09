@@ -1,0 +1,10 @@
+﻿General
+-Se utilizan mascaras para los campos que tienen un formato especial
+
+
+Alta de socio
+-Permite cargar una imagen, capturada con la webCam
+
+Admin de socios
+-se muestran campos adicionales, como tiene foto S/N
+

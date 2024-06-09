@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Fitzone.Front.UserControls
 {
-    public partial class BotonesForms : UserControl
+    public partial class UCBotonesForms : UserControl
     {
-        public BotonesForms()
+        public UCBotonesForms()
         {
             InitializeComponent();
         }
