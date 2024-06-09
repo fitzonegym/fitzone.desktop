@@ -143,6 +143,16 @@ namespace Fitzone.Front.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap no_foto_img {
+            get {
+                object obj = ResourceManager.GetObject("no-foto-img", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap obligatorio {
             get {
                 object obj = ResourceManager.GetObject("obligatorio", resourceCulture);

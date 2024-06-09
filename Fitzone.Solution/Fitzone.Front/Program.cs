@@ -13,9 +13,10 @@ namespace Fitzone.Front
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            //Application.Run(new FrmSociosAdmin());
-            Application.Run(new FrmContenedorPrincipal());
+            //Application.Run(new FrmSociosAdmin());            
             //Application.Run(new FrmSociosAlta());
+            Application.Run(new TestDiseño());
+            //Application.Run(new test2());
         }
     }
 }

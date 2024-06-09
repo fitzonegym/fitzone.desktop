@@ -17,11 +17,22 @@ namespace Fitzone.Front.FormsExtras
         public DialogResult response;
         EnumModoMessageBoxCustom _modo;
         string _mensaje;
+        int _aumentarAncho = 0;
+
+
         public MessageBoxCustom(string mensaje, EnumModoMessageBoxCustom modo)
         {
             InitializeComponent();
             _modo = modo;
             _mensaje = mensaje;
+        }
+
+        public MessageBoxCustom(string mensaje, EnumModoMessageBoxCustom modo, int aumentarAncho)
+        {
+            InitializeComponent();
+            _modo = modo;
+            _mensaje = mensaje;
+            _aumentarAncho = aumentarAncho;
         }
 
         public MessageBoxCustom(EnumModoMessageBoxCustom modo)
@@ -44,7 +55,7 @@ namespace Fitzone.Front.FormsExtras
                 btn2.TextButton = "Cancelar";
             }
 
-            if (_modo == EnumModoMessageBoxCustom.DatosGuardadosCorrectamente)
+            if (_modo == EnumModoMessageBoxCustom.DatosGuardadosCorrectamente || _modo == EnumModoMessageBoxCustom.Aceptar)
             {
                 btn1.Visible = false;
                 btn2.TextButton = "Aceptar";
@@ -63,7 +74,10 @@ namespace Fitzone.Front.FormsExtras
                 lblMensaje2.Text = "¿Confirma guardar los datos?";
             if (_modo == EnumModoMessageBoxCustom.DatosGuardadosCorrectamente)
                 lblMensaje2.Text = "Los datos se guardaron correctamente";
-           
+
+            this.Size = new Size(this.Width+_aumentarAncho, this.Height);
+
+
         }
 
         private void btn1_Click(object sender, EventArgs e)

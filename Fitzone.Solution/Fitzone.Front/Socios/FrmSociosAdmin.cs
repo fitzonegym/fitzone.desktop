@@ -27,16 +27,24 @@ namespace Fitzone.Front.Socios
 
         private void CargarGrilla()
         {
+            Statics.WaitShow();
             SocioController c = new SocioController();
             listaSocios = c.GetAll();
             bindingSource1.DataSource = null;
             bindingSource1.DataSource = listaSocios;
+            Statics.WaitHide();
         }
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             CargarGrilla();
 
+        }
+
+        private void cyberButton1_Click(object sender, EventArgs e)
+        {
+            FrmSociosAlta frm = new FrmSociosAlta();    
+            frm.ShowDialog();
         }
     }
 }

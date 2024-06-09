@@ -93,6 +93,7 @@ namespace Fitzone.Controller
                 actualizar.tipoDocumento = entidad.tipoDocumento;
                 actualizar.numeroDocumento = entidad.numeroDocumento;
                 actualizar.mail = entidad.mail;
+                actualizar.imagen = entidad.imagen;
 
                 contexto.SaveChanges(true);
 

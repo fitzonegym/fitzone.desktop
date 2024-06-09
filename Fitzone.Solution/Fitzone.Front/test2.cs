@@ -10,17 +10,10 @@ using System.Windows.Forms;
 
 namespace Fitzone.Front
 {
-    public partial class TestDiseño : Form
+    public partial class test2 : Form
     {
-      
-        
-        public TestDiseño()
-        {
-            InitializeComponent();
-        }
 
-
-        #region redimensionar
+        #region redimensaionar
 
         private const int HTLEFT = 10;
         private const int HTRIGHT = 11;
@@ -31,15 +24,10 @@ namespace Fitzone.Front
         private const int HTBOTTOMLEFT = 16;
         private const int HTBOTTOMRIGHT = 17;
         private const int BORDER_SIZE = 5; // Tamaño de los bordes para redimensionar
-                                           //   // Funciones necesarias para permitir el movimiento del formulario
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [System.Runtime.InteropServices.DllImport("user32.dll")]                
         private static extern bool ReleaseCapture();
-
-        private const int WM_NCLBUTTONDOWN = 0xA1;
-        private const int HT_CAPTION = 0x2;
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
@@ -66,26 +54,18 @@ namespace Fitzone.Front
                     m.Result = (IntPtr)HTBOTTOM;
             }
         }
-        public void OnMouseDownForm(MouseEventArgs e)
-        {
-            OnMouseDown(e);
-        }
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            base.OnMouseDown(e);
-            // Permitir que el formulario se mueva cuando el usuario lo arrastre
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-            }
-        }
+
         #endregion
+        public test2()
+        {
+            InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.DoubleBuffered = true;
+        }
 
+       
 
-
-
-
-
+       
     }
 }
+

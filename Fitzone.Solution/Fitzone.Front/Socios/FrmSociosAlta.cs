@@ -1,22 +1,27 @@
-﻿using Fitzone.Controller;
+﻿using Emgu.CV;
+using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
+
+using Fitzone.Controller;
 using Fitzone.Entidades;
 using Fitzone.Front.FormsExtras;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 using ReaLTaiizor.Controls;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 
 namespace Fitzone.Front.Socios
 {
     public partial class FrmSociosAlta : Form
     {
+        private VideoCapture _capture;
+        private Mat _frame;
+        public int _id_socio = 0;
+        Socio? _socio;
+        EnumModoForm _EnumModoForm = EnumModoForm.Alta;
+
         public FrmSociosAlta()
         {
             InitializeComponent();
@@ -35,11 +40,50 @@ namespace Fitzone.Front.Socios
 
         }
 
-        private void FrmSociosAlta_Load(object sender, EventArgs e)
+        private async void FrmSociosAlta_Load(object sender, EventArgs e)
         {
+            _EnumModoForm = EnumModoForm.Modificacion;
+            _id_socio = 1;
+
             CargarBarrios();
+            CargarDatosSocio();
+
+            _frame = new Mat();
+            await OperacionAsincrona();            
+
         }
 
+        private void CargarDatosSocio()
+        {
+
+            SocioController sc = new SocioController();
+            _socio = sc.GetById(_id_socio);
+            if (_socio == null)
+                return;
+            
+            cmbBarrio.SelectedValue = _socio.idBarrio;
+
+            txtMail.Text = _socio.mail;
+            txtCalle.Text = _socio.calle;
+            txtCalleNro.Text = _socio.calleNumero;
+
+            txtNombre.Text = _socio.nombre;
+            txtApellido.Text = _socio.apellido;
+            txtNroDoc.Text = _socio.numeroDocumento;
+
+            if (_socio.tipoDocumento == "DNI")
+                rdbDNI.Checked = true;                
+            else
+                rdbOtro.Checked = true;
+
+            txtCelular.Text = _socio.telefono1;
+            txtTelefono.Text = _socio.telefono2;
+
+            //imagen            
+            pictureBoxImagen.Image = ArrayBytesToImage(_socio.imagen);
+
+            _Validating(null, null);
+        }
         private void cyberButton2_Click(object sender, EventArgs e)
         {
             Guardar();
@@ -83,36 +127,43 @@ namespace Fitzone.Front.Socios
         {
             MessageBoxCustom msg;
 
-            Socio socio = new Socio();
+            if (_EnumModoForm == EnumModoForm.Alta)
+            {
+                _socio = new Socio();
+                _socio.idSocio = 0;
+            }
 
-            socio.idSocio = 0;
-            socio.idBarrio = ((Barrio)bindingSource1.Current).idBarrio;
+            if (_socio == null) return; //solo para quitar el warning
+            
+            _socio.idBarrio = ((Barrio)bindingSource1.Current).idBarrio;
 
-            socio.mail = txtMail.Text;
-            socio.anulado = false;
+            _socio.mail = txtMail.Text;
+            _socio.anulado = false;
 
-            socio.calle = txtCalle.Text;
-            socio.calleNumero = txtCalleNro.Text;
+            _socio.calle = txtCalle.Text;
+            _socio.calleNumero = txtCalleNro.Text;
 
-            socio.nombre = txtNombre.Text;
-            socio.apellido = txtApellido.Text;
-            socio.numeroDocumento = txtNroDoc.Text;
+            _socio.nombre = txtNombre.Text;
+            _socio.apellido = txtApellido.Text;
+            _socio.numeroDocumento = txtNroDoc.Text;
             if (rdbDNI.Checked)
-                socio.tipoDocumento = "DNI";
+                _socio.tipoDocumento = "DNI";
             else
-                socio.tipoDocumento = "OTRO";
-            socio.telefono1 = txtCelular.Text;
-            socio.telefono2 = txtTelefono.Text;
+                _socio.tipoDocumento = "OTRO";
+            _socio.telefono1 = txtCelular.Text;
+            _socio.telefono2 = txtTelefono.Text;
+
+            //imagen            
+            _socio.imagen = ImageToArrayBytes();
 
             // validaciones
             string mensajeErrores = "";
-            if (!ValidarEmpleado(ref mensajeErrores, socio))
+            if (!ValidarEmpleado(ref mensajeErrores, _socio))
             {
                 //si falla alguna validacion muestro el mensaje y no hago nada mas
                 msg = new MessageBoxCustom(mensajeErrores, Enumeraciones.EnumModoMessageBoxCustom.SeEncontraronErrores);
                 msg.ShowDialog();
                 return;
-
             }
 
             //listo para guardar
@@ -122,7 +173,12 @@ namespace Fitzone.Front.Socios
                 return;
 
             SocioController c = new SocioController();
-            c.Insert(socio);
+
+            if (_EnumModoForm == EnumModoForm.Alta)
+                c.Insert(_socio);
+
+            if (_EnumModoForm == EnumModoForm.Modificacion)
+                c.Update(_socio,_socio.idSocio);
 
             msg = new MessageBoxCustom(Enumeraciones.EnumModoMessageBoxCustom.DatosGuardadosCorrectamente);
             msg.ShowDialog();
@@ -130,7 +186,7 @@ namespace Fitzone.Front.Socios
         }
 
         private void _Validating(object sender, CancelEventArgs e)
-        {  
+        {
             string caracteresIndeseados = "()-.,";
 
             ucErrorIconoNroDoc.Visible = String.IsNullOrWhiteSpace(new string(txtNroDoc.Text.Where(c => !caracteresIndeseados.Contains(c)).ToArray()));
@@ -159,7 +215,7 @@ namespace Fitzone.Front.Socios
 
             if (String.IsNullOrWhiteSpace(resultado))
                 txtCelular.SelectionStart = 0;
-        }      
+        }
 
         private void txtTelefono_TextChanged(object sender, EventArgs e)
         {
@@ -212,6 +268,146 @@ namespace Fitzone.Front.Socios
                 textBox.TB.SelectionLength = selectionLength;
             }
         }
+        
+        private void btnCamara_Click(object sender, EventArgs e)
+        {
+            ActivarCamara();
+        }
+
+        private void ActivarCamara()
+        {
+            Statics.WaitShow();
+
+            int indexCam = rdbCam1.Checked ? 0 : 1;
+
+            _capture = new VideoCapture(indexCam);
+            _capture.ImageGrabbed += ProcessFrame;
+            _capture.Start();           
+
+            Statics.WaitHide();
+        }
+        
+        private void ProcessFrame(object sender, EventArgs e)
+        {
+            if (_capture != null && _capture.Ptr != IntPtr.Zero)
+            {
+                _capture.Retrieve(_frame, 0);
+
+                if (!_frame.IsEmpty)
+                {                    
+                    pictureBoxVideo.Image = BitmapExtension.ToBitmap(_frame);
+                    
+                }
+                //var imageByte = _frame.ToImage<Bgr, Byte>().ToJpegData();
+                //var imageCapture = ByteArrayToImage(imageByte);
+                //pictureBoxVideo.Image = imageCapture;
+            }
+
+        }
+        
+        private async Task OperacionAsincrona()
+        {
+            await Task.Run(() => ActivarCamara());
+            lblCargandoCamara.Visible = false;
+
+        }
+
+        private void FrmSociosAlta_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_capture != null)
+            {
+                _capture.Dispose();
+            }
+        }
+
+        private void btnCapturar_Click(object sender, EventArgs e)
+        {
+            if (lblCargandoCamara.Visible)
+            {
+                new MessageBoxCustom("Debe esperar a que inicie la cámara", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                return;
+            }          
+
+            if (pictureBoxVideo.Image != null)
+            {
+
+                string filePath = Guid.NewGuid().ToString();
+                Bitmap bitmap = _frame.ToImage<Bgr, Byte>().ToBitmap();
+                //bitmap.Save(filePath, ImageFormat.Png);
+                pictureBoxImagen.Image = bitmap;
+            }
+        }
+
+        private byte[]? ImageToArrayBytes()
+        {
+            try
+            {
+                // Obtener la imagen del PictureBox
+                Image image = pictureBoxImagen.Image;
+
+                if (image != null)
+                {
+                    // Convertir la imagen a un objeto Bitmap
+                    Bitmap bitmap = new Bitmap(image);
+
+                    // Convertir el Bitmap a un arreglo de bytes
+                    byte[] imageBytes;
+                    using (MemoryStream stream = new MemoryStream())
+                    {
+                        // Guardar el Bitmap en el stream como un archivo PNG
+                        bitmap.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                        // Obtener los bytes del stream
+                        imageBytes = stream.ToArray();
+                    }
+                    return imageBytes;
+                }
+                else
+                {
+                    MessageBox.Show("No hay imagen en el PictureBox.");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al convertir la imagen a bytes: " + ex.Message);
+            }
+            return null;
+        }
+        private Image? ArrayBytesToImage(byte[]? bytes)
+        {
+            if (bytes == null)
+                return null;
+
+            try
+            {
+                // Suponiendo que imageBytes es el byte[] que contiene los datos de la imagen
+                byte[] imageBytes = bytes; // Puedes definir esta función según de dónde provengan los bytes
+
+                if (imageBytes != null && imageBytes.Length > 0)
+                {
+                    // Crear un MemoryStream a partir de los bytes
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        // Crear un objeto Image desde el MemoryStream
+                        Image image = Image.FromStream(ms);
+                        // Mostrar la imagen en el PictureBox
+                        return image;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al convertir y mostrar la imagen desde los bytes: " + ex.Message);
+                return null;
+            }
+        }
+
+
+
     }
 }
 

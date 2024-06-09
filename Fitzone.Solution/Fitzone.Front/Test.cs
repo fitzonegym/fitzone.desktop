@@ -5,9 +5,55 @@ namespace Fitzone.Front
 {
     public partial class Test : Form
     {
+        private const int WS_EX_LAYERED = 0x80000;
+        private const int WS_EX_TRANSPARENT = 0x20;
+        private const int GWL_EXSTYLE = -20;
+        private const int WM_NCPAINT = 0x85;
+        private const int WM_NCCALCSIZE = 0x83;
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern IntPtr GetWindowDC(IntPtr hWnd);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetLayeredWindowAttributes(IntPtr hwnd, uint crKey, byte bAlpha, uint dwFlags);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool GetLayeredWindowAttributes(IntPtr hwnd, out uint crKey, out byte bAlpha, out uint dwFlags);
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+
+            if (m.Msg == WM_NCPAINT || m.Msg == WM_NCCALCSIZE)
+            {
+                IntPtr hdc = GetWindowDC(m.HWnd);
+                if (hdc != IntPtr.Zero)
+                {
+                    using (Graphics g = Graphics.FromHdc(hdc))
+                    {
+                        Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+                        g.DrawRectangle(Pens.Red, rect); // Cambiar el color del borde
+                    }
+                    ReleaseDC(m.HWnd, hdc);
+                }
+            }
+        }
+
         public Test()
         {
             InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.BackColor = Color.Blue; // Cambiar el color de fondo del formulario
+            this.ForeColor = Color.White; // Cambiar el color del texto de la barra de título
+
         }
 
         private void button1_Click(object sender, EventArgs e)

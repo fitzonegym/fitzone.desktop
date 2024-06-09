@@ -29,6 +29,7 @@ namespace Fitzone.EF.Migrations
                                        ,[calleNumero]
                                        ,[idBarrio]
                                        ,[anulado]
+                                       ,[imagen]
                                        )
                                  VALUES
                                        ('Bart'
@@ -41,7 +42,8 @@ namespace Fitzone.EF.Migrations
                                        ,'Av. SIempre viva'
                                        ,'2215'
                                        ,1
-                                       ,0)
+                                       ,0
+                                       ,null)
                             GO
                             
                             INSERT INTO [dbo].[Socio]
@@ -55,7 +57,8 @@ namespace Fitzone.EF.Migrations
                                        ,[calle]
                                        ,[calleNumero]
                                        ,[idBarrio]
-                                       ,[anulado])
+                                       ,[anulado]
+                                       ,[imagen])
                                  VALUES
                                        ('Lisa'
                                        ,'Simpsons'
@@ -67,7 +70,8 @@ namespace Fitzone.EF.Migrations
                                        ,'Calle 2'
                                        ,'4571'
                                        ,1
-                                       ,0)
+                                       ,0
+                                       ,null)
                             GO
 
                           

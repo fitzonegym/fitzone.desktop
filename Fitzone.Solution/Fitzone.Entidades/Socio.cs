@@ -39,6 +39,7 @@ namespace Fitzone.Entidades
         public int idBarrio { get; set; }
         public Barrio? Barrio { get; set; }
         public bool anulado { get; set; } = false;
-        
+        public byte[]? imagen { get; set; }
+
     }
 }

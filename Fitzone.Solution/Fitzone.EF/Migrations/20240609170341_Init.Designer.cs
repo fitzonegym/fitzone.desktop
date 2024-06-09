@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitzone.EF.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240527191934_Inicial")]
-    partial class Inicial
+    [Migration("20240609170341_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,7 +54,6 @@ namespace Fitzone.EF.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("apellido")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -69,21 +68,23 @@ namespace Fitzone.EF.Migrations
                     b.Property<int>("idBarrio")
                         .HasColumnType("int");
 
+                    b.Property<byte[]>("imagen")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("mail")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("nombre")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("numeroDocumento")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("telefono1")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -92,7 +93,6 @@ namespace Fitzone.EF.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("tipoDocumento")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
