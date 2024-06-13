@@ -1,17 +1,20 @@
-﻿
-Paleta de colores
--Color Principal
-	Hexa
-	RGB		81; 45; 168
--Color secundario
-	Hexa
-	RGB		103; 58; 183
--Color terciario
-	209; 196; 234
+﻿using Fitzone.Controller;
+using Fitzone.Entidades;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-
-
-
+namespace Fitzone.Front.Membresias
+{
+    public partial class FrmMembresiaAdmin : Form
+    {
+        List<Membresia>? _listaMembresias = new List<Membresia>();
 
         #region redimensionar
 
@@ -74,9 +77,26 @@ Paleta de colores
             }
         }
         #endregion
+        public FrmMembresiaAdmin()
+        {
+            InitializeComponent();
+        }
 
+        private void FrmMembresiaAdmin_Load(object sender, EventArgs e)
+        {
+            CargarGrilla();
+        }
 
-SELECT * FROM [dbo].Socio
-SELECT * FROM [dbo].[Cuota]
-SELECT * FROM [dbo].Membresia
-SELECT * FROM [dbo].TipoMembresia
+        private void CargarGrilla()
+        {
+            _listaMembresias = new MembresiaController().GetAll();
+            bindingSource1.DataSource = _listaMembresias;
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+    }
+}

@@ -14,12 +14,18 @@ namespace Fitzone.Entidades
         public int idCuota { get; set; }
 
         [Column(TypeName = "decimal(8,2)")]
-        public decimal precioCuota { get; set; }
+        public decimal precio{ get; set; }
 
-        public int numeroCuota { get; set; }
+        public int numero{ get; set; }
 
         public DateTime fechaDesde { get; set; }
 
         public DateTime fechaHasta { get; set; }
+
+        public DateTime fechaVencimiento { get; set; }
+
+        [ForeignKey("Membresia")]
+        public int idMembresia { get; set; }
+        public Membresia? Membresia { get; set; }
     }
 }

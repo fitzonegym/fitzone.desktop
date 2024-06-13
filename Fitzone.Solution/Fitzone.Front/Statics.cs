@@ -30,6 +30,23 @@ namespace Fitzone.Front
             //frmWait.Hide();
         }
 
+        public static DateTime DateTimeNowSinHora()
+        {
+
+            return Statics.DateTimeSinHora(DateTime.Now);
+        }
+
+        public static DateTime DateTimeSinHora(DateTime fecha)
+        {
+            DateTime now = fecha;
+            return new DateTime(now.Year, now.Month, now.Day);
+        }
+
+        public static string DateTimeNowSinHoraString(DateTime fecha)
+        {
+            return fecha.ToString("d");
+        }
+
 
     }
 }

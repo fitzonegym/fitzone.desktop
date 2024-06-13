@@ -1,16 +1,11 @@
 ﻿using Emgu.CV;
-using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
-
 using Fitzone.Controller;
 using Fitzone.Entidades;
 using Fitzone.Front.FormsExtras;
 using ReaLTaiizor.Controls;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Windows.Forms;
 
 namespace Fitzone.Front.Socios
 {

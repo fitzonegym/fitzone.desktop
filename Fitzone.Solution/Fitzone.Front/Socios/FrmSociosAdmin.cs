@@ -1,6 +1,6 @@
-﻿//using Equin.ApplicationFramework;
-using Fitzone.Controller;
+﻿using Fitzone.Controller;
 using Fitzone.Entidades;
+using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
 
 namespace Fitzone.Front.Socios
@@ -8,7 +8,8 @@ namespace Fitzone.Front.Socios
     public partial class FrmSociosAdmin : Form
     {
         List<Socio> listaSocios = new List<Socio>();
-
+        public Socio? _SocioSeleccionado = null;
+        public EnumModoFormulario _EnumModoFormulario = EnumModoFormulario.Consulta;
 
         #region redimensionar
 
@@ -74,16 +75,33 @@ namespace Fitzone.Front.Socios
 
         public FrmSociosAdmin()
         {
-            InitializeComponent();            
+            InitializeComponent();
             txtNombre.TB.KeyPress += txtCualquierFiltro_KeyPress;
             txtApellido.TB.KeyPress += txtCualquierFiltro_KeyPress;
             txtDocumento.TB.KeyPress += txtCualquierFiltro_KeyPress;
         }
 
+        private void HabilitarDeshabilitarBotones(bool enableDisable)
+        {
+            btnAceptar.Enabled = btnAgregar.Enabled = btnCancelar.Enabled = btnModificar.Enabled = BtnAnular.Enabled = enableDisable;
+        }
+        private void VisibleBotones(bool visible)
+        {
+            btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = visible;
+        }
+
         private void FrmSociosAdmin_Load(object sender, EventArgs e)
         {
+            VisibleBotones(false);
+
             this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
+            if (_EnumModoFormulario == EnumModoFormulario.Consulta)
+            {
+                btnAceptar.Visible = true;
+                btnAceptar.Location = btnCancelar.Location;
+                CargarGrilla();
+            }
         }
 
         private void CargarGrilla()
@@ -106,9 +124,9 @@ namespace Fitzone.Front.Socios
             dataGridView1.DataSource = view;
             */
 
-            if(listaSocios.Count== 0)
+            if (listaSocios.Count == 0)
             {
-                new MessageBoxCustom(Enumeraciones.EnumModoMessageBoxCustom.NoSeEncontraronDatos).ShowDialog();                
+                new MessageBoxCustom(Enumeraciones.EnumModoMessageBoxCustom.NoSeEncontraronDatos).ShowDialog();
             }
 
             Statics.WaitHide();
@@ -141,6 +159,7 @@ namespace Fitzone.Front.Socios
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            _SocioSeleccionado = null;
             Close();
         }
 
@@ -166,7 +185,11 @@ namespace Fitzone.Front.Socios
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (bindingSource1.DataSource == null || bindingSource1.Current == null)
+                return;
 
+            _SocioSeleccionado = ((Socio)bindingSource1.Current);
+            Close();
         }
 
         private void txtCualquierFiltro_KeyPress(object sender, KeyPressEventArgs e)
@@ -180,8 +203,16 @@ namespace Fitzone.Front.Socios
 
             }
 
-    
+
         }
-       
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (bindingSource1.DataSource == null || bindingSource1.Current == null)
+                return;
+
+            _SocioSeleccionado = ((Socio)bindingSource1.Current);
+            Close();
+        }
     }
 }

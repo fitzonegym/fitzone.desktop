@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Fitzone.Front.Enumeraciones
+﻿namespace Fitzone.Front.Enumeraciones
 {
     public enum EnumModoMessageBoxCustom
     {
@@ -14,7 +8,8 @@ namespace Fitzone.Front.Enumeraciones
         DatosGuardadosCorrectamente = 4,
         SeEncontraronErrores = 5,
         Aceptar = 6,
-        NoSeEncontraronDatos = 7
+        NoSeEncontraronDatos = 7,
+        DeseaSalirSePerderanLosCambios = 8
 
     }
 }

@@ -94,7 +94,7 @@
             btnModificar.Lighting = false;
             btnModificar.LinearGradient_Background = false;
             btnModificar.LinearGradientPen = false;
-            btnModificar.Location = new Point(107, 443);
+            btnModificar.Location = new Point(106, 435);
             btnModificar.Name = "btnModificar";
             btnModificar.PenWidth = 15;
             btnModificar.Rounding = true;
@@ -136,7 +136,7 @@
             BtnAnular.Lighting = false;
             BtnAnular.LinearGradient_Background = false;
             BtnAnular.LinearGradientPen = false;
-            BtnAnular.Location = new Point(205, 443);
+            BtnAnular.Location = new Point(204, 435);
             BtnAnular.Name = "BtnAnular";
             BtnAnular.PenWidth = 15;
             BtnAnular.Rounding = true;
@@ -178,7 +178,7 @@
             btnAgregar.Lighting = false;
             btnAgregar.LinearGradient_Background = false;
             btnAgregar.LinearGradientPen = false;
-            btnAgregar.Location = new Point(8, 443);
+            btnAgregar.Location = new Point(7, 435);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.PenWidth = 15;
             btnAgregar.Rounding = true;
@@ -209,8 +209,9 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(765, 275);
+            dataGridView1.Size = new Size(637, 267);
             dataGridView1.TabIndex = 20;
+            dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             // 
             // idSocioDataGridViewTextBoxColumn
             // 
@@ -344,7 +345,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(681, 443);
+            btnCancelar.Location = new Point(553, 433);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -386,7 +387,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(576, 443);
+            btnAceptar.Location = new Point(457, 433);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -526,7 +527,7 @@
             // 
             botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(743, 6);
+            botonesForms2.Location = new Point(615, 6);
             botonesForms2.Name = "botonesForms2";
             botonesForms2.Size = new Size(46, 20);
             botonesForms2.TabIndex = 1;
@@ -546,16 +547,16 @@
             ucBorderlr1.Dock = DockStyle.Left;
             ucBorderlr1.Location = new Point(0, 0);
             ucBorderlr1.Name = "ucBorderlr1";
-            ucBorderlr1.Size = new Size(2, 490);
+            ucBorderlr1.Size = new Size(2, 482);
             ucBorderlr1.TabIndex = 25;
             // 
             // ucBorderlr2
             // 
             ucBorderlr2.BackColor = Color.White;
             ucBorderlr2.Dock = DockStyle.Right;
-            ucBorderlr2.Location = new Point(790, 0);
+            ucBorderlr2.Location = new Point(662, 0);
             ucBorderlr2.Name = "ucBorderlr2";
-            ucBorderlr2.Size = new Size(2, 490);
+            ucBorderlr2.Size = new Size(2, 482);
             ucBorderlr2.TabIndex = 26;
             // 
             // ucBordertd1
@@ -564,16 +565,16 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(788, 3);
+            ucBordertd1.Size = new Size(660, 3);
             ucBordertd1.TabIndex = 27;
             // 
             // ucBordertd2
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 487);
+            ucBordertd2.Location = new Point(2, 479);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(788, 3);
+            ucBordertd2.Size = new Size(660, 3);
             ucBordertd2.TabIndex = 28;
             // 
             // FrmSociosAdmin
@@ -581,7 +582,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(792, 490);
+            ClientSize = new Size(664, 482);
             Controls.Add(ucBordertd2);
             Controls.Add(ucBordertd1);
             Controls.Add(ucBorderlr2);

@@ -137,23 +137,31 @@ namespace Fitzone.Front.FormsExtras
                 this.Size = new Size(this.Width, this.Height + 100);
             }
 
-            lblMensaje2.Text = _mensaje;
-
+            if (_modo == EnumModoMessageBoxCustom.DeseaSalirSePerderanLosCambios)
+            {
+                _mensaje = "¿Desea salir? Se perderán los cambios.";
+                btn1.TextButton = "Si";
+                btn2.TextButton = "No";
+            }
 
             if (_modo == EnumModoMessageBoxCustom.ConfirmaGuardar)
-                lblMensaje2.Text = "¿Confirma guardar los datos?";
+                _mensaje = "¿Confirma guardar los datos?";
             if (_modo == EnumModoMessageBoxCustom.DatosGuardadosCorrectamente)
-                lblMensaje2.Text = "Los datos se guardaron correctamente";
+                _mensaje = "Los datos se guardaron correctamente";
+
+
+            lblMensaje2.Text = _mensaje;
 
             this.Size = new Size(this.Width + _aumentarAncho, this.Height);
-
 
         }
 
         private void btn1_Click(object sender, EventArgs e)
         {
             if (_modo == EnumModoMessageBoxCustom.YesNo
-                || _modo == EnumModoMessageBoxCustom.ConfirmaGuardar)
+                || _modo == EnumModoMessageBoxCustom.ConfirmaGuardar
+                || _modo == EnumModoMessageBoxCustom.DeseaSalirSePerderanLosCambios
+                )
             {
                 response = DialogResult.Yes;
             }
@@ -167,7 +175,8 @@ namespace Fitzone.Front.FormsExtras
         private void btn2_Click(object sender, EventArgs e)
         {
             if (_modo == EnumModoMessageBoxCustom.YesNo
-                || _modo == EnumModoMessageBoxCustom.ConfirmaGuardar)
+                || _modo == EnumModoMessageBoxCustom.ConfirmaGuardar
+                || _modo == EnumModoMessageBoxCustom.DeseaSalirSePerderanLosCambios)
             {
                 response = DialogResult.No;
             }

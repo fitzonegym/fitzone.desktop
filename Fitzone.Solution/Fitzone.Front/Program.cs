@@ -1,3 +1,4 @@
+using Fitzone.Front.Membresias;
 using Fitzone.Front.Socios;
 
 namespace Fitzone.Front
@@ -16,7 +17,10 @@ namespace Fitzone.Front
             //Application.Run(new FrmSociosAdmin());            
             //Application.Run(new FrmSociosAlta());
             //Application.Run(new TestDiseño());
-            Application.Run(new FrmContenedorPrincipal());
+            //Application.Run(new FrmContenedorPrincipal());
+            //Application.Run(new FrmMembresia());
+            Application.Run(new FrmMembresiaAdmin());
+
         }
     }
 }

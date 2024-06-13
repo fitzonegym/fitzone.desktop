@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fitzone.Entidades
 {
@@ -18,7 +14,14 @@ namespace Fitzone.Entidades
         [MaxLength(500)]
         public string? descripcion { get; set; }
 
-        [MaxLength(500)]
-        public string? detalle { get; set; }
+        [Column(TypeName = "decimal(8,2)")]
+        public decimal precioTotal { get; set; }
+        
+        public int cantidadCuotas { get; set; }
+
+        public int cantidadDiasSemanales { get; set; }
+
+        public string diasHabilitados { get; set; } = "";
+
     }
 }
