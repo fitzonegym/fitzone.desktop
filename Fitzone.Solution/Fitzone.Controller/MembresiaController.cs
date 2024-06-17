@@ -33,6 +33,17 @@ namespace Fitzone.Controller
                 .Include("TipoMembresia")
                 .OrderByDescending(c => c.fechaAlta).ToList();
         }
+        public List<Membresia>? GetAll(Membresia membresia)
+        {
+            return contexto.Membresia
+                .Include("Socio")
+                .Include("EstadoMembresia")
+                .Include("TipoMembresia")
+                .Where(c => c.idSocio == membresia.idSocio || membresia.idSocio == 0)
+                .Where(c => c.fechaAlta >= membresia.fechaDesde && c.fechaAlta <= membresia.fechaHasta)                
+                .OrderByDescending(c => c.fechaAlta)
+                .ToList();
+        }
 
         public Membresia? GetById(int id)
         {

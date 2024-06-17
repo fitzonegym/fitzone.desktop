@@ -1,6 +1,6 @@
 ﻿namespace Fitzone.Front.UserControls
 {
-    partial class UCErrorIcono
+    partial class UCBuscar
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -34,22 +34,22 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.obligatorio1;
+            pictureBox1.Image = Properties.Resources.lupa;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(20, 20);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 0;
+            pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
-            // UCErrorIcono
+            // UCBuscar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
             Controls.Add(pictureBox1);
-            Name = "UCErrorIcono";
+            Name = "UCBuscar";
             Size = new Size(20, 20);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

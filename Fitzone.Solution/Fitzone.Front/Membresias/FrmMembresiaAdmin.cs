@@ -1,5 +1,8 @@
 ﻿using Fitzone.Controller;
 using Fitzone.Entidades;
+using Fitzone.Front.Enumeraciones;
+using Fitzone.Front.FormsExtras;
+using Fitzone.Front.Socios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +18,7 @@ namespace Fitzone.Front.Membresias
     public partial class FrmMembresiaAdmin : Form
     {
         List<Membresia>? _listaMembresias = new List<Membresia>();
+        Socio? _Socio = new Socio();
 
         #region redimensionar
 
@@ -26,8 +30,8 @@ namespace Fitzone.Front.Membresias
         private const int HTBOTTOM = 15;
         private const int HTBOTTOMLEFT = 16;
         private const int HTBOTTOMRIGHT = 17;
-        private const int BORDER_SIZE = 5; // Tamaño de los bordes para redimensionar
-                                           //   // Funciones necesarias para permitir el movimiento del formulario
+        private const int BORDER_SIZE = 15; // Tamaño de los bordes para redimensionar
+                                            //   // Funciones necesarias para permitir el movimiento del formulario
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
@@ -85,11 +89,33 @@ namespace Fitzone.Front.Membresias
         private void FrmMembresiaAdmin_Load(object sender, EventArgs e)
         {
             CargarGrilla();
+            txtFechaDesde.Value = DateTime.Now.AddDays(-10);
+            txtFechaHasta.Value = DateTime.Now.AddMonths(1);
+
+            dataGridView1.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dataGridView1_RowPrePaint);
+
+        }
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+
+            if (e.RowIndex % 2 == 0) // Si es una fila par
+            {
+                dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(209, 196, 234); // Cambia el color de fondo
+            }
         }
 
         private void CargarGrilla()
         {
-            _listaMembresias = new MembresiaController().GetAll();
+            Membresia filtro = new Membresia();
+            if (_Socio != null)
+                filtro.idSocio = _Socio.idSocio;
+            filtro.fechaDesde = txtFechaDesde.Value;
+            filtro.fechaHasta = txtFechaHasta.Value;
+
+            _listaMembresias = new MembresiaController().GetAll(filtro);
+
+
             bindingSource1.DataSource = _listaMembresias;
 
         }
@@ -97,6 +123,43 @@ namespace Fitzone.Front.Membresias
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void ucBuscar1__ClickUC(object sender, EventArgs e)
+        {
+            FrmSociosAdmin frm = new FrmSociosAdmin();
+            frm._EnumModoFormulario = Enumeraciones.EnumModoFormulario.Consulta;
+            frm.ShowDialog();
+            _Socio = frm._SocioSeleccionado;
+
+            if (_Socio != null)
+                txtNombre.Text = _Socio.nombre + " " + _Socio.apellido;
+            else
+                txtNombre.Text = "";
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            CargarGrilla();
+
+        }
+
+        private void ucBuscar1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmMembresiaAlta frm = new FrmMembresiaAlta();
+            frm.ShowDialog();
+            CargarGrilla();
+        }
+
+        private void BtnAnular_Click(object sender, EventArgs e)
+        {
+            new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
+            return;
         }
     }
 }

@@ -76,11 +76,13 @@
             ucBorder2 = new UserControls.UCBorderLR();
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBordertd2 = new UserControls.UCBorderTD();
+            groupBox3 = new GroupBox();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImagen).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVideo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox2
@@ -130,9 +132,9 @@
             pictureBoxImagen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBoxImagen.BackColor = Color.Snow;
             pictureBoxImagen.Image = Properties.Resources.no_foto_img;
-            pictureBoxImagen.Location = new Point(6, 152);
+            pictureBoxImagen.Location = new Point(6, 19);
             pictureBoxImagen.Name = "pictureBoxImagen";
-            pictureBoxImagen.Size = new Size(189, 130);
+            pictureBoxImagen.Size = new Size(189, 286);
             pictureBoxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxImagen.TabIndex = 50;
             pictureBoxImagen.TabStop = false;
@@ -154,9 +156,9 @@
             groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(rdbCam2);
             groupBox1.Controls.Add(rdbCam1);
-            groupBox1.Location = new Point(12, 288);
+            groupBox1.Location = new Point(6, 308);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(124, 31);
+            groupBox1.Size = new Size(76, 31);
             groupBox1.TabIndex = 47;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cam. nro.";
@@ -164,24 +166,26 @@
             // rdbCam2
             // 
             rdbCam2.AutoSize = true;
-            rdbCam2.Location = new Point(68, 10);
+            rdbCam2.Location = new Point(43, 10);
             rdbCam2.Name = "rdbCam2";
             rdbCam2.Size = new Size(31, 19);
             rdbCam2.TabIndex = 1;
             rdbCam2.Text = "2";
             rdbCam2.UseVisualStyleBackColor = true;
+            rdbCam2.CheckedChanged += rdbCam2_CheckedChanged;
             // 
             // rdbCam1
             // 
             rdbCam1.AutoSize = true;
             rdbCam1.Checked = true;
-            rdbCam1.Location = new Point(31, 10);
+            rdbCam1.Location = new Point(6, 10);
             rdbCam1.Name = "rdbCam1";
             rdbCam1.Size = new Size(31, 19);
             rdbCam1.TabIndex = 0;
             rdbCam1.TabStop = true;
             rdbCam1.Text = "1";
             rdbCam1.UseVisualStyleBackColor = true;
+            rdbCam1.CheckedChanged += rdbCam1_CheckedChanged;
             // 
             // btnCapturar
             // 
@@ -205,17 +209,18 @@
             btnCapturar.Effect_2 = true;
             btnCapturar.Effect_2_ColorBackground = Color.White;
             btnCapturar.Effect_2_Transparency = 20;
+            btnCapturar.Enabled = false;
             btnCapturar.Font = new Font("Arial", 11F);
             btnCapturar.ForeColor = Color.FromArgb(245, 245, 245);
             btnCapturar.Lighting = false;
             btnCapturar.LinearGradient_Background = false;
             btnCapturar.LinearGradientPen = false;
-            btnCapturar.Location = new Point(6, 319);
+            btnCapturar.Location = new Point(88, 311);
             btnCapturar.Name = "btnCapturar";
             btnCapturar.PenWidth = 15;
             btnCapturar.Rounding = true;
             btnCapturar.RoundingInt = 70;
-            btnCapturar.Size = new Size(189, 31);
+            btnCapturar.Size = new Size(107, 31);
             btnCapturar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             btnCapturar.TabIndex = 46;
             btnCapturar.Tag = "Cyber";
@@ -242,7 +247,7 @@
             rdbOtro.Checked = false;
             rdbOtro.EnabledCalc = true;
             rdbOtro.ForeColor = Color.White;
-            rdbOtro.Location = new Point(196, 125);
+            rdbOtro.Location = new Point(194, 85);
             rdbOtro.Name = "rdbOtro";
             rdbOtro.Size = new Size(60, 17);
             rdbOtro.TabIndex = 12;
@@ -254,7 +259,7 @@
             rdbDNI.Checked = true;
             rdbDNI.EnabledCalc = true;
             rdbDNI.ForeColor = Color.White;
-            rdbDNI.Location = new Point(146, 126);
+            rdbDNI.Location = new Point(144, 86);
             rdbDNI.Name = "rdbDNI";
             rdbDNI.Size = new Size(57, 17);
             rdbDNI.TabIndex = 11;
@@ -264,7 +269,7 @@
             // 
             txtNroDoc.BorderStyle = BorderStyle.None;
             txtNroDoc.Font = new Font("Segoe UI", 9F);
-            txtNroDoc.Location = new Point(156, 161);
+            txtNroDoc.Location = new Point(154, 115);
             txtNroDoc.Mask = "99.999.999";
             txtNroDoc.Name = "txtNroDoc";
             txtNroDoc.Size = new Size(89, 16);
@@ -277,7 +282,7 @@
             // 
             txtCelular.BorderStyle = BorderStyle.None;
             txtCelular.Font = new Font("Segoe UI", 9F);
-            txtCelular.Location = new Point(156, 196);
+            txtCelular.Location = new Point(153, 150);
             txtCelular.Mask = "(999)000-0000";
             txtCelular.Name = "txtCelular";
             txtCelular.Size = new Size(89, 16);
@@ -289,7 +294,7 @@
             // ucErrorIconoCel
             // 
             ucErrorIconoCel.BackColor = Color.Transparent;
-            ucErrorIconoCel.Location = new Point(10, 198);
+            ucErrorIconoCel.Location = new Point(8, 149);
             ucErrorIconoCel.Name = "ucErrorIconoCel";
             ucErrorIconoCel.Size = new Size(20, 20);
             ucErrorIconoCel.TabIndex = 42;
@@ -297,15 +302,16 @@
             // ucAgregar1
             // 
             ucAgregar1.BackColor = Color.Transparent;
-            ucAgregar1.Location = new Point(356, 300);
+            ucAgregar1.Location = new Point(354, 254);
             ucAgregar1.Name = "ucAgregar1";
             ucAgregar1.Size = new Size(20, 20);
             ucAgregar1.TabIndex = 43;
+            ucAgregar1._ClickUCAgregar += ucAgregar1__ClickUCAgregar;
             // 
             // ucErrorIconoNroDoc
             // 
             ucErrorIconoNroDoc.BackColor = Color.Transparent;
-            ucErrorIconoNroDoc.Location = new Point(9, 163);
+            ucErrorIconoNroDoc.Location = new Point(7, 112);
             ucErrorIconoNroDoc.Name = "ucErrorIconoNroDoc";
             ucErrorIconoNroDoc.Size = new Size(20, 20);
             ucErrorIconoNroDoc.TabIndex = 41;
@@ -313,7 +319,7 @@
             // ucErrorIconoApellido
             // 
             ucErrorIconoApellido.BackColor = Color.Transparent;
-            ucErrorIconoApellido.Location = new Point(9, 86);
+            ucErrorIconoApellido.Location = new Point(7, 52);
             ucErrorIconoApellido.Name = "ucErrorIconoApellido";
             ucErrorIconoApellido.Size = new Size(20, 20);
             ucErrorIconoApellido.TabIndex = 39;
@@ -321,7 +327,7 @@
             // ucErrorIconoNombre
             // 
             ucErrorIconoNombre.BackColor = Color.Transparent;
-            ucErrorIconoNombre.Location = new Point(9, 53);
+            ucErrorIconoNombre.Location = new Point(7, 21);
             ucErrorIconoNombre.Name = "ucErrorIconoNombre";
             ucErrorIconoNombre.Size = new Size(20, 20);
             ucErrorIconoNombre.TabIndex = 38;
@@ -346,7 +352,7 @@
             cmbBarrio.ForeColor = Color.Black;
             cmbBarrio.FormattingEnabled = true;
             cmbBarrio.ItemHeight = 20;
-            cmbBarrio.Location = new Point(156, 295);
+            cmbBarrio.Location = new Point(154, 249);
             cmbBarrio.Name = "cmbBarrio";
             cmbBarrio.Size = new Size(196, 26);
             cmbBarrio.TabIndex = 6;
@@ -361,7 +367,7 @@
             thunderLabel10.BackColor = Color.Transparent;
             thunderLabel10.Enabled = false;
             thunderLabel10.ForeColor = Color.WhiteSmoke;
-            thunderLabel10.Location = new Point(35, 297);
+            thunderLabel10.Location = new Point(33, 251);
             thunderLabel10.Name = "thunderLabel10";
             thunderLabel10.Size = new Size(109, 16);
             thunderLabel10.TabIndex = 35;
@@ -373,7 +379,7 @@
             txtCalleNro.EnabledCalc = true;
             txtCalleNro.Font = new Font("Segoe UI", 9F);
             txtCalleNro.ForeColor = Color.Black;
-            txtCalleNro.Location = new Point(147, 360);
+            txtCalleNro.Location = new Point(144, 314);
             txtCalleNro.MaxLength = 10;
             txtCalleNro.MultiLine = false;
             txtCalleNro.Name = "txtCalleNro";
@@ -389,7 +395,7 @@
             thunderLabel9.BackColor = Color.Transparent;
             thunderLabel9.Enabled = false;
             thunderLabel9.ForeColor = Color.WhiteSmoke;
-            thunderLabel9.Location = new Point(35, 365);
+            thunderLabel9.Location = new Point(33, 319);
             thunderLabel9.Name = "thunderLabel9";
             thunderLabel9.Size = new Size(109, 16);
             thunderLabel9.TabIndex = 33;
@@ -401,7 +407,7 @@
             txtCalle.EnabledCalc = true;
             txtCalle.Font = new Font("Segoe UI", 9F);
             txtCalle.ForeColor = Color.Black;
-            txtCalle.Location = new Point(147, 326);
+            txtCalle.Location = new Point(144, 280);
             txtCalle.MaxLength = 30;
             txtCalle.MultiLine = false;
             txtCalle.Name = "txtCalle";
@@ -416,7 +422,7 @@
             thunderLabel8.BackColor = Color.Transparent;
             thunderLabel8.Enabled = false;
             thunderLabel8.ForeColor = Color.WhiteSmoke;
-            thunderLabel8.Location = new Point(35, 330);
+            thunderLabel8.Location = new Point(33, 284);
             thunderLabel8.Name = "thunderLabel8";
             thunderLabel8.Size = new Size(109, 16);
             thunderLabel8.TabIndex = 31;
@@ -428,7 +434,7 @@
             txtMail.EnabledCalc = true;
             txtMail.Font = new Font("Segoe UI", 9F);
             txtMail.ForeColor = Color.Black;
-            txtMail.Location = new Point(146, 260);
+            txtMail.Location = new Point(144, 214);
             txtMail.MaxLength = 30;
             txtMail.MultiLine = false;
             txtMail.Name = "txtMail";
@@ -443,7 +449,7 @@
             thunderLabel7.BackColor = Color.Transparent;
             thunderLabel7.Enabled = false;
             thunderLabel7.ForeColor = Color.WhiteSmoke;
-            thunderLabel7.Location = new Point(35, 268);
+            thunderLabel7.Location = new Point(33, 222);
             thunderLabel7.Name = "thunderLabel7";
             thunderLabel7.Size = new Size(109, 16);
             thunderLabel7.TabIndex = 29;
@@ -455,7 +461,7 @@
             txtTelefono.EnabledCalc = true;
             txtTelefono.Font = new Font("Segoe UI", 9F);
             txtTelefono.ForeColor = Color.Black;
-            txtTelefono.Location = new Point(146, 225);
+            txtTelefono.Location = new Point(144, 179);
             txtTelefono.MaxLength = 10;
             txtTelefono.MultiLine = false;
             txtTelefono.Name = "txtTelefono";
@@ -471,7 +477,7 @@
             thunderLabel6.BackColor = Color.Transparent;
             thunderLabel6.Enabled = false;
             thunderLabel6.ForeColor = Color.WhiteSmoke;
-            thunderLabel6.Location = new Point(35, 198);
+            thunderLabel6.Location = new Point(33, 152);
             thunderLabel6.Name = "thunderLabel6";
             thunderLabel6.Size = new Size(96, 16);
             thunderLabel6.TabIndex = 15;
@@ -483,7 +489,7 @@
             txtCelular2.EnabledCalc = false;
             txtCelular2.Font = new Font("Segoe UI", 9F);
             txtCelular2.ForeColor = Color.Black;
-            txtCelular2.Location = new Point(146, 190);
+            txtCelular2.Location = new Point(144, 144);
             txtCelular2.MaxLength = 50;
             txtCelular2.MultiLine = false;
             txtCelular2.Name = "txtCelular2";
@@ -499,7 +505,7 @@
             thunderLabel5.BackColor = Color.Transparent;
             thunderLabel5.Enabled = false;
             thunderLabel5.ForeColor = Color.WhiteSmoke;
-            thunderLabel5.Location = new Point(35, 233);
+            thunderLabel5.Location = new Point(33, 187);
             thunderLabel5.Name = "thunderLabel5";
             thunderLabel5.Size = new Size(109, 16);
             thunderLabel5.TabIndex = 25;
@@ -510,7 +516,7 @@
             thunderLabel4.BackColor = Color.Transparent;
             thunderLabel4.Enabled = false;
             thunderLabel4.ForeColor = Color.WhiteSmoke;
-            thunderLabel4.Location = new Point(35, 126);
+            thunderLabel4.Location = new Point(33, 86);
             thunderLabel4.Name = "thunderLabel4";
             thunderLabel4.Size = new Size(109, 16);
             thunderLabel4.TabIndex = 13;
@@ -606,7 +612,7 @@
             txtNroDoc2.EnabledCalc = true;
             txtNroDoc2.Font = new Font("Segoe UI", 9F);
             txtNroDoc2.ForeColor = Color.Black;
-            txtNroDoc2.Location = new Point(146, 155);
+            txtNroDoc2.Location = new Point(144, 109);
             txtNroDoc2.MaxLength = 10;
             txtNroDoc2.MultiLine = false;
             txtNroDoc2.Name = "txtNroDoc2";
@@ -621,7 +627,7 @@
             thunderLabel3.BackColor = Color.Transparent;
             thunderLabel3.Enabled = false;
             thunderLabel3.ForeColor = Color.WhiteSmoke;
-            thunderLabel3.Location = new Point(35, 163);
+            thunderLabel3.Location = new Point(33, 117);
             thunderLabel3.Name = "thunderLabel3";
             thunderLabel3.Size = new Size(109, 16);
             thunderLabel3.TabIndex = 14;
@@ -633,7 +639,7 @@
             txtApellido.EnabledCalc = true;
             txtApellido.Font = new Font("Segoe UI", 9F);
             txtApellido.ForeColor = Color.Black;
-            txtApellido.Location = new Point(146, 79);
+            txtApellido.Location = new Point(144, 48);
             txtApellido.MaxLength = 50;
             txtApellido.MultiLine = false;
             txtApellido.Name = "txtApellido";
@@ -649,7 +655,7 @@
             thunderLabel2.BackColor = Color.Transparent;
             thunderLabel2.Enabled = false;
             thunderLabel2.ForeColor = Color.WhiteSmoke;
-            thunderLabel2.Location = new Point(35, 87);
+            thunderLabel2.Location = new Point(33, 56);
             thunderLabel2.Name = "thunderLabel2";
             thunderLabel2.Size = new Size(96, 16);
             thunderLabel2.TabIndex = 12;
@@ -661,7 +667,7 @@
             txtNombre.EnabledCalc = true;
             txtNombre.Font = new Font("Segoe UI", 9F);
             txtNombre.ForeColor = Color.Black;
-            txtNombre.Location = new Point(146, 44);
+            txtNombre.Location = new Point(144, 13);
             txtNombre.MaxLength = 50;
             txtNombre.MultiLine = false;
             txtNombre.Name = "txtNombre";
@@ -677,7 +683,7 @@
             thunderLabel1.BackColor = Color.Transparent;
             thunderLabel1.Enabled = false;
             thunderLabel1.ForeColor = Color.WhiteSmoke;
-            thunderLabel1.Location = new Point(35, 54);
+            thunderLabel1.Location = new Point(33, 23);
             thunderLabel1.Name = "thunderLabel1";
             thunderLabel1.Size = new Size(96, 16);
             thunderLabel1.TabIndex = 11;
@@ -728,12 +734,49 @@
             ucBordertd2.Size = new Size(639, 3);
             ucBordertd2.TabIndex = 53;
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(rdbOtro);
+            groupBox3.Controls.Add(ucErrorIconoNombre);
+            groupBox3.Controls.Add(txtNombre);
+            groupBox3.Controls.Add(rdbDNI);
+            groupBox3.Controls.Add(txtMail);
+            groupBox3.Controls.Add(thunderLabel1);
+            groupBox3.Controls.Add(thunderLabel8);
+            groupBox3.Controls.Add(txtNroDoc);
+            groupBox3.Controls.Add(thunderLabel7);
+            groupBox3.Controls.Add(txtCalle);
+            groupBox3.Controls.Add(txtCelular);
+            groupBox3.Controls.Add(txtTelefono);
+            groupBox3.Controls.Add(thunderLabel2);
+            groupBox3.Controls.Add(thunderLabel9);
+            groupBox3.Controls.Add(ucErrorIconoCel);
+            groupBox3.Controls.Add(thunderLabel6);
+            groupBox3.Controls.Add(txtApellido);
+            groupBox3.Controls.Add(txtCalleNro);
+            groupBox3.Controls.Add(ucAgregar1);
+            groupBox3.Controls.Add(txtCelular2);
+            groupBox3.Controls.Add(thunderLabel3);
+            groupBox3.Controls.Add(thunderLabel10);
+            groupBox3.Controls.Add(ucErrorIconoNroDoc);
+            groupBox3.Controls.Add(thunderLabel5);
+            groupBox3.Controls.Add(txtNroDoc2);
+            groupBox3.Controls.Add(cmbBarrio);
+            groupBox3.Controls.Add(ucErrorIconoApellido);
+            groupBox3.Controls.Add(thunderLabel4);
+            groupBox3.Location = new Point(16, 37);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(409, 351);
+            groupBox3.TabIndex = 54;
+            groupBox3.TabStop = false;
+            // 
             // FrmSociosAlta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
             ClientSize = new Size(643, 444);
+            Controls.Add(groupBox3);
             Controls.Add(ucBordertd2);
             Controls.Add(ucBordertd1);
             Controls.Add(ucBorder2);
@@ -741,38 +784,11 @@
             Controls.Add(botonesForms3);
             Controls.Add(groupBox2);
             Controls.Add(ucTituloLabel1);
-            Controls.Add(rdbOtro);
-            Controls.Add(ucErrorIconoNombre);
-            Controls.Add(txtNombre);
-            Controls.Add(rdbDNI);
-            Controls.Add(txtMail);
-            Controls.Add(thunderLabel1);
-            Controls.Add(thunderLabel8);
-            Controls.Add(txtNroDoc);
-            Controls.Add(thunderLabel7);
-            Controls.Add(txtCalle);
-            Controls.Add(txtCelular);
-            Controls.Add(txtTelefono);
-            Controls.Add(thunderLabel2);
-            Controls.Add(thunderLabel9);
-            Controls.Add(ucErrorIconoCel);
-            Controls.Add(thunderLabel6);
-            Controls.Add(txtApellido);
-            Controls.Add(txtCalleNro);
-            Controls.Add(ucAgregar1);
-            Controls.Add(txtCelular2);
-            Controls.Add(thunderLabel3);
-            Controls.Add(thunderLabel10);
-            Controls.Add(ucErrorIconoNroDoc);
-            Controls.Add(thunderLabel5);
-            Controls.Add(txtNroDoc2);
-            Controls.Add(cmbBarrio);
-            Controls.Add(ucErrorIconoApellido);
-            Controls.Add(thunderLabel4);
             Controls.Add(cyberButton2);
             Controls.Add(cyberButton1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmSociosAlta";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmSociosAlta";
             FormClosing += FrmSociosAlta_FormClosing;
             Load += FrmSociosAlta_Load;
@@ -783,8 +799,9 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVideo).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -835,5 +852,6 @@
         private UserControls.UCBorderLR ucBorder2;
         private UserControls.UCBorderTD ucBordertd1;
         private UserControls.UCBorderTD ucBordertd2;
+        private GroupBox groupBox3;
     }
 }

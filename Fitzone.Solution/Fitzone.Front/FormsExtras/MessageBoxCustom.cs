@@ -18,6 +18,7 @@ namespace Fitzone.Front.FormsExtras
         EnumModoMessageBoxCustom _modo;
         string _mensaje;
         int _aumentarAncho = 0;
+        int _aumentarAlto = 0;
 
         #region redimensionar
 
@@ -88,12 +89,13 @@ namespace Fitzone.Front.FormsExtras
             _mensaje = mensaje;
         }
 
-        public MessageBoxCustom(string mensaje, EnumModoMessageBoxCustom modo, int aumentarAncho)
+        public MessageBoxCustom(string mensaje, EnumModoMessageBoxCustom modo, int aumentarAncho, int aumentarAlto = 0)
         {
             InitializeComponent();
             _modo = modo;
             _mensaje = mensaje;
             _aumentarAncho = aumentarAncho;
+            _aumentarAlto = aumentarAlto;
         }
 
         public MessageBoxCustom(EnumModoMessageBoxCustom modo)
@@ -116,7 +118,10 @@ namespace Fitzone.Front.FormsExtras
                 btn2.TextButton = "Cancelar";
             }
 
-            if (_modo == EnumModoMessageBoxCustom.DatosGuardadosCorrectamente || _modo == EnumModoMessageBoxCustom.Aceptar)
+            if (_modo == EnumModoMessageBoxCustom.DatosGuardadosCorrectamente 
+                || _modo == EnumModoMessageBoxCustom.Aceptar
+                || _modo == EnumModoMessageBoxCustom.Proximamente                
+                )
             {
                 btn1.Visible = false;
                 btn2.TextButton = "Aceptar";
@@ -127,6 +132,13 @@ namespace Fitzone.Front.FormsExtras
                 btn1.Visible = false;
                 btn2.TextButton = "Aceptar";
                 _mensaje = "No se encontraron datos.";
+            }
+
+            if (_modo == EnumModoMessageBoxCustom.ReporteGenerado)
+            {
+                btn1.TextButton = "Si";
+                btn2.TextButton = "No";
+                _mensaje = String.Format("Se generó el reporte en \n {0}.\n\n¿Desea abrirlo?",_mensaje);
             }
 
             if (_modo == EnumModoMessageBoxCustom.SeEncontraronErrores)
@@ -144,6 +156,9 @@ namespace Fitzone.Front.FormsExtras
                 btn2.TextButton = "No";
             }
 
+            if (_modo == EnumModoMessageBoxCustom.Proximamente)            
+                _mensaje = "Esta funcionalidad no está disponible.";            
+
             if (_modo == EnumModoMessageBoxCustom.ConfirmaGuardar)
                 _mensaje = "¿Confirma guardar los datos?";
             if (_modo == EnumModoMessageBoxCustom.DatosGuardadosCorrectamente)
@@ -152,7 +167,7 @@ namespace Fitzone.Front.FormsExtras
 
             lblMensaje2.Text = _mensaje;
 
-            this.Size = new Size(this.Width + _aumentarAncho, this.Height);
+            this.Size = new Size(this.Width + _aumentarAncho, this.Height + _aumentarAlto);
 
         }
 

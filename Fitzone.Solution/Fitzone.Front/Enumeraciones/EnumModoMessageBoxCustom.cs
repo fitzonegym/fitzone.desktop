@@ -9,7 +9,9 @@
         SeEncontraronErrores = 5,
         Aceptar = 6,
         NoSeEncontraronDatos = 7,
-        DeseaSalirSePerderanLosCambios = 8
+        DeseaSalirSePerderanLosCambios = 8,
+        Proximamente = 9,
+        ReporteGenerado = 10
 
     }
 }

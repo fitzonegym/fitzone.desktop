@@ -86,11 +86,13 @@
             thunderLabel8 = new ReaLTaiizor.Controls.ThunderLabel();
             txtDescripcionMembresía = new TextBox();
             ucAgregar1 = new UserControls.UCAgregar();
+            groupBox3 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSource2).BeginInit();
             groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // ucBordertd2
@@ -361,11 +363,11 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { numeroDataGridViewTextBoxColumn, precioDataGridViewTextBoxColumn, fechaDesdeDataGridViewTextBoxColumn, fechaHastaDataGridViewTextBoxColumn, fechaVencimiento, idCuotaDataGridViewTextBoxColumn, idMembresiaDataGridViewTextBoxColumn });
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.GridColor = SystemColors.InfoText;
-            dataGridView1.Location = new Point(12, 398);
+            dataGridView1.Location = new Point(12, 423);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(674, 236);
+            dataGridView1.Size = new Size(674, 211);
             dataGridView1.TabIndex = 39;
             // 
             // numeroDataGridViewTextBoxColumn
@@ -780,7 +782,7 @@
             txtFechaHasta.CustomFormat = "dd/MM/yyyy";
             txtFechaHasta.Enabled = false;
             txtFechaHasta.Format = DateTimePickerFormat.Custom;
-            txtFechaHasta.Location = new Point(83, 329);
+            txtFechaHasta.Location = new Point(68, 51);
             txtFechaHasta.Name = "txtFechaHasta";
             txtFechaHasta.Size = new Size(86, 23);
             txtFechaHasta.TabIndex = 58;
@@ -789,7 +791,7 @@
             // 
             txtFechaDesde.CustomFormat = "dd/MM/yyyy";
             txtFechaDesde.Format = DateTimePickerFormat.Custom;
-            txtFechaDesde.Location = new Point(83, 300);
+            txtFechaDesde.Location = new Point(68, 22);
             txtFechaDesde.Name = "txtFechaDesde";
             txtFechaDesde.Size = new Size(86, 23);
             txtFechaDesde.TabIndex = 57;
@@ -799,7 +801,7 @@
             // 
             thunderLabel7.BackColor = Color.Transparent;
             thunderLabel7.ForeColor = Color.WhiteSmoke;
-            thunderLabel7.Location = new Point(20, 329);
+            thunderLabel7.Location = new Point(5, 51);
             thunderLabel7.Name = "thunderLabel7";
             thunderLabel7.Size = new Size(57, 16);
             thunderLabel7.TabIndex = 54;
@@ -809,7 +811,7 @@
             // 
             thunderLabel6.BackColor = Color.Transparent;
             thunderLabel6.ForeColor = Color.WhiteSmoke;
-            thunderLabel6.Location = new Point(20, 300);
+            thunderLabel6.Location = new Point(5, 22);
             thunderLabel6.Name = "thunderLabel6";
             thunderLabel6.Size = new Size(57, 16);
             thunderLabel6.TabIndex = 53;
@@ -819,7 +821,7 @@
             // 
             ucTituloLabel2._titulo = "Cuotas";
             ucTituloLabel2.BackColor = Color.FromArgb(103, 58, 183);
-            ucTituloLabel2.Location = new Point(12, 364);
+            ucTituloLabel2.Location = new Point(11, 391);
             ucTituloLabel2.Name = "ucTituloLabel2";
             ucTituloLabel2.Size = new Size(65, 34);
             ucTituloLabel2.TabIndex = 53;
@@ -869,7 +871,7 @@
             // 
             thunderLabel8.BackColor = Color.Transparent;
             thunderLabel8.ForeColor = Color.WhiteSmoke;
-            thunderLabel8.Location = new Point(186, 300);
+            thunderLabel8.Location = new Point(171, 22);
             thunderLabel8.Name = "thunderLabel8";
             thunderLabel8.Size = new Size(92, 16);
             thunderLabel8.TabIndex = 59;
@@ -877,7 +879,7 @@
             // 
             // txtDescripcionMembresía
             // 
-            txtDescripcionMembresía.Location = new Point(265, 300);
+            txtDescripcionMembresía.Location = new Point(250, 22);
             txtDescripcionMembresía.Multiline = true;
             txtDescripcionMembresía.Name = "txtDescripcionMembresía";
             txtDescripcionMembresía.ScrollBars = ScrollBars.Both;
@@ -887,28 +889,36 @@
             // ucAgregar1
             // 
             ucAgregar1.BackColor = Color.Transparent;
-            ucAgregar1.Location = new Point(242, 322);
+            ucAgregar1.Location = new Point(171, 44);
             ucAgregar1.Name = "ucAgregar1";
             ucAgregar1.Size = new Size(20, 20);
             ucAgregar1.TabIndex = 61;
             ucAgregar1._ClickUCAgregar += ucAgregar1__ClickUCAgregar;
             // 
-            // FrmMembresia
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(txtDescripcionMembresía);
+            groupBox3.Controls.Add(ucAgregar1);
+            groupBox3.Controls.Add(thunderLabel6);
+            groupBox3.Controls.Add(thunderLabel7);
+            groupBox3.Controls.Add(thunderLabel8);
+            groupBox3.Controls.Add(txtFechaDesde);
+            groupBox3.Controls.Add(txtFechaHasta);
+            groupBox3.Location = new Point(12, 291);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(674, 107);
+            groupBox3.TabIndex = 62;
+            groupBox3.TabStop = false;
+            // 
+            // FrmMembresiaAlta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
             ClientSize = new Size(698, 682);
-            Controls.Add(ucAgregar1);
-            Controls.Add(txtDescripcionMembresía);
-            Controls.Add(thunderLabel8);
             Controls.Add(cyberButton1);
-            Controls.Add(txtFechaHasta);
-            Controls.Add(txtFechaDesde);
             Controls.Add(groupBox2);
-            Controls.Add(thunderLabel7);
             Controls.Add(groupBox1);
-            Controls.Add(thunderLabel6);
             Controls.Add(ucBordertd2);
             Controls.Add(ucBorderlr2);
             Controls.Add(ucBorderlr1);
@@ -918,9 +928,10 @@
             Controls.Add(btnAceptar);
             Controls.Add(dataGridView1);
             Controls.Add(ucBordertd1);
+            Controls.Add(groupBox3);
             Controls.Add(ucTituloLabel2);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "FrmMembresia";
+            Name = "FrmMembresiaAlta";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmMembresia";
             Load += FrmMembresia_Load;
@@ -930,8 +941,9 @@
             ((System.ComponentModel.ISupportInitialize)bindingSource2).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -993,5 +1005,6 @@
         private DataGridViewTextBoxColumn fechaVencimiento;
         private DataGridViewTextBoxColumn idCuotaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idMembresiaDataGridViewTextBoxColumn;
+        private GroupBox groupBox3;
     }
 }

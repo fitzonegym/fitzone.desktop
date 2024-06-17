@@ -127,8 +127,8 @@ namespace Fitzone.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("detalle")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("diasHabilitados")
                         .IsRequired()
@@ -188,6 +188,9 @@ namespace Fitzone.EF.Migrations
                     b.Property<string>("calleNumero")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
+
+                    b.Property<DateTime>("fechaAlta")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("idBarrio")
                         .HasColumnType("int");

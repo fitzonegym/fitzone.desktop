@@ -1,4 +1,5 @@
 ﻿using Fitzone.Front.FormsExtras;
+using Fitzone.Front.Membresias;
 using Fitzone.Front.Socios;
 using System;
 using System.Collections.Generic;
@@ -28,11 +29,15 @@ namespace Fitzone.Front
         }
         private void administraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmSociosAdmin frmSociosAdmin = new FrmSociosAdmin();
-            frmSociosAdmin.MdiParent = this;
-            panelPrincipal.Controls.Add(frmSociosAdmin);
-            frmSociosAdmin.StartPosition = FormStartPosition.CenterParent;
-            frmSociosAdmin.Show();
+            FrmSociosAdmin frm = new FrmSociosAdmin();
+            frm.TopMost = true;
+            frm.MdiParent = this;
+            panelPrincipal.Controls.Add(frm);
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm._EnumModoFormulario = Enumeraciones.EnumModoFormulario.Administracion;
+            
+            frm.Show();
+            frm.BringToFront();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -47,11 +52,54 @@ namespace Fitzone.Front
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
-            frmSociosAlta.MdiParent = this;
-            panelPrincipal.Controls.Add(frmSociosAlta);
-            frmSociosAlta.StartPosition = FormStartPosition.CenterParent;
-            frmSociosAlta.Show();
+            FrmSociosAlta frm = new FrmSociosAlta();
+            frm.TopMost = true;
+            frm.MdiParent = this;
+            panelPrincipal.Controls.Add(frm);
+            frm.StartPosition = FormStartPosition.CenterParent;
+
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void admnistraciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmMembresiaAdmin frm = new FrmMembresiaAdmin();
+            frm.TopMost = true;
+            frm.MdiParent = this;
+            panelPrincipal.Controls.Add(frm);
+            frm.StartPosition = FormStartPosition.CenterParent;
+      
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmMembresiaAlta frm = new FrmMembresiaAlta();
+            frm.TopMost = true;
+            frm.MdiParent = this;
+            panelPrincipal.Controls.Add(frm);
+            frm.StartPosition = FormStartPosition.CenterParent;            
+            frm.Show();
+            frm.BringToFront();
+        }
+
+        private void BringToFrontForm(Form form)
+        {
+            form.Activated += (s, e) => { form.BringToFront(); };
+            this.MdiChildActivate += (s, e) =>
+            {
+                if (this.ActiveMdiChild != form)
+                {
+                    form.BringToFront();
+                }
+            };
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
+        {
+
         }
     }
 }

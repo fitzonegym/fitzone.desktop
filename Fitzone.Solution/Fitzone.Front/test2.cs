@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fitzone.Entidades;
+using Fitzone.Front.FormsExtras;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +28,7 @@ namespace Fitzone.Front
         private const int BORDER_SIZE = 5; // Tamaño de los bordes para redimensionar
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        [System.Runtime.InteropServices.DllImport("user32.dll")]                
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool ReleaseCapture();
         protected override void WndProc(ref Message m)
         {
@@ -63,9 +65,33 @@ namespace Fitzone.Front
             this.DoubleBuffered = true;
         }
 
-       
+        private void test2_Load(object sender, EventArgs e)
+        {
 
-       
+            BindingSource bindingSource1 = new BindingSource();
+            dataGridView1.DataSource = bindingSource1;
+
+            // Crear lista de socios
+            List<SocioOrdenado> listaSocios = new List<SocioOrdenado>
+        {
+            new SocioOrdenado { nombre = "Juan", apellido= "ap1" },
+            new SocioOrdenado { nombre = "Ana", apellido = "ap2" },
+            new SocioOrdenado { nombre  = "Luis", apellido = "ap3"},
+        };
+
+
+            BindingList<SocioOrdenado> bindingListPersonas = new BindingList<SocioOrdenado>(listaSocios);
+
+            bindingSource1.DataSource = null;
+            bindingSource1.DataSource = bindingListPersonas;
+
+            dataGridView1.AutoGenerateColumns = true;
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
+            }
+        }
     }
 }
 

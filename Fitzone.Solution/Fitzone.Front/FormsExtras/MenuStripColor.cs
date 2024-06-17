@@ -15,8 +15,8 @@ namespace Fitzone.Front.FormsExtras
     {
         //https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.professionalcolortable?view=windowsdesktop-8.0&redirectedfrom=MSDN
 
-        //Color color = Color.FromArgb(81, 45, 168);
-        Color color = Color.Black;
+        Color color = Color.FromArgb(209, 196, 234);
+        //Color color = Color.Black;
         //public override Color ToolStripDropDownBackground
         //{
         //    get { return color; }

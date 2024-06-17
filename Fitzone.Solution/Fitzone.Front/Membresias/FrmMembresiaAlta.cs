@@ -24,7 +24,7 @@ namespace Fitzone.Front.Membresias
         private const int HTBOTTOM = 15;
         private const int HTBOTTOMLEFT = 16;
         private const int HTBOTTOMRIGHT = 17;
-        private const int BORDER_SIZE = 5; // Tamaño de los bordes para redimensionar
+        private const int BORDER_SIZE = 15; // Tamaño de los bordes para redimensionar
                                            //   // Funciones necesarias para permitir el movimiento del formulario
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -289,8 +289,11 @@ namespace Fitzone.Front.Membresias
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (new MessageBoxCustom(EnumModoMessageBoxCustom.DeseaSalirSePerderanLosCambios)
-                .ShowDialog() == DialogResult.OK)
+
+            var mes = new MessageBoxCustom(EnumModoMessageBoxCustom.DeseaSalirSePerderanLosCambios);
+            mes.ShowDialog();
+
+            if (mes.response == DialogResult.Yes)
                 Close();
 
         }

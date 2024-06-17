@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCBotonesForms));
             btnMax = new PictureBox();
             btnClose = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)btnMax).BeginInit();
@@ -37,7 +36,7 @@
             // 
             // btnMax
             // 
-            btnMax.Image = (Image)resources.GetObject("btnMax.Image");
+            btnMax.Image = Properties.Resources._max;
             btnMax.Location = new Point(0, 0);
             btnMax.Name = "btnMax";
             btnMax.Size = new Size(20, 20);
@@ -48,7 +47,7 @@
             // 
             // btnClose
             // 
-            btnClose.Image = (Image)resources.GetObject("btnClose.Image");
+            btnClose.Image = Properties.Resources._close;
             btnClose.Location = new Point(23, 0);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(20, 20);

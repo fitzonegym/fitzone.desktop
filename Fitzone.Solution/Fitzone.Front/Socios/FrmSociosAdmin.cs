@@ -2,14 +2,23 @@
 using Fitzone.Entidades;
 using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.IdentityModel.Tokens;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using IContainer = QuestPDF.Infrastructure.IContainer;
 
 namespace Fitzone.Front.Socios
 {
     public partial class FrmSociosAdmin : Form
     {
-        List<Socio> listaSocios = new List<Socio>();
+        List<Socio> _listaSocios = new List<Socio>();
         public Socio? _SocioSeleccionado = null;
-        public EnumModoFormulario _EnumModoFormulario = EnumModoFormulario.Consulta;
+        public EnumModoFormulario _EnumModoFormulario = EnumModoFormulario.Administracion;
 
         #region redimensionar
 
@@ -21,8 +30,8 @@ namespace Fitzone.Front.Socios
         private const int HTBOTTOM = 15;
         private const int HTBOTTOMLEFT = 16;
         private const int HTBOTTOMRIGHT = 17;
-        private const int BORDER_SIZE = 5; // Tamaño de los bordes para redimensionar
-                                           //   // Funciones necesarias para permitir el movimiento del formulario
+        private const int BORDER_SIZE = 15; // Tamaño de los bordes para redimensionar
+                                            //   // Funciones necesarias para permitir el movimiento del formulario
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
@@ -80,11 +89,6 @@ namespace Fitzone.Front.Socios
             txtApellido.TB.KeyPress += txtCualquierFiltro_KeyPress;
             txtDocumento.TB.KeyPress += txtCualquierFiltro_KeyPress;
         }
-
-        private void HabilitarDeshabilitarBotones(bool enableDisable)
-        {
-            btnAceptar.Enabled = btnAgregar.Enabled = btnCancelar.Enabled = btnModificar.Enabled = BtnAnular.Enabled = enableDisable;
-        }
         private void VisibleBotones(bool visible)
         {
             btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = visible;
@@ -94,13 +98,34 @@ namespace Fitzone.Front.Socios
         {
             VisibleBotones(false);
 
-            this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-1);
+            txtFechaHasta.Value = Statics.DateTimeNow235959();
+
+            // this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             if (_EnumModoFormulario == EnumModoFormulario.Consulta)
             {
                 btnAceptar.Visible = true;
-                btnAceptar.Location = btnCancelar.Location;
+                btnCancelar.Visible = true;
+                // btnAceptar.Location = btnCancelar.Location;
                 CargarGrilla();
+            }
+            if (_EnumModoFormulario == EnumModoFormulario.Administracion)
+            {
+                btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = true;
+                btnAceptar.Visible = false;
+            }
+
+            //dataGridView1.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dataGridView1_RowPrePaint);
+
+        }
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            DataGridView dataGridView = sender as DataGridView;
+
+            if (e.RowIndex % 2 == 0) // Si es una fila par
+            {
+                dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(209, 196, 234); // Cambia el color de fondo
             }
         }
 
@@ -115,20 +140,24 @@ namespace Fitzone.Front.Socios
             filter.apellido = txtApellido.Text;
             filter.numeroDocumento = txtDocumento.Text;
 
-            listaSocios = c.GetAll(filter);
+            _listaSocios = c.GetAll(filter, txtFechaDesde.Value, txtFechaHasta.Value);
+
             bindingSource1.DataSource = null;
-            bindingSource1.DataSource = listaSocios;
+            bindingSource1.DataSource = _listaSocios;
 
-            /*
-            Equin.ApplicationFramework.BindingListView<Socio> view = new Equin.ApplicationFramework.BindingListView<Socio>(listaSocios);
-            dataGridView1.DataSource = view;
-            */
 
-            if (listaSocios.Count == 0)
+            if (_listaSocios.Count == 0)
             {
                 new MessageBoxCustom(Enumeraciones.EnumModoMessageBoxCustom.NoSeEncontraronDatos).ShowDialog();
+                return;
             }
 
+            //dataGridView1.AutoGenerateColumns = true;
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Automatic;
+            }
             Statics.WaitHide();
         }
 
@@ -165,22 +194,26 @@ namespace Fitzone.Front.Socios
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (bindingSource1.DataSource == null || bindingSource1.Current == null)
-                return;
+            new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
+            return;
 
-            FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
-            frmSociosAlta._EnumModoForm = EnumModoForm.Modificacion;
+            //if (bindingSource1.DataSource == null || bindingSource1.Current == null)
+            //    return;
 
-            frmSociosAlta._id_socio = ((Socio)bindingSource1.Current).idSocio;
+            //FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
+            //frmSociosAlta._EnumModoForm = EnumModoForm.Modificacion;
 
-            frmSociosAlta.ShowDialog();
+            //frmSociosAlta._id_socio = ((Socio)bindingSource1.Current).idSocio;
 
-            CargarGrilla();
+            //frmSociosAlta.ShowDialog();
+
+            //CargarGrilla();
         }
 
         private void BtnAnular_Click(object sender, EventArgs e)
         {
-
+            new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
+            return;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -208,11 +241,195 @@ namespace Fitzone.Front.Socios
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            if (_EnumModoFormulario != EnumModoFormulario.Consulta)
+                return;
+
             if (bindingSource1.DataSource == null || bindingSource1.Current == null)
                 return;
 
             _SocioSeleccionado = ((Socio)bindingSource1.Current);
             Close();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            CargarGrilla();
+            string fileName = "c:\\Reportes\\" + Statics.GenerarNombreArchivoUnico("ReporteSocios", "PDF");
+            string filtrosAplicados = "\nFiltros: ";
+
+
+            filtrosAplicados += "\nNombre: " + (txtNombre.Text.IsNullOrEmpty() ? "Todos" : txtNombre.Text);
+            filtrosAplicados += "\nApellido: " + (txtApellido.Text.IsNullOrEmpty() ? "Todos" : txtApellido.Text);
+            filtrosAplicados += "\nNro Doc: " + (txtDocumento.Text.IsNullOrEmpty() ? "Todos" : txtDocumento.Text);
+            filtrosAplicados += "\nAlta desde: " + (txtFechaDesde.Checked ? "Todos" : txtFechaDesde.Value.ToShortDateString());
+            filtrosAplicados += "\nAlta hasta: " + (txtFechaHasta.Checked ? "Todos" : txtFechaHasta.Value.ToShortDateString());
+
+            // code in your main method
+            // Datos de ejemplo para la tabla
+            var data = _listaSocios;
+            // Ruta de la imagen para el encabezado
+            string imagePath = "D:\\Fitzone\\fitzone.desktop\\Fitzone.Solution\\Fitzone.Front\\Imagenes\\logo2.png"; // Actualiza esta ruta con la ubicación de tu imagen
+
+
+            // Crear el documento PDF
+            Document.Create(document =>
+            {
+                document.Page(page =>
+                {
+                    page.Size(PageSizes.A4);
+                    page.Margin(2, Unit.Centimetre);
+                    page.PageColor(Colors.White);
+                    page.DefaultTextStyle(x => x.FontSize(12))
+                    ;
+
+                    page.Header()
+                    .Background(Colors.White) // Asegurar que el fondo del encabezado sea blanco
+                    .Padding(10)
+                    .Element(ComposeHeader(imagePath, filtrosAplicados));
+
+                    /*page.Header()                    
+                        .Text("Informe de Socios")
+                        .SemiBold().FontSize(20).FontColor(Colors.Blue.Medium)
+                        ;
+                    */
+                    page.Content()
+                        .PaddingVertical(1, Unit.Centimetre)
+                        .Table(table =>
+                        {
+                            // Definir columnas de la tabla
+                            table.ColumnsDefinition(columns =>
+                            {
+                                columns.ConstantColumn(90);
+                                columns.ConstantColumn(90);
+                                //columns.RelativeColumn();
+                                columns.ConstantColumn(90);
+                                columns.ConstantColumn(90);
+                                columns.ConstantColumn(90);
+                            });
+
+                            // Encabezados de la tabla
+                            table.Header(header =>
+                            {
+                                header.Cell().Element(CellStyle).Text("Alta").Bold();
+                                header.Cell().Element(CellStyle).Text("Nombre").Bold();
+                                header.Cell().Element(CellStyle).Text("Documento").Bold();
+                                header.Cell().Element(CellStyle).Text("Telefono").Bold();
+                                header.Cell().Element(CellStyle).Text("Barrio").Bold();
+                            });
+
+                            // Rellenar datos de la tabla
+                            foreach (var item in data)
+                            {
+                                table.Cell().Element(CellStyle).Text(item.fechaAlta.ToString("dd/MM/yyyy"));
+                                table.Cell().Element(CellStyle).Text(item.NombreCompleto);
+                                table.Cell().Element(CellStyle).Text(item.numeroDocumento);
+                                table.Cell().Element(CellStyle).Text(item.telefono1);
+                                table.Cell().Element(CellStyle).Text(item.BarrioNombre);
+                                //table.Cell().Element(CellStyle).Text(item.Price.ToString("C"));
+                            }
+                        });
+
+                    page.Footer()
+                        .AlignCenter()
+                        .Text(x =>
+                        {
+                            x.Span("Página ");
+                            x.CurrentPageNumber();
+                            x.Span(" de ");
+                            x.TotalPages();
+                        });
+                });
+            })
+            .GeneratePdf(fileName);
+
+            var mes = new MessageBoxCustom("c:\\Reportes\\" + fileName, EnumModoMessageBoxCustom.ReporteGenerado, 250,50);
+            mes.ShowDialog();
+            if (mes.response == DialogResult.Yes)
+            {
+                //abrir
+            }
+        }
+
+        static Action<IContainer> ComposeHeader(string imagePath, string filtrosAplicados)
+        {
+            return container =>
+            {
+                container.Column(column =>
+                {
+                    column.Item().Row(row =>
+                    {
+                        /*row.ConstantItem(100)
+                            .Height(50)
+                            .Background(Colors.White)
+                            .Image(imagePath);*/
+
+                        row.ConstantItem(100)
+                            .AlignLeft()
+                            //.Height(150)
+                            .Background(Colors.White)
+                            .Image(imagePath);
+
+
+                        row.RelativeItem()
+                            .AlignMiddle()
+                            .AlignTop()
+                            .Padding(15)
+                            .Background(Colors.White)
+                            .Text("       Informe de Socios")
+                            .SemiBold().FontSize(15).FontColor(Colors.Blue.Medium);
+
+                        row.RelativeItem()
+                            .AlignRight()
+                            .Padding(15)
+                            .Background(Colors.White)
+                            .Text("Fecha: " + DateTime.Now.ToString() + filtrosAplicados)
+                            .SemiBold().FontSize(10).FontColor(Colors.Grey.Medium);
+
+                    });
+
+                    //column.Item().AlignRight().Text($"Fecha: {DateTime.Now:dd/MM/yyyy HH:mm:ss}")
+                    //    .FontSize(12)
+                    //    .FontColor(Colors.Grey.Medium);
+                });
+            };
+        }
+        static IContainer CellStyle(IContainer container)
+        {
+            return container
+                .Border(1)
+                .BorderColor(Colors.Grey.Lighten2)
+                .Padding(5)
+                .AlignMiddle()
+                .AlignCenter();
+        }
+
+        static IContainer CellStyleHeaders(IContainer container)
+        {
+            return container
+                .Border(1)
+                .BorderColor(Colors.Grey.Lighten2)
+                .Padding(5)
+                .AlignMiddle()
+                .AlignCenter();
+        }
+        bool sortAscending;
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string columnName = dataGridView1.Columns[e.ColumnIndex].DataPropertyName;
+
+
+            if (sortAscending)
+                _listaSocios = _listaSocios.OrderBy(s => s.GetType().GetProperty(columnName).GetValue(s, null)).ToList();
+            else
+                _listaSocios = _listaSocios.OrderByDescending(s => s.GetType().GetProperty(columnName).GetValue(s, null)).ToList();
+
+
+            sortAscending = !sortAscending;
+
+            // Volver a vincular la lista ordenada al DataGridView
+            bindingSource1.DataSource = _listaSocios;
+            
         }
     }
 }

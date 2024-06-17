@@ -85,9 +85,10 @@ namespace Fitzone.EF.Migrations
                     tipoDocumento = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
                     calle = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     calleNumero = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
-                    idBarrio = table.Column<int>(type: "int", nullable: false),
                     anulado = table.Column<bool>(type: "bit", nullable: false),
-                    imagen = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                    imagen = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    fechaAlta = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    idBarrio = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -110,12 +111,12 @@ namespace Fitzone.EF.Migrations
                     fechaAlta = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fechaDesde = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fechaHasta = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    detalle = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    idSocio = table.Column<int>(type: "int", nullable: false),
+                    detalle = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
+                    cantidadDiasSemanales = table.Column<int>(type: "int", nullable: false),
+                    diasHabilitados = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     idEstadoMembresia = table.Column<int>(type: "int", nullable: false),
                     idTipoMembresia = table.Column<int>(type: "int", nullable: false),
-                    cantidadDiasSemanales = table.Column<int>(type: "int", nullable: false),
-                    diasHabilitados = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    idSocio = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

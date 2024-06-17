@@ -2,6 +2,7 @@
 using Emgu.CV.Structure;
 using Fitzone.Controller;
 using Fitzone.Entidades;
+using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
 using ReaLTaiizor.Controls;
 using System.ComponentModel;
@@ -27,8 +28,8 @@ namespace Fitzone.Front.Socios
         private const int HTBOTTOM = 15;
         private const int HTBOTTOMLEFT = 16;
         private const int HTBOTTOMRIGHT = 17;
-        private const int BORDER_SIZE = 10; // Tamaño de los bordes para redimensionar
-                                           //   // Funciones necesarias para permitir el movimiento del formulario
+        private const int BORDER_SIZE = 15; // Tamaño de los bordes para redimensionar
+                                            //   // Funciones necesarias para permitir el movimiento del formulario
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
@@ -66,9 +67,9 @@ namespace Fitzone.Front.Socios
                 }
             }
             catch (Exception)
-            {               
+            {
             }
-        
+
         }
         public void OnMouseDownForm(MouseEventArgs e)
         {
@@ -91,7 +92,7 @@ namespace Fitzone.Front.Socios
 
                 throw;
             }
-           
+
         }
         #endregion
 
@@ -115,25 +116,22 @@ namespace Fitzone.Front.Socios
 
         private async void FrmSociosAlta_Load(object sender, EventArgs e)
         {
-//            _EnumModoForm = EnumModoForm.Modificacion;
-  //          _id_socio = 1;
+            //            _EnumModoForm = EnumModoForm.Modificacion;
+            //          _id_socio = 1;
 
             CargarBarrios();
             CargarDatosSocio();
 
-            _frame = new Mat();
-            await OperacionAsincrona();            
+
+            //habilitar en el sprint 2
+            //_frame = new Mat();
+            //await OperacionAsincrona();
 
         }
 
-        private void CargarDatosSocio()
+        private void LimpiarTodo()
         {
-
-            SocioController sc = new SocioController();
-            _socio = sc.GetById(_id_socio);
-            if (_socio == null)
-                return;
-            
+            _socio = new Socio();
             cmbBarrio.SelectedValue = _socio.idBarrio;
 
             txtMail.Text = _socio.mail;
@@ -145,7 +143,7 @@ namespace Fitzone.Front.Socios
             txtNroDoc.Text = _socio.numeroDocumento;
 
             if (_socio.tipoDocumento == "DNI")
-                rdbDNI.Checked = true;                
+                rdbDNI.Checked = true;
             else
                 rdbOtro.Checked = true;
 
@@ -154,9 +152,40 @@ namespace Fitzone.Front.Socios
 
             //imagen            
             pictureBoxImagen.Image = ArrayBytesToImage(_socio.imagen);
+        }
+
+        private void CargarDatosSocio()
+        {
+
+            SocioController sc = new SocioController();
+            _socio = sc.GetById(_id_socio);
+            if (_socio == null)
+                return;
+
+            cmbBarrio.SelectedValue = _socio.idBarrio;
+
+            txtMail.Text = _socio.mail;
+            txtCalle.Text = _socio.calle;
+            txtCalleNro.Text = _socio.calleNumero;
+
+            txtNombre.Text = _socio.nombre;
+            txtApellido.Text = _socio.apellido;
+            txtNroDoc.Text = _socio.numeroDocumento;
+
+            if (_socio.tipoDocumento == "DNI")
+                rdbDNI.Checked = true;
+            else
+                rdbOtro.Checked = true;
+
+            txtCelular.Text = _socio.telefono1;
+            txtTelefono.Text = _socio.telefono2;
+
+            //imagen            
+            pictureBoxImagen.Image = null;
 
             _Validating(null, null);
         }
+        
         private void cyberButton2_Click(object sender, EventArgs e)
         {
             Guardar();
@@ -207,7 +236,7 @@ namespace Fitzone.Front.Socios
             }
 
             if (_socio == null) return; //solo para quitar el warning
-            
+
             _socio.idBarrio = ((Barrio)bindingSource1.Current).idBarrio;
 
             _socio.mail = txtMail.Text;
@@ -251,11 +280,15 @@ namespace Fitzone.Front.Socios
                 c.Insert(_socio);
 
             if (_EnumModoForm == EnumModoForm.Modificacion)
-                c.Update(_socio,_socio.idSocio);
+                c.Update(_socio, _socio.idSocio);
 
-            msg = new MessageBoxCustom(Enumeraciones.EnumModoMessageBoxCustom.DatosGuardadosCorrectamente);
+            msg = new MessageBoxCustom("Se dió de alta el socio, ¿desea agregar uno nuevo?",EnumModoMessageBoxCustom.YesNo);
             msg.ShowDialog();
-            Close();
+            if (msg.response == DialogResult.No)
+                Close();
+
+            LimpiarTodo();
+            
         }
 
         private void _Validating(object sender, CancelEventArgs e)
@@ -341,7 +374,7 @@ namespace Fitzone.Front.Socios
                 textBox.TB.SelectionLength = selectionLength;
             }
         }
-        
+
         private void btnCamara_Click(object sender, EventArgs e)
         {
             ActivarCamara();
@@ -349,17 +382,18 @@ namespace Fitzone.Front.Socios
 
         private void ActivarCamara()
         {
-            Statics.WaitShow();
+            if (_capture != null)
+            {
+                _capture.Dispose();
+            }
 
             int indexCam = rdbCam1.Checked ? 0 : 1;
 
             _capture = new VideoCapture(indexCam);
             _capture.ImageGrabbed += ProcessFrame;
-            _capture.Start();           
-
-            Statics.WaitHide();
+            _capture.Start();
         }
-        
+
         private void ProcessFrame(object sender, EventArgs e)
         {
             if (_capture != null && _capture.Ptr != IntPtr.Zero)
@@ -367,9 +401,9 @@ namespace Fitzone.Front.Socios
                 _capture.Retrieve(_frame, 0);
 
                 if (!_frame.IsEmpty)
-                {                    
+                {
                     pictureBoxVideo.Image = BitmapExtension.ToBitmap(_frame);
-                    
+
                 }
                 //var imageByte = _frame.ToImage<Bgr, Byte>().ToJpegData();
                 //var imageCapture = ByteArrayToImage(imageByte);
@@ -377,7 +411,7 @@ namespace Fitzone.Front.Socios
             }
 
         }
-        
+
         private async Task OperacionAsincrona()
         {
             await Task.Run(() => ActivarCamara());
@@ -399,7 +433,7 @@ namespace Fitzone.Front.Socios
             {
                 new MessageBoxCustom("Debe esperar a que inicie la cámara", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
                 return;
-            }          
+            }
 
             if (pictureBoxVideo.Image != null)
             {
@@ -446,6 +480,7 @@ namespace Fitzone.Front.Socios
             }
             return null;
         }
+       
         private Image? ArrayBytesToImage(byte[]? bytes)
         {
             if (bytes == null)
@@ -479,8 +514,21 @@ namespace Fitzone.Front.Socios
             }
         }
 
+        private async void rdbCam2_CheckedChanged(object sender, EventArgs e)
+        {
+            //await OperacionAsincrona();
+        }
 
+        private async void rdbCam1_CheckedChanged(object sender, EventArgs e)
+        {
+            //await OperacionAsincrona();
+        }
 
+        private void ucAgregar1__ClickUCAgregar(object sender, EventArgs e)
+        {
+            new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
+            return;
+        }
     }
 }
 

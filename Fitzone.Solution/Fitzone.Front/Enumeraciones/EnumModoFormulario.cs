@@ -11,7 +11,8 @@ namespace Fitzone.Front.Enumeraciones
         Alta = 0,
         Baja = 1,
         Modificacion = 2,
-        Consulta = 3
+        Consulta = 3,
+        Administracion = 4
     
     }
 }

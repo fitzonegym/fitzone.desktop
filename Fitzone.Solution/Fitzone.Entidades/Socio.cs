@@ -5,15 +5,7 @@ namespace Fitzone.Entidades
 {
     public class Socio
     {
-        /*
-       decorados usados
-
-          [Column("nombre_apellido")] 
-          [Key]
-          [NotMapped] 
-          [ForeignKey("Departamento")]
-       */
-
+        #region Propiedades
         [Key]
         public int idSocio { get; set; }
         [MaxLength(50)]
@@ -33,19 +25,35 @@ namespace Fitzone.Entidades
         [MaxLength(100)]
         public string? calle { get; set; }
         [MaxLength(10)]
-        public string? calleNumero{ get; set; }
+        public string? calleNumero { get; set; }
+        public bool anulado { get; set; } = false;
+        public byte[]? imagen { get; set; }
+        public DateTime fechaAlta { get; set; } = DateTime.Now;
+        #endregion
 
+        #region ForeignKey
         [ForeignKey("Barrio")] //EF
         public int idBarrio { get; set; }
         public Barrio? Barrio { get; set; }
-        public bool anulado { get; set; } = false;
-        public byte[]? imagen { get; set; }
 
+        #endregion
+
+        #region NotMapped
         [NotMapped]
-        public string BarrioNombre { 
+        public string BarrioNombre
+        {
             get
             {
-                return Barrio == null ? "" : Barrio.nombre ;
+                return Barrio == null ? "" : Barrio.nombre;
+            }
+        }
+
+        [NotMapped]
+        public string NombreCompleto
+        {
+            get
+            {
+                return nombre + " " + apellido;
             }
         }
 
@@ -57,5 +65,7 @@ namespace Fitzone.Entidades
                 return imagen == null ? false : true;
             }
         }
+
+        #endregion
     }
 }

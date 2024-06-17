@@ -17,7 +17,9 @@ namespace Fitzone.Controller
         /// <returns></returns>
         public List<Socio>? GetAll()
         {
-            return contexto.Socio.Include("Barrio").Where(i => i.anulado == false).ToList();
+            return contexto.Socio.Include("Barrio")
+                .Where(i => i.anulado == false)
+                .ToList();
         }
 
         public List<Socio>? GetAll(Socio socio)
@@ -28,6 +30,19 @@ namespace Fitzone.Controller
                 .Where(i => socio.nombre == null || i.nombre.Contains(socio.nombre.Trim()))
                 .Where(i => socio.apellido == null || i.apellido.Contains(socio.apellido.Trim()))
                 .Where(i => socio.numeroDocumento == null || i.numeroDocumento.Contains(socio.numeroDocumento.Trim()))
+                .ToList();    
+
+            return listaresultado;
+        }
+
+        public List<Socio>? GetAll(Socio socio, DateTime? fechaDesde, DateTime? fechaHasta)
+        {
+
+            List<Socio>? listaresultado = new SocioController().GetAll(socio);
+
+            listaresultado = listaresultado
+                .Where(c => (fechaDesde != null && c.fechaAlta >= fechaDesde) || fechaDesde == null)
+                .Where(c => (fechaHasta != null && c.fechaAlta <= fechaHasta) || fechaHasta == null)
                 .ToList();
 
             return listaresultado;

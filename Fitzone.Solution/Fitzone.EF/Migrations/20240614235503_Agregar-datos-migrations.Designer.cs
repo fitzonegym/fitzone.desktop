@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitzone.EF.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240613135044_Agregar-datos-migrations")]
+    [Migration("20240614235503_Agregar-datos-migrations")]
     partial class Agregardatosmigrations
     {
         /// <inheritdoc />
@@ -130,8 +130,8 @@ namespace Fitzone.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("detalle")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
                     b.Property<string>("diasHabilitados")
                         .IsRequired()
@@ -191,6 +191,9 @@ namespace Fitzone.EF.Migrations
                     b.Property<string>("calleNumero")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
+
+                    b.Property<DateTime>("fechaAlta")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("idBarrio")
                         .HasColumnType("int");

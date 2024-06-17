@@ -8,3 +8,5 @@ Alta de socio
 Admin de socios
 -se muestran campos adicionales, como tiene foto S/N
 
+FALTA
+ORDENAR LAS GRILLAS

@@ -44,6 +44,7 @@
             calleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             calleNumeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             barrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaAlta = new DataGridViewTextBoxColumn();
             idBarrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             TieneImagen = new DataGridViewCheckBoxColumn();
             anuladoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
@@ -63,8 +64,16 @@
             ucBorderlr2 = new UserControls.UCBorderLR();
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBordertd2 = new UserControls.UCBorderTD();
+            btnImprimir = new ReaLTaiizor.Controls.CyberButton();
+            thunderLabel4 = new ReaLTaiizor.Controls.ThunderLabel();
+            txtFechaDesde = new DateTimePicker();
+            txtFechaHasta = new DateTimePicker();
+            thunderLabel5 = new ReaLTaiizor.Controls.ThunderLabel();
+            thunderLabel6 = new ReaLTaiizor.Controls.ThunderLabel();
+            groupBox1 = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // btnModificar
@@ -94,7 +103,7 @@
             btnModificar.Lighting = false;
             btnModificar.LinearGradient_Background = false;
             btnModificar.LinearGradientPen = false;
-            btnModificar.Location = new Point(106, 435);
+            btnModificar.Location = new Point(106, 438);
             btnModificar.Name = "btnModificar";
             btnModificar.PenWidth = 15;
             btnModificar.Rounding = true;
@@ -136,7 +145,7 @@
             BtnAnular.Lighting = false;
             BtnAnular.LinearGradient_Background = false;
             BtnAnular.LinearGradientPen = false;
-            BtnAnular.Location = new Point(204, 435);
+            BtnAnular.Location = new Point(204, 438);
             BtnAnular.Name = "BtnAnular";
             BtnAnular.PenWidth = 15;
             BtnAnular.Rounding = true;
@@ -178,7 +187,7 @@
             btnAgregar.Lighting = false;
             btnAgregar.LinearGradient_Background = false;
             btnAgregar.LinearGradientPen = false;
-            btnAgregar.Location = new Point(7, 435);
+            btnAgregar.Location = new Point(7, 438);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.PenWidth = 15;
             btnAgregar.Rounding = true;
@@ -202,23 +211,22 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.FromArgb(81, 45, 168);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSocioDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, idBarrioDataGridViewTextBoxColumn, TieneImagen, anuladoDataGridViewCheckBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSocioDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, fechaAlta, idBarrioDataGridViewTextBoxColumn, TieneImagen, anuladoDataGridViewCheckBoxColumn });
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.GridColor = SystemColors.InfoText;
-            dataGridView1.Location = new Point(12, 162);
+            dataGridView1.Location = new Point(12, 208);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(637, 267);
+            dataGridView1.Size = new Size(702, 225);
             dataGridView1.TabIndex = 20;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
+            dataGridView1.ColumnHeaderMouseClick += dataGridView1_ColumnHeaderMouseClick;
             // 
             // idSocioDataGridViewTextBoxColumn
             // 
             idSocioDataGridViewTextBoxColumn.DataPropertyName = "idSocio";
             idSocioDataGridViewTextBoxColumn.HeaderText = "Id";
             idSocioDataGridViewTextBoxColumn.Name = "idSocioDataGridViewTextBoxColumn";
-            idSocioDataGridViewTextBoxColumn.ReadOnly = true;
             idSocioDataGridViewTextBoxColumn.Width = 50;
             // 
             // nombreDataGridViewTextBoxColumn
@@ -226,63 +234,54 @@
             nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
             nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
             nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            nombreDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // apellidoDataGridViewTextBoxColumn
             // 
             apellidoDataGridViewTextBoxColumn.DataPropertyName = "apellido";
             apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
             apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
-            apellidoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tipoDocumentoDataGridViewTextBoxColumn
             // 
             tipoDocumentoDataGridViewTextBoxColumn.DataPropertyName = "tipoDocumento";
             tipoDocumentoDataGridViewTextBoxColumn.HeaderText = "Tipo Doc.";
             tipoDocumentoDataGridViewTextBoxColumn.Name = "tipoDocumentoDataGridViewTextBoxColumn";
-            tipoDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // numeroDocumentoDataGridViewTextBoxColumn
             // 
             numeroDocumentoDataGridViewTextBoxColumn.DataPropertyName = "numeroDocumento";
             numeroDocumentoDataGridViewTextBoxColumn.HeaderText = "Nro. Documento";
             numeroDocumentoDataGridViewTextBoxColumn.Name = "numeroDocumentoDataGridViewTextBoxColumn";
-            numeroDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // telefono1DataGridViewTextBoxColumn
             // 
             telefono1DataGridViewTextBoxColumn.DataPropertyName = "telefono1";
             telefono1DataGridViewTextBoxColumn.HeaderText = "Celular";
             telefono1DataGridViewTextBoxColumn.Name = "telefono1DataGridViewTextBoxColumn";
-            telefono1DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // telefono2DataGridViewTextBoxColumn
             // 
             telefono2DataGridViewTextBoxColumn.DataPropertyName = "telefono2";
             telefono2DataGridViewTextBoxColumn.HeaderText = "Teléfono";
             telefono2DataGridViewTextBoxColumn.Name = "telefono2DataGridViewTextBoxColumn";
-            telefono2DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // mailDataGridViewTextBoxColumn
             // 
             mailDataGridViewTextBoxColumn.DataPropertyName = "mail";
             mailDataGridViewTextBoxColumn.HeaderText = "E-Mail";
             mailDataGridViewTextBoxColumn.Name = "mailDataGridViewTextBoxColumn";
-            mailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // calleDataGridViewTextBoxColumn
             // 
             calleDataGridViewTextBoxColumn.DataPropertyName = "calle";
             calleDataGridViewTextBoxColumn.HeaderText = "Calle";
             calleDataGridViewTextBoxColumn.Name = "calleDataGridViewTextBoxColumn";
-            calleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // calleNumeroDataGridViewTextBoxColumn
             // 
             calleNumeroDataGridViewTextBoxColumn.DataPropertyName = "calleNumero";
             calleNumeroDataGridViewTextBoxColumn.HeaderText = "Calle Nro.";
             calleNumeroDataGridViewTextBoxColumn.Name = "calleNumeroDataGridViewTextBoxColumn";
-            calleNumeroDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // barrioDataGridViewTextBoxColumn
             // 
@@ -291,12 +290,17 @@
             barrioDataGridViewTextBoxColumn.Name = "barrioDataGridViewTextBoxColumn";
             barrioDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // fechaAlta
+            // 
+            fechaAlta.DataPropertyName = "fechaAlta";
+            fechaAlta.HeaderText = "Fecha Alta";
+            fechaAlta.Name = "fechaAlta";
+            // 
             // idBarrioDataGridViewTextBoxColumn
             // 
             idBarrioDataGridViewTextBoxColumn.DataPropertyName = "idBarrio";
             idBarrioDataGridViewTextBoxColumn.HeaderText = "idBarrio";
             idBarrioDataGridViewTextBoxColumn.Name = "idBarrioDataGridViewTextBoxColumn";
-            idBarrioDataGridViewTextBoxColumn.ReadOnly = true;
             idBarrioDataGridViewTextBoxColumn.Visible = false;
             // 
             // TieneImagen
@@ -311,7 +315,6 @@
             anuladoDataGridViewCheckBoxColumn.DataPropertyName = "anulado";
             anuladoDataGridViewCheckBoxColumn.HeaderText = "anulado";
             anuladoDataGridViewCheckBoxColumn.Name = "anuladoDataGridViewCheckBoxColumn";
-            anuladoDataGridViewCheckBoxColumn.ReadOnly = true;
             anuladoDataGridViewCheckBoxColumn.Visible = false;
             // 
             // bindingSource1
@@ -345,7 +348,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(553, 433);
+            btnCancelar.Location = new Point(618, 438);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -387,7 +390,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(457, 433);
+            btnAceptar.Location = new Point(522, 438);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -428,7 +431,7 @@
             btnFiltrar.Lighting = false;
             btnFiltrar.LinearGradient_Background = false;
             btnFiltrar.LinearGradientPen = false;
-            btnFiltrar.Location = new Point(12, 116);
+            btnFiltrar.Location = new Point(12, 162);
             btnFiltrar.Name = "btnFiltrar";
             btnFiltrar.PenWidth = 15;
             btnFiltrar.Rounding = true;
@@ -449,7 +452,7 @@
             txtDocumento.EnabledCalc = true;
             txtDocumento.Font = new Font("Segoe UI", 9F);
             txtDocumento.ForeColor = Color.Black;
-            txtDocumento.Location = new Point(421, 50);
+            txtDocumento.Location = new Point(116, 76);
             txtDocumento.MaxLength = 32767;
             txtDocumento.MultiLine = false;
             txtDocumento.Name = "txtDocumento";
@@ -464,9 +467,9 @@
             // 
             thunderLabel3.BackColor = Color.Transparent;
             thunderLabel3.ForeColor = Color.WhiteSmoke;
-            thunderLabel3.Location = new Point(313, 59);
+            thunderLabel3.Location = new Point(8, 79);
             thunderLabel3.Name = "thunderLabel3";
-            thunderLabel3.Size = new Size(107, 16);
+            thunderLabel3.Size = new Size(108, 22);
             thunderLabel3.TabIndex = 14;
             thunderLabel3.Text = "Nro. Documento";
             // 
@@ -476,7 +479,7 @@
             txtApellido.EnabledCalc = true;
             txtApellido.Font = new Font("Segoe UI", 9F);
             txtApellido.ForeColor = Color.Black;
-            txtApellido.Location = new Point(79, 81);
+            txtApellido.Location = new Point(116, 44);
             txtApellido.MaxLength = 32767;
             txtApellido.MultiLine = false;
             txtApellido.Name = "txtApellido";
@@ -491,7 +494,7 @@
             // 
             thunderLabel2.BackColor = Color.Transparent;
             thunderLabel2.ForeColor = Color.WhiteSmoke;
-            thunderLabel2.Location = new Point(16, 90);
+            thunderLabel2.Location = new Point(8, 53);
             thunderLabel2.Name = "thunderLabel2";
             thunderLabel2.Size = new Size(56, 20);
             thunderLabel2.TabIndex = 12;
@@ -503,7 +506,7 @@
             txtNombre.EnabledCalc = true;
             txtNombre.Font = new Font("Segoe UI", 9F);
             txtNombre.ForeColor = Color.Black;
-            txtNombre.Location = new Point(79, 50);
+            txtNombre.Location = new Point(116, 13);
             txtNombre.MaxLength = 32767;
             txtNombre.MultiLine = false;
             txtNombre.Name = "txtNombre";
@@ -517,7 +520,7 @@
             // 
             thunderLabel1.BackColor = Color.Transparent;
             thunderLabel1.ForeColor = Color.WhiteSmoke;
-            thunderLabel1.Location = new Point(16, 59);
+            thunderLabel1.Location = new Point(8, 22);
             thunderLabel1.Name = "thunderLabel1";
             thunderLabel1.Size = new Size(57, 16);
             thunderLabel1.TabIndex = 2;
@@ -527,7 +530,7 @@
             // 
             botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(615, 6);
+            botonesForms2.Location = new Point(680, 6);
             botonesForms2.Name = "botonesForms2";
             botonesForms2.Size = new Size(46, 20);
             botonesForms2.TabIndex = 1;
@@ -547,16 +550,16 @@
             ucBorderlr1.Dock = DockStyle.Left;
             ucBorderlr1.Location = new Point(0, 0);
             ucBorderlr1.Name = "ucBorderlr1";
-            ucBorderlr1.Size = new Size(2, 482);
+            ucBorderlr1.Size = new Size(2, 486);
             ucBorderlr1.TabIndex = 25;
             // 
             // ucBorderlr2
             // 
             ucBorderlr2.BackColor = Color.White;
             ucBorderlr2.Dock = DockStyle.Right;
-            ucBorderlr2.Location = new Point(662, 0);
+            ucBorderlr2.Location = new Point(727, 0);
             ucBorderlr2.Name = "ucBorderlr2";
-            ucBorderlr2.Size = new Size(2, 482);
+            ucBorderlr2.Size = new Size(2, 486);
             ucBorderlr2.TabIndex = 26;
             // 
             // ucBordertd1
@@ -565,24 +568,140 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(660, 3);
+            ucBordertd1.Size = new Size(725, 3);
             ucBordertd1.TabIndex = 27;
             // 
             // ucBordertd2
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 479);
+            ucBordertd2.Location = new Point(2, 483);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(660, 3);
+            ucBordertd2.Size = new Size(725, 3);
             ucBordertd2.TabIndex = 28;
+            // 
+            // btnImprimir
+            // 
+            btnImprimir.Alpha = 20;
+            btnImprimir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnImprimir.BackColor = Color.Transparent;
+            btnImprimir.Background = true;
+            btnImprimir.Background_WidthPen = 4F;
+            btnImprimir.BackgroundPen = true;
+            btnImprimir.ColorBackground = Color.Black;
+            btnImprimir.ColorBackground_1 = Color.Black;
+            btnImprimir.ColorBackground_2 = Color.Gray;
+            btnImprimir.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btnImprimir.ColorLighting = Color.FromArgb(81, 45, 168);
+            btnImprimir.ColorPen_1 = Color.Black;
+            btnImprimir.ColorPen_2 = Color.Gray;
+            btnImprimir.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnImprimir.Effect_1 = true;
+            btnImprimir.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            btnImprimir.Effect_1_Transparency = 25;
+            btnImprimir.Effect_2 = true;
+            btnImprimir.Effect_2_ColorBackground = Color.White;
+            btnImprimir.Effect_2_Transparency = 20;
+            btnImprimir.Font = new Font("Arial", 11F);
+            btnImprimir.ForeColor = Color.FromArgb(245, 245, 245);
+            btnImprimir.Lighting = false;
+            btnImprimir.LinearGradient_Background = false;
+            btnImprimir.LinearGradientPen = false;
+            btnImprimir.Location = new Point(426, 438);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.PenWidth = 15;
+            btnImprimir.Rounding = true;
+            btnImprimir.RoundingInt = 70;
+            btnImprimir.Size = new Size(99, 40);
+            btnImprimir.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnImprimir.TabIndex = 29;
+            btnImprimir.Tag = "Cyber";
+            btnImprimir.TextButton = "Imprimir";
+            btnImprimir.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnImprimir.Timer_Effect_1 = 5;
+            btnImprimir.Timer_RGB = 300;
+            btnImprimir.Click += btnImprimir_Click;
+            // 
+            // thunderLabel4
+            // 
+            thunderLabel4.BackColor = Color.Transparent;
+            thunderLabel4.ForeColor = Color.WhiteSmoke;
+            thunderLabel4.Location = new Point(424, 22);
+            thunderLabel4.Name = "thunderLabel4";
+            thunderLabel4.Size = new Size(77, 16);
+            thunderLabel4.TabIndex = 30;
+            thunderLabel4.Text = "Fecha Alta";
+            // 
+            // txtFechaDesde
+            // 
+            txtFechaDesde.Checked = false;
+            txtFechaDesde.CustomFormat = "dd/MM/yyyy";
+            txtFechaDesde.Format = DateTimePickerFormat.Custom;
+            txtFechaDesde.Location = new Point(424, 50);
+            txtFechaDesde.Name = "txtFechaDesde";
+            txtFechaDesde.ShowCheckBox = true;
+            txtFechaDesde.Size = new Size(116, 23);
+            txtFechaDesde.TabIndex = 58;
+            // 
+            // txtFechaHasta
+            // 
+            txtFechaHasta.Checked = false;
+            txtFechaHasta.CustomFormat = "dd/MM/yyyy";
+            txtFechaHasta.Format = DateTimePickerFormat.Custom;
+            txtFechaHasta.Location = new Point(424, 82);
+            txtFechaHasta.Name = "txtFechaHasta";
+            txtFechaHasta.ShowCheckBox = true;
+            txtFechaHasta.Size = new Size(116, 23);
+            txtFechaHasta.TabIndex = 60;
+            // 
+            // thunderLabel5
+            // 
+            thunderLabel5.BackColor = Color.Transparent;
+            thunderLabel5.ForeColor = Color.WhiteSmoke;
+            thunderLabel5.Location = new Point(367, 57);
+            thunderLabel5.Name = "thunderLabel5";
+            thunderLabel5.Size = new Size(51, 16);
+            thunderLabel5.TabIndex = 59;
+            thunderLabel5.Text = "Desde";
+            // 
+            // thunderLabel6
+            // 
+            thunderLabel6.BackColor = Color.Transparent;
+            thunderLabel6.ForeColor = Color.WhiteSmoke;
+            thunderLabel6.Location = new Point(367, 85);
+            thunderLabel6.Name = "thunderLabel6";
+            thunderLabel6.Size = new Size(51, 16);
+            thunderLabel6.TabIndex = 61;
+            thunderLabel6.Text = "Hasta";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(thunderLabel6);
+            groupBox1.Controls.Add(txtFechaHasta);
+            groupBox1.Controls.Add(thunderLabel5);
+            groupBox1.Controls.Add(txtFechaDesde);
+            groupBox1.Controls.Add(thunderLabel4);
+            groupBox1.Controls.Add(txtNombre);
+            groupBox1.Controls.Add(thunderLabel1);
+            groupBox1.Controls.Add(thunderLabel2);
+            groupBox1.Controls.Add(txtApellido);
+            groupBox1.Controls.Add(thunderLabel3);
+            groupBox1.Controls.Add(txtDocumento);
+            groupBox1.Location = new Point(12, 37);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(702, 118);
+            groupBox1.TabIndex = 62;
+            groupBox1.TabStop = false;
             // 
             // FrmSociosAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(664, 482);
+            ClientSize = new Size(729, 486);
+            Controls.Add(groupBox1);
+            Controls.Add(btnImprimir);
             Controls.Add(ucBordertd2);
             Controls.Add(ucBordertd1);
             Controls.Add(ucBorderlr2);
@@ -590,24 +709,20 @@
             Controls.Add(ucTituloLabel1);
             Controls.Add(btnModificar);
             Controls.Add(BtnAnular);
-            Controls.Add(txtNombre);
             Controls.Add(btnAgregar);
             Controls.Add(botonesForms2);
             Controls.Add(dataGridView1);
-            Controls.Add(thunderLabel1);
             Controls.Add(btnCancelar);
-            Controls.Add(thunderLabel2);
             Controls.Add(btnAceptar);
-            Controls.Add(txtApellido);
             Controls.Add(btnFiltrar);
-            Controls.Add(thunderLabel3);
-            Controls.Add(txtDocumento);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmSociosAdmin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmSociosConsulta";
             Load += FrmSociosAdmin_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
+            groupBox1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -632,6 +747,13 @@
         private UserControls.UCBorderLR ucBorderlr2;
         private UserControls.UCBorderTD ucBordertd1;
         private UserControls.UCBorderTD ucBordertd2;
+        private ReaLTaiizor.Controls.CyberButton btnImprimir;
+        private ReaLTaiizor.Controls.ThunderLabel thunderLabel4;
+        private DateTimePicker txtFechaDesde;
+        private DateTimePicker txtFechaHasta;
+        private ReaLTaiizor.Controls.ThunderLabel thunderLabel5;
+        private ReaLTaiizor.Controls.ThunderLabel thunderLabel6;
+        private GroupBox groupBox1;
         private DataGridViewTextBoxColumn idSocioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
@@ -643,6 +765,7 @@
         private DataGridViewTextBoxColumn calleDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn calleNumeroDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn barrioDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaAlta;
         private DataGridViewTextBoxColumn idBarrioDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn TieneImagen;
         private DataGridViewCheckBoxColumn anuladoDataGridViewCheckBoxColumn;
