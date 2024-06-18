@@ -109,7 +109,9 @@
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.BackColor = Color.FromArgb(81, 45, 168);
+            flowLayoutPanel1.BackColor = Color.FromArgb(103, 58, 183);
+            flowLayoutPanel1.BackgroundImage = Properties.Resources.fondovioleta;
+            flowLayoutPanel1.BackgroundImageLayout = ImageLayout.Stretch;
             flowLayoutPanel1.Controls.Add(menuStrip1);
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(0, 0);
@@ -240,6 +242,8 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(81, 45, 168);
+            panel1.BackgroundImage = Properties.Resources.fondovioleta;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -250,11 +254,14 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackgroundImage = Properties.Resources.fondovioleta;
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Image = Properties.Resources.logo3;
-            pictureBox1.Location = new Point(18, 6);
+            pictureBox1.Location = new Point(-2, -2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Padding = new Padding(5);
-            pictureBox1.Size = new Size(169, 72);
+            pictureBox1.Size = new Size(202, 84);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;

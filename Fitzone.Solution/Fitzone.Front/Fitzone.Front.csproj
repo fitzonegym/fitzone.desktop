@@ -39,9 +39,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Update="TestDiseñoSocio.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>

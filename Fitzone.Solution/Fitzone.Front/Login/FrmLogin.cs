@@ -1,3 +1,5 @@
+using Fitzone.Front.FormsExtras;
+
 namespace Fitzone.Front.Login
 {
     public partial class FrmLogin : Form
@@ -93,9 +95,12 @@ namespace Fitzone.Front.Login
             usuario = txtusuario.Text;
             password = txtcontrasena.Text;
 
+
+            
+
             if (String.IsNullOrWhiteSpace(usuario) || String.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Ingrese el usuario y/o contraseña");
+                new MessageBoxCustom("Ingrese el usuario y/o contraseña",Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();   
                 return;
             }
             
@@ -109,7 +114,8 @@ namespace Fitzone.Front.Login
             }
             else
             {
-                MessageBox.Show("Los datos ingresados son incorrectos");
+                new MessageBoxCustom("Los datos ingresados son incorrectos", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                
             }
             
 
@@ -137,14 +143,14 @@ namespace Fitzone.Front.Login
             //obtenemos las dimensiones
             int altura_forma = Height;
             int anchura_forma = Width;
-            int altura_groupbox = groupBox1.Height;
-            int anchura_groupbox = groupBox1.Width;
+            int altura_groupbox = panel1.Height;
+            int anchura_groupbox = panel1.Width;
             //obtenemos la nueva posicion del groupBox1
 
             int nueva_altura = (altura_forma - altura_groupbox) / 2;
             int nueva_anchura = (anchura_forma - anchura_groupbox) / 2;
 
-            groupBox1.Location = new Point(nueva_anchura, nueva_altura);
+            panel1.Location = new Point(nueva_anchura, nueva_altura);
 
         }
 

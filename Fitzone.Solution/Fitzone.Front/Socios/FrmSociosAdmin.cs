@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 using IContainer = QuestPDF.Infrastructure.IContainer;
+using System.Diagnostics;
+
 
 namespace Fitzone.Front.Socios
 {
@@ -113,6 +115,7 @@ namespace Fitzone.Front.Socios
             if (_EnumModoFormulario == EnumModoFormulario.Administracion)
             {
                 btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = true;
+                btnImprimir.Location = btnAceptar.Location;
                 btnAceptar.Visible = false;
             }
 
@@ -343,11 +346,19 @@ namespace Fitzone.Front.Socios
             })
             .GeneratePdf(fileName);
 
-            var mes = new MessageBoxCustom("c:\\Reportes\\" + fileName, EnumModoMessageBoxCustom.ReporteGenerado, 250,50);
+
+            var mes = new MessageBoxCustom(fileName, EnumModoMessageBoxCustom.ReporteGenerado, 250,50);
             mes.ShowDialog();
             if (mes.response == DialogResult.Yes)
             {
-                //abrir
+                try
+                {
+                    Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("No se pudo abrir el archivo PDF: " + ex.Message);
+                }
             }
         }
 

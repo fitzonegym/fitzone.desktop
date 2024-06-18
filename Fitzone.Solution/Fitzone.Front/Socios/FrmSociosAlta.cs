@@ -151,7 +151,7 @@ namespace Fitzone.Front.Socios
             txtTelefono.Text = _socio.telefono2;
 
             //imagen            
-            pictureBoxImagen.Image = ArrayBytesToImage(_socio.imagen);
+            //pictureBoxImagen.Image = ArrayBytesToImage(_socio.imagen);
         }
 
         private void CargarDatosSocio()
@@ -181,7 +181,7 @@ namespace Fitzone.Front.Socios
             txtTelefono.Text = _socio.telefono2;
 
             //imagen            
-            pictureBoxImagen.Image = null;
+            //pictureBoxImagen.Image = null;
 
             _Validating(null, null);
         }
@@ -282,7 +282,7 @@ namespace Fitzone.Front.Socios
             if (_EnumModoForm == EnumModoForm.Modificacion)
                 c.Update(_socio, _socio.idSocio);
 
-            msg = new MessageBoxCustom("Se dió de alta el socio, ¿desea agregar uno nuevo?",EnumModoMessageBoxCustom.YesNo);
+            msg = new MessageBoxCustom("Se dió de alta el socio, ¿desea agregar uno nuevo?",EnumModoMessageBoxCustom.YesNo,50);
             msg.ShowDialog();
             if (msg.response == DialogResult.No)
                 Close();
@@ -439,8 +439,7 @@ namespace Fitzone.Front.Socios
             {
 
                 string filePath = Guid.NewGuid().ToString();
-                Bitmap bitmap = _frame.ToImage<Bgr, Byte>().ToBitmap();
-                //bitmap.Save(filePath, ImageFormat.Png);
+                Bitmap bitmap = _frame.ToImage<Bgr, Byte>().ToBitmap();                
                 pictureBoxImagen.Image = bitmap;
             }
         }

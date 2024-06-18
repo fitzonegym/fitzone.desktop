@@ -126,6 +126,7 @@
             label1.TabIndex = 51;
             label1.Text = "Cámara";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Visible = false;
             // 
             // pictureBoxImagen
             // 

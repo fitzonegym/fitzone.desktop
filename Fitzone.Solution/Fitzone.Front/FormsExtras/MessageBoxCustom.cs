@@ -176,6 +176,7 @@ namespace Fitzone.Front.FormsExtras
             if (_modo == EnumModoMessageBoxCustom.YesNo
                 || _modo == EnumModoMessageBoxCustom.ConfirmaGuardar
                 || _modo == EnumModoMessageBoxCustom.DeseaSalirSePerderanLosCambios
+                || _modo == EnumModoMessageBoxCustom.ReporteGenerado
                 )
             {
                 response = DialogResult.Yes;
@@ -191,7 +192,8 @@ namespace Fitzone.Front.FormsExtras
         {
             if (_modo == EnumModoMessageBoxCustom.YesNo
                 || _modo == EnumModoMessageBoxCustom.ConfirmaGuardar
-                || _modo == EnumModoMessageBoxCustom.DeseaSalirSePerderanLosCambios)
+                || _modo == EnumModoMessageBoxCustom.DeseaSalirSePerderanLosCambios
+                || _modo == EnumModoMessageBoxCustom.ReporteGenerado)
             {
                 response = DialogResult.No;
             }
