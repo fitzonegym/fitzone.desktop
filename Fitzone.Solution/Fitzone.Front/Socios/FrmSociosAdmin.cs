@@ -115,7 +115,7 @@ namespace Fitzone.Front.Socios
             if (_EnumModoFormulario == EnumModoFormulario.Administracion)
             {
                 btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = true;
-                btnImprimir.Location = btnAceptar.Location;
+//                btnImprimir.Location = btnAceptar.Location;
                 btnAceptar.Visible = false;
             }
 
@@ -161,12 +161,17 @@ namespace Fitzone.Front.Socios
             {
                 column.SortMode = DataGridViewColumnSortMode.Automatic;
             }
+
+            ucCantidadregistros1._cantidad = _listaSocios.Count();
+
             Statics.WaitHide();
         }
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             CargarGrilla();
+
+            
 
         }
 

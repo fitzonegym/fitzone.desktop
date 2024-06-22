@@ -33,6 +33,21 @@
             BtnAnular = new ReaLTaiizor.Controls.CyberButton();
             btnAgregar = new ReaLTaiizor.Controls.CyberButton();
             dataGridView1 = new DataGridView();
+            idSocioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            tipoDocumentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            numeroDocumentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            telefono1DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            telefono2DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            mailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            calleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            calleNumeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            barrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaAlta = new DataGridViewTextBoxColumn();
+            idBarrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            TieneImagen = new DataGridViewCheckBoxColumn();
+            anuladoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             bindingSource1 = new BindingSource(components);
             btnCancelar = new ReaLTaiizor.Controls.CyberButton();
             btnAceptar = new ReaLTaiizor.Controls.CyberButton();
@@ -56,21 +71,8 @@
             thunderLabel5 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel6 = new ReaLTaiizor.Controls.ThunderLabel();
             groupBox1 = new GroupBox();
-            idSocioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            tipoDocumentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            numeroDocumentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            telefono1DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            telefono2DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            mailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            calleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            calleNumeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            barrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaAlta = new DataGridViewTextBoxColumn();
-            idBarrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            TieneImagen = new DataGridViewCheckBoxColumn();
-            anuladoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            ucCantidadregistros1 = new UserControls.UCCantidadregistros();
+            ucPintarFilasPares1 = new UserControls.UCPintarFilasPares();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -103,7 +105,7 @@
             btnModificar.Lighting = false;
             btnModificar.LinearGradient_Background = false;
             btnModificar.LinearGradientPen = false;
-            btnModificar.Location = new Point(106, 438);
+            btnModificar.Location = new Point(106, 435);
             btnModificar.Name = "btnModificar";
             btnModificar.PenWidth = 15;
             btnModificar.Rounding = true;
@@ -145,7 +147,7 @@
             BtnAnular.Lighting = false;
             BtnAnular.LinearGradient_Background = false;
             BtnAnular.LinearGradientPen = false;
-            BtnAnular.Location = new Point(204, 438);
+            BtnAnular.Location = new Point(204, 435);
             BtnAnular.Name = "BtnAnular";
             BtnAnular.PenWidth = 15;
             BtnAnular.Rounding = true;
@@ -187,7 +189,7 @@
             btnAgregar.Lighting = false;
             btnAgregar.LinearGradient_Background = false;
             btnAgregar.LinearGradientPen = false;
-            btnAgregar.Location = new Point(7, 438);
+            btnAgregar.Location = new Point(7, 435);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.PenWidth = 15;
             btnAgregar.Rounding = true;
@@ -217,10 +219,106 @@
             dataGridView1.Location = new Point(12, 208);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(702, 225);
+            dataGridView1.Size = new Size(702, 221);
             dataGridView1.TabIndex = 20;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             dataGridView1.ColumnHeaderMouseClick += dataGridView1_ColumnHeaderMouseClick;
+            // 
+            // idSocioDataGridViewTextBoxColumn
+            // 
+            idSocioDataGridViewTextBoxColumn.DataPropertyName = "idSocio";
+            idSocioDataGridViewTextBoxColumn.HeaderText = "Id";
+            idSocioDataGridViewTextBoxColumn.Name = "idSocioDataGridViewTextBoxColumn";
+            idSocioDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
+            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            // 
+            // apellidoDataGridViewTextBoxColumn
+            // 
+            apellidoDataGridViewTextBoxColumn.DataPropertyName = "apellido";
+            apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
+            apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
+            // 
+            // tipoDocumentoDataGridViewTextBoxColumn
+            // 
+            tipoDocumentoDataGridViewTextBoxColumn.DataPropertyName = "tipoDocumento";
+            tipoDocumentoDataGridViewTextBoxColumn.HeaderText = "Tipo Doc.";
+            tipoDocumentoDataGridViewTextBoxColumn.Name = "tipoDocumentoDataGridViewTextBoxColumn";
+            // 
+            // numeroDocumentoDataGridViewTextBoxColumn
+            // 
+            numeroDocumentoDataGridViewTextBoxColumn.DataPropertyName = "numeroDocumento";
+            numeroDocumentoDataGridViewTextBoxColumn.HeaderText = "Nro. Documento";
+            numeroDocumentoDataGridViewTextBoxColumn.Name = "numeroDocumentoDataGridViewTextBoxColumn";
+            // 
+            // telefono1DataGridViewTextBoxColumn
+            // 
+            telefono1DataGridViewTextBoxColumn.DataPropertyName = "telefono1";
+            telefono1DataGridViewTextBoxColumn.HeaderText = "Celular";
+            telefono1DataGridViewTextBoxColumn.Name = "telefono1DataGridViewTextBoxColumn";
+            // 
+            // telefono2DataGridViewTextBoxColumn
+            // 
+            telefono2DataGridViewTextBoxColumn.DataPropertyName = "telefono2";
+            telefono2DataGridViewTextBoxColumn.HeaderText = "Teléfono";
+            telefono2DataGridViewTextBoxColumn.Name = "telefono2DataGridViewTextBoxColumn";
+            // 
+            // mailDataGridViewTextBoxColumn
+            // 
+            mailDataGridViewTextBoxColumn.DataPropertyName = "mail";
+            mailDataGridViewTextBoxColumn.HeaderText = "E-Mail";
+            mailDataGridViewTextBoxColumn.Name = "mailDataGridViewTextBoxColumn";
+            // 
+            // calleDataGridViewTextBoxColumn
+            // 
+            calleDataGridViewTextBoxColumn.DataPropertyName = "calle";
+            calleDataGridViewTextBoxColumn.HeaderText = "Calle";
+            calleDataGridViewTextBoxColumn.Name = "calleDataGridViewTextBoxColumn";
+            // 
+            // calleNumeroDataGridViewTextBoxColumn
+            // 
+            calleNumeroDataGridViewTextBoxColumn.DataPropertyName = "calleNumero";
+            calleNumeroDataGridViewTextBoxColumn.HeaderText = "Calle Nro.";
+            calleNumeroDataGridViewTextBoxColumn.Name = "calleNumeroDataGridViewTextBoxColumn";
+            // 
+            // barrioDataGridViewTextBoxColumn
+            // 
+            barrioDataGridViewTextBoxColumn.DataPropertyName = "BarrioNombre";
+            barrioDataGridViewTextBoxColumn.HeaderText = "Barrio";
+            barrioDataGridViewTextBoxColumn.Name = "barrioDataGridViewTextBoxColumn";
+            barrioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaAlta
+            // 
+            fechaAlta.DataPropertyName = "fechaAlta";
+            fechaAlta.HeaderText = "Fecha Alta";
+            fechaAlta.Name = "fechaAlta";
+            // 
+            // idBarrioDataGridViewTextBoxColumn
+            // 
+            idBarrioDataGridViewTextBoxColumn.DataPropertyName = "idBarrio";
+            idBarrioDataGridViewTextBoxColumn.HeaderText = "idBarrio";
+            idBarrioDataGridViewTextBoxColumn.Name = "idBarrioDataGridViewTextBoxColumn";
+            idBarrioDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // TieneImagen
+            // 
+            TieneImagen.DataPropertyName = "TieneImagen";
+            TieneImagen.HeaderText = "Imagen [S/N]";
+            TieneImagen.Name = "TieneImagen";
+            TieneImagen.ReadOnly = true;
+            TieneImagen.Visible = false;
+            // 
+            // anuladoDataGridViewCheckBoxColumn
+            // 
+            anuladoDataGridViewCheckBoxColumn.DataPropertyName = "anulado";
+            anuladoDataGridViewCheckBoxColumn.HeaderText = "anulado";
+            anuladoDataGridViewCheckBoxColumn.Name = "anuladoDataGridViewCheckBoxColumn";
+            anuladoDataGridViewCheckBoxColumn.Visible = false;
             // 
             // bindingSource1
             // 
@@ -253,7 +351,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(618, 438);
+            btnCancelar.Location = new Point(615, 435);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -295,7 +393,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(522, 438);
+            btnAceptar.Location = new Point(519, 435);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -512,7 +610,7 @@
             btnImprimir.Lighting = false;
             btnImprimir.LinearGradient_Background = false;
             btnImprimir.LinearGradientPen = false;
-            btnImprimir.Location = new Point(426, 438);
+            btnImprimir.Location = new Point(112, 162);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.PenWidth = 15;
             btnImprimir.Rounding = true;
@@ -599,101 +697,23 @@
             groupBox1.TabIndex = 62;
             groupBox1.TabStop = false;
             // 
-            // idSocioDataGridViewTextBoxColumn
+            // ucCantidadregistros1
             // 
-            idSocioDataGridViewTextBoxColumn.DataPropertyName = "idSocio";
-            idSocioDataGridViewTextBoxColumn.HeaderText = "Id";
-            idSocioDataGridViewTextBoxColumn.Name = "idSocioDataGridViewTextBoxColumn";
-            idSocioDataGridViewTextBoxColumn.Width = 50;
+            ucCantidadregistros1._cantidad = 0;
+            ucCantidadregistros1.BackColor = Color.Transparent;
+            ucCantidadregistros1.Location = new Point(615, 186);
+            ucCantidadregistros1.Name = "ucCantidadregistros1";
+            ucCantidadregistros1.Size = new Size(103, 16);
+            ucCantidadregistros1.TabIndex = 63;
             // 
-            // nombreDataGridViewTextBoxColumn
+            // ucPintarFilasPares1
             // 
-            nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            // 
-            // apellidoDataGridViewTextBoxColumn
-            // 
-            apellidoDataGridViewTextBoxColumn.DataPropertyName = "apellido";
-            apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
-            apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
-            // 
-            // tipoDocumentoDataGridViewTextBoxColumn
-            // 
-            tipoDocumentoDataGridViewTextBoxColumn.DataPropertyName = "tipoDocumento";
-            tipoDocumentoDataGridViewTextBoxColumn.HeaderText = "Tipo Doc.";
-            tipoDocumentoDataGridViewTextBoxColumn.Name = "tipoDocumentoDataGridViewTextBoxColumn";
-            // 
-            // numeroDocumentoDataGridViewTextBoxColumn
-            // 
-            numeroDocumentoDataGridViewTextBoxColumn.DataPropertyName = "numeroDocumento";
-            numeroDocumentoDataGridViewTextBoxColumn.HeaderText = "Nro. Documento";
-            numeroDocumentoDataGridViewTextBoxColumn.Name = "numeroDocumentoDataGridViewTextBoxColumn";
-            // 
-            // telefono1DataGridViewTextBoxColumn
-            // 
-            telefono1DataGridViewTextBoxColumn.DataPropertyName = "telefono1";
-            telefono1DataGridViewTextBoxColumn.HeaderText = "Celular";
-            telefono1DataGridViewTextBoxColumn.Name = "telefono1DataGridViewTextBoxColumn";
-            // 
-            // telefono2DataGridViewTextBoxColumn
-            // 
-            telefono2DataGridViewTextBoxColumn.DataPropertyName = "telefono2";
-            telefono2DataGridViewTextBoxColumn.HeaderText = "Teléfono";
-            telefono2DataGridViewTextBoxColumn.Name = "telefono2DataGridViewTextBoxColumn";
-            // 
-            // mailDataGridViewTextBoxColumn
-            // 
-            mailDataGridViewTextBoxColumn.DataPropertyName = "mail";
-            mailDataGridViewTextBoxColumn.HeaderText = "E-Mail";
-            mailDataGridViewTextBoxColumn.Name = "mailDataGridViewTextBoxColumn";
-            // 
-            // calleDataGridViewTextBoxColumn
-            // 
-            calleDataGridViewTextBoxColumn.DataPropertyName = "calle";
-            calleDataGridViewTextBoxColumn.HeaderText = "Calle";
-            calleDataGridViewTextBoxColumn.Name = "calleDataGridViewTextBoxColumn";
-            // 
-            // calleNumeroDataGridViewTextBoxColumn
-            // 
-            calleNumeroDataGridViewTextBoxColumn.DataPropertyName = "calleNumero";
-            calleNumeroDataGridViewTextBoxColumn.HeaderText = "Calle Nro.";
-            calleNumeroDataGridViewTextBoxColumn.Name = "calleNumeroDataGridViewTextBoxColumn";
-            // 
-            // barrioDataGridViewTextBoxColumn
-            // 
-            barrioDataGridViewTextBoxColumn.DataPropertyName = "BarrioNombre";
-            barrioDataGridViewTextBoxColumn.HeaderText = "Barrio";
-            barrioDataGridViewTextBoxColumn.Name = "barrioDataGridViewTextBoxColumn";
-            barrioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaAlta
-            // 
-            fechaAlta.DataPropertyName = "fechaAlta";
-            fechaAlta.HeaderText = "Fecha Alta";
-            fechaAlta.Name = "fechaAlta";
-            // 
-            // idBarrioDataGridViewTextBoxColumn
-            // 
-            idBarrioDataGridViewTextBoxColumn.DataPropertyName = "idBarrio";
-            idBarrioDataGridViewTextBoxColumn.HeaderText = "idBarrio";
-            idBarrioDataGridViewTextBoxColumn.Name = "idBarrioDataGridViewTextBoxColumn";
-            idBarrioDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // TieneImagen
-            // 
-            TieneImagen.DataPropertyName = "TieneImagen";
-            TieneImagen.HeaderText = "Imagen [S/N]";
-            TieneImagen.Name = "TieneImagen";
-            TieneImagen.ReadOnly = true;
-            TieneImagen.Visible = false;
-            // 
-            // anuladoDataGridViewCheckBoxColumn
-            // 
-            anuladoDataGridViewCheckBoxColumn.DataPropertyName = "anulado";
-            anuladoDataGridViewCheckBoxColumn.HeaderText = "anulado";
-            anuladoDataGridViewCheckBoxColumn.Name = "anuladoDataGridViewCheckBoxColumn";
-            anuladoDataGridViewCheckBoxColumn.Visible = false;
+            ucPintarFilasPares1._dataGridView = dataGridView1;
+            ucPintarFilasPares1.BackColor = Color.Transparent;
+            ucPintarFilasPares1.Location = new Point(217, 161);
+            ucPintarFilasPares1.Name = "ucPintarFilasPares1";
+            ucPintarFilasPares1.Size = new Size(33, 27);
+            ucPintarFilasPares1.TabIndex = 64;
             // 
             // FrmSociosAdmin
             // 
@@ -701,6 +721,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
             ClientSize = new Size(729, 486);
+            Controls.Add(ucPintarFilasPares1);
+            Controls.Add(ucCantidadregistros1);
             Controls.Add(groupBox1);
             Controls.Add(btnImprimir);
             Controls.Add(ucBordertd2);
@@ -770,5 +792,7 @@
         private DataGridViewTextBoxColumn idBarrioDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn TieneImagen;
         private DataGridViewCheckBoxColumn anuladoDataGridViewCheckBoxColumn;
+        private UserControls.UCCantidadregistros ucCantidadregistros1;
+        private UserControls.UCPintarFilasPares ucPintarFilasPares1;
     }
 }

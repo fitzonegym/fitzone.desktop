@@ -96,6 +96,7 @@
             groupBox2.Controls.Add(groupBox1);
             groupBox2.Controls.Add(btnCapturar);
             groupBox2.Controls.Add(pictureBoxVideo);
+            groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(431, 37);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(201, 351);
@@ -157,6 +158,7 @@
             groupBox1.BackColor = Color.Transparent;
             groupBox1.Controls.Add(rdbCam2);
             groupBox1.Controls.Add(rdbCam1);
+            groupBox1.ForeColor = Color.White;
             groupBox1.Location = new Point(6, 308);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(76, 31);
@@ -283,7 +285,7 @@
             // 
             txtCelular.BorderStyle = BorderStyle.None;
             txtCelular.Font = new Font("Segoe UI", 9F);
-            txtCelular.Location = new Point(153, 150);
+            txtCelular.Location = new Point(153, 252);
             txtCelular.Mask = "(999)000-0000";
             txtCelular.Name = "txtCelular";
             txtCelular.Size = new Size(89, 16);
@@ -295,7 +297,7 @@
             // ucErrorIconoCel
             // 
             ucErrorIconoCel.BackColor = Color.Transparent;
-            ucErrorIconoCel.Location = new Point(8, 149);
+            ucErrorIconoCel.Location = new Point(8, 251);
             ucErrorIconoCel.Name = "ucErrorIconoCel";
             ucErrorIconoCel.Size = new Size(20, 20);
             ucErrorIconoCel.TabIndex = 42;
@@ -303,7 +305,7 @@
             // ucAgregar1
             // 
             ucAgregar1.BackColor = Color.Transparent;
-            ucAgregar1.Location = new Point(354, 254);
+            ucAgregar1.Location = new Point(351, 216);
             ucAgregar1.Name = "ucAgregar1";
             ucAgregar1.Size = new Size(20, 20);
             ucAgregar1.TabIndex = 43;
@@ -353,7 +355,7 @@
             cmbBarrio.ForeColor = Color.Black;
             cmbBarrio.FormattingEnabled = true;
             cmbBarrio.ItemHeight = 20;
-            cmbBarrio.Location = new Point(154, 249);
+            cmbBarrio.Location = new Point(149, 213);
             cmbBarrio.Name = "cmbBarrio";
             cmbBarrio.Size = new Size(196, 26);
             cmbBarrio.TabIndex = 6;
@@ -368,9 +370,9 @@
             thunderLabel10.BackColor = Color.Transparent;
             thunderLabel10.Enabled = false;
             thunderLabel10.ForeColor = Color.WhiteSmoke;
-            thunderLabel10.Location = new Point(33, 251);
+            thunderLabel10.Location = new Point(33, 215);
             thunderLabel10.Name = "thunderLabel10";
-            thunderLabel10.Size = new Size(109, 16);
+            thunderLabel10.Size = new Size(77, 21);
             thunderLabel10.TabIndex = 35;
             thunderLabel10.Text = "Barrio";
             // 
@@ -380,7 +382,7 @@
             txtCalleNro.EnabledCalc = true;
             txtCalleNro.Font = new Font("Segoe UI", 9F);
             txtCalleNro.ForeColor = Color.Black;
-            txtCalleNro.Location = new Point(144, 314);
+            txtCalleNro.Location = new Point(141, 178);
             txtCalleNro.MaxLength = 10;
             txtCalleNro.MultiLine = false;
             txtCalleNro.Name = "txtCalleNro";
@@ -396,9 +398,9 @@
             thunderLabel9.BackColor = Color.Transparent;
             thunderLabel9.Enabled = false;
             thunderLabel9.ForeColor = Color.WhiteSmoke;
-            thunderLabel9.Location = new Point(33, 319);
+            thunderLabel9.Location = new Point(33, 183);
             thunderLabel9.Name = "thunderLabel9";
-            thunderLabel9.Size = new Size(109, 16);
+            thunderLabel9.Size = new Size(75, 24);
             thunderLabel9.TabIndex = 33;
             thunderLabel9.Text = "Calle nro.";
             // 
@@ -408,7 +410,7 @@
             txtCalle.EnabledCalc = true;
             txtCalle.Font = new Font("Segoe UI", 9F);
             txtCalle.ForeColor = Color.Black;
-            txtCalle.Location = new Point(144, 280);
+            txtCalle.Location = new Point(141, 144);
             txtCalle.MaxLength = 30;
             txtCalle.MultiLine = false;
             txtCalle.Name = "txtCalle";
@@ -423,7 +425,7 @@
             thunderLabel8.BackColor = Color.Transparent;
             thunderLabel8.Enabled = false;
             thunderLabel8.ForeColor = Color.WhiteSmoke;
-            thunderLabel8.Location = new Point(33, 284);
+            thunderLabel8.Location = new Point(33, 148);
             thunderLabel8.Name = "thunderLabel8";
             thunderLabel8.Size = new Size(109, 16);
             thunderLabel8.TabIndex = 31;
@@ -435,7 +437,7 @@
             txtMail.EnabledCalc = true;
             txtMail.Font = new Font("Segoe UI", 9F);
             txtMail.ForeColor = Color.Black;
-            txtMail.Location = new Point(144, 214);
+            txtMail.Location = new Point(144, 316);
             txtMail.MaxLength = 30;
             txtMail.MultiLine = false;
             txtMail.Name = "txtMail";
@@ -450,9 +452,9 @@
             thunderLabel7.BackColor = Color.Transparent;
             thunderLabel7.Enabled = false;
             thunderLabel7.ForeColor = Color.WhiteSmoke;
-            thunderLabel7.Location = new Point(33, 222);
+            thunderLabel7.Location = new Point(33, 324);
             thunderLabel7.Name = "thunderLabel7";
-            thunderLabel7.Size = new Size(109, 16);
+            thunderLabel7.Size = new Size(50, 18);
             thunderLabel7.TabIndex = 29;
             thunderLabel7.Text = "E-mail";
             // 
@@ -462,7 +464,7 @@
             txtTelefono.EnabledCalc = true;
             txtTelefono.Font = new Font("Segoe UI", 9F);
             txtTelefono.ForeColor = Color.Black;
-            txtTelefono.Location = new Point(144, 179);
+            txtTelefono.Location = new Point(144, 281);
             txtTelefono.MaxLength = 10;
             txtTelefono.MultiLine = false;
             txtTelefono.Name = "txtTelefono";
@@ -478,9 +480,9 @@
             thunderLabel6.BackColor = Color.Transparent;
             thunderLabel6.Enabled = false;
             thunderLabel6.ForeColor = Color.WhiteSmoke;
-            thunderLabel6.Location = new Point(33, 152);
+            thunderLabel6.Location = new Point(33, 254);
             thunderLabel6.Name = "thunderLabel6";
-            thunderLabel6.Size = new Size(96, 16);
+            thunderLabel6.Size = new Size(62, 21);
             thunderLabel6.TabIndex = 15;
             thunderLabel6.Text = "Celular";
             // 
@@ -490,7 +492,7 @@
             txtCelular2.EnabledCalc = false;
             txtCelular2.Font = new Font("Segoe UI", 9F);
             txtCelular2.ForeColor = Color.Black;
-            txtCelular2.Location = new Point(144, 144);
+            txtCelular2.Location = new Point(144, 246);
             txtCelular2.MaxLength = 50;
             txtCelular2.MultiLine = false;
             txtCelular2.Name = "txtCelular2";
@@ -506,9 +508,9 @@
             thunderLabel5.BackColor = Color.Transparent;
             thunderLabel5.Enabled = false;
             thunderLabel5.ForeColor = Color.WhiteSmoke;
-            thunderLabel5.Location = new Point(33, 187);
+            thunderLabel5.Location = new Point(33, 289);
             thunderLabel5.Name = "thunderLabel5";
-            thunderLabel5.Size = new Size(109, 16);
+            thunderLabel5.Size = new Size(72, 16);
             thunderLabel5.TabIndex = 25;
             thunderLabel5.Text = "Teléfono";
             // 
@@ -550,7 +552,7 @@
             cyberButton1.Lighting = false;
             cyberButton1.LinearGradient_Background = false;
             cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(533, 394);
+            cyberButton1.Location = new Point(532, 392);
             cyberButton1.Name = "cyberButton1";
             cyberButton1.PenWidth = 15;
             cyberButton1.Rounding = true;
@@ -592,7 +594,7 @@
             cyberButton2.Lighting = false;
             cyberButton2.LinearGradient_Background = false;
             cyberButton2.LinearGradientPen = false;
-            cyberButton2.Location = new Point(428, 394);
+            cyberButton2.Location = new Point(434, 392);
             cyberButton2.Name = "cyberButton2";
             cyberButton2.PenWidth = 15;
             cyberButton2.Rounding = true;
@@ -601,7 +603,7 @@
             cyberButton2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             cyberButton2.TabIndex = 9;
             cyberButton2.Tag = "Cyber";
-            cyberButton2.TextButton = "Aceptar";
+            cyberButton2.TextButton = "Guardar";
             cyberButton2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             cyberButton2.Timer_Effect_1 = 5;
             cyberButton2.Timer_RGB = 300;
@@ -737,30 +739,30 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(rdbOtro);
-            groupBox3.Controls.Add(ucErrorIconoNombre);
-            groupBox3.Controls.Add(txtNombre);
-            groupBox3.Controls.Add(rdbDNI);
             groupBox3.Controls.Add(txtMail);
-            groupBox3.Controls.Add(thunderLabel1);
-            groupBox3.Controls.Add(thunderLabel8);
-            groupBox3.Controls.Add(txtNroDoc);
-            groupBox3.Controls.Add(thunderLabel7);
-            groupBox3.Controls.Add(txtCalle);
+            groupBox3.Controls.Add(rdbOtro);
             groupBox3.Controls.Add(txtCelular);
+            groupBox3.Controls.Add(ucErrorIconoNombre);
+            groupBox3.Controls.Add(thunderLabel7);
+            groupBox3.Controls.Add(txtNombre);
+            groupBox3.Controls.Add(thunderLabel5);
+            groupBox3.Controls.Add(rdbDNI);
+            groupBox3.Controls.Add(txtCelular2);
+            groupBox3.Controls.Add(thunderLabel1);
+            groupBox3.Controls.Add(thunderLabel6);
+            groupBox3.Controls.Add(thunderLabel8);
             groupBox3.Controls.Add(txtTelefono);
+            groupBox3.Controls.Add(ucErrorIconoCel);
+            groupBox3.Controls.Add(txtNroDoc);
+            groupBox3.Controls.Add(txtCalle);
             groupBox3.Controls.Add(thunderLabel2);
             groupBox3.Controls.Add(thunderLabel9);
-            groupBox3.Controls.Add(ucErrorIconoCel);
-            groupBox3.Controls.Add(thunderLabel6);
             groupBox3.Controls.Add(txtApellido);
             groupBox3.Controls.Add(txtCalleNro);
             groupBox3.Controls.Add(ucAgregar1);
-            groupBox3.Controls.Add(txtCelular2);
             groupBox3.Controls.Add(thunderLabel3);
             groupBox3.Controls.Add(thunderLabel10);
             groupBox3.Controls.Add(ucErrorIconoNroDoc);
-            groupBox3.Controls.Add(thunderLabel5);
             groupBox3.Controls.Add(txtNroDoc2);
             groupBox3.Controls.Add(cmbBarrio);
             groupBox3.Controls.Add(ucErrorIconoApellido);

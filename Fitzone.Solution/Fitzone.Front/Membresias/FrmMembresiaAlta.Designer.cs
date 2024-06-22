@@ -82,7 +82,6 @@
             thunderLabel7 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel6 = new ReaLTaiizor.Controls.ThunderLabel();
             ucTituloLabel2 = new UserControls.UCTituloLabel();
-            cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
             thunderLabel8 = new ReaLTaiizor.Controls.ThunderLabel();
             txtDescripcionMembresía = new TextBox();
             ucAgregar1 = new UserControls.UCAgregar();
@@ -194,7 +193,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(591, 636);
+            btnCancelar.Location = new Point(589, 637);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -246,7 +245,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(491, 636);
+            btnAceptar.Location = new Point(491, 637);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -255,7 +254,7 @@
             btnAceptar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             btnAceptar.TabIndex = 37;
             btnAceptar.Tag = "Cyber";
-            btnAceptar.TextButton = "Aceptar";
+            btnAceptar.TextButton = "Guardar";
             btnAceptar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             btnAceptar.Timer_Effect_1 = 5;
             btnAceptar.Timer_RGB = 300;
@@ -444,6 +443,7 @@
             groupBox1.Controls.Add(thunderLabel1);
             groupBox1.Controls.Add(txtNombre);
             groupBox1.Controls.Add(btnBuscarSocio);
+            groupBox1.ForeColor = Color.White;
             groupBox1.Location = new Point(12, 45);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(350, 249);
@@ -544,6 +544,7 @@
             groupBox2.Controls.Add(thunderLabel4);
             groupBox2.Controls.Add(txtDetalleTipo);
             groupBox2.Controls.Add(cmbTipoMembresia);
+            groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(368, 45);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(319, 249);
@@ -826,47 +827,6 @@
             ucTituloLabel2.Size = new Size(65, 34);
             ucTituloLabel2.TabIndex = 53;
             // 
-            // cyberButton1
-            // 
-            cyberButton1.Alpha = 20;
-            cyberButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            cyberButton1.BackColor = Color.Transparent;
-            cyberButton1.Background = true;
-            cyberButton1.Background_WidthPen = 4F;
-            cyberButton1.BackgroundPen = true;
-            cyberButton1.ColorBackground = Color.Black;
-            cyberButton1.ColorBackground_1 = Color.Black;
-            cyberButton1.ColorBackground_2 = Color.Gray;
-            cyberButton1.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
-            cyberButton1.ColorLighting = Color.FromArgb(81, 45, 168);
-            cyberButton1.ColorPen_1 = Color.Black;
-            cyberButton1.ColorPen_2 = Color.Gray;
-            cyberButton1.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton1.Effect_1 = true;
-            cyberButton1.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
-            cyberButton1.Effect_1_Transparency = 25;
-            cyberButton1.Effect_2 = true;
-            cyberButton1.Effect_2_ColorBackground = Color.White;
-            cyberButton1.Effect_2_Transparency = 20;
-            cyberButton1.Font = new Font("Arial", 11F);
-            cyberButton1.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton1.Lighting = false;
-            cyberButton1.LinearGradient_Background = false;
-            cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(16, 636);
-            cyberButton1.Name = "cyberButton1";
-            cyberButton1.PenWidth = 15;
-            cyberButton1.Rounding = true;
-            cyberButton1.RoundingInt = 70;
-            cyberButton1.Size = new Size(99, 40);
-            cyberButton1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton1.TabIndex = 57;
-            cyberButton1.Tag = "Cyber";
-            cyberButton1.TextButton = "Factura";
-            cyberButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton1.Timer_Effect_1 = 5;
-            cyberButton1.Timer_RGB = 300;
-            // 
             // thunderLabel8
             // 
             thunderLabel8.BackColor = Color.Transparent;
@@ -916,7 +876,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
             ClientSize = new Size(698, 682);
-            Controls.Add(cyberButton1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(ucBordertd2);
@@ -980,7 +939,6 @@
         private DateTimePicker txtFechaHasta;
         private ReaLTaiizor.Controls.CyberButton cmdGenerar;
         private UserControls.UCTituloLabel ucTituloLabel2;
-        private ReaLTaiizor.Controls.CyberButton cyberButton1;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel8;
         private TextBox txtDescripcionMembresía;
         private UserControls.UCAgregar ucAgregar1;

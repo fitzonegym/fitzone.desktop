@@ -90,20 +90,9 @@ namespace Fitzone.Front.Membresias
         {
             CargarGrilla();
             txtFechaDesde.Value = DateTime.Now.AddDays(-10);
-            txtFechaHasta.Value = DateTime.Now.AddMonths(1);
+            txtFechaHasta.Value = DateTime.Now.AddMonths(1);       
 
-            dataGridView1.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dataGridView1_RowPrePaint);
-
-        }
-        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
-        {
-            DataGridView dataGridView = sender as DataGridView;
-
-            if (e.RowIndex % 2 == 0) // Si es una fila par
-            {
-                dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(209, 196, 234); // Cambia el color de fondo
-            }
-        }
+        }   
 
         private void CargarGrilla()
         {
@@ -118,6 +107,7 @@ namespace Fitzone.Front.Membresias
 
             bindingSource1.DataSource = _listaMembresias;
 
+            ucCantidadregistros1._cantidad = _listaMembresias.Count();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -157,6 +147,12 @@ namespace Fitzone.Front.Membresias
         }
 
         private void BtnAnular_Click(object sender, EventArgs e)
+        {
+            new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
+            return;
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
         {
             new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
             return;
