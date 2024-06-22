@@ -43,6 +43,7 @@ namespace Fitzone.Controller
             listaresultado = listaresultado
                 .Where(c => (fechaDesde != null && c.fechaAlta >= fechaDesde) || fechaDesde == null)
                 .Where(c => (fechaHasta != null && c.fechaAlta <= fechaHasta) || fechaHasta == null)
+                .Where(c => !c.anulado )
                 .ToList();
 
             return listaresultado;
@@ -55,7 +56,7 @@ namespace Fitzone.Controller
         /// <returns></returns>
         public Socio? GetById(int id)
         {
-            return contexto.Socio.Include("Barrio").Where(i => i.anulado == false).FirstOrDefault(i=>i.idSocio == id);
+            return contexto.Socio.Include("Barrio").FirstOrDefault(i=>i.idSocio == id);
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace Fitzone.Controller
         /// <returns></returns>
         public Socio? GetByName(string nombre)
         {
-            return contexto.Socio.Include("Barrio").FirstOrDefault(i => i.nombre.Contains(nombre) && i.anulado == false);
+            return contexto.Socio.Include("Barrio").FirstOrDefault(i => i.nombre.Contains(nombre));
         }
 
         /// <summary>
