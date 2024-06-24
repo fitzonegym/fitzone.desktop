@@ -370,7 +370,7 @@
             thunderLabel10.BackColor = Color.Transparent;
             thunderLabel10.Enabled = false;
             thunderLabel10.ForeColor = Color.WhiteSmoke;
-            thunderLabel10.Location = new Point(33, 215);
+            thunderLabel10.Location = new Point(33, 217);
             thunderLabel10.Name = "thunderLabel10";
             thunderLabel10.Size = new Size(77, 21);
             thunderLabel10.TabIndex = 35;
@@ -425,9 +425,9 @@
             thunderLabel8.BackColor = Color.Transparent;
             thunderLabel8.Enabled = false;
             thunderLabel8.ForeColor = Color.WhiteSmoke;
-            thunderLabel8.Location = new Point(33, 148);
+            thunderLabel8.Location = new Point(33, 153);
             thunderLabel8.Name = "thunderLabel8";
-            thunderLabel8.Size = new Size(109, 16);
+            thunderLabel8.Size = new Size(77, 14);
             thunderLabel8.TabIndex = 31;
             thunderLabel8.Text = "Calle";
             // 

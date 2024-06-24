@@ -150,6 +150,8 @@ namespace Fitzone.Front.Socios
             txtCelular.Text = _socio.telefono1;
             txtTelefono.Text = _socio.telefono2;
 
+            _Validating(null,null);
+
             //imagen            
             //pictureBoxImagen.Image = ArrayBytesToImage(_socio.imagen);
         }
@@ -263,7 +265,8 @@ namespace Fitzone.Front.Socios
             if (!ValidarEmpleado(ref mensajeErrores, _socio))
             {
                 //si falla alguna validacion muestro el mensaje y no hago nada mas
-                msg = new MessageBoxCustom(mensajeErrores, Enumeraciones.EnumModoMessageBoxCustom.SeEncontraronErrores);
+                //msg = new MessageBoxCustom(mensajeErrores, Enumeraciones.EnumModoMessageBoxCustom.SeEncontraronErrores);
+                msg = new MessageBoxCustom("Verifique los campos obligatorios",EnumModoMessageBoxCustom.Aceptar);
                 msg.ShowDialog();
                 return;
             }
@@ -282,7 +285,7 @@ namespace Fitzone.Front.Socios
             if (_EnumModoForm == EnumModoForm.Modificacion)
                 c.Update(_socio, _socio.idSocio);
 
-            msg = new MessageBoxCustom("Se dió de alta el socio, ¿desea agregar uno nuevo?",EnumModoMessageBoxCustom.YesNo,50);
+            msg = new MessageBoxCustom("Se dió de alta el socio " + "("+_socio.idSocio.ToString()+") " + _socio.NombreCompleto + "\n¿Desea agregar uno nuevo?",EnumModoMessageBoxCustom.YesNo,50);
             msg.ShowDialog();
             if (msg.response == DialogResult.No)
                 Close();

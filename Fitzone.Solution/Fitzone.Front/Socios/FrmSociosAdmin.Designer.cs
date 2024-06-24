@@ -71,8 +71,10 @@
             thunderLabel5 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel6 = new ReaLTaiizor.Controls.ThunderLabel();
             groupBox1 = new GroupBox();
+            ucClearFilters1 = new UserControls.UCClearFilters();
             ucCantidadregistros1 = new UserControls.UCCantidadregistros();
             ucPintarFilasPares1 = new UserControls.UCPintarFilasPares();
+            toolTip1 = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -218,6 +220,7 @@
             dataGridView1.GridColor = SystemColors.InfoText;
             dataGridView1.Location = new Point(12, 208);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.Size = new Size(702, 221);
             dataGridView1.TabIndex = 20;
@@ -229,6 +232,7 @@
             idSocioDataGridViewTextBoxColumn.DataPropertyName = "idSocio";
             idSocioDataGridViewTextBoxColumn.HeaderText = "Id";
             idSocioDataGridViewTextBoxColumn.Name = "idSocioDataGridViewTextBoxColumn";
+            idSocioDataGridViewTextBoxColumn.ReadOnly = true;
             idSocioDataGridViewTextBoxColumn.Width = 50;
             // 
             // nombreDataGridViewTextBoxColumn
@@ -236,54 +240,63 @@
             nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
             nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
             nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            nombreDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // apellidoDataGridViewTextBoxColumn
             // 
             apellidoDataGridViewTextBoxColumn.DataPropertyName = "apellido";
             apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
             apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
+            apellidoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tipoDocumentoDataGridViewTextBoxColumn
             // 
             tipoDocumentoDataGridViewTextBoxColumn.DataPropertyName = "tipoDocumento";
             tipoDocumentoDataGridViewTextBoxColumn.HeaderText = "Tipo Doc.";
             tipoDocumentoDataGridViewTextBoxColumn.Name = "tipoDocumentoDataGridViewTextBoxColumn";
+            tipoDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // numeroDocumentoDataGridViewTextBoxColumn
             // 
             numeroDocumentoDataGridViewTextBoxColumn.DataPropertyName = "numeroDocumento";
             numeroDocumentoDataGridViewTextBoxColumn.HeaderText = "Nro. Documento";
             numeroDocumentoDataGridViewTextBoxColumn.Name = "numeroDocumentoDataGridViewTextBoxColumn";
+            numeroDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // telefono1DataGridViewTextBoxColumn
             // 
             telefono1DataGridViewTextBoxColumn.DataPropertyName = "telefono1";
             telefono1DataGridViewTextBoxColumn.HeaderText = "Celular";
             telefono1DataGridViewTextBoxColumn.Name = "telefono1DataGridViewTextBoxColumn";
+            telefono1DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // telefono2DataGridViewTextBoxColumn
             // 
             telefono2DataGridViewTextBoxColumn.DataPropertyName = "telefono2";
             telefono2DataGridViewTextBoxColumn.HeaderText = "Teléfono";
             telefono2DataGridViewTextBoxColumn.Name = "telefono2DataGridViewTextBoxColumn";
+            telefono2DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // mailDataGridViewTextBoxColumn
             // 
             mailDataGridViewTextBoxColumn.DataPropertyName = "mail";
             mailDataGridViewTextBoxColumn.HeaderText = "E-Mail";
             mailDataGridViewTextBoxColumn.Name = "mailDataGridViewTextBoxColumn";
+            mailDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // calleDataGridViewTextBoxColumn
             // 
             calleDataGridViewTextBoxColumn.DataPropertyName = "calle";
             calleDataGridViewTextBoxColumn.HeaderText = "Calle";
             calleDataGridViewTextBoxColumn.Name = "calleDataGridViewTextBoxColumn";
+            calleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // calleNumeroDataGridViewTextBoxColumn
             // 
             calleNumeroDataGridViewTextBoxColumn.DataPropertyName = "calleNumero";
             calleNumeroDataGridViewTextBoxColumn.HeaderText = "Calle Nro.";
             calleNumeroDataGridViewTextBoxColumn.Name = "calleNumeroDataGridViewTextBoxColumn";
+            calleNumeroDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // barrioDataGridViewTextBoxColumn
             // 
@@ -297,12 +310,14 @@
             fechaAlta.DataPropertyName = "fechaAlta";
             fechaAlta.HeaderText = "Fecha Alta";
             fechaAlta.Name = "fechaAlta";
+            fechaAlta.ReadOnly = true;
             // 
             // idBarrioDataGridViewTextBoxColumn
             // 
             idBarrioDataGridViewTextBoxColumn.DataPropertyName = "idBarrio";
             idBarrioDataGridViewTextBoxColumn.HeaderText = "idBarrio";
             idBarrioDataGridViewTextBoxColumn.Name = "idBarrioDataGridViewTextBoxColumn";
+            idBarrioDataGridViewTextBoxColumn.ReadOnly = true;
             idBarrioDataGridViewTextBoxColumn.Visible = false;
             // 
             // TieneImagen
@@ -318,6 +333,7 @@
             anuladoDataGridViewCheckBoxColumn.DataPropertyName = "anulado";
             anuladoDataGridViewCheckBoxColumn.HeaderText = "anulado";
             anuladoDataGridViewCheckBoxColumn.Name = "anuladoDataGridViewCheckBoxColumn";
+            anuladoDataGridViewCheckBoxColumn.ReadOnly = true;
             anuladoDataGridViewCheckBoxColumn.Visible = false;
             // 
             // bindingSource1
@@ -456,7 +472,7 @@
             txtDocumento.Font = new Font("Segoe UI", 9F);
             txtDocumento.ForeColor = Color.Black;
             txtDocumento.Location = new Point(116, 76);
-            txtDocumento.MaxLength = 32767;
+            txtDocumento.MaxLength = 8;
             txtDocumento.MultiLine = false;
             txtDocumento.Name = "txtDocumento";
             txtDocumento.ReadOnly = false;
@@ -464,6 +480,7 @@
             txtDocumento.TabIndex = 15;
             txtDocumento.TextAlign = HorizontalAlignment.Left;
             txtDocumento.UseSystemPasswordChar = false;
+            txtDocumento.TextChanged += txtDocumento_TextChanged;
             txtDocumento.KeyPress += txtCualquierFiltro_KeyPress;
             // 
             // thunderLabel3
@@ -483,7 +500,7 @@
             txtApellido.Font = new Font("Segoe UI", 9F);
             txtApellido.ForeColor = Color.Black;
             txtApellido.Location = new Point(116, 44);
-            txtApellido.MaxLength = 32767;
+            txtApellido.MaxLength = 30;
             txtApellido.MultiLine = false;
             txtApellido.Name = "txtApellido";
             txtApellido.ReadOnly = false;
@@ -491,6 +508,7 @@
             txtApellido.TabIndex = 13;
             txtApellido.TextAlign = HorizontalAlignment.Left;
             txtApellido.UseSystemPasswordChar = false;
+            txtApellido.TextChanged += txtApellido_TextChanged;
             txtApellido.KeyPress += txtCualquierFiltro_KeyPress;
             // 
             // thunderLabel2
@@ -510,7 +528,7 @@
             txtNombre.Font = new Font("Segoe UI", 9F);
             txtNombre.ForeColor = Color.Black;
             txtNombre.Location = new Point(116, 13);
-            txtNombre.MaxLength = 32767;
+            txtNombre.MaxLength = 30;
             txtNombre.MultiLine = false;
             txtNombre.Name = "txtNombre";
             txtNombre.ReadOnly = false;
@@ -518,6 +536,7 @@
             txtNombre.TabIndex = 6;
             txtNombre.TextAlign = HorizontalAlignment.Left;
             txtNombre.UseSystemPasswordChar = false;
+            txtNombre.TextChanged += txtNombre_TextChanged;
             // 
             // thunderLabel1
             // 
@@ -586,7 +605,6 @@
             // btnImprimir
             // 
             btnImprimir.Alpha = 20;
-            btnImprimir.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnImprimir.BackColor = Color.Transparent;
             btnImprimir.Background = true;
             btnImprimir.Background_WidthPen = 4F;
@@ -680,6 +698,7 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(ucClearFilters1);
             groupBox1.Controls.Add(thunderLabel6);
             groupBox1.Controls.Add(txtFechaHasta);
             groupBox1.Controls.Add(thunderLabel5);
@@ -697,9 +716,20 @@
             groupBox1.TabIndex = 62;
             groupBox1.TabStop = false;
             // 
+            // ucClearFilters1
+            // 
+            ucClearFilters1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ucClearFilters1.Location = new Point(666, 82);
+            ucClearFilters1.Name = "ucClearFilters1";
+            ucClearFilters1.Size = new Size(30, 30);
+            ucClearFilters1.TabIndex = 65;
+            toolTip1.SetToolTip(ucClearFilters1, "Limpiar filtros");
+            ucClearFilters1._ClickUCAgregar += ucClearFilters1__ClickUCAgregar;
+            // 
             // ucCantidadregistros1
             // 
             ucCantidadregistros1._cantidad = 0;
+            ucCantidadregistros1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ucCantidadregistros1.BackColor = Color.Transparent;
             ucCantidadregistros1.Location = new Point(615, 186);
             ucCantidadregistros1.Name = "ucCantidadregistros1";
@@ -794,5 +824,7 @@
         private DataGridViewCheckBoxColumn anuladoDataGridViewCheckBoxColumn;
         private UserControls.UCCantidadregistros ucCantidadregistros1;
         private UserControls.UCPintarFilasPares ucPintarFilasPares1;
+        private UserControls.UCClearFilters ucClearFilters1;
+        private ToolTip toolTip1;
     }
 }

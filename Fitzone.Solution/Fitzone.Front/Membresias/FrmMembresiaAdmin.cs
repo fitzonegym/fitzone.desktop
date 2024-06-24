@@ -90,7 +90,10 @@ namespace Fitzone.Front.Membresias
         {
             CargarGrilla();
             txtFechaDesde.Value = DateTime.Now.AddDays(-10);
-            txtFechaHasta.Value = DateTime.Now.AddMonths(1);       
+            txtFechaHasta.Value = DateTime.Now.AddMonths(1);
+
+            this.WindowState = FormWindowState.Maximized;
+            CargarGrilla();
 
         }   
 

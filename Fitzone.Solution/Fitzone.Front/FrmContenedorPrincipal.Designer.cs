@@ -265,6 +265,7 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.DoubleClick += panelPrincipal_DoubleClick;
             // 
             // panelPrincipal
             // 
@@ -274,6 +275,8 @@
             panelPrincipal.Name = "panelPrincipal";
             panelPrincipal.Size = new Size(993, 645);
             panelPrincipal.TabIndex = 0;
+            panelPrincipal.DoubleClick += panelPrincipal_DoubleClick;
+            panelPrincipal.MouseDown += panelPrincipal_MouseDown;
             // 
             // FrmContenedorPrincipal
             // 

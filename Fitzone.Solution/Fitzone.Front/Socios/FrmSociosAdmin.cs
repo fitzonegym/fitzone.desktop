@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using IContainer = QuestPDF.Infrastructure.IContainer;
 using System.Diagnostics;
+using ReaLTaiizor.Controls;
 
 
 namespace Fitzone.Front.Socios
@@ -96,12 +97,22 @@ namespace Fitzone.Front.Socios
             btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = visible;
         }
 
+        private void LimpiarFiltros()
+        {
+            txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-1);
+            txtFechaHasta.Value = Statics.DateTimeNow235959();
+            txtFechaDesde.Checked = true;
+            txtFechaHasta.Checked = true;
+            txtApellido.Text = "";
+            txtDocumento.Text = "";
+            txtNombre.Text = "";
+        }
+
         private void FrmSociosAdmin_Load(object sender, EventArgs e)
         {
             VisibleBotones(false);
 
-            txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-1);
-            txtFechaHasta.Value = Statics.DateTimeNow235959();
+            LimpiarFiltros();
 
             // this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
@@ -115,12 +126,12 @@ namespace Fitzone.Front.Socios
             if (_EnumModoFormulario == EnumModoFormulario.Administracion)
             {
                 btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = true;
-//                btnImprimir.Location = btnAceptar.Location;
                 btnAceptar.Visible = false;
+                this.WindowState = FormWindowState.Maximized;
             }
 
             //dataGridView1.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dataGridView1_RowPrePaint);
-
+            CargarGrilla();
         }
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
@@ -171,7 +182,7 @@ namespace Fitzone.Front.Socios
         {
             CargarGrilla();
 
-            
+
 
         }
 
@@ -270,8 +281,8 @@ namespace Fitzone.Front.Socios
             filtrosAplicados += "\nNombre: " + (txtNombre.Text.IsNullOrEmpty() ? "Todos" : txtNombre.Text);
             filtrosAplicados += "\nApellido: " + (txtApellido.Text.IsNullOrEmpty() ? "Todos" : txtApellido.Text);
             filtrosAplicados += "\nNro Doc: " + (txtDocumento.Text.IsNullOrEmpty() ? "Todos" : txtDocumento.Text);
-            filtrosAplicados += "\nAlta desde: " + (txtFechaDesde.Checked ? "Todos" : txtFechaDesde.Value.ToShortDateString());
-            filtrosAplicados += "\nAlta hasta: " + (txtFechaHasta.Checked ? "Todos" : txtFechaHasta.Value.ToShortDateString());
+            filtrosAplicados += "\nAlta desde: " + (!txtFechaDesde.Checked ? "Todos" : txtFechaDesde.Value.ToShortDateString());
+            filtrosAplicados += "\nAlta hasta: " + (!txtFechaHasta.Checked ? "Todos" : txtFechaHasta.Value.ToShortDateString());
 
             // code in your main method
             // Datos de ejemplo para la tabla
@@ -352,7 +363,7 @@ namespace Fitzone.Front.Socios
             .GeneratePdf(fileName);
 
 
-            var mes = new MessageBoxCustom(fileName, EnumModoMessageBoxCustom.ReporteGenerado, 250,50);
+            var mes = new MessageBoxCustom(fileName, EnumModoMessageBoxCustom.ReporteGenerado, 250, 50);
             mes.ShowDialog();
             if (mes.response == DialogResult.Yes)
             {
@@ -445,7 +456,90 @@ namespace Fitzone.Front.Socios
 
             // Volver a vincular la lista ordenada al DataGridView
             bindingSource1.DataSource = _listaSocios;
-            
+
+        }
+
+        private void ucClearFilters1__ClickUCAgregar(object sender, EventArgs e)
+        {
+            LimpiarFiltros();
+        }
+
+        private void txtDocumento_TextChanged(object sender, EventArgs e)
+        {
+            AloneTextBox textBox = sender as AloneTextBox;
+            if (textBox != null)
+            {
+                // Guarda la posición actual del cursor
+                int selectionStart = textBox.TB.SelectionStart;
+                int selectionLength = textBox.TB.SelectionLength;
+
+                // Filtra el texto permitiendo solo los números
+                string newText = string.Empty;
+                foreach (char c in textBox.Text)
+                {
+                    if (char.IsDigit(c))
+                    {
+                        newText += c;
+                    }
+                }
+
+                // Actualiza el texto del TextBox sin perder la posición del cursor
+                textBox.Text = newText;
+                textBox.TB.SelectionStart = selectionStart > textBox.Text.Length ? textBox.Text.Length : selectionStart;
+                textBox.TB.SelectionLength = selectionLength;
+            }
+        }
+
+        private void txtNombre_TextChanged(object sender, EventArgs e)
+        {
+            AloneTextBox textBox = sender as AloneTextBox;
+            if (textBox != null)
+            {
+                // Guarda la posición actual del cursor
+                int selectionStart = textBox.TB.SelectionStart;
+                int selectionLength = textBox.TB.SelectionLength;
+
+                // Filtra el texto permitiendo solo los números
+                string newText = string.Empty;
+                foreach (char c in textBox.Text)
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        newText += c;
+                    }
+                }
+
+                // Actualiza el texto del TextBox sin perder la posición del cursor
+                textBox.Text = newText;
+                textBox.TB.SelectionStart = selectionStart > textBox.Text.Length ? textBox.Text.Length : selectionStart;
+                textBox.TB.SelectionLength = selectionLength;
+            }
+        }
+
+        private void txtApellido_TextChanged(object sender, EventArgs e)
+        {
+            AloneTextBox textBox = sender as AloneTextBox;
+            if (textBox != null)
+            {
+                // Guarda la posición actual del cursor
+                int selectionStart = textBox.TB.SelectionStart;
+                int selectionLength = textBox.TB.SelectionLength;
+
+                // Filtra el texto permitiendo solo los números
+                string newText = string.Empty;
+                foreach (char c in textBox.Text)
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        newText += c;
+                    }
+                }
+
+                // Actualiza el texto del TextBox sin perder la posición del cursor
+                textBox.Text = newText;
+                textBox.TB.SelectionStart = selectionStart > textBox.Text.Length ? textBox.Text.Length : selectionStart;
+                textBox.TB.SelectionLength = selectionLength;
+            }
         }
     }
 }

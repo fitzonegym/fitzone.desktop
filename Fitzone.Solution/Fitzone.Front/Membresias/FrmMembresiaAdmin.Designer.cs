@@ -166,7 +166,7 @@
             // btnAgregar
             // 
             btnAgregar.Alpha = 20;
-            btnAgregar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnAgregar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             btnAgregar.BackColor = Color.Transparent;
             btnAgregar.Background = true;
             btnAgregar.Background_WidthPen = 4F;
@@ -438,7 +438,7 @@
             // BtnAnular
             // 
             BtnAnular.Alpha = 20;
-            BtnAnular.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            BtnAnular.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             BtnAnular.BackColor = Color.Transparent;
             BtnAnular.Background = true;
             BtnAnular.Background_WidthPen = 4F;
@@ -522,6 +522,7 @@
             // ucCantidadregistros1
             // 
             ucCantidadregistros1._cantidad = 0;
+            ucCantidadregistros1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ucCantidadregistros1.BackColor = Color.Transparent;
             ucCantidadregistros1.Location = new Point(655, 124);
             ucCantidadregistros1.Name = "ucCantidadregistros1";

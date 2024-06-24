@@ -84,6 +84,7 @@ namespace Fitzone.Front.Membresias
         {
             CargarTipos();
             txtFechaDesde.Value = Statics.DateTimeNowSinHora();
+            
         }
 
         private void LimpiarControles()
