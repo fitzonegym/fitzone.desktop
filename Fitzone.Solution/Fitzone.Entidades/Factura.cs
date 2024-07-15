@@ -13,6 +13,12 @@ namespace Fitzone.Entidades
         [Key]
         public int idFactura { get; set; }
 
+        public string numero { get; set; }
+
+        public string tipoFactura { get; set; }
+
+        public string letra { get; set; }
+
         public DateTime fecha { get; set; }
 
         [MaxLength(50)]

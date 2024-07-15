@@ -12,7 +12,7 @@ namespace Fitzone.Entidades
         public string? nombre { get; set; }
         [MaxLength(50)]
         public string? apellido { get; set; }
-        [MaxLength(10)]
+        [MaxLength(8)]
         public string? numeroDocumento { get; set; }
         [MaxLength(50)]
         public string telefono1 { get; set; }
@@ -29,6 +29,9 @@ namespace Fitzone.Entidades
         public bool anulado { get; set; } = false;
         public byte[]? imagen { get; set; }
         public DateTime fechaAlta { get; set; } = DateTime.Now;
+        public DateTime fechaNacimiento { get; set; } = DateTime.Now;
+
+
         #endregion
 
         #region ForeignKey
@@ -53,7 +56,7 @@ namespace Fitzone.Entidades
         {
             get
             {
-                return nombre + " " + apellido;
+                return apellido + ", " + nombre;
             }
         }
 

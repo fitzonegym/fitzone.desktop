@@ -17,6 +17,7 @@ namespace Fitzone.Entidades
         [Column(TypeName = "decimal(8,2)")]
         public decimal precio{ get; set; }        
         public DateTime fechaAlta { get; set; } = DateTime.Now;
+        public DateTime? fechaModificacion { get; set; } = null;
         public DateTime fechaDesde { get; set; }
         public DateTime fechaHasta { get; set; }
 

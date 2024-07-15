@@ -78,7 +78,7 @@ namespace Fitzone.EF.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     nombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     apellido = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    numeroDocumento = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
+                    numeroDocumento = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: true),
                     telefono1 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     telefono2 = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     mail = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
@@ -88,6 +88,7 @@ namespace Fitzone.EF.Migrations
                     anulado = table.Column<bool>(type: "bit", nullable: false),
                     imagen = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     fechaAlta = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    fechaNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
                     idBarrio = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -109,6 +110,7 @@ namespace Fitzone.EF.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     precio = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     fechaAlta = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    fechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     fechaDesde = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fechaHasta = table.Column<DateTime>(type: "datetime2", nullable: false),
                     detalle = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),

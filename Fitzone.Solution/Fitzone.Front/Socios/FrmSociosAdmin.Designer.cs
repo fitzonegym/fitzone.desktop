@@ -381,6 +381,7 @@
             btnCancelar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             btnCancelar.Timer_Effect_1 = 5;
             btnCancelar.Timer_RGB = 300;
+            toolTip1.SetToolTip(btnCancelar, "Cancelar");
             btnCancelar.Click += btnCancelar_Click;
             // 
             // btnAceptar
@@ -473,7 +474,7 @@
             txtDocumento.Font = new Font("Segoe UI", 9F);
             txtDocumento.ForeColor = Color.Black;
             txtDocumento.Location = new Point(116, 76);
-            txtDocumento.MaxLength = 8;
+            txtDocumento.MaxLength = 9;
             txtDocumento.MultiLine = false;
             txtDocumento.Name = "txtDocumento";
             txtDocumento.ReadOnly = false;

@@ -23,6 +23,10 @@ namespace Fitzone.Front.Socios
         public Socio? _SocioSeleccionado = null;
         public EnumModoFormulario _EnumModoFormulario = EnumModoFormulario.Administracion;
 
+        bool primeraCarga = true;
+
+        string ordenadoPor = "";
+
         #region redimensionar
 
         private const int HTLEFT = 10;
@@ -114,6 +118,9 @@ namespace Fitzone.Front.Socios
 
             LimpiarFiltros();
 
+            txtFechaDesde.Checked = false;
+            txtFechaHasta.Checked = false;
+
             // this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             if (_EnumModoFormulario == EnumModoFormulario.Consulta)
@@ -154,13 +161,13 @@ namespace Fitzone.Front.Socios
             filter.apellido = txtApellido.Text;
             filter.numeroDocumento = txtDocumento.Text;
 
-            _listaSocios = c.GetAll(filter, txtFechaDesde.Value, txtFechaHasta.Value);
+            _listaSocios = c.GetAll(filter, txtFechaDesde.Checked ? txtFechaDesde.Value : null, txtFechaHasta.Checked ? txtFechaHasta.Value : null);
 
             bindingSource1.DataSource = null;
             bindingSource1.DataSource = _listaSocios;
 
 
-            if (_listaSocios.Count == 0)
+            if (_listaSocios.Count == 0 && !primeraCarga)
             {
                 new MessageBoxCustom(Enumeraciones.EnumModoMessageBoxCustom.NoSeEncontraronDatos).ShowDialog();
                 return;
@@ -174,6 +181,8 @@ namespace Fitzone.Front.Socios
             }
 
             ucCantidadregistros1._cantidad = _listaSocios.Count();
+
+            primeraCarga = false;
 
             Statics.WaitHide();
         }
@@ -273,16 +282,18 @@ namespace Fitzone.Front.Socios
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            CargarGrilla();
+            //CargarGrilla();
             string fileName = "c:\\Reportes\\" + Statics.GenerarNombreArchivoUnico("ReporteSocios", "PDF");
             string filtrosAplicados = "\nFiltros: ";
-
 
             filtrosAplicados += "\nNombre: " + (txtNombre.Text.IsNullOrEmpty() ? "Todos" : txtNombre.Text);
             filtrosAplicados += "\nApellido: " + (txtApellido.Text.IsNullOrEmpty() ? "Todos" : txtApellido.Text);
             filtrosAplicados += "\nNro Doc: " + (txtDocumento.Text.IsNullOrEmpty() ? "Todos" : txtDocumento.Text);
             filtrosAplicados += "\nAlta desde: " + (!txtFechaDesde.Checked ? "Todos" : txtFechaDesde.Value.ToShortDateString());
             filtrosAplicados += "\nAlta hasta: " + (!txtFechaHasta.Checked ? "Todos" : txtFechaHasta.Value.ToShortDateString());
+
+            if (!String.IsNullOrWhiteSpace(ordenadoPor))
+                filtrosAplicados += "\nOrdenado por: " + ordenadoPor;
 
             // code in your main method
             // Datos de ejemplo para la tabla
@@ -299,12 +310,12 @@ namespace Fitzone.Front.Socios
                     page.Size(PageSizes.A4);
                     page.Margin(2, Unit.Centimetre);
                     page.PageColor(Colors.White);
-                    page.DefaultTextStyle(x => x.FontSize(12))
+                    page.DefaultTextStyle(x => x.FontSize(8))
                     ;
 
                     page.Header()
                     .Background(Colors.White) // Asegurar que el fondo del encabezado sea blanco
-                    .Padding(10)
+                    .Padding(5)
                     .Element(ComposeHeader(imagePath, filtrosAplicados));
 
                     /*page.Header()                    
@@ -318,33 +329,40 @@ namespace Fitzone.Front.Socios
                         {
                             // Definir columnas de la tabla
                             table.ColumnsDefinition(columns =>
-                            {
-                                columns.ConstantColumn(90);
-                                columns.ConstantColumn(90);
-                                //columns.RelativeColumn();
-                                columns.ConstantColumn(90);
-                                columns.ConstantColumn(90);
-                                columns.ConstantColumn(90);
+                            {   //columns.RelativeColumn();
+
+                                columns.ConstantColumn(25);//id
+                                columns.ConstantColumn(90);//nombre
+                                columns.ConstantColumn(60);//doc
+                                columns.ConstantColumn(50);//tel
+                                columns.ConstantColumn(70);//mail
+                                columns.ConstantColumn(90);//barrio
+                                columns.ConstantColumn(70);//alta
                             });
 
                             // Encabezados de la tabla
                             table.Header(header =>
                             {
-                                header.Cell().Element(CellStyle).Text("Alta").Bold();
-                                header.Cell().Element(CellStyle).Text("Nombre").Bold();
+
+                                header.Cell().Element(CellStyle).Text("Nro").Bold();
+                                header.Cell().Element(CellStyle).Text("Apellido y Nombre").Bold();
                                 header.Cell().Element(CellStyle).Text("Documento").Bold();
-                                header.Cell().Element(CellStyle).Text("Telefono").Bold();
+                                header.Cell().Element(CellStyle).Text("Teléfono").Bold();
+                                header.Cell().Element(CellStyle).Text("E-Mail").Bold();
                                 header.Cell().Element(CellStyle).Text("Barrio").Bold();
+                                header.Cell().Element(CellStyle).Text("Alta").Bold();
                             });
 
                             // Rellenar datos de la tabla
                             foreach (var item in data)
                             {
-                                table.Cell().Element(CellStyle).Text(item.fechaAlta.ToString("dd/MM/yyyy"));
+                                table.Cell().Element(CellStyle).Text(item.idSocio);
                                 table.Cell().Element(CellStyle).Text(item.NombreCompleto);
                                 table.Cell().Element(CellStyle).Text(item.numeroDocumento);
                                 table.Cell().Element(CellStyle).Text(item.telefono1);
+                                table.Cell().Element(CellStyle).Text(item.mail);
                                 table.Cell().Element(CellStyle).Text(item.BarrioNombre);
+                                table.Cell().Element(CellStyle).Text(item.fechaAlta.ToString("dd/MM/yyyy"));
                                 //table.Cell().Element(CellStyle).Text(item.Price.ToString("C"));
                             }
                         });
@@ -401,14 +419,14 @@ namespace Fitzone.Front.Socios
                         row.RelativeItem()
                             .AlignMiddle()
                             .AlignTop()
-                            .Padding(15)
+                            .Padding(10)
                             .Background(Colors.White)
                             .Text("       Informe de Socios")
                             .SemiBold().FontSize(15).FontColor(Colors.Blue.Medium);
 
                         row.RelativeItem()
                             .AlignRight()
-                            .Padding(15)
+                            .Padding(10)
                             .Background(Colors.White)
                             .Text("Fecha: " + DateTime.Now.ToString() + filtrosAplicados)
                             .SemiBold().FontSize(10).FontColor(Colors.Grey.Medium);
@@ -424,27 +442,27 @@ namespace Fitzone.Front.Socios
         static IContainer CellStyle(IContainer container)
         {
             return container
-                .Border(1)
+                .Border(1)                
                 .BorderColor(Colors.Grey.Lighten2)
-                .Padding(5)
+                .Padding(3)
                 .AlignMiddle()
                 .AlignCenter();
         }
 
-        static IContainer CellStyleHeaders(IContainer container)
-        {
-            return container
-                .Border(1)
-                .BorderColor(Colors.Grey.Lighten2)
-                .Padding(5)
-                .AlignMiddle()
-                .AlignCenter();
-        }
+        //static IContainer CellStyleHeaders(IContainer container)
+        //{
+        //    return container
+        //        .Border(1)
+        //        .BorderColor(Colors.Grey.Lighten2)
+        //        .Padding(5)
+        //        .AlignMiddle()
+        //        .AlignCenter();
+        //}
         bool sortAscending;
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             string columnName = dataGridView1.Columns[e.ColumnIndex].DataPropertyName;
-
+            ordenadoPor = columnName;
 
             if (sortAscending)
                 _listaSocios = _listaSocios.OrderBy(s => s.GetType().GetProperty(columnName).GetValue(s, null)).ToList();

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitzone.EF.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240618142829_Init")]
+    [Migration("20240715184516_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace Fitzone.EF.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "9.0.0-preview.5.24306.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -146,6 +146,9 @@ namespace Fitzone.EF.Migrations
                     b.Property<DateTime>("fechaHasta")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("fechaModificacion")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("idEstadoMembresia")
                         .HasColumnType("int");
 
@@ -195,6 +198,9 @@ namespace Fitzone.EF.Migrations
                     b.Property<DateTime>("fechaAlta")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("fechaNacimiento")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("idBarrio")
                         .HasColumnType("int");
 
@@ -210,8 +216,8 @@ namespace Fitzone.EF.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("numeroDocumento")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.Property<string>("telefono1")
                         .IsRequired()

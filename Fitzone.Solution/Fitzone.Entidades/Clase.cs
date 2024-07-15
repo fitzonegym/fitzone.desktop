@@ -16,9 +16,14 @@ namespace Fitzone.Entidades
         [MaxLength(50)]
         public string nombreClase { get; set; }
 
-        public DateTime fecha { get; set; }
+        [MaxLength(5)]
+        public string codigoClase { get; set; }        
 
-        public DateTime hora { get; set; }
+        public DateTime fechaInicio { get; set; }
+
+        public DateTime horadesde { get; set; }        
+
+        public DateTime horaHasta { get; set; }
 
         public int cupoClase { get; set; }
 
@@ -29,9 +34,7 @@ namespace Fitzone.Entidades
         [ForeignKey("Actividad")]
         public int idActividad { get; set; }
         public Actividad? Actividad { get; set; }
-
-        [ForeignKey("Equipamiento")]
-        public int idEquipamiento { get; set; }
-        public Equipamiento? Equipamiento { get; set; }
+        
+        public List<Equipamiento>? Equipamientos { get; set; }
     }
 }

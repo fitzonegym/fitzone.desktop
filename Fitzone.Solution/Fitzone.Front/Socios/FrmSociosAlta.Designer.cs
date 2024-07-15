@@ -77,6 +77,9 @@
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBordertd2 = new UserControls.UCBorderTD();
             groupBox3 = new GroupBox();
+            ucErrorIconoMail = new UserControls.UCErrorIcono();
+            thunderLabel11 = new ReaLTaiizor.Controls.ThunderLabel();
+            txtFechaNac = new DateTimePicker();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImagen).BeginInit();
             groupBox1.SuspendLayout();
@@ -99,7 +102,7 @@
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(431, 37);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(201, 351);
+            groupBox2.Size = new Size(201, 395);
             groupBox2.TabIndex = 48;
             groupBox2.TabStop = false;
             groupBox2.Text = "Imagen";
@@ -109,7 +112,7 @@
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 7F);
-            label2.Location = new Point(147, 260);
+            label2.Location = new Point(147, 304);
             label2.Name = "label2";
             label2.Size = new Size(39, 12);
             label2.TabIndex = 52;
@@ -136,7 +139,7 @@
             pictureBoxImagen.Image = Properties.Resources.no_foto_img;
             pictureBoxImagen.Location = new Point(6, 19);
             pictureBoxImagen.Name = "pictureBoxImagen";
-            pictureBoxImagen.Size = new Size(189, 286);
+            pictureBoxImagen.Size = new Size(189, 330);
             pictureBoxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxImagen.TabIndex = 50;
             pictureBoxImagen.TabStop = false;
@@ -159,7 +162,7 @@
             groupBox1.Controls.Add(rdbCam2);
             groupBox1.Controls.Add(rdbCam1);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(6, 308);
+            groupBox1.Location = new Point(6, 352);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(76, 31);
             groupBox1.TabIndex = 47;
@@ -218,7 +221,7 @@
             btnCapturar.Lighting = false;
             btnCapturar.LinearGradient_Background = false;
             btnCapturar.LinearGradientPen = false;
-            btnCapturar.Location = new Point(88, 311);
+            btnCapturar.Location = new Point(88, 355);
             btnCapturar.Name = "btnCapturar";
             btnCapturar.PenWidth = 15;
             btnCapturar.Rounding = true;
@@ -250,7 +253,7 @@
             rdbOtro.Checked = false;
             rdbOtro.EnabledCalc = true;
             rdbOtro.ForeColor = Color.White;
-            rdbOtro.Location = new Point(194, 85);
+            rdbOtro.Location = new Point(195, 118);
             rdbOtro.Name = "rdbOtro";
             rdbOtro.Size = new Size(60, 17);
             rdbOtro.TabIndex = 12;
@@ -262,7 +265,7 @@
             rdbDNI.Checked = true;
             rdbDNI.EnabledCalc = true;
             rdbDNI.ForeColor = Color.White;
-            rdbDNI.Location = new Point(144, 86);
+            rdbDNI.Location = new Point(145, 119);
             rdbDNI.Name = "rdbDNI";
             rdbDNI.Size = new Size(57, 17);
             rdbDNI.TabIndex = 11;
@@ -272,8 +275,8 @@
             // 
             txtNroDoc.BorderStyle = BorderStyle.None;
             txtNroDoc.Font = new Font("Segoe UI", 9F);
-            txtNroDoc.Location = new Point(154, 115);
-            txtNroDoc.Mask = "99.999.999";
+            txtNroDoc.Location = new Point(155, 148);
+            txtNroDoc.Mask = "00,000,000";
             txtNroDoc.Name = "txtNroDoc";
             txtNroDoc.Size = new Size(89, 16);
             txtNroDoc.TabIndex = 2;
@@ -285,7 +288,7 @@
             // 
             txtCelular.BorderStyle = BorderStyle.None;
             txtCelular.Font = new Font("Segoe UI", 9F);
-            txtCelular.Location = new Point(153, 252);
+            txtCelular.Location = new Point(154, 285);
             txtCelular.Mask = "(999)000-0000";
             txtCelular.Name = "txtCelular";
             txtCelular.Size = new Size(89, 16);
@@ -297,7 +300,7 @@
             // ucErrorIconoCel
             // 
             ucErrorIconoCel.BackColor = Color.Transparent;
-            ucErrorIconoCel.Location = new Point(8, 251);
+            ucErrorIconoCel.Location = new Point(9, 284);
             ucErrorIconoCel.Name = "ucErrorIconoCel";
             ucErrorIconoCel.Size = new Size(20, 20);
             ucErrorIconoCel.TabIndex = 42;
@@ -314,7 +317,7 @@
             // ucErrorIconoNroDoc
             // 
             ucErrorIconoNroDoc.BackColor = Color.Transparent;
-            ucErrorIconoNroDoc.Location = new Point(7, 112);
+            ucErrorIconoNroDoc.Location = new Point(8, 145);
             ucErrorIconoNroDoc.Name = "ucErrorIconoNroDoc";
             ucErrorIconoNroDoc.Size = new Size(20, 20);
             ucErrorIconoNroDoc.TabIndex = 41;
@@ -322,7 +325,7 @@
             // ucErrorIconoApellido
             // 
             ucErrorIconoApellido.BackColor = Color.Transparent;
-            ucErrorIconoApellido.Location = new Point(7, 52);
+            ucErrorIconoApellido.Location = new Point(7, 53);
             ucErrorIconoApellido.Name = "ucErrorIconoApellido";
             ucErrorIconoApellido.Size = new Size(20, 20);
             ucErrorIconoApellido.TabIndex = 39;
@@ -352,10 +355,11 @@
             cmbBarrio.DrawMode = DrawMode.OwnerDrawFixed;
             cmbBarrio.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbBarrio.EnabledCalc = true;
+            cmbBarrio.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             cmbBarrio.ForeColor = Color.Black;
             cmbBarrio.FormattingEnabled = true;
             cmbBarrio.ItemHeight = 20;
-            cmbBarrio.Location = new Point(149, 213);
+            cmbBarrio.Location = new Point(150, 246);
             cmbBarrio.Name = "cmbBarrio";
             cmbBarrio.Size = new Size(196, 26);
             cmbBarrio.TabIndex = 6;
@@ -370,7 +374,7 @@
             thunderLabel10.BackColor = Color.Transparent;
             thunderLabel10.Enabled = false;
             thunderLabel10.ForeColor = Color.WhiteSmoke;
-            thunderLabel10.Location = new Point(33, 217);
+            thunderLabel10.Location = new Point(34, 250);
             thunderLabel10.Name = "thunderLabel10";
             thunderLabel10.Size = new Size(77, 21);
             thunderLabel10.TabIndex = 35;
@@ -382,8 +386,8 @@
             txtCalleNro.EnabledCalc = true;
             txtCalleNro.Font = new Font("Segoe UI", 9F);
             txtCalleNro.ForeColor = Color.Black;
-            txtCalleNro.Location = new Point(141, 178);
-            txtCalleNro.MaxLength = 10;
+            txtCalleNro.Location = new Point(142, 211);
+            txtCalleNro.MaxLength = 5;
             txtCalleNro.MultiLine = false;
             txtCalleNro.Name = "txtCalleNro";
             txtCalleNro.ReadOnly = false;
@@ -398,7 +402,7 @@
             thunderLabel9.BackColor = Color.Transparent;
             thunderLabel9.Enabled = false;
             thunderLabel9.ForeColor = Color.WhiteSmoke;
-            thunderLabel9.Location = new Point(33, 183);
+            thunderLabel9.Location = new Point(34, 216);
             thunderLabel9.Name = "thunderLabel9";
             thunderLabel9.Size = new Size(75, 24);
             thunderLabel9.TabIndex = 33;
@@ -410,7 +414,7 @@
             txtCalle.EnabledCalc = true;
             txtCalle.Font = new Font("Segoe UI", 9F);
             txtCalle.ForeColor = Color.Black;
-            txtCalle.Location = new Point(141, 144);
+            txtCalle.Location = new Point(142, 177);
             txtCalle.MaxLength = 30;
             txtCalle.MultiLine = false;
             txtCalle.Name = "txtCalle";
@@ -425,7 +429,7 @@
             thunderLabel8.BackColor = Color.Transparent;
             thunderLabel8.Enabled = false;
             thunderLabel8.ForeColor = Color.WhiteSmoke;
-            thunderLabel8.Location = new Point(33, 153);
+            thunderLabel8.Location = new Point(34, 186);
             thunderLabel8.Name = "thunderLabel8";
             thunderLabel8.Size = new Size(77, 14);
             thunderLabel8.TabIndex = 31;
@@ -437,7 +441,7 @@
             txtMail.EnabledCalc = true;
             txtMail.Font = new Font("Segoe UI", 9F);
             txtMail.ForeColor = Color.Black;
-            txtMail.Location = new Point(144, 316);
+            txtMail.Location = new Point(145, 349);
             txtMail.MaxLength = 30;
             txtMail.MultiLine = false;
             txtMail.Name = "txtMail";
@@ -446,13 +450,14 @@
             txtMail.TabIndex = 5;
             txtMail.TextAlign = HorizontalAlignment.Left;
             txtMail.UseSystemPasswordChar = false;
+            txtMail.Validating += _Validating;
             // 
             // thunderLabel7
             // 
             thunderLabel7.BackColor = Color.Transparent;
             thunderLabel7.Enabled = false;
             thunderLabel7.ForeColor = Color.WhiteSmoke;
-            thunderLabel7.Location = new Point(33, 324);
+            thunderLabel7.Location = new Point(34, 357);
             thunderLabel7.Name = "thunderLabel7";
             thunderLabel7.Size = new Size(50, 18);
             thunderLabel7.TabIndex = 29;
@@ -464,7 +469,7 @@
             txtTelefono.EnabledCalc = true;
             txtTelefono.Font = new Font("Segoe UI", 9F);
             txtTelefono.ForeColor = Color.Black;
-            txtTelefono.Location = new Point(144, 281);
+            txtTelefono.Location = new Point(145, 314);
             txtTelefono.MaxLength = 10;
             txtTelefono.MultiLine = false;
             txtTelefono.Name = "txtTelefono";
@@ -480,7 +485,7 @@
             thunderLabel6.BackColor = Color.Transparent;
             thunderLabel6.Enabled = false;
             thunderLabel6.ForeColor = Color.WhiteSmoke;
-            thunderLabel6.Location = new Point(33, 254);
+            thunderLabel6.Location = new Point(34, 287);
             thunderLabel6.Name = "thunderLabel6";
             thunderLabel6.Size = new Size(62, 21);
             thunderLabel6.TabIndex = 15;
@@ -492,7 +497,7 @@
             txtCelular2.EnabledCalc = false;
             txtCelular2.Font = new Font("Segoe UI", 9F);
             txtCelular2.ForeColor = Color.Black;
-            txtCelular2.Location = new Point(144, 246);
+            txtCelular2.Location = new Point(145, 279);
             txtCelular2.MaxLength = 50;
             txtCelular2.MultiLine = false;
             txtCelular2.Name = "txtCelular2";
@@ -508,7 +513,7 @@
             thunderLabel5.BackColor = Color.Transparent;
             thunderLabel5.Enabled = false;
             thunderLabel5.ForeColor = Color.WhiteSmoke;
-            thunderLabel5.Location = new Point(33, 289);
+            thunderLabel5.Location = new Point(34, 322);
             thunderLabel5.Name = "thunderLabel5";
             thunderLabel5.Size = new Size(72, 16);
             thunderLabel5.TabIndex = 25;
@@ -519,7 +524,7 @@
             thunderLabel4.BackColor = Color.Transparent;
             thunderLabel4.Enabled = false;
             thunderLabel4.ForeColor = Color.WhiteSmoke;
-            thunderLabel4.Location = new Point(33, 86);
+            thunderLabel4.Location = new Point(34, 119);
             thunderLabel4.Name = "thunderLabel4";
             thunderLabel4.Size = new Size(109, 16);
             thunderLabel4.TabIndex = 13;
@@ -552,7 +557,7 @@
             cyberButton1.Lighting = false;
             cyberButton1.LinearGradient_Background = false;
             cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(532, 392);
+            cyberButton1.Location = new Point(532, 436);
             cyberButton1.Name = "cyberButton1";
             cyberButton1.PenWidth = 15;
             cyberButton1.Rounding = true;
@@ -594,7 +599,7 @@
             cyberButton2.Lighting = false;
             cyberButton2.LinearGradient_Background = false;
             cyberButton2.LinearGradientPen = false;
-            cyberButton2.Location = new Point(434, 392);
+            cyberButton2.Location = new Point(434, 436);
             cyberButton2.Name = "cyberButton2";
             cyberButton2.PenWidth = 15;
             cyberButton2.Rounding = true;
@@ -615,7 +620,7 @@
             txtNroDoc2.EnabledCalc = true;
             txtNroDoc2.Font = new Font("Segoe UI", 9F);
             txtNroDoc2.ForeColor = Color.Black;
-            txtNroDoc2.Location = new Point(144, 109);
+            txtNroDoc2.Location = new Point(145, 142);
             txtNroDoc2.MaxLength = 10;
             txtNroDoc2.MultiLine = false;
             txtNroDoc2.Name = "txtNroDoc2";
@@ -630,7 +635,7 @@
             thunderLabel3.BackColor = Color.Transparent;
             thunderLabel3.Enabled = false;
             thunderLabel3.ForeColor = Color.WhiteSmoke;
-            thunderLabel3.Location = new Point(33, 117);
+            thunderLabel3.Location = new Point(34, 150);
             thunderLabel3.Name = "thunderLabel3";
             thunderLabel3.Size = new Size(109, 16);
             thunderLabel3.TabIndex = 14;
@@ -707,7 +712,7 @@
             ucBorder1.Dock = DockStyle.Left;
             ucBorder1.Location = new Point(0, 0);
             ucBorder1.Name = "ucBorder1";
-            ucBorder1.Size = new Size(2, 444);
+            ucBorder1.Size = new Size(2, 488);
             ucBorder1.TabIndex = 50;
             // 
             // ucBorder2
@@ -716,7 +721,7 @@
             ucBorder2.Dock = DockStyle.Right;
             ucBorder2.Location = new Point(641, 0);
             ucBorder2.Name = "ucBorder2";
-            ucBorder2.Size = new Size(2, 444);
+            ucBorder2.Size = new Size(2, 488);
             ucBorder2.TabIndex = 51;
             // 
             // ucBordertd1
@@ -732,13 +737,17 @@
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 441);
+            ucBordertd2.Location = new Point(2, 485);
             ucBordertd2.Name = "ucBordertd2";
             ucBordertd2.Size = new Size(639, 3);
             ucBordertd2.TabIndex = 53;
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(txtFechaNac);
+            groupBox3.Controls.Add(thunderLabel11);
+            groupBox3.Controls.Add(ucErrorIconoApellido);
+            groupBox3.Controls.Add(ucErrorIconoMail);
             groupBox3.Controls.Add(txtMail);
             groupBox3.Controls.Add(rdbOtro);
             groupBox3.Controls.Add(txtCelular);
@@ -765,20 +774,47 @@
             groupBox3.Controls.Add(ucErrorIconoNroDoc);
             groupBox3.Controls.Add(txtNroDoc2);
             groupBox3.Controls.Add(cmbBarrio);
-            groupBox3.Controls.Add(ucErrorIconoApellido);
             groupBox3.Controls.Add(thunderLabel4);
             groupBox3.Location = new Point(16, 37);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(409, 351);
+            groupBox3.Size = new Size(409, 395);
             groupBox3.TabIndex = 54;
             groupBox3.TabStop = false;
+            // 
+            // ucErrorIconoMail
+            // 
+            ucErrorIconoMail.BackColor = Color.Transparent;
+            ucErrorIconoMail.Location = new Point(9, 352);
+            ucErrorIconoMail.Name = "ucErrorIconoMail";
+            ucErrorIconoMail.Size = new Size(20, 20);
+            ucErrorIconoMail.TabIndex = 44;
+            // 
+            // thunderLabel11
+            // 
+            thunderLabel11.BackColor = Color.Transparent;
+            thunderLabel11.Enabled = false;
+            thunderLabel11.ForeColor = Color.WhiteSmoke;
+            thunderLabel11.Location = new Point(33, 88);
+            thunderLabel11.Name = "thunderLabel11";
+            thunderLabel11.Size = new Size(96, 16);
+            thunderLabel11.TabIndex = 45;
+            thunderLabel11.Text = "Fecha. Nac";
+            // 
+            // txtFechaNac
+            // 
+            txtFechaNac.CustomFormat = "dd/MM/yyyy";
+            txtFechaNac.Format = DateTimePickerFormat.Custom;
+            txtFechaNac.Location = new Point(154, 88);
+            txtFechaNac.Name = "txtFechaNac";
+            txtFechaNac.Size = new Size(116, 23);
+            txtFechaNac.TabIndex = 59;
             // 
             // FrmSociosAlta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(643, 444);
+            ClientSize = new Size(643, 488);
             Controls.Add(groupBox3);
             Controls.Add(ucBordertd2);
             Controls.Add(ucBordertd1);
@@ -856,5 +892,8 @@
         private UserControls.UCBorderTD ucBordertd1;
         private UserControls.UCBorderTD ucBordertd2;
         private GroupBox groupBox3;
+        private UserControls.UCErrorIcono ucErrorIconoMail;
+        private ReaLTaiizor.Controls.ThunderLabel thunderLabel11;
+        private DateTimePicker txtFechaNac;
     }
 }

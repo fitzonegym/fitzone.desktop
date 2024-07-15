@@ -7,6 +7,8 @@ using Fitzone.Front.FormsExtras;
 using ReaLTaiizor.Controls;
 using System.ComponentModel;
 using System.Data;
+using System.Globalization;
+using System.Net.Mail;
 
 namespace Fitzone.Front.Socios
 {
@@ -119,6 +121,8 @@ namespace Fitzone.Front.Socios
             //            _EnumModoForm = EnumModoForm.Modificacion;
             //          _id_socio = 1;
 
+            txtFechaNac.Value = DateTime.Now;
+
             CargarBarrios();
             CargarDatosSocio();
 
@@ -208,14 +212,23 @@ namespace Fitzone.Front.Socios
                 mensaje += "\nIngrese el apellido";
             }
 
-            if (String.IsNullOrWhiteSpace(e.numeroDocumento))
+            string caracteresIndeseados = "()-., ";            
+
+            string nrodoc = new string(e.numeroDocumento.Where(c => !caracteresIndeseados.Contains(c)).ToArray());
+            if (nrodoc.Length != 8)
             {
                 mensaje += "\nIngrese el nro. de documento";
             }
 
-            if (String.IsNullOrWhiteSpace(e.telefono1))
+            if (String.IsNullOrWhiteSpace(e.telefono1) || e.telefono1.Length != 10)
             {
                 mensaje += "\nIngrese el celular";
+            }
+
+
+            if (!String.IsNullOrWhiteSpace(e.mail) && !IsValidEmail(e.mail))
+            {
+                mensaje += "\nIngrese el mail";
             }
 
             if (!String.IsNullOrWhiteSpace(mensaje))
@@ -225,6 +238,19 @@ namespace Fitzone.Front.Socios
 
             return true;
 
+        }
+
+        static bool IsValidEmail(string email)
+        {
+            try
+            {
+                var mailAddress = new MailAddress(email);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
 
         private void Guardar()
@@ -256,6 +282,8 @@ namespace Fitzone.Front.Socios
                 _socio.tipoDocumento = "OTRO";
             _socio.telefono1 = txtCelular.Text;
             _socio.telefono2 = txtTelefono.Text;
+
+            _socio.fechaNacimiento = txtFechaNac.Value;
 
             //imagen            
             _socio.imagen = ImageToArrayBytes();
@@ -296,20 +324,39 @@ namespace Fitzone.Front.Socios
 
         private void _Validating(object sender, CancelEventArgs e)
         {
-            string caracteresIndeseados = "()-.,";
+            string caracteresIndeseados = "()-., ";
 
-            ucErrorIconoNroDoc.Visible = String.IsNullOrWhiteSpace(new string(txtNroDoc.Text.Where(c => !caracteresIndeseados.Contains(c)).ToArray()));
-            ucErrorIconoCel.Visible = String.IsNullOrWhiteSpace((new string(txtCelular.Text.Where(c => !caracteresIndeseados.Contains(c)).ToArray())));
+            //ucErrorIconoNroDoc.Visible = String.IsNullOrWhiteSpace(new string(txtNroDoc.Text.Where(c => !caracteresIndeseados.Contains(c)).ToArray()));           
+            string nrodoc = new string(txtNroDoc.Text.Where(c => !caracteresIndeseados.Contains(c)).ToArray());
+            ucErrorIconoNroDoc.Visible = nrodoc.Length != 8;
+
+            string cel = new string(txtCelular.Text.Where(c => !caracteresIndeseados.Contains(c)).ToArray());
+            ucErrorIconoCel.Visible = cel.Length != 10;
 
             ucErrorIconoNombre.Visible = String.IsNullOrWhiteSpace(txtNombre.Text);
-            ucErrorIconoApellido.Visible = String.IsNullOrWhiteSpace(txtApellido.Text);
+            txtNombre.Text = CapitalizeWords(txtNombre.Text);
 
+            ucErrorIconoApellido.Visible = String.IsNullOrWhiteSpace(txtApellido.Text);
+            txtApellido.Text = CapitalizeWords(txtApellido.Text);
+
+            ucErrorIconoMail.Visible = !String.IsNullOrWhiteSpace(txtMail.Text) && !IsValidEmail(txtMail.Text);
+
+        }
+
+        private string CapitalizeWords(string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return str;
+            }
+            TextInfo textInfo = new CultureInfo("es-ES", false).TextInfo;
+            return textInfo.ToTitleCase(str.ToLower());
         }
 
         private void txtNroDoc_Click_1(object sender, EventArgs e)
         {
             string cadenaOriginal = txtNroDoc.Text;
-            string caracteresIndeseados = ".,";
+            string caracteresIndeseados = "., ";
             string resultado = new string(cadenaOriginal.Where(c => !caracteresIndeseados.Contains(c)).ToArray());
 
             if (String.IsNullOrWhiteSpace(resultado))
