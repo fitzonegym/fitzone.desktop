@@ -166,6 +166,7 @@ namespace Fitzone.Front.Socios
             bindingSource1.DataSource = null;
             bindingSource1.DataSource = _listaSocios;
 
+            ucCantidadregistros1._cantidad = _listaSocios.Count();
 
             if (_listaSocios.Count == 0 && !primeraCarga)
             {
@@ -180,7 +181,7 @@ namespace Fitzone.Front.Socios
                 column.SortMode = DataGridViewColumnSortMode.Automatic;
             }
 
-            ucCantidadregistros1._cantidad = _listaSocios.Count();
+         
 
             primeraCarga = false;
 

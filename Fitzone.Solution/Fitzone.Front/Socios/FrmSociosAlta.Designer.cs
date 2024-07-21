@@ -77,9 +77,9 @@
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBordertd2 = new UserControls.UCBorderTD();
             groupBox3 = new GroupBox();
-            ucErrorIconoMail = new UserControls.UCErrorIcono();
-            thunderLabel11 = new ReaLTaiizor.Controls.ThunderLabel();
             txtFechaNac = new DateTimePicker();
+            thunderLabel11 = new ReaLTaiizor.Controls.ThunderLabel();
+            ucErrorIconoMail = new UserControls.UCErrorIcono();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxImagen).BeginInit();
             groupBox1.SuspendLayout();
@@ -781,13 +781,14 @@
             groupBox3.TabIndex = 54;
             groupBox3.TabStop = false;
             // 
-            // ucErrorIconoMail
+            // txtFechaNac
             // 
-            ucErrorIconoMail.BackColor = Color.Transparent;
-            ucErrorIconoMail.Location = new Point(9, 352);
-            ucErrorIconoMail.Name = "ucErrorIconoMail";
-            ucErrorIconoMail.Size = new Size(20, 20);
-            ucErrorIconoMail.TabIndex = 44;
+            txtFechaNac.CustomFormat = "dd/MM/yyyy";
+            txtFechaNac.Format = DateTimePickerFormat.Custom;
+            txtFechaNac.Location = new Point(154, 88);
+            txtFechaNac.Name = "txtFechaNac";
+            txtFechaNac.Size = new Size(116, 23);
+            txtFechaNac.TabIndex = 59;
             // 
             // thunderLabel11
             // 
@@ -800,14 +801,13 @@
             thunderLabel11.TabIndex = 45;
             thunderLabel11.Text = "Fecha. Nac";
             // 
-            // txtFechaNac
+            // ucErrorIconoMail
             // 
-            txtFechaNac.CustomFormat = "dd/MM/yyyy";
-            txtFechaNac.Format = DateTimePickerFormat.Custom;
-            txtFechaNac.Location = new Point(154, 88);
-            txtFechaNac.Name = "txtFechaNac";
-            txtFechaNac.Size = new Size(116, 23);
-            txtFechaNac.TabIndex = 59;
+            ucErrorIconoMail.BackColor = Color.Transparent;
+            ucErrorIconoMail.Location = new Point(9, 352);
+            ucErrorIconoMail.Name = "ucErrorIconoMail";
+            ucErrorIconoMail.Size = new Size(20, 20);
+            ucErrorIconoMail.TabIndex = 44;
             // 
             // FrmSociosAlta
             // 

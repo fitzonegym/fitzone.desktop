@@ -84,7 +84,8 @@ namespace Fitzone.Controller
                 if (existente != null)
                 {
                     //existe el DNI
-                    throw new Exception("El socio ya existe [DNI]");
+                    string m = string.Format("El socio ya existe [DNI {0}]", existente.numeroDocumento);
+                    throw new Exception(m);
 
                 }
                 contexto.Add(entidad);
@@ -92,9 +93,9 @@ namespace Fitzone.Controller
                 return true;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }          
             
 

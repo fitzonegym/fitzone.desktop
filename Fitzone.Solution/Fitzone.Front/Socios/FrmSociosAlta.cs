@@ -307,11 +307,21 @@ namespace Fitzone.Front.Socios
 
             SocioController c = new SocioController();
 
-            if (_EnumModoForm == EnumModoForm.Alta)
-                c.Insert(_socio);
+            try
+            {
+                if (_EnumModoForm == EnumModoForm.Alta)
+                    c.Insert(_socio);
 
-            if (_EnumModoForm == EnumModoForm.Modificacion)
-                c.Update(_socio, _socio.idSocio);
+                if (_EnumModoForm == EnumModoForm.Modificacion)
+                    c.Update(_socio, _socio.idSocio);
+            }
+            catch (Exception ex)
+            {
+                msg = new MessageBoxCustom(ex.Message, EnumModoMessageBoxCustom.Aceptar);
+                msg.ShowDialog();
+                return;
+            }
+          
 
             msg = new MessageBoxCustom("Se dió de alta el socio " + "("+_socio.idSocio.ToString()+") " + _socio.NombreCompleto + "\n¿Desea agregar uno nuevo?",EnumModoMessageBoxCustom.YesNo,50);
             msg.ShowDialog();
