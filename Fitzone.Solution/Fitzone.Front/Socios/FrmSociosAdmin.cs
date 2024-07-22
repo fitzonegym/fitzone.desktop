@@ -103,10 +103,10 @@ namespace Fitzone.Front.Socios
 
         private void LimpiarFiltros()
         {
+            txtFechaDesde.Checked = true;
+            txtFechaHasta.Checked = true;
             txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-1);
-            txtFechaHasta.Value = Statics.DateTimeNow235959();
-            txtFechaDesde.Checked = false;
-            txtFechaHasta.Checked = false;
+            txtFechaHasta.Value = Statics.DateTimeNow235959();            
             txtApellido.Text = "";
             txtDocumento.Text = "";
             txtNombre.Text = "";
@@ -118,8 +118,8 @@ namespace Fitzone.Front.Socios
 
             LimpiarFiltros();
 
-            txtFechaDesde.Checked = false;
-            txtFechaHasta.Checked = false;
+            //txtFechaDesde.Checked = false;
+            //txtFechaHasta.Checked = false;
 
             // this.dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
@@ -128,7 +128,7 @@ namespace Fitzone.Front.Socios
                 btnAceptar.Visible = true;
                 btnCancelar.Visible = true;
                 // btnAceptar.Location = btnCancelar.Location;
-                CargarGrilla();
+               // CargarGrilla();
             }
             if (_EnumModoFormulario == EnumModoFormulario.Administracion)
             {

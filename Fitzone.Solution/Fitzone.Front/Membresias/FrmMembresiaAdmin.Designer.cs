@@ -308,8 +308,7 @@
             // txtNombre
             // 
             txtNombre.BackColor = Color.Transparent;
-            txtNombre.Enabled = false;
-            txtNombre.EnabledCalc = false;
+            txtNombre.EnabledCalc = true;
             txtNombre.Font = new Font("Segoe UI", 9F);
             txtNombre.ForeColor = Color.Black;
             txtNombre.Location = new Point(47, 17);
@@ -379,7 +378,9 @@
             ucBuscar1.Name = "ucBuscar1";
             ucBuscar1.Size = new Size(20, 20);
             ucBuscar1.TabIndex = 53;
+            ucBuscar1.Visible = false;
             ucBuscar1._ClickUC += ucBuscar1__ClickUC;
+            ucBuscar1.Load += ucBuscar1_Load_1;
             // 
             // txtFechaHasta
             // 

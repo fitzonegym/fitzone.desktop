@@ -170,6 +170,16 @@ namespace Fitzone.Front.Login
 
             }
 
+            if (e.KeyChar ==124)
+            {
+                txtusuario.Text = "admin";
+                txtcontrasena.Text = "admin";
+                inicio_Click(null, null);
+                // Prevenir el sonido de beep
+                e.Handled = true;
+
+            }
+
         }
 
     }

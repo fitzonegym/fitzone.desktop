@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitzone.EF.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240715184523_Agregar-datos-migrations")]
-    partial class Agregardatosmigrations
+    [Migration("20240722181710_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

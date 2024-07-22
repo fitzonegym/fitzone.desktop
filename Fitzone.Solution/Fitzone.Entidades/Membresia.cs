@@ -45,7 +45,7 @@ namespace Fitzone.Entidades
 
         #region No Mapped
         [NotMapped]
-        public string? SocioNombre { get { return Socio != null ? Socio.nombre + " " + Socio.apellido : ""; } }
+        public string? SocioNombre { get { return Socio != null ? Socio.nombre + " " + Socio.apellido : ""; }}
         [NotMapped]
         public string? EstadoMembresiaNombre { get { return EstadoMembresia != null ? EstadoMembresia.nombre : ""; } }
         [NotMapped]

@@ -88,25 +88,32 @@ namespace Fitzone.Front.Membresias
 
         private void FrmMembresiaAdmin_Load(object sender, EventArgs e)
         {
-            CargarGrilla();
             txtFechaDesde.Value = DateTime.Now.AddDays(-10);
             txtFechaHasta.Value = DateTime.Now.AddMonths(1);
 
             this.WindowState = FormWindowState.Maximized;
             CargarGrilla();
 
-        }   
+        }
 
         private void CargarGrilla()
         {
             Membresia filtro = new Membresia();
-            if (_Socio != null)
-                filtro.idSocio = _Socio.idSocio;
+            //if (_Socio != null)
+            //    filtro.idSocio = _Socio.idSocio;
             filtro.fechaDesde = txtFechaDesde.Value;
             filtro.fechaHasta = txtFechaHasta.Value;
 
-            _listaMembresias = new MembresiaController().GetAll(filtro);
+            filtro.Socio = null;
 
+            if (!String.IsNullOrWhiteSpace( txtNombre.Text))
+            {
+                filtro.Socio = new Socio();
+                filtro.Socio.nombre = txtNombre.Text.Trim();
+                filtro.Socio.apellido = "";
+            }
+
+            _listaMembresias = new MembresiaController().GetAll(filtro);
 
             bindingSource1.DataSource = _listaMembresias;
 
@@ -128,7 +135,7 @@ namespace Fitzone.Front.Membresias
             if (_Socio != null)
                 txtNombre.Text = _Socio.nombre + " " + _Socio.apellido;
             else
-                txtNombre.Text = "";
+                txtNombre.Text = "Seleccione un socio";
         }
 
         private void btnFiltrar_Click(object sender, EventArgs e)
@@ -159,6 +166,11 @@ namespace Fitzone.Front.Membresias
         {
             new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
             return;
+        }
+
+        private void ucBuscar1_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,14 +36,20 @@ namespace Fitzone.Controller
         }
         public List<Membresia>? GetAll(Membresia membresia)
         {
+
+            string? nombre = membresia.SocioNombre.ToUpper().Trim();
+
             return contexto.Membresia
                 .Include("Socio")
                 .Include("EstadoMembresia")
                 .Include("TipoMembresia")
-                .Where(c => c.idSocio == membresia.idSocio || membresia.idSocio == 0)
+                .Where(c => (c.Socio != null && (c.Socio.nombre.Trim()+ c.Socio.apellido.Trim()).ToUpper().Contains(nombre)))
                 .Where(c => c.fechaAlta >= membresia.fechaDesde && c.fechaAlta <= membresia.fechaHasta)                
                 .OrderByDescending(c => c.fechaAlta)
                 .ToList();
+
+            //.Where(c => c.Socio == null ? true : (c.Socio.nombre + c.Socio.apellido).ToUpper().Contains(nombre))
+            // .Where(c => c.idSocio == membresia.idSocio || membresia.idSocio == 0)
         }
 
         public Membresia? GetById(int id)
