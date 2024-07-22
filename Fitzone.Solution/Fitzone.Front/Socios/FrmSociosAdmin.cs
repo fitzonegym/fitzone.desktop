@@ -105,8 +105,8 @@ namespace Fitzone.Front.Socios
         {
             txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-1);
             txtFechaHasta.Value = Statics.DateTimeNow235959();
-            txtFechaDesde.Checked = true;
-            txtFechaHasta.Checked = true;
+            txtFechaDesde.Checked = false;
+            txtFechaHasta.Checked = false;
             txtApellido.Text = "";
             txtDocumento.Text = "";
             txtNombre.Text = "";
@@ -181,7 +181,7 @@ namespace Fitzone.Front.Socios
                 column.SortMode = DataGridViewColumnSortMode.Automatic;
             }
 
-         
+
 
             primeraCarga = false;
 
@@ -443,7 +443,7 @@ namespace Fitzone.Front.Socios
         static IContainer CellStyle(IContainer container)
         {
             return container
-                .Border(1)                
+                .Border(1)
                 .BorderColor(Colors.Grey.Lighten2)
                 .Padding(3)
                 .AlignMiddle()
@@ -560,5 +560,27 @@ namespace Fitzone.Front.Socios
                 textBox.TB.SelectionLength = selectionLength;
             }
         }
+
+        private void ucClearFilters1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        //private void btnConsultar_Click(object sender, EventArgs e)
+        //{
+        //    if (bindingSource1 == null || bindingSource1.Current == null)
+        //    {
+        //        new MessageBoxCustom("Seleccione un socio",Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+        //        return;
+        //    }            
+
+        //    FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
+        //    frmSociosAlta._EnumModoForm = EnumModoForm.Consulta;
+        //    frmSociosAlta._id_socio = ((Socio)bindingSource1.Current).idSocio;
+
+        //    frmSociosAlta.ShowDialog();
+
+        //    CargarGrilla();
+        //}
     }
 }

@@ -126,6 +126,12 @@ namespace Fitzone.Front.Socios
             CargarBarrios();
             CargarDatosSocio();
 
+            if (_EnumModoForm == EnumModoForm.Consulta)
+            {
+                btnGuardar.Visible = false;
+                HabilitarControlles(false);
+
+            }
 
             //habilitar en el sprint 2
             //_frame = new Mat();
@@ -160,6 +166,26 @@ namespace Fitzone.Front.Socios
             //pictureBoxImagen.Image = ArrayBytesToImage(_socio.imagen);
         }
 
+        private void HabilitarControlles(bool _enabled)
+        {
+            cmbBarrio.Enabled = _enabled;
+
+            txtMail.Enabled = _enabled;
+            txtCalle.Enabled = _enabled;
+            txtCalleNro.Enabled = _enabled  ;
+
+            txtNombre.Enabled = _enabled;
+            txtApellido.Enabled = _enabled  ;
+            txtNroDoc.Enabled = _enabled;
+
+            
+            rdbDNI.Enabled = _enabled;
+            
+
+            txtCelular.Enabled = _enabled;
+            txtTelefono.Enabled = _enabled;
+
+        }
         private void CargarDatosSocio()
         {
 

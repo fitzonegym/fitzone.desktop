@@ -231,7 +231,7 @@
             // idSocioDataGridViewTextBoxColumn
             // 
             idSocioDataGridViewTextBoxColumn.DataPropertyName = "idSocio";
-            idSocioDataGridViewTextBoxColumn.HeaderText = "Id";
+            idSocioDataGridViewTextBoxColumn.HeaderText = "Nro";
             idSocioDataGridViewTextBoxColumn.Name = "idSocioDataGridViewTextBoxColumn";
             idSocioDataGridViewTextBoxColumn.ReadOnly = true;
             idSocioDataGridViewTextBoxColumn.Width = 50;
@@ -727,6 +727,7 @@
             ucClearFilters1.TabIndex = 65;
             toolTip1.SetToolTip(ucClearFilters1, "Limpiar filtros");
             ucClearFilters1._ClickUCAgregar += ucClearFilters1__ClickUCAgregar;
+            ucClearFilters1.Load += ucClearFilters1_Load;
             // 
             // ucCantidadregistros1
             // 
@@ -809,6 +810,10 @@
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel5;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel6;
         private GroupBox groupBox1;
+        private UserControls.UCCantidadregistros ucCantidadregistros1;
+        private UserControls.UCPintarFilasPares ucPintarFilasPares1;
+        private UserControls.UCClearFilters ucClearFilters1;
+        private ToolTip toolTip1;
         private DataGridViewTextBoxColumn idSocioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
@@ -824,9 +829,5 @@
         private DataGridViewTextBoxColumn idBarrioDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn TieneImagen;
         private DataGridViewCheckBoxColumn anuladoDataGridViewCheckBoxColumn;
-        private UserControls.UCCantidadregistros ucCantidadregistros1;
-        private UserControls.UCPintarFilasPares ucPintarFilasPares1;
-        private UserControls.UCClearFilters ucClearFilters1;
-        private ToolTip toolTip1;
     }
 }

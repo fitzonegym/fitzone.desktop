@@ -64,7 +64,7 @@
             thunderLabel5 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel4 = new ReaLTaiizor.Controls.ThunderLabel();
             cyberButton1 = new ReaLTaiizor.Controls.CyberButton();
-            cyberButton2 = new ReaLTaiizor.Controls.CyberButton();
+            btnGuardar = new ReaLTaiizor.Controls.CyberButton();
             txtNroDoc2 = new ReaLTaiizor.Controls.AloneTextBox();
             thunderLabel3 = new ReaLTaiizor.Controls.ThunderLabel();
             txtApellido = new ReaLTaiizor.Controls.AloneTextBox();
@@ -572,47 +572,47 @@
             cyberButton1.Timer_RGB = 300;
             cyberButton1.Click += cyberButton1_Click;
             // 
-            // cyberButton2
+            // btnGuardar
             // 
-            cyberButton2.Alpha = 20;
-            cyberButton2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            cyberButton2.BackColor = Color.Transparent;
-            cyberButton2.Background = true;
-            cyberButton2.Background_WidthPen = 4F;
-            cyberButton2.BackgroundPen = true;
-            cyberButton2.ColorBackground = Color.Black;
-            cyberButton2.ColorBackground_1 = Color.Black;
-            cyberButton2.ColorBackground_2 = Color.Gray;
-            cyberButton2.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
-            cyberButton2.ColorLighting = Color.FromArgb(81, 45, 168);
-            cyberButton2.ColorPen_1 = Color.Black;
-            cyberButton2.ColorPen_2 = Color.Gray;
-            cyberButton2.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            cyberButton2.Effect_1 = true;
-            cyberButton2.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
-            cyberButton2.Effect_1_Transparency = 25;
-            cyberButton2.Effect_2 = true;
-            cyberButton2.Effect_2_ColorBackground = Color.White;
-            cyberButton2.Effect_2_Transparency = 20;
-            cyberButton2.Font = new Font("Arial", 11F);
-            cyberButton2.ForeColor = Color.FromArgb(245, 245, 245);
-            cyberButton2.Lighting = false;
-            cyberButton2.LinearGradient_Background = false;
-            cyberButton2.LinearGradientPen = false;
-            cyberButton2.Location = new Point(434, 436);
-            cyberButton2.Name = "cyberButton2";
-            cyberButton2.PenWidth = 15;
-            cyberButton2.Rounding = true;
-            cyberButton2.RoundingInt = 70;
-            cyberButton2.Size = new Size(99, 40);
-            cyberButton2.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            cyberButton2.TabIndex = 9;
-            cyberButton2.Tag = "Cyber";
-            cyberButton2.TextButton = "Guardar";
-            cyberButton2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            cyberButton2.Timer_Effect_1 = 5;
-            cyberButton2.Timer_RGB = 300;
-            cyberButton2.Click += cyberButton2_Click;
+            btnGuardar.Alpha = 20;
+            btnGuardar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnGuardar.BackColor = Color.Transparent;
+            btnGuardar.Background = true;
+            btnGuardar.Background_WidthPen = 4F;
+            btnGuardar.BackgroundPen = true;
+            btnGuardar.ColorBackground = Color.Black;
+            btnGuardar.ColorBackground_1 = Color.Black;
+            btnGuardar.ColorBackground_2 = Color.Gray;
+            btnGuardar.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btnGuardar.ColorLighting = Color.FromArgb(81, 45, 168);
+            btnGuardar.ColorPen_1 = Color.Black;
+            btnGuardar.ColorPen_2 = Color.Gray;
+            btnGuardar.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnGuardar.Effect_1 = true;
+            btnGuardar.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            btnGuardar.Effect_1_Transparency = 25;
+            btnGuardar.Effect_2 = true;
+            btnGuardar.Effect_2_ColorBackground = Color.White;
+            btnGuardar.Effect_2_Transparency = 20;
+            btnGuardar.Font = new Font("Arial", 11F);
+            btnGuardar.ForeColor = Color.FromArgb(245, 245, 245);
+            btnGuardar.Lighting = false;
+            btnGuardar.LinearGradient_Background = false;
+            btnGuardar.LinearGradientPen = false;
+            btnGuardar.Location = new Point(434, 436);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.PenWidth = 15;
+            btnGuardar.Rounding = true;
+            btnGuardar.RoundingInt = 70;
+            btnGuardar.Size = new Size(99, 40);
+            btnGuardar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnGuardar.TabIndex = 9;
+            btnGuardar.Tag = "Cyber";
+            btnGuardar.TextButton = "Guardar";
+            btnGuardar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnGuardar.Timer_Effect_1 = 5;
+            btnGuardar.Timer_RGB = 300;
+            btnGuardar.Click += cyberButton2_Click;
             // 
             // txtNroDoc2
             // 
@@ -823,7 +823,7 @@
             Controls.Add(botonesForms3);
             Controls.Add(groupBox2);
             Controls.Add(ucTituloLabel1);
-            Controls.Add(cyberButton2);
+            Controls.Add(btnGuardar);
             Controls.Add(cyberButton1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmSociosAlta";
@@ -851,7 +851,7 @@
         private ReaLTaiizor.Controls.AloneTextBox txtNombre;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel1;
         private ReaLTaiizor.Controls.CyberButton cyberButton1;
-        private ReaLTaiizor.Controls.CyberButton cyberButton2;
+        private ReaLTaiizor.Controls.CyberButton btnGuardar;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel4;
         private ReaLTaiizor.Controls.AloneRadioButton rdbOtro;
         private ReaLTaiizor.Controls.AloneRadioButton rdbDNI;

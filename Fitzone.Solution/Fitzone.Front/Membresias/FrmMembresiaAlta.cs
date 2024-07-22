@@ -84,7 +84,10 @@ namespace Fitzone.Front.Membresias
         {
             CargarTipos();
             txtFechaDesde.Value = Statics.DateTimeNowSinHora();
-            
+
+            LimpiarControles();
+
+
         }
 
         private void LimpiarControles()
@@ -92,6 +95,19 @@ namespace Fitzone.Front.Membresias
             _listaCuotas = new List<Cuota>();
             bindingSource1.DataSource = _listaCuotas;
             txtDescripcionMembresía.Text = "";
+
+            _Socio = null;
+
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtDocumento.Text = "";
+            txtTelefono.Text = "";
+            txtDireccion.Text = "";
+
+        }
+
+        private void CargarSocio()
+        {
 
         }
         private void btnBuscarSocio_Click(object sender, EventArgs e)
@@ -290,6 +306,12 @@ namespace Fitzone.Front.Membresias
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            if (_listaCuotas.Count == 0 && _Socio == null)
+            {
+                Close();
+                return;
+            }
+
 
             var mes = new MessageBoxCustom(EnumModoMessageBoxCustom.DeseaSalirSePerderanLosCambios);
             mes.ShowDialog();

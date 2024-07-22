@@ -202,7 +202,7 @@
             btnCancelar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             btnCancelar.TabIndex = 38;
             btnCancelar.Tag = "Cyber";
-            btnCancelar.TextButton = "Cancelar";
+            btnCancelar.TextButton = "Salir";
             btnCancelar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             btnCancelar.Timer_Effect_1 = 5;
             btnCancelar.Timer_RGB = 300;
