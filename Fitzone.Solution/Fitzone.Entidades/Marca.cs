@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Fitzone.Entidades
 {
-    public class Actividad
+    public class Marca
     {
         [Key]
-        public int idActividad { get; set; }
-
+        public int idMarca { get; set; }
         [MaxLength(50)]
-        public string nombre { get; set; }        
-     
+        public string nombre { get; set; }
     }
 }

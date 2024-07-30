@@ -20,15 +20,14 @@ namespace Fitzone.EF.Migrations
         {
                      migrationBuilder.Sql(@"
                        
-                           INSERT INTO [dbo].[Barrio] (nombre)
-							VALUES
-								('Centro'),
-								('Alta Córdoba'),
-								('Nueva Córdoba'),
-								('Cerro de las Rosas'),
-								('Pueyrredon');     
+                            INSERT INTO [dbo].[Barrio] ([nombre]) VALUES ('Centro');
+                            INSERT INTO [dbo].[Barrio] ([nombre]) VALUES ('Alta Córdoba');
+                            INSERT INTO [dbo].[Barrio] ([nombre]) VALUES ('Nueva Córdoba');
+                            INSERT INTO [dbo].[Barrio] ([nombre]) VALUES ('Cerro de las Rosas');
+                            INSERT INTO [dbo].[Barrio] ([nombre]) VALUES ('Pueyrredon');                         
 
-                            GO
+                            GO        
+                            
 
 
                            INSERT INTO [dbo].[Socio] (nombre, apellido, numeroDocumento, telefono1, telefono2, mail, tipoDocumento, calle, calleNumero, anulado, imagen, fechaAlta, fechaNacimiento, idBarrio) VALUES
@@ -56,85 +55,19 @@ namespace Fitzone.EF.Migrations
                             ('Inés', 'Miranda', '37112233', '1011223', '3511011223', 'ines.miranda@gmail.com', 'DNI', 'Calle Santiago del Estero', '999', 0, NULL, '2024-05-25 15:30:00', '1993-01-01 00:00:00', 2),
                             ('Diego', 'Navarro', '35223344', '1122334', '3511122334', 'diego.navarro@gmail.com', 'DNI', 'Calle Mendoza', '1110', 0, NULL, '2024-07-24 14:20:00', '1991-04-04 00:00:00', 3)
                                    
-                           go                                          
-
-                            INSERT INTO [dbo].[Configuraciones]
-                                       ([nombre]
-                                       ,[valor]                                       
-                                       )
-                                 VALUES
-                                       ('CuotaCantDiasVencimiento'
-                                       ,'10'
-                                       )
-                            GO
-							
+                           go
+                            
 							INSERT INTO [dbo].[Actividad] 
-								(nombre) 
-								values 
-								('Gimnasio'), ('Zumba'),('Pilates'),('Karate'),('Boxeo')
+								(nombre values 'Gimnasio'),
+								(nombre values 'Zumba'),
+								(nombre values 'Pilates'),
+								(nombre values 'Karate'),
+								(nombre values 'Boxeo')
 								
-							GO
+							go
 							
-							INSERT INTO [dbo].EstadoEquipamiento (nombre)
-							VALUES
-								('HABILITADO'),
-								('NO UTILIZABLE'),
-								('PRONTO A ROMPERSE')
-							
-							GO
-							
-							INSERT INTO [dbo].Marca (nombre)
-							VALUES
-								('BALANCED BODY'),
-								('AERO'),
-								('ALIGN')
-							
-							GO
-							
-							INSERT INTO [dbo].[Equipamiento]
-								   ([nombre]
-								   ,[dimensiones]
-								   ,[modelo]
-								   ,[idEstadoEquipamiento]
-								   ,[idMarca])
-							 VALUES
-									('Reformer'
-								   ,'2.5 MTS X 0.8 MTS'           
-								   ,'Reformer Pilares'           
-								   ,1
-								   ,1),
-								   ('Fitball'
-								   ,'80 cm diametro'           
-								   ,'Gama-Fit'           
-								   ,1
-								   ,2)
-								   
-							GO
-							
-								INSERT INTO [dbo].[EstadoMembresia] (nombre, descripcion)
-								VALUES
-									('ACTIVA', 'MEMBRESIA ACTIVA'),
-									('VENCIDA', 'NO PAGO LA CUOTA EN TERMINO'),
-									('CANCELADA', 'CANCELADA MANUALMENTE');
-									
-							GO
-									
-								INSERT INTO [dbo].[Instructor] 
-								(nombre, apellido, telefono1, telefono2, mail, tipoDocumento, numeroDocumento, calle, calleNumero, fechaAlta, fechaNacimiento, anulado, idBarrio)
-							VALUES
-								('Juan', 'Perez', '3511234567', NULL, 'juan.perez@example.com', 'DNI', '12345678', 'Calle Falsa', '123', GETDATE(), '1985-05-15', 0, 1),
-								('Maria', 'Gonzalez', '3512345678', NULL, 'maria.gonzalez@example.com', 'DNI', '23456789', 'Avenida Siempreviva', '456', GETDATE(), '1990-10-22', 0, 2),
-								('Luis', 'Martinez', '3513456789', NULL, 'luis.martinez@example.com', 'DNI', '34567890', 'Calle Los Pinos', '789', GETDATE(), '1988-08-30', 0, 3),
-								('Ana', 'Lopez', '3514567890', NULL, 'ana.lopez@example.com', 'DNI', '45678901', 'Boulevard Las Flores', '101', GETDATE(), '1992-01-17', 0, 4),
-								('Carlos', 'Fernandez', '3515678901', NULL, 'carlos.fernandez@example.com', 'DNI', '56789012', 'Calle Las Palmas', '202', GETDATE(), '1987-07-09', 0, 5);
-		
-
-                          GO	
-						  
-						    INSERT INTO [dbo].[TipoMembresia]
-								(nombre, descripcion, precioTotal, cantidadCuotas, cantidadDiasSemanales, 
-								diasHabilitados,
-								horadesde, horahasta, idActividad, idInstructor,cupoClase)
+                           INSERT INTO [dbo].[TipoMembresia]
+								(nombre, descripcion, precioTotal, cantidadCuotas, cantidadDiasSemanales, diasHabilitados, horadesde, horahasta, idActividad, idTipoClase)
 							VALUES
 								
 								('PASE LIBRE MUSCULACIÓN',
@@ -146,8 +79,7 @@ namespace Fitzone.EF.Migrations
 								 ,'20000101 00:00:00'
 								 ,'20000101 23:59:59'
 								 ,1
-								 ,null,
-								 null),
+								 ,null),
 								 
 								('PASE MUSCULACIÓN X 3 DIAS',
 								 'PASE LIBRE MUSCULACIÓN X 3 DIAS A LA SEMANA - CUALQUIER DIA',
@@ -158,8 +90,7 @@ namespace Fitzone.EF.Migrations
 								 ,'20000101 00:00:00'
 								 ,'20000101 23:59:59'
 								 ,1
-								 ,null,
-								 null),								 		
+								 ,null),								 		
 								 
 								('ZUMBA 3 DIAS - ANUAL',
 								 'ZUMBA 3 DIAS A LA SEMANA - PASE POR UN AÑO',
@@ -170,63 +101,57 @@ namespace Fitzone.EF.Migrations
 								  ,'20000101 20:00:00'
 								 ,'20000101 21:00:00'
 								 ,2
-								 ,1,
-								 20),
-								 
-								  
-								('PILATES 3 DIAS - 6 MESES',
-								 'PILATES 3 DIAS A LA SEMANA - PASE POR 6 MESES',
-								 90000,
-								 12,
-								 3,
-								 '[martes,jueves,viernes]'
-								  ,'20000101 19:00:00'
-								 ,'20000101 20:30:00'
-								 ,3
-								 ,2,
-								 15);
-								 ;
+								 ,1);
 
-							GO						
-							
-
-							INSERT INTO [dbo].[Membresia]
-									   ([precio]
-									   ,[fechaAlta]
-									   ,[fechaModificacion]
-									   ,[fechaDesde]
-									   ,[fechaHasta]
-									   ,[detalle]
-									   ,[cantidadDiasSemanales]
-									   ,[diasHabilitados]
-									   ,[horadesde]
-									   ,[horaHasta]
-									   ,[idEstadoMembresia]
-									   ,[idSocio]
-									   ,[idInstructor]
-									   ,[idActividad]
-									   ,[idTipoMembresia])
-								 VALUES
-									   (120000 					--<precio, decimal(8,2),>
-									   ,'20240720 15:10:00'		--<fechaAlta, datetime2(7),>
-									   ,null					--<fechaModificacion, datetime2(7),>
-									   ,'20240721 00:00:00'		--<fechaDesde, datetime2(7),>
-									   ,'20250720 00:00:00'		--<fechaHasta, datetime2(7),>
-									   ,'ZUMBA 3 DIAS A LA SEMANA - PASE POR UN AÑO'		--<detalle, nvarchar(1000),>
-									   ,3						--<cantidadDiasSemanales, int,>
-									   ,'[lunes,miercoles,viernes]'		--<diasHabilitados, nvarchar(max),>
-									   ,'2000-01-01 21:00:00'	--<horadesde, datetime2(7),>
-									   ,'2000-01-01 21:00:00'	--<horaHasta, datetime2(7),>
-									   ,1						--<idEstadoMembresia, int,>
-									   ,1						--<idSocio, int,>
-									   ,1						--<idInstructor, int,>
-									   ,3						--<idActividad, int,>
-									   ,3						-- idTipoMembresia
-									   )
 							GO
+								INSERT INTO [dbo].[EstadoMembresia] (nombre, descripcion)
+								VALUES
+									('ACTIVA', 'MEMBRESIA ACTIVA'),
+									('VENCIDA', 'NO PAGO LA CUOTA EN TERMINO'),
+									('CANCELADA', 'CANCELADA MANUALMENTE');
 
+                                    
+                                GO
+                                  INSERT INTO [dbo].[Membresia]
+                                            ([precio]
+                                           ,[fechaAlta]
+                                           ,[fechaDesde]
+                                           ,[fechaHasta]
+                                           ,[detalle]
+                                           ,[idSocio]
+                                           ,[idEstadoMembresia]
+                                           ,[idTipoMembresia]
+                                           ,cantidadDiasSemanales
+                                           ,diasHabilitados
+                                           ,[fechaModificacion])
+                                     VALUES
+                                           (12000
+                                           ,getdate()
+                                           ,'20240101'
+                                           ,'20240131'
+                                           ,'DETALLE DE MEMBRESIA'
+                                           ,1
+                                           ,1
+                                           ,1
+                                           ,3
+                                           ,'[lunes.miercoles,viernes]'
+                                           ,null
+                                           )
+                                GO
 
-						  
+                                                   
+
+                            INSERT INTO [dbo].[Configuraciones]
+                                       ([nombre]
+                                       ,[valor]                                       
+                                       )
+                                 VALUES
+                                       ('CuotaCantDiasVencimiento'
+                                       ,'10'
+                                       )
+                            GO
+
+                          
                     ");
         }
 

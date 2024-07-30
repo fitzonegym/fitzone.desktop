@@ -27,19 +27,30 @@ namespace Fitzone.Entidades
         public int cantidadDiasSemanales { get; set; }
         public string diasHabilitados { get; set; } = "";
 
+        public DateTime horadesde { get; set; }
+        public DateTime horaHasta { get; set; }
+        
+        //este campo se necesita porque cuando quiero verificar la disponibilidad de equipamiento
+        //se hace a partir del tipo de membresia
+        public int idTipoMembresia { get; set; }
+
         #region ForeignKey
 
         [ForeignKey("EstadoMembresia")]
         public int idEstadoMembresia { get; set; }
-        public EstadoMembresia? EstadoMembresia { get; set; }
-
-        [ForeignKey("TipoMembresia")]
-        public int idTipoMembresia { get; set; }
-        public TipoMembresia? TipoMembresia { get; set; }
+        public EstadoMembresia? EstadoMembresia { get; set; }                       
 
         [ForeignKey("Socio")]
         public int idSocio { get; set; }
         public Socio? Socio { get; set; }
+
+        [ForeignKey("Instructor")]
+        public int? idInstructor { get; set; }
+        public Instructor? Instructor { get; set; }
+
+        [ForeignKey("Actividad")]
+        public int idActividad { get; set; }
+        public Actividad? Actividad { get; set; }      
 
         #endregion
 
@@ -48,8 +59,8 @@ namespace Fitzone.Entidades
         public string? SocioNombre { get { return Socio != null ? Socio.nombre + " " + Socio.apellido : ""; }}
         [NotMapped]
         public string? EstadoMembresiaNombre { get { return EstadoMembresia != null ? EstadoMembresia.nombre : ""; } }
-        [NotMapped]
-        public string? TipoMembresiaNombre { get { return TipoMembresia != null ? TipoMembresia.nombre : ""; } }
+        //[NotMapped]
+        //public string? TipoMembresiaNombre { get { return TipoMembresia != null ? TipoMembresia.nombre : ""; } }
 
         #endregion
 

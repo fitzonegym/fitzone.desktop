@@ -14,19 +14,21 @@ namespace Fitzone.Entidades
         public int idEquipamiento { get; set; }
 
         [MaxLength(50)]
-        public string? tamaño { get; set; }
-
+        public string? nombre { get; set; }
+        
         [MaxLength(50)]
         public string? dimensiones { get; set; }
 
-        [MaxLength(100)]
-        public string? marca { get; set; }
 
         [MaxLength(100)]
         public string? modelo { get; set; }
 
-        [ForeignKey("TipoEquipamiento")]
-        public int idTipoEquipamiento { get; set; }
-        public TipoEquipamiento? TipoEquipamiento { get; set; }
+        [ForeignKey("EstadoEquipamiento")]
+        public int idEstadoEquipamiento { get; set; }
+        public EstadoEquipamiento? EstadoEquipamiento { get; set; }
+
+        [ForeignKey("Marca")]
+        public int idMarca { get; set; }
+        public Marca? Marca { get; set; }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitzone.EF.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240722181710_Init")]
-    partial class Init
+    [Migration("20240728222802_Agregar-datos-migrations")]
+    partial class Agregardatosmigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,24 @@ namespace Fitzone.EF.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Fitzone.Entidades.Actividad", b =>
+                {
+                    b.Property<int>("idActividad")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idActividad"));
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("idActividad");
+
+                    b.ToTable("Actividad");
+                });
 
             modelBuilder.Entity("Fitzone.Entidades.Barrio", b =>
                 {
@@ -97,6 +115,84 @@ namespace Fitzone.EF.Migrations
                     b.ToTable("Cuota");
                 });
 
+            modelBuilder.Entity("Fitzone.Entidades.Equipamiento", b =>
+                {
+                    b.Property<int>("idEquipamiento")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idEquipamiento"));
+
+                    b.Property<string>("dimensiones")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("idEstadoEquipamiento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idMarca")
+                        .HasColumnType("int");
+
+                    b.Property<string>("modelo")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("nombre")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("idEquipamiento");
+
+                    b.HasIndex("idEstadoEquipamiento");
+
+                    b.HasIndex("idMarca");
+
+                    b.ToTable("Equipamiento");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.EquipamientoTipoMembresia", b =>
+                {
+                    b.Property<int>("idexc")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idexc"));
+
+                    b.Property<int>("cantidadEquipamiento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idEquipamiento")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idTipoMembresia")
+                        .HasColumnType("int");
+
+                    b.HasKey("idexc");
+
+                    b.HasIndex("idEquipamiento");
+
+                    b.HasIndex("idTipoMembresia");
+
+                    b.ToTable("EquipamientoTipoMembresia");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.EstadoEquipamiento", b =>
+                {
+                    b.Property<int>("idEstadoEquipamiento")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idEstadoEquipamiento"));
+
+                    b.Property<string>("nombre")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("idEstadoEquipamiento");
+
+                    b.ToTable("EstadoEquipamiento");
+                });
+
             modelBuilder.Entity("Fitzone.Entidades.EstadoMembresia", b =>
                 {
                     b.Property<int>("idEstadoMembresia")
@@ -116,6 +212,92 @@ namespace Fitzone.EF.Migrations
                     b.HasKey("idEstadoMembresia");
 
                     b.ToTable("EstadoMembresia");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.Instructor", b =>
+                {
+                    b.Property<int>("idInstructor")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idInstructor"));
+
+                    b.Property<bool>("anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("apellido")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("calle")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("calleNumero")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<DateTime>("fechaAlta")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("fechaNacimiento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("idBarrio")
+                        .HasColumnType("int");
+
+                    b.Property<string>("mail")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("numeroDocumento")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("telefono1")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("telefono2")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("tipoDocumento")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("idInstructor");
+
+                    b.HasIndex("idBarrio");
+
+                    b.ToTable("Instructor");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.Marca", b =>
+                {
+                    b.Property<int>("idMarca")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idMarca"));
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("idMarca");
+
+                    b.ToTable("Marca");
                 });
 
             modelBuilder.Entity("Fitzone.Entidades.Membresia", b =>
@@ -149,7 +331,19 @@ namespace Fitzone.EF.Migrations
                     b.Property<DateTime?>("fechaModificacion")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("horaHasta")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("horadesde")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("idActividad")
+                        .HasColumnType("int");
+
                     b.Property<int>("idEstadoMembresia")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("idInstructor")
                         .HasColumnType("int");
 
                     b.Property<int>("idSocio")
@@ -163,11 +357,13 @@ namespace Fitzone.EF.Migrations
 
                     b.HasKey("idMembresia");
 
+                    b.HasIndex("idActividad");
+
                     b.HasIndex("idEstadoMembresia");
 
-                    b.HasIndex("idSocio");
+                    b.HasIndex("idInstructor");
 
-                    b.HasIndex("idTipoMembresia");
+                    b.HasIndex("idSocio");
 
                     b.ToTable("Membresia");
                 });
@@ -253,6 +449,9 @@ namespace Fitzone.EF.Migrations
                     b.Property<int>("cantidadDiasSemanales")
                         .HasColumnType("int");
 
+                    b.Property<int?>("cupoClase")
+                        .HasColumnType("int");
+
                     b.Property<string>("descripcion")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
@@ -260,6 +459,18 @@ namespace Fitzone.EF.Migrations
                     b.Property<string>("diasHabilitados")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("horaHasta")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("horadesde")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("idActividad")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("idInstructor")
+                        .HasColumnType("int");
 
                     b.Property<string>("nombre")
                         .HasMaxLength(50)
@@ -269,6 +480,10 @@ namespace Fitzone.EF.Migrations
                         .HasColumnType("decimal(8,2)");
 
                     b.HasKey("idTipoMembresia");
+
+                    b.HasIndex("idActividad");
+
+                    b.HasIndex("idInstructor");
 
                     b.ToTable("TipoMembresia");
                 });
@@ -284,17 +499,30 @@ namespace Fitzone.EF.Migrations
                     b.Navigation("Membresia");
                 });
 
-            modelBuilder.Entity("Fitzone.Entidades.Membresia", b =>
+            modelBuilder.Entity("Fitzone.Entidades.Equipamiento", b =>
                 {
-                    b.HasOne("Fitzone.Entidades.EstadoMembresia", "EstadoMembresia")
+                    b.HasOne("Fitzone.Entidades.EstadoEquipamiento", "EstadoEquipamiento")
                         .WithMany()
-                        .HasForeignKey("idEstadoMembresia")
+                        .HasForeignKey("idEstadoEquipamiento")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Fitzone.Entidades.Socio", "Socio")
+                    b.HasOne("Fitzone.Entidades.Marca", "Marca")
                         .WithMany()
-                        .HasForeignKey("idSocio")
+                        .HasForeignKey("idMarca")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EstadoEquipamiento");
+
+                    b.Navigation("Marca");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.EquipamientoTipoMembresia", b =>
+                {
+                    b.HasOne("Fitzone.Entidades.Equipamiento", "Equipamiento")
+                        .WithMany()
+                        .HasForeignKey("idEquipamiento")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -304,11 +532,53 @@ namespace Fitzone.EF.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("EstadoMembresia");
-
-                    b.Navigation("Socio");
+                    b.Navigation("Equipamiento");
 
                     b.Navigation("TipoMembresia");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.Instructor", b =>
+                {
+                    b.HasOne("Fitzone.Entidades.Barrio", "Barrio")
+                        .WithMany()
+                        .HasForeignKey("idBarrio")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Barrio");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.Membresia", b =>
+                {
+                    b.HasOne("Fitzone.Entidades.Actividad", "Actividad")
+                        .WithMany()
+                        .HasForeignKey("idActividad")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitzone.Entidades.EstadoMembresia", "EstadoMembresia")
+                        .WithMany()
+                        .HasForeignKey("idEstadoMembresia")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitzone.Entidades.Instructor", "Instructor")
+                        .WithMany()
+                        .HasForeignKey("idInstructor");
+
+                    b.HasOne("Fitzone.Entidades.Socio", "Socio")
+                        .WithMany()
+                        .HasForeignKey("idSocio")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Actividad");
+
+                    b.Navigation("EstadoMembresia");
+
+                    b.Navigation("Instructor");
+
+                    b.Navigation("Socio");
                 });
 
             modelBuilder.Entity("Fitzone.Entidades.Socio", b =>
@@ -320,6 +590,23 @@ namespace Fitzone.EF.Migrations
                         .IsRequired();
 
                     b.Navigation("Barrio");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.TipoMembresia", b =>
+                {
+                    b.HasOne("Fitzone.Entidades.Actividad", "Actividad")
+                        .WithMany()
+                        .HasForeignKey("idActividad")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitzone.Entidades.Instructor", "Instructor")
+                        .WithMany()
+                        .HasForeignKey("idInstructor");
+
+                    b.Navigation("Actividad");
+
+                    b.Navigation("Instructor");
                 });
 
             modelBuilder.Entity("Fitzone.Entidades.Membresia", b =>

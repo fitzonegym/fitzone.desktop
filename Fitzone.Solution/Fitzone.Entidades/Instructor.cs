@@ -10,6 +10,7 @@ namespace Fitzone.Entidades
 {
     public class Instructor
     {
+        #region Propiedades
         [Key]
         public int idInstructor { get; set; }
 
@@ -17,7 +18,13 @@ namespace Fitzone.Entidades
         public string nombre { get; set; }
 
         [MaxLength(50)]
-        public string? telefono { get; set; }
+        public string apellido { get; set; }
+
+        [MaxLength(50)]
+        public string telefono1 { get; set; }
+
+        [MaxLength(50)]
+        public string? telefono2 { get; set; }     
 
         [MaxLength(100)]
         public string? mail { get; set; }
@@ -28,10 +35,37 @@ namespace Fitzone.Entidades
         [MaxLength(20)]
         public string numeroDocumento { get; set; }
 
+        [MaxLength(100)]
+        public string? calle { get; set; }
+        [MaxLength(10)]
+        public string? calleNumero { get; set; }
+
+        public DateTime fechaAlta { get; set; } = DateTime.Now;
+        public DateTime fechaNacimiento { get; set; } = DateTime.Now;   
+
+        public bool anulado { get; set; } = false;
+
+        #endregion
+
+        #region ForeignKey
+
         [ForeignKey("Barrio")]
         public int idBarrio { get; set; }
         public Barrio? Barrio { get; set; }
 
-        public bool anulado { get; set; } = false;
+        #endregion
+
+        #region NotMapped
+
+        public string NombreCompleto
+        {
+            get
+            {
+                return apellido + ", " + nombre;
+            }
+        }
+
+        #endregion
+
     }
 }

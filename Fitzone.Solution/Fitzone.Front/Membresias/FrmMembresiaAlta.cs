@@ -275,7 +275,7 @@ namespace Fitzone.Front.Membresias
                 m.fechaAlta = DateTime.Now;
                 m.detalle = txtDescripcionMembresía.Text;
                 m.idEstadoMembresia = 1;
-                m.idTipoMembresia = _tipoMembresiaSeleccionada.idTipoMembresia;
+                //m.idTipoMembresia = _tipoMembresiaSeleccionada.idTipoMembresia;
                 m.fechaDesde = txtFechaDesde.Value;
                 m.fechaHasta = txtFechaHasta.Value;
                 m.Cuotas = _listaCuotas;
