@@ -173,12 +173,23 @@ namespace Fitzone.Front
 
         private void panelPrincipal_DoubleClick(object sender, EventArgs e)
         {
-            
+
             if (this.WindowState == FormWindowState.Maximized)
                 this.WindowState = FormWindowState.Normal;
             else
                 this.WindowState = FormWindowState.Maximized;
 
+        }
+
+        private void tipoDeMembresíaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmTipoMembresiaAdmin frm = new FrmTipoMembresiaAdmin();
+            frm.TopMost = true;
+            frm.MdiParent = this;
+            panelPrincipal.Controls.Add(frm);
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+            frm.BringToFront();
         }
     }
 }

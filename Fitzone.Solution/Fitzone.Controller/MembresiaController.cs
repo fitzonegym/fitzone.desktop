@@ -34,6 +34,12 @@ namespace Fitzone.Controller
                 .Include("TipoMembresia")
                 .OrderByDescending(c => c.fechaAlta).ToList();
         }
+
+        public List<Membresia>? GetByIdSocioFecha(int idSocio, DateTime fecha)
+        {
+            //devuelvo membresias en la fecha pero en cualquier estado
+            return contexto.Membresia.Where(m=> m.idSocio == idSocio && fecha >= m.fechaDesde && fecha <= m.fechaHasta).ToList();
+        }
         public List<Membresia>? GetAll(Membresia membresia)
         {
 
@@ -67,14 +73,7 @@ namespace Fitzone.Controller
             entidad.idMembresia = 0;
             try
             {
-                ////validar que no se repita el DNI
-                //var existente = contexto.Membresia.FirstOrDefault(i => i.numeroDocumento == entidad.numeroDocumento);
-                //if (existente != null)
-                //{
-                //    //existe el DNI
-                //    throw new Exception("El socio ya existe [DNI]");
-
-                //}
+              
                 contexto.Add(entidad);
                 contexto.SaveChanges();
                 return true;

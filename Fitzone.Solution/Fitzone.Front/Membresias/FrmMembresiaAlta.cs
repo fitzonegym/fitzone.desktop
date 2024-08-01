@@ -4,6 +4,7 @@ using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
 using Fitzone.Front.Socios;
 using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
 
 namespace Fitzone.Front.Membresias
@@ -161,6 +162,8 @@ namespace Fitzone.Front.Membresias
             txtHoraDesde.Text = _tipoMembresiaSeleccionada.horadesde.ToShortTimeString();
             txtHoraHasta.Text = _tipoMembresiaSeleccionada.horaHasta.ToShortTimeString();
 
+            chkCuotaUnica.Checked = _tipoMembresiaSeleccionada.cuotaUnica;
+
             CalcularFechasMembresia();
 
             Disponibilidad();
@@ -179,7 +182,10 @@ namespace Fitzone.Front.Membresias
         {
             try
             {
-                txtFechaHasta.Value = txtFechaDesde.Value.AddMonths(Convert.ToInt16(txtCuotas.Text));
+                //if (chkCuotaUnica.Checked)
+                //    txtFechaHasta.Value = txtFechaDesde.Value.AddMonths(1).AddSeconds(-1);
+                //else
+                    txtFechaHasta.Value = txtFechaDesde.Value.AddMonths(Convert.ToInt16(txtCuotas.Text)).AddSeconds(-1);
             }
             catch (Exception)
             {
@@ -201,6 +207,11 @@ namespace Fitzone.Front.Membresias
         private void GenerarCuotas()
         {
             int cant = _tipoMembresiaSeleccionada.cantidadCuotas;
+
+            if (_tipoMembresiaSeleccionada.cuotaUnica)
+                cant = 1;
+
+
             string? diasVenc = new ConfiguracionesController().GetValueByName("CuotaCantDiasVencimiento");
             //por defecto 10, por si no esta configurado
             int diasVencimiento = 10;
@@ -209,18 +220,22 @@ namespace Fitzone.Front.Membresias
 
             _listaCuotas = new List<Cuota>();
             DateTime desde = txtFechaDesde.Value;
-            for (int i = 0; i < cant; i++)
-            {
-                desde = desde.AddMonths(i);
 
+            for (int i = 0; i < cant; i++)
+            {   
                 Cuota c = new Cuota();
                 c.precio = _tipoMembresiaSeleccionada.precioTotal / cant;
                 c.numero = i + 1;
                 c.fechaDesde = desde;
-                c.fechaHasta = desde.AddMonths(1);
-                c.fechaVencimiento = desde.AddDays(diasVencimiento - 1);
+                c.fechaHasta = desde.AddMonths(1).AddSeconds(-1);
+                if (i == 0)
+                    c.fechaVencimiento = desde.AddDays(1).AddSeconds(-1);
+                else
+                    c.fechaVencimiento = desde.AddDays(diasVencimiento).AddSeconds(-1);
 
                 _listaCuotas.Add(c);
+
+                desde = desde.AddMonths(1);
             }
 
             bindingSourceCuotas.DataSource = _listaCuotas;
@@ -289,7 +304,7 @@ namespace Fitzone.Front.Membresias
                 return;
 
             try
-            {               
+            {
 
 
                 Membresia m = new Membresia();

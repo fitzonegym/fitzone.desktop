@@ -30,6 +30,17 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
+            nombre = new DataGridViewTextBoxColumn();
+            descripcion = new DataGridViewTextBoxColumn();
+            ActividadNombre = new DataGridViewTextBoxColumn();
+            InstructorNombreCompleto = new DataGridViewTextBoxColumn();
+            horadesde = new DataGridViewTextBoxColumn();
+            horaHasta = new DataGridViewTextBoxColumn();
+            precioTotal = new DataGridViewTextBoxColumn();
+            cantidadDiasSemanales = new DataGridViewTextBoxColumn();
+            diasHabilitados = new DataGridViewTextBoxColumn();
+            cantidadCuotas = new DataGridViewTextBoxColumn();
+            cupoClase = new DataGridViewTextBoxColumn();
             bindingSource1 = new BindingSource(components);
             btnModificar = new ReaLTaiizor.Controls.CyberButton();
             BtnAnular = new ReaLTaiizor.Controls.CyberButton();
@@ -42,17 +53,24 @@
             btnCancelar = new ReaLTaiizor.Controls.CyberButton();
             btnAgregar = new ReaLTaiizor.Controls.CyberButton();
             ucPintarFilasPares1 = new UserControls.UCPintarFilasPares();
-            nombre = new DataGridViewTextBoxColumn();
-            descripcion = new DataGridViewTextBoxColumn();
-            precioTotal = new DataGridViewTextBoxColumn();
-            cantidadCuotas = new DataGridViewTextBoxColumn();
-            cantidadDiasSemanales = new DataGridViewTextBoxColumn();
-            diasHabilitados = new DataGridViewTextBoxColumn();
-            horadesde = new DataGridViewTextBoxColumn();
-            horaHasta = new DataGridViewTextBoxColumn();
-            cupoClase = new DataGridViewTextBoxColumn();
-            InstructorNombreCompleto = new DataGridViewTextBoxColumn();
-            ActividadNombre = new DataGridViewTextBoxColumn();
+            idTipoMembresiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descripcionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            precioTotalDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cantidadCuotasDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cantidadDiasSemanalesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            diasHabilitadosDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            horadesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            horaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cupoClaseDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idInstructorDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            instructorDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idActividadDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            actividadDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            instructorNombreCompletoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            actividadNombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            horaDesdeStringDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            horaHastaStringDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             SuspendLayout();
@@ -66,7 +84,7 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.FromArgb(81, 45, 168);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombre, descripcion, precioTotal, cantidadCuotas, cantidadDiasSemanales, diasHabilitados, horadesde, horaHasta, cupoClase, InstructorNombreCompleto, ActividadNombre });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombre, descripcion, ActividadNombre, InstructorNombreCompleto, horadesde, horaHasta, precioTotal, cantidadDiasSemanales, diasHabilitados, cantidadCuotas, cupoClase, idTipoMembresiaDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, descripcionDataGridViewTextBoxColumn, precioTotalDataGridViewTextBoxColumn, cantidadCuotasDataGridViewTextBoxColumn, cantidadDiasSemanalesDataGridViewTextBoxColumn, diasHabilitadosDataGridViewTextBoxColumn, horadesdeDataGridViewTextBoxColumn, horaHastaDataGridViewTextBoxColumn, cupoClaseDataGridViewTextBoxColumn, idInstructorDataGridViewTextBoxColumn, instructorDataGridViewTextBoxColumn, idActividadDataGridViewTextBoxColumn, actividadDataGridViewTextBoxColumn, instructorNombreCompletoDataGridViewTextBoxColumn, actividadNombreDataGridViewTextBoxColumn, horaDesdeStringDataGridViewTextBoxColumn, horaHastaStringDataGridViewTextBoxColumn });
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.GridColor = SystemColors.InfoText;
             dataGridView1.Location = new Point(9, 57);
@@ -75,6 +93,91 @@
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.Size = new Size(778, 378);
             dataGridView1.TabIndex = 69;
+            // 
+            // nombre
+            // 
+            nombre.DataPropertyName = "nombre";
+            nombre.HeaderText = "Nombre";
+            nombre.Name = "nombre";
+            nombre.ReadOnly = true;
+            nombre.Width = 150;
+            // 
+            // descripcion
+            // 
+            descripcion.DataPropertyName = "descripcion";
+            descripcion.HeaderText = "Descripcion";
+            descripcion.Name = "descripcion";
+            descripcion.ReadOnly = true;
+            descripcion.Width = 150;
+            // 
+            // ActividadNombre
+            // 
+            ActividadNombre.DataPropertyName = "ActividadNombre";
+            ActividadNombre.HeaderText = "Actividad";
+            ActividadNombre.Name = "ActividadNombre";
+            ActividadNombre.ReadOnly = true;
+            // 
+            // InstructorNombreCompleto
+            // 
+            InstructorNombreCompleto.DataPropertyName = "InstructorNombreCompleto";
+            InstructorNombreCompleto.HeaderText = "Instructor";
+            InstructorNombreCompleto.Name = "InstructorNombreCompleto";
+            InstructorNombreCompleto.ReadOnly = true;
+            // 
+            // horadesde
+            // 
+            horadesde.DataPropertyName = "HoraDesdeString";
+            horadesde.HeaderText = "Desde";
+            horadesde.Name = "horadesde";
+            horadesde.ReadOnly = true;
+            horadesde.Width = 50;
+            // 
+            // horaHasta
+            // 
+            horaHasta.DataPropertyName = "HoraHastaString";
+            horaHasta.HeaderText = "Hasta";
+            horaHasta.Name = "horaHasta";
+            horaHasta.ReadOnly = true;
+            horaHasta.Width = 50;
+            // 
+            // precioTotal
+            // 
+            precioTotal.DataPropertyName = "precioTotal";
+            precioTotal.HeaderText = "Precio";
+            precioTotal.Name = "precioTotal";
+            precioTotal.ReadOnly = true;
+            precioTotal.Width = 70;
+            // 
+            // cantidadDiasSemanales
+            // 
+            cantidadDiasSemanales.DataPropertyName = "cantidadDiasSemanales";
+            cantidadDiasSemanales.HeaderText = "Cant Dias";
+            cantidadDiasSemanales.Name = "cantidadDiasSemanales";
+            cantidadDiasSemanales.ReadOnly = true;
+            cantidadDiasSemanales.Width = 50;
+            // 
+            // diasHabilitados
+            // 
+            diasHabilitados.DataPropertyName = "diasHabilitados";
+            diasHabilitados.HeaderText = "Dias Habilitados";
+            diasHabilitados.Name = "diasHabilitados";
+            diasHabilitados.ReadOnly = true;
+            // 
+            // cantidadCuotas
+            // 
+            cantidadCuotas.DataPropertyName = "cantidadCuotas";
+            cantidadCuotas.HeaderText = "Cant Cuotas";
+            cantidadCuotas.Name = "cantidadCuotas";
+            cantidadCuotas.ReadOnly = true;
+            cantidadCuotas.Width = 50;
+            // 
+            // cupoClase
+            // 
+            cupoClase.DataPropertyName = "cupoClase";
+            cupoClase.HeaderText = "Cupo";
+            cupoClase.Name = "cupoClase";
+            cupoClase.ReadOnly = true;
+            cupoClase.Width = 50;
             // 
             // bindingSource1
             // 
@@ -301,88 +404,137 @@
             // ucPintarFilasPares1
             // 
             ucPintarFilasPares1._dataGridView = dataGridView1;
-            ucPintarFilasPares1.BackColor = Color.White;
-            ucPintarFilasPares1.Location = new Point(652, 451);
+            ucPintarFilasPares1.BackColor = Color.FromArgb(103, 58, 183);
+            ucPintarFilasPares1.Location = new Point(656, 441);
             ucPintarFilasPares1.Name = "ucPintarFilasPares1";
             ucPintarFilasPares1.Size = new Size(33, 27);
             ucPintarFilasPares1.TabIndex = 80;
             // 
-            // nombre
+            // idTipoMembresiaDataGridViewTextBoxColumn
             // 
-            nombre.DataPropertyName = "nombre";
-            nombre.HeaderText = "Nombre";
-            nombre.Name = "nombre";
-            nombre.ReadOnly = true;
+            idTipoMembresiaDataGridViewTextBoxColumn.DataPropertyName = "idTipoMembresia";
+            idTipoMembresiaDataGridViewTextBoxColumn.HeaderText = "idTipoMembresia";
+            idTipoMembresiaDataGridViewTextBoxColumn.Name = "idTipoMembresiaDataGridViewTextBoxColumn";
+            idTipoMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // descripcion
+            // nombreDataGridViewTextBoxColumn
             // 
-            descripcion.DataPropertyName = "descripcion";
-            descripcion.HeaderText = "Descripcion";
-            descripcion.Name = "descripcion";
-            descripcion.ReadOnly = true;
+            nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
+            nombreDataGridViewTextBoxColumn.HeaderText = "nombre";
+            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            nombreDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // precioTotal
+            // descripcionDataGridViewTextBoxColumn
             // 
-            precioTotal.DataPropertyName = "precioTotal";
-            precioTotal.HeaderText = "Precio";
-            precioTotal.Name = "precioTotal";
-            precioTotal.ReadOnly = true;
+            descripcionDataGridViewTextBoxColumn.DataPropertyName = "descripcion";
+            descripcionDataGridViewTextBoxColumn.HeaderText = "descripcion";
+            descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            descripcionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // cantidadCuotas
+            // precioTotalDataGridViewTextBoxColumn
             // 
-            cantidadCuotas.DataPropertyName = "cantidadCuotas";
-            cantidadCuotas.HeaderText = "Cant Cuotas";
-            cantidadCuotas.Name = "cantidadCuotas";
-            cantidadCuotas.ReadOnly = true;
+            precioTotalDataGridViewTextBoxColumn.DataPropertyName = "precioTotal";
+            precioTotalDataGridViewTextBoxColumn.HeaderText = "precioTotal";
+            precioTotalDataGridViewTextBoxColumn.Name = "precioTotalDataGridViewTextBoxColumn";
+            precioTotalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // cantidadDiasSemanales
+            // cantidadCuotasDataGridViewTextBoxColumn
             // 
-            cantidadDiasSemanales.DataPropertyName = "cantidadDiasSemanales";
-            cantidadDiasSemanales.HeaderText = "Cant Dias Semanales";
-            cantidadDiasSemanales.Name = "cantidadDiasSemanales";
-            cantidadDiasSemanales.ReadOnly = true;
+            cantidadCuotasDataGridViewTextBoxColumn.DataPropertyName = "cantidadCuotas";
+            cantidadCuotasDataGridViewTextBoxColumn.HeaderText = "cantidadCuotas";
+            cantidadCuotasDataGridViewTextBoxColumn.Name = "cantidadCuotasDataGridViewTextBoxColumn";
+            cantidadCuotasDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // diasHabilitados
+            // cantidadDiasSemanalesDataGridViewTextBoxColumn
             // 
-            diasHabilitados.DataPropertyName = "diasHabilitados";
-            diasHabilitados.HeaderText = "Dias Habilitados";
-            diasHabilitados.Name = "diasHabilitados";
-            diasHabilitados.ReadOnly = true;
+            cantidadDiasSemanalesDataGridViewTextBoxColumn.DataPropertyName = "cantidadDiasSemanales";
+            cantidadDiasSemanalesDataGridViewTextBoxColumn.HeaderText = "cantidadDiasSemanales";
+            cantidadDiasSemanalesDataGridViewTextBoxColumn.Name = "cantidadDiasSemanalesDataGridViewTextBoxColumn";
+            cantidadDiasSemanalesDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // horadesde
+            // diasHabilitadosDataGridViewTextBoxColumn
             // 
-            horadesde.DataPropertyName = "HoraDesdeString";
-            horadesde.HeaderText = "Desde";
-            horadesde.Name = "horadesde";
-            horadesde.ReadOnly = true;
+            diasHabilitadosDataGridViewTextBoxColumn.DataPropertyName = "diasHabilitados";
+            diasHabilitadosDataGridViewTextBoxColumn.HeaderText = "diasHabilitados";
+            diasHabilitadosDataGridViewTextBoxColumn.Name = "diasHabilitadosDataGridViewTextBoxColumn";
+            diasHabilitadosDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // horaHasta
+            // horadesdeDataGridViewTextBoxColumn
             // 
-            horaHasta.DataPropertyName = "HoraHastaString";
-            horaHasta.HeaderText = "Hasta";
-            horaHasta.Name = "horaHasta";
-            horaHasta.ReadOnly = true;
+            horadesdeDataGridViewTextBoxColumn.DataPropertyName = "horadesde";
+            horadesdeDataGridViewTextBoxColumn.HeaderText = "horadesde";
+            horadesdeDataGridViewTextBoxColumn.Name = "horadesdeDataGridViewTextBoxColumn";
+            horadesdeDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // cupoClase
+            // horaHastaDataGridViewTextBoxColumn
             // 
-            cupoClase.DataPropertyName = "cupoClase";
-            cupoClase.HeaderText = "Cupo";
-            cupoClase.Name = "cupoClase";
-            cupoClase.ReadOnly = true;
+            horaHastaDataGridViewTextBoxColumn.DataPropertyName = "horaHasta";
+            horaHastaDataGridViewTextBoxColumn.HeaderText = "horaHasta";
+            horaHastaDataGridViewTextBoxColumn.Name = "horaHastaDataGridViewTextBoxColumn";
+            horaHastaDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // InstructorNombreCompleto
+            // cupoClaseDataGridViewTextBoxColumn
             // 
-            InstructorNombreCompleto.DataPropertyName = "InstructorNombreCompleto";
-            InstructorNombreCompleto.HeaderText = "Instructor";
-            InstructorNombreCompleto.Name = "InstructorNombreCompleto";
-            InstructorNombreCompleto.ReadOnly = true;
+            cupoClaseDataGridViewTextBoxColumn.DataPropertyName = "cupoClase";
+            cupoClaseDataGridViewTextBoxColumn.HeaderText = "cupoClase";
+            cupoClaseDataGridViewTextBoxColumn.Name = "cupoClaseDataGridViewTextBoxColumn";
+            cupoClaseDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // ActividadNombre
+            // idInstructorDataGridViewTextBoxColumn
             // 
-            ActividadNombre.DataPropertyName = "ActividadNombre";
-            ActividadNombre.HeaderText = "Actividad";
-            ActividadNombre.Name = "ActividadNombre";
-            ActividadNombre.ReadOnly = true;
+            idInstructorDataGridViewTextBoxColumn.DataPropertyName = "idInstructor";
+            idInstructorDataGridViewTextBoxColumn.HeaderText = "idInstructor";
+            idInstructorDataGridViewTextBoxColumn.Name = "idInstructorDataGridViewTextBoxColumn";
+            idInstructorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // instructorDataGridViewTextBoxColumn
+            // 
+            instructorDataGridViewTextBoxColumn.DataPropertyName = "Instructor";
+            instructorDataGridViewTextBoxColumn.HeaderText = "Instructor";
+            instructorDataGridViewTextBoxColumn.Name = "instructorDataGridViewTextBoxColumn";
+            instructorDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idActividadDataGridViewTextBoxColumn
+            // 
+            idActividadDataGridViewTextBoxColumn.DataPropertyName = "idActividad";
+            idActividadDataGridViewTextBoxColumn.HeaderText = "idActividad";
+            idActividadDataGridViewTextBoxColumn.Name = "idActividadDataGridViewTextBoxColumn";
+            idActividadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // actividadDataGridViewTextBoxColumn
+            // 
+            actividadDataGridViewTextBoxColumn.DataPropertyName = "Actividad";
+            actividadDataGridViewTextBoxColumn.HeaderText = "Actividad";
+            actividadDataGridViewTextBoxColumn.Name = "actividadDataGridViewTextBoxColumn";
+            actividadDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // instructorNombreCompletoDataGridViewTextBoxColumn
+            // 
+            instructorNombreCompletoDataGridViewTextBoxColumn.DataPropertyName = "InstructorNombreCompleto";
+            instructorNombreCompletoDataGridViewTextBoxColumn.HeaderText = "InstructorNombreCompleto";
+            instructorNombreCompletoDataGridViewTextBoxColumn.Name = "instructorNombreCompletoDataGridViewTextBoxColumn";
+            instructorNombreCompletoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // actividadNombreDataGridViewTextBoxColumn
+            // 
+            actividadNombreDataGridViewTextBoxColumn.DataPropertyName = "ActividadNombre";
+            actividadNombreDataGridViewTextBoxColumn.HeaderText = "ActividadNombre";
+            actividadNombreDataGridViewTextBoxColumn.Name = "actividadNombreDataGridViewTextBoxColumn";
+            actividadNombreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // horaDesdeStringDataGridViewTextBoxColumn
+            // 
+            horaDesdeStringDataGridViewTextBoxColumn.DataPropertyName = "HoraDesdeString";
+            horaDesdeStringDataGridViewTextBoxColumn.HeaderText = "HoraDesdeString";
+            horaDesdeStringDataGridViewTextBoxColumn.Name = "horaDesdeStringDataGridViewTextBoxColumn";
+            horaDesdeStringDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // horaHastaStringDataGridViewTextBoxColumn
+            // 
+            horaHastaStringDataGridViewTextBoxColumn.DataPropertyName = "HoraHastaString";
+            horaHastaStringDataGridViewTextBoxColumn.HeaderText = "HoraHastaString";
+            horaHastaStringDataGridViewTextBoxColumn.Name = "horaHastaStringDataGridViewTextBoxColumn";
+            horaHastaStringDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // FrmTipoMembresiaAdmin
             // 
@@ -427,14 +579,32 @@
         private UserControls.UCPintarFilasPares ucPintarFilasPares1;
         private DataGridViewTextBoxColumn nombre;
         private DataGridViewTextBoxColumn descripcion;
-        private DataGridViewTextBoxColumn precioTotal;
-        private DataGridViewTextBoxColumn cantidadCuotas;
-        private DataGridViewTextBoxColumn cantidadDiasSemanales;
-        private DataGridViewTextBoxColumn diasHabilitados;
+        private DataGridViewTextBoxColumn ActividadNombre;
+        private DataGridViewTextBoxColumn InstructorNombreCompleto;
         private DataGridViewTextBoxColumn horadesde;
         private DataGridViewTextBoxColumn horaHasta;
+        private DataGridViewTextBoxColumn precioTotal;
+        private DataGridViewTextBoxColumn cantidadDiasSemanales;
+        private DataGridViewTextBoxColumn diasHabilitados;
+        private DataGridViewTextBoxColumn cantidadCuotas;
         private DataGridViewTextBoxColumn cupoClase;
-        private DataGridViewTextBoxColumn InstructorNombreCompleto;
-        private DataGridViewTextBoxColumn ActividadNombre;
+        private DataGridViewTextBoxColumn idTipoMembresiaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn precioTotalDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cantidadCuotasDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cantidadDiasSemanalesDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn diasHabilitadosDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn horadesdeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn horaHastaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cupoClaseDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn idInstructorDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn instructorDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn idActividadDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn actividadDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn instructorNombreCompletoDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn actividadNombreDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn horaDesdeStringDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn horaHastaStringDataGridViewTextBoxColumn;
     }
 }

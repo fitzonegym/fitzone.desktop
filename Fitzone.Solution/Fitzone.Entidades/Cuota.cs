@@ -24,6 +24,8 @@ namespace Fitzone.Entidades
 
         public DateTime fechaVencimiento { get; set; }
 
+        public bool pagada { get; set; }
+
         [ForeignKey("Membresia")]
         public int idMembresia { get; set; }
         public Membresia? Membresia { get; set; }

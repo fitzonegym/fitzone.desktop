@@ -31,11 +31,16 @@
             components = new System.ComponentModel.Container();
             ucBordertd1 = new UserControls.UCBorderTD();
             groupBox2 = new GroupBox();
+            panel1 = new Panel();
+            spnPrecioCuota = new NumericUpDown();
+            thunderLabel3 = new ReaLTaiizor.Controls.ThunderLabel();
+            txtPrecioCuota = new ReaLTaiizor.Controls.AloneTextBox();
+            rdbUnica = new RadioButton();
+            rdbMensual = new RadioButton();
             ucErrorIconoInstructor = new UserControls.UCErrorIcono();
             ucErrorIconoDias = new UserControls.UCErrorIcono();
             ucErrorIconoNombre = new UserControls.UCErrorIcono();
             chkSinCupo = new CheckBox();
-            spnPrecioCuota = new NumericUpDown();
             spnCupo = new NumericUpDown();
             spnHasta = new DateTimePicker();
             chkCualquierHora = new CheckBox();
@@ -43,8 +48,6 @@
             spnCantDias = new NumericUpDown();
             spnCuotas = new NumericUpDown();
             spnPrecio = new NumericUpDown();
-            txtPrecioCuota = new ReaLTaiizor.Controls.AloneTextBox();
-            thunderLabel3 = new ReaLTaiizor.Controls.ThunderLabel();
             cmbInstructor = new ReaLTaiizor.Controls.AloneComboBox();
             bindingSourceInstructor = new BindingSource(components);
             thunderLabel18 = new ReaLTaiizor.Controls.ThunderLabel();
@@ -84,6 +87,7 @@
             btnCancelar = new ReaLTaiizor.Controls.CyberButton();
             btnAceptar = new ReaLTaiizor.Controls.CyberButton();
             groupBox2.SuspendLayout();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)spnPrecioCuota).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spnCupo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spnCantDias).BeginInit();
@@ -99,17 +103,19 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(521, 3);
+            ucBordertd1.Size = new Size(492, 3);
             ucBordertd1.TabIndex = 70;
             // 
             // groupBox2
             // 
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox2.Controls.Add(panel1);
+            groupBox2.Controls.Add(rdbUnica);
+            groupBox2.Controls.Add(rdbMensual);
             groupBox2.Controls.Add(ucErrorIconoInstructor);
             groupBox2.Controls.Add(ucErrorIconoDias);
             groupBox2.Controls.Add(ucErrorIconoNombre);
             groupBox2.Controls.Add(chkSinCupo);
-            groupBox2.Controls.Add(spnPrecioCuota);
             groupBox2.Controls.Add(spnCupo);
             groupBox2.Controls.Add(spnHasta);
             groupBox2.Controls.Add(chkCualquierHora);
@@ -117,8 +123,6 @@
             groupBox2.Controls.Add(spnCantDias);
             groupBox2.Controls.Add(spnCuotas);
             groupBox2.Controls.Add(spnPrecio);
-            groupBox2.Controls.Add(txtPrecioCuota);
-            groupBox2.Controls.Add(thunderLabel3);
             groupBox2.Controls.Add(cmbInstructor);
             groupBox2.Controls.Add(thunderLabel18);
             groupBox2.Controls.Add(thunderLabel2);
@@ -151,10 +155,85 @@
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(5, 45);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(514, 324);
+            groupBox2.Size = new Size(485, 381);
             groupBox2.TabIndex = 73;
             groupBox2.TabStop = false;
             groupBox2.Enter += groupBox2_Enter;
+            // 
+            // panel1
+            // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(spnPrecioCuota);
+            panel1.Controls.Add(thunderLabel3);
+            panel1.Controls.Add(txtPrecioCuota);
+            panel1.Location = new Point(357, 196);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(113, 63);
+            panel1.TabIndex = 91;
+            // 
+            // spnPrecioCuota
+            // 
+            spnPrecioCuota.DecimalPlaces = 2;
+            spnPrecioCuota.Enabled = false;
+            spnPrecioCuota.Font = new Font("Segoe UI", 8F);
+            spnPrecioCuota.Location = new Point(14, 29);
+            spnPrecioCuota.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            spnPrecioCuota.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            spnPrecioCuota.Name = "spnPrecioCuota";
+            spnPrecioCuota.Size = new Size(84, 22);
+            spnPrecioCuota.TabIndex = 85;
+            spnPrecioCuota.ThousandsSeparator = true;
+            spnPrecioCuota.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
+            // thunderLabel3
+            // 
+            thunderLabel3.BackColor = Color.Transparent;
+            thunderLabel3.Enabled = false;
+            thunderLabel3.ForeColor = Color.WhiteSmoke;
+            thunderLabel3.Location = new Point(14, -3);
+            thunderLabel3.Name = "thunderLabel3";
+            thunderLabel3.Size = new Size(94, 29);
+            thunderLabel3.TabIndex = 83;
+            thunderLabel3.Text = "Precio cuota";
+            // 
+            // txtPrecioCuota
+            // 
+            txtPrecioCuota.BackColor = Color.Transparent;
+            txtPrecioCuota.Enabled = false;
+            txtPrecioCuota.EnabledCalc = false;
+            txtPrecioCuota.Font = new Font("Segoe UI", 9F);
+            txtPrecioCuota.ForeColor = Color.Black;
+            txtPrecioCuota.Location = new Point(5, 26);
+            txtPrecioCuota.MaxLength = 32767;
+            txtPrecioCuota.MultiLine = false;
+            txtPrecioCuota.Name = "txtPrecioCuota";
+            txtPrecioCuota.ReadOnly = false;
+            txtPrecioCuota.Size = new Size(103, 29);
+            txtPrecioCuota.TabIndex = 84;
+            txtPrecioCuota.TextAlign = HorizontalAlignment.Left;
+            txtPrecioCuota.UseSystemPasswordChar = false;
+            // 
+            // rdbUnica
+            // 
+            rdbUnica.Location = new Point(207, 236);
+            rdbUnica.Name = "rdbUnica";
+            rdbUnica.Size = new Size(105, 26);
+            rdbUnica.TabIndex = 90;
+            rdbUnica.Text = "Cuota Única";
+            rdbUnica.UseVisualStyleBackColor = true;
+            rdbUnica.CheckedChanged += rdbUnica_CheckedChanged;
+            // 
+            // rdbMensual
+            // 
+            rdbMensual.Checked = true;
+            rdbMensual.Location = new Point(98, 236);
+            rdbMensual.Name = "rdbMensual";
+            rdbMensual.Size = new Size(112, 26);
+            rdbMensual.TabIndex = 89;
+            rdbMensual.TabStop = true;
+            rdbMensual.Text = "Cuota Mensual";
+            rdbMensual.UseVisualStyleBackColor = true;
+            rdbMensual.CheckedChanged += rdbMensual_CheckedChanged;
             // 
             // ucErrorIconoInstructor
             // 
@@ -169,7 +248,7 @@
             // 
             ucErrorIconoDias.BackColor = Color.Transparent;
             ucErrorIconoDias.Enabled = false;
-            ucErrorIconoDias.Location = new Point(1, 289);
+            ucErrorIconoDias.Location = new Point(6, 343);
             ucErrorIconoDias.Name = "ucErrorIconoDias";
             ucErrorIconoDias.Size = new Size(20, 20);
             ucErrorIconoDias.TabIndex = 87;
@@ -187,7 +266,7 @@
             // 
             chkSinCupo.AutoSize = true;
             chkSinCupo.ForeColor = Color.White;
-            chkSinCupo.Location = new Point(354, 218);
+            chkSinCupo.Location = new Point(357, 276);
             chkSinCupo.Name = "chkSinCupo";
             chkSinCupo.Size = new Size(103, 19);
             chkSinCupo.TabIndex = 8;
@@ -195,24 +274,10 @@
             chkSinCupo.UseVisualStyleBackColor = true;
             chkSinCupo.CheckedChanged += chkSinCupo_CheckedChanged;
             // 
-            // spnPrecioCuota
-            // 
-            spnPrecioCuota.DecimalPlaces = 2;
-            spnPrecioCuota.Enabled = false;
-            spnPrecioCuota.Font = new Font("Segoe UI", 8F);
-            spnPrecioCuota.Location = new Point(409, 177);
-            spnPrecioCuota.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
-            spnPrecioCuota.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            spnPrecioCuota.Name = "spnPrecioCuota";
-            spnPrecioCuota.Size = new Size(84, 22);
-            spnPrecioCuota.TabIndex = 85;
-            spnPrecioCuota.ThousandsSeparator = true;
-            spnPrecioCuota.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
             // spnCupo
             // 
             spnCupo.Font = new Font("Segoe UI", 8F);
-            spnCupo.Location = new Point(272, 215);
+            spnCupo.Location = new Point(275, 272);
             spnCupo.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             spnCupo.Name = "spnCupo";
             spnCupo.Size = new Size(50, 22);
@@ -224,7 +289,7 @@
             spnHasta.CustomFormat = "HH:mm";
             spnHasta.Font = new Font("Segoe UI", 8F);
             spnHasta.Format = DateTimePickerFormat.Custom;
-            spnHasta.Location = new Point(271, 250);
+            spnHasta.Location = new Point(274, 309);
             spnHasta.Name = "spnHasta";
             spnHasta.ShowUpDown = true;
             spnHasta.Size = new Size(51, 22);
@@ -235,7 +300,7 @@
             // 
             chkCualquierHora.AutoSize = true;
             chkCualquierHora.ForeColor = Color.White;
-            chkCualquierHora.Location = new Point(354, 253);
+            chkCualquierHora.Location = new Point(357, 312);
             chkCualquierHora.Name = "chkCualquierHora";
             chkCualquierHora.Size = new Size(104, 19);
             chkCualquierHora.TabIndex = 11;
@@ -248,7 +313,7 @@
             spnDesde.CustomFormat = "HH:mm";
             spnDesde.Font = new Font("Segoe UI", 8F);
             spnDesde.Format = DateTimePickerFormat.Custom;
-            spnDesde.Location = new Point(100, 250);
+            spnDesde.Location = new Point(108, 309);
             spnDesde.Name = "spnDesde";
             spnDesde.ShowUpDown = true;
             spnDesde.Size = new Size(51, 22);
@@ -258,7 +323,7 @@
             // spnCantDias
             // 
             spnCantDias.Font = new Font("Segoe UI", 8F);
-            spnCantDias.Location = new Point(100, 212);
+            spnCantDias.Location = new Point(108, 270);
             spnCantDias.Maximum = new decimal(new int[] { 7, 0, 0, 0 });
             spnCantDias.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             spnCantDias.Name = "spnCantDias";
@@ -269,7 +334,7 @@
             // spnCuotas
             // 
             spnCuotas.Font = new Font("Segoe UI", 8F);
-            spnCuotas.Location = new Point(271, 177);
+            spnCuotas.Location = new Point(274, 199);
             spnCuotas.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             spnCuotas.Name = "spnCuotas";
             spnCuotas.Size = new Size(50, 22);
@@ -281,7 +346,7 @@
             // 
             spnPrecio.DecimalPlaces = 2;
             spnPrecio.Font = new Font("Segoe UI", 8F);
-            spnPrecio.Location = new Point(100, 177);
+            spnPrecio.Location = new Point(109, 199);
             spnPrecio.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             spnPrecio.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             spnPrecio.Name = "spnPrecio";
@@ -290,34 +355,6 @@
             spnPrecio.ThousandsSeparator = true;
             spnPrecio.Value = new decimal(new int[] { 1, 0, 0, 0 });
             spnPrecio.ValueChanged += spnPrecio_ValueChanged;
-            // 
-            // txtPrecioCuota
-            // 
-            txtPrecioCuota.BackColor = Color.Transparent;
-            txtPrecioCuota.Enabled = false;
-            txtPrecioCuota.EnabledCalc = false;
-            txtPrecioCuota.Font = new Font("Segoe UI", 9F);
-            txtPrecioCuota.ForeColor = Color.Black;
-            txtPrecioCuota.Location = new Point(399, 174);
-            txtPrecioCuota.MaxLength = 32767;
-            txtPrecioCuota.MultiLine = false;
-            txtPrecioCuota.Name = "txtPrecioCuota";
-            txtPrecioCuota.ReadOnly = false;
-            txtPrecioCuota.Size = new Size(103, 29);
-            txtPrecioCuota.TabIndex = 84;
-            txtPrecioCuota.TextAlign = HorizontalAlignment.Left;
-            txtPrecioCuota.UseSystemPasswordChar = false;
-            // 
-            // thunderLabel3
-            // 
-            thunderLabel3.BackColor = Color.Transparent;
-            thunderLabel3.Enabled = false;
-            thunderLabel3.ForeColor = Color.WhiteSmoke;
-            thunderLabel3.Location = new Point(351, 177);
-            thunderLabel3.Name = "thunderLabel3";
-            thunderLabel3.Size = new Size(49, 29);
-            thunderLabel3.TabIndex = 83;
-            thunderLabel3.Text = "Precio cuota";
             // 
             // cmbInstructor
             // 
@@ -329,9 +366,9 @@
             cmbInstructor.EnabledCalc = true;
             cmbInstructor.FormattingEnabled = true;
             cmbInstructor.ItemHeight = 20;
-            cmbInstructor.Location = new Point(99, 89);
+            cmbInstructor.Location = new Point(109, 89);
             cmbInstructor.Name = "cmbInstructor";
-            cmbInstructor.Size = new Size(410, 26);
+            cmbInstructor.Size = new Size(360, 26);
             cmbInstructor.TabIndex = 2;
             cmbInstructor.ValueMember = "idInstructor";
             // 
@@ -344,7 +381,7 @@
             thunderLabel18.BackColor = Color.Transparent;
             thunderLabel18.Enabled = false;
             thunderLabel18.ForeColor = Color.WhiteSmoke;
-            thunderLabel18.Location = new Point(204, 217);
+            thunderLabel18.Location = new Point(208, 278);
             thunderLabel18.Name = "thunderLabel18";
             thunderLabel18.Size = new Size(42, 17);
             thunderLabel18.TabIndex = 75;
@@ -368,7 +405,7 @@
             txtCupo.EnabledCalc = false;
             txtCupo.Font = new Font("Segoe UI", 9F);
             txtCupo.ForeColor = Color.Black;
-            txtCupo.Location = new Point(262, 212);
+            txtCupo.Location = new Point(265, 269);
             txtCupo.MaxLength = 32767;
             txtCupo.MultiLine = false;
             txtCupo.Name = "txtCupo";
@@ -390,7 +427,7 @@
             txtNombre.MultiLine = false;
             txtNombre.Name = "txtNombre";
             txtNombre.ReadOnly = false;
-            txtNombre.Size = new Size(410, 29);
+            txtNombre.Size = new Size(381, 29);
             txtNombre.TabIndex = 0;
             txtNombre.TextAlign = HorizontalAlignment.Left;
             txtNombre.UseSystemPasswordChar = false;
@@ -423,7 +460,7 @@
             cmdGenerar.Lighting = false;
             cmdGenerar.LinearGradient_Background = false;
             cmdGenerar.LinearGradientPen = false;
-            cmdGenerar.Location = new Point(613, 471);
+            cmdGenerar.Location = new Point(584, 528);
             cmdGenerar.Name = "cmdGenerar";
             cmdGenerar.PenWidth = 15;
             cmdGenerar.Rounding = true;
@@ -444,7 +481,7 @@
             txtHoraHasta.EnabledCalc = false;
             txtHoraHasta.Font = new Font("Segoe UI", 9F);
             txtHoraHasta.ForeColor = Color.Black;
-            txtHoraHasta.Location = new Point(262, 246);
+            txtHoraHasta.Location = new Point(265, 305);
             txtHoraHasta.MaxLength = 32767;
             txtHoraHasta.MultiLine = false;
             txtHoraHasta.Name = "txtHoraHasta";
@@ -461,7 +498,7 @@
             txtHoraDesde.EnabledCalc = false;
             txtHoraDesde.Font = new Font("Segoe UI", 9F);
             txtHoraDesde.ForeColor = Color.Black;
-            txtHoraDesde.Location = new Point(91, 247);
+            txtHoraDesde.Location = new Point(99, 306);
             txtHoraDesde.MaxLength = 32767;
             txtHoraDesde.MultiLine = false;
             txtHoraDesde.Name = "txtHoraDesde";
@@ -486,7 +523,7 @@
             // 
             chkDomingo.AutoSize = true;
             chkDomingo.ForeColor = Color.White;
-            chkDomingo.Location = new Point(320, 290);
+            chkDomingo.Location = new Point(338, 344);
             chkDomingo.Name = "chkDomingo";
             chkDomingo.Size = new Size(34, 19);
             chkDomingo.TabIndex = 18;
@@ -498,7 +535,7 @@
             // 
             chkSabado.AutoSize = true;
             chkSabado.ForeColor = Color.White;
-            chkSabado.Location = new Point(282, 290);
+            chkSabado.Location = new Point(300, 344);
             chkSabado.Name = "chkSabado";
             chkSabado.Size = new Size(32, 19);
             chkSabado.TabIndex = 17;
@@ -510,7 +547,7 @@
             // 
             chkViernes.AutoSize = true;
             chkViernes.ForeColor = Color.White;
-            chkViernes.Location = new Point(242, 290);
+            chkViernes.Location = new Point(260, 344);
             chkViernes.Name = "chkViernes";
             chkViernes.Size = new Size(33, 19);
             chkViernes.TabIndex = 16;
@@ -522,7 +559,7 @@
             // 
             chkJueves.AutoSize = true;
             chkJueves.ForeColor = Color.White;
-            chkJueves.Location = new Point(204, 290);
+            chkJueves.Location = new Point(222, 344);
             chkJueves.Name = "chkJueves";
             chkJueves.Size = new Size(30, 19);
             chkJueves.TabIndex = 15;
@@ -534,7 +571,7 @@
             // 
             chkMiercoles.AutoSize = true;
             chkMiercoles.ForeColor = Color.White;
-            chkMiercoles.Location = new Point(164, 290);
+            chkMiercoles.Location = new Point(182, 344);
             chkMiercoles.Name = "chkMiercoles";
             chkMiercoles.Size = new Size(40, 19);
             chkMiercoles.TabIndex = 14;
@@ -546,7 +583,7 @@
             // 
             chkMartes.AutoSize = true;
             chkMartes.ForeColor = Color.White;
-            chkMartes.Location = new Point(122, 290);
+            chkMartes.Location = new Point(140, 344);
             chkMartes.Name = "chkMartes";
             chkMartes.Size = new Size(43, 19);
             chkMartes.TabIndex = 13;
@@ -558,7 +595,7 @@
             // 
             chkLunes.AutoSize = true;
             chkLunes.ForeColor = Color.White;
-            chkLunes.Location = new Point(86, 290);
+            chkLunes.Location = new Point(104, 344);
             chkLunes.Name = "chkLunes";
             chkLunes.Size = new Size(32, 19);
             chkLunes.TabIndex = 12;
@@ -571,7 +608,7 @@
             thunderLabel10.BackColor = Color.Transparent;
             thunderLabel10.Enabled = false;
             thunderLabel10.ForeColor = Color.WhiteSmoke;
-            thunderLabel10.Location = new Point(23, 292);
+            thunderLabel10.Location = new Point(28, 346);
             thunderLabel10.Name = "thunderLabel10";
             thunderLabel10.Size = new Size(37, 17);
             thunderLabel10.TabIndex = 59;
@@ -584,7 +621,7 @@
             txtCantDias.EnabledCalc = false;
             txtCantDias.Font = new Font("Segoe UI", 9F);
             txtCantDias.ForeColor = Color.Black;
-            txtCantDias.Location = new Point(91, 209);
+            txtCantDias.Location = new Point(99, 267);
             txtCantDias.MaxLength = 32767;
             txtCantDias.MultiLine = false;
             txtCantDias.Name = "txtCantDias";
@@ -601,7 +638,7 @@
             txtCuotas.EnabledCalc = false;
             txtCuotas.Font = new Font("Segoe UI", 9F);
             txtCuotas.ForeColor = Color.Black;
-            txtCuotas.Location = new Point(262, 174);
+            txtCuotas.Location = new Point(265, 196);
             txtCuotas.MaxLength = 32767;
             txtCuotas.MultiLine = false;
             txtCuotas.Name = "txtCuotas";
@@ -618,7 +655,7 @@
             txtPrecio.EnabledCalc = false;
             txtPrecio.Font = new Font("Segoe UI", 9F);
             txtPrecio.ForeColor = Color.Black;
-            txtPrecio.Location = new Point(90, 174);
+            txtPrecio.Location = new Point(99, 196);
             txtPrecio.MaxLength = 32767;
             txtPrecio.MultiLine = false;
             txtPrecio.Name = "txtPrecio";
@@ -633,18 +670,18 @@
             thunderLabel5.BackColor = Color.Transparent;
             thunderLabel5.Enabled = false;
             thunderLabel5.ForeColor = Color.WhiteSmoke;
-            thunderLabel5.Location = new Point(204, 177);
+            thunderLabel5.Location = new Point(207, 199);
             thunderLabel5.Name = "thunderLabel5";
             thunderLabel5.Size = new Size(49, 29);
             thunderLabel5.TabIndex = 52;
-            thunderLabel5.Text = "Cant. cuotas";
+            thunderLabel5.Text = "Cant. meses";
             // 
             // thunderLabel4
             // 
             thunderLabel4.BackColor = Color.Transparent;
             thunderLabel4.Enabled = false;
             thunderLabel4.ForeColor = Color.WhiteSmoke;
-            thunderLabel4.Location = new Point(23, 170);
+            thunderLabel4.Location = new Point(26, 192);
             thunderLabel4.Name = "thunderLabel4";
             thunderLabel4.Size = new Size(50, 36);
             thunderLabel4.TabIndex = 51;
@@ -653,10 +690,10 @@
             // txtDetalle
             // 
             txtDetalle.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtDetalle.Location = new Point(99, 121);
+            txtDetalle.Location = new Point(109, 119);
             txtDetalle.Multiline = true;
             txtDetalle.Name = "txtDetalle";
-            txtDetalle.Size = new Size(411, 47);
+            txtDetalle.Size = new Size(360, 71);
             txtDetalle.TabIndex = 3;
             // 
             // cmbActividad
@@ -669,9 +706,9 @@
             cmbActividad.EnabledCalc = true;
             cmbActividad.FormattingEnabled = true;
             cmbActividad.ItemHeight = 20;
-            cmbActividad.Location = new Point(99, 57);
+            cmbActividad.Location = new Point(109, 57);
             cmbActividad.Name = "cmbActividad";
-            cmbActividad.Size = new Size(410, 26);
+            cmbActividad.Size = new Size(360, 26);
             cmbActividad.TabIndex = 1;
             cmbActividad.ValueMember = "idActividad";
             // 
@@ -696,7 +733,7 @@
             thunderLabel16.BackColor = Color.Transparent;
             thunderLabel16.Enabled = false;
             thunderLabel16.ForeColor = Color.WhiteSmoke;
-            thunderLabel16.Location = new Point(204, 246);
+            thunderLabel16.Location = new Point(207, 305);
             thunderLabel16.Name = "thunderLabel16";
             thunderLabel16.Size = new Size(41, 30);
             thunderLabel16.TabIndex = 71;
@@ -708,7 +745,7 @@
             thunderLabel9.Enabled = false;
             thunderLabel9.Font = new Font("Segoe UI", 7F);
             thunderLabel9.ForeColor = Color.WhiteSmoke;
-            thunderLabel9.Location = new Point(23, 209);
+            thunderLabel9.Location = new Point(26, 267);
             thunderLabel9.Name = "thunderLabel9";
             thunderLabel9.Size = new Size(73, 29);
             thunderLabel9.TabIndex = 7;
@@ -730,7 +767,7 @@
             thunderLabel1.BackColor = Color.Transparent;
             thunderLabel1.Enabled = false;
             thunderLabel1.ForeColor = Color.WhiteSmoke;
-            thunderLabel1.Location = new Point(23, 240);
+            thunderLabel1.Location = new Point(26, 299);
             thunderLabel1.Name = "thunderLabel1";
             thunderLabel1.Size = new Size(65, 39);
             thunderLabel1.TabIndex = 80;
@@ -740,7 +777,7 @@
             // 
             botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(470, 7);
+            botonesForms2.Location = new Point(441, 7);
             botonesForms2.Name = "botonesForms2";
             botonesForms2.Size = new Size(46, 20);
             botonesForms2.TabIndex = 63;
@@ -749,18 +786,18 @@
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 421);
+            ucBordertd2.Location = new Point(2, 478);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(521, 3);
+            ucBordertd2.Size = new Size(492, 3);
             ucBordertd2.TabIndex = 71;
             // 
             // ucBorderlr2
             // 
             ucBorderlr2.BackColor = Color.White;
             ucBorderlr2.Dock = DockStyle.Right;
-            ucBorderlr2.Location = new Point(523, 0);
+            ucBorderlr2.Location = new Point(494, 0);
             ucBorderlr2.Name = "ucBorderlr2";
-            ucBorderlr2.Size = new Size(2, 424);
+            ucBorderlr2.Size = new Size(2, 481);
             ucBorderlr2.TabIndex = 69;
             // 
             // ucBorderlr1
@@ -769,7 +806,7 @@
             ucBorderlr1.Dock = DockStyle.Left;
             ucBorderlr1.Location = new Point(0, 0);
             ucBorderlr1.Name = "ucBorderlr1";
-            ucBorderlr1.Size = new Size(2, 424);
+            ucBorderlr1.Size = new Size(2, 481);
             ucBorderlr1.TabIndex = 68;
             // 
             // ucTituloLabel1
@@ -809,7 +846,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(419, 375);
+            btnCancelar.Location = new Point(390, 432);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -851,7 +888,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(321, 375);
+            btnAceptar.Location = new Point(292, 432);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -871,7 +908,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(525, 424);
+            ClientSize = new Size(496, 481);
             Controls.Add(ucBordertd1);
             Controls.Add(groupBox2);
             Controls.Add(botonesForms2);
@@ -887,6 +924,7 @@
             Load += FrmTipoMembresiaAlta_Load;
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)spnPrecioCuota).EndInit();
             ((System.ComponentModel.ISupportInitialize)spnCupo).EndInit();
             ((System.ComponentModel.ISupportInitialize)spnCantDias).EndInit();
@@ -953,5 +991,8 @@
         private UserControls.UCErrorIcono ucErrorIconoNombre;
         private UserControls.UCErrorIcono ucErrorIconoDias;
         private UserControls.UCErrorIcono ucErrorIconoInstructor;
+        private RadioButton rdbUnica;
+        private RadioButton rdbMensual;
+        private Panel panel1;
     }
 }

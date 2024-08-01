@@ -221,6 +221,7 @@ namespace Fitzone.EF.Migrations
                     cantidadCuotas = table.Column<int>(type: "int", nullable: false),
                     cantidadDiasSemanales = table.Column<int>(type: "int", nullable: false),
                     diasHabilitados = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    cuotaUnica = table.Column<bool>(type: "bit", nullable: false),
                     horadesde = table.Column<TimeOnly>(type: "time", nullable: false),
                     horaHasta = table.Column<TimeOnly>(type: "time", nullable: false),
                     cupoClase = table.Column<int>(type: "int", nullable: true),
@@ -331,6 +332,7 @@ namespace Fitzone.EF.Migrations
                     fechaDesde = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fechaHasta = table.Column<DateTime>(type: "datetime2", nullable: false),
                     fechaVencimiento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    pagada = table.Column<bool>(type: "bit", nullable: false),
                     idMembresia = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

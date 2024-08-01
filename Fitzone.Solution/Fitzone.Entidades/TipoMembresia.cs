@@ -24,6 +24,8 @@ namespace Fitzone.Entidades
 
         public string diasHabilitados { get; set; } = "";
 
+        public bool cuotaUnica { get; set; }
+
         public TimeOnly horadesde { get; set; }
         public TimeOnly horaHasta { get; set; }
 

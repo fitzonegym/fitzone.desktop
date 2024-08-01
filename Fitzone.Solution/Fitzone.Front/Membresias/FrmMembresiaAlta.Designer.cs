@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             ucBordertd2 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
             ucBorderlr1 = new UserControls.UCBorderLR();
@@ -45,13 +47,6 @@
             txtDocumento = new ReaLTaiizor.Controls.AloneTextBox();
             bindingSourceCuotas = new BindingSource(components);
             dataGridView1 = new DataGridView();
-            numeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            precioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaDesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaVencimiento = new DataGridViewTextBoxColumn();
-            idCuotaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idMembresiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ucBordertd1 = new UserControls.UCBorderTD();
             groupBox1 = new GroupBox();
             txtDireccion = new ReaLTaiizor.Controls.AloneTextBox();
@@ -61,6 +56,7 @@
             cmbTipoMembresia = new ReaLTaiizor.Controls.AloneComboBox();
             bindingSourceTipo = new BindingSource(components);
             groupBox2 = new GroupBox();
+            chkCuotaUnica = new CheckBox();
             txtInstructor = new ReaLTaiizor.Controls.AloneTextBox();
             cmdGenerar = new ReaLTaiizor.Controls.CyberButton();
             txtDisponibilidadBack = new ReaLTaiizor.Controls.AloneTextBox();
@@ -98,6 +94,13 @@
             txtDescripcionMembresía = new TextBox();
             ucAgregar1 = new UserControls.UCAgregar();
             groupBox3 = new GroupBox();
+            numeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            precioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaDesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaVencimiento = new DataGridViewTextBoxColumn();
+            idCuotaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idMembresiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)bindingSourceCuotas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -381,58 +384,6 @@
             dataGridView1.Size = new Size(785, 235);
             dataGridView1.TabIndex = 39;
             // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
-            numeroDataGridViewTextBoxColumn.HeaderText = "Nro";
-            numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            numeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
-            precioDataGridViewTextBoxColumn.HeaderText = "Precio";
-            precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            precioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaDesdeDataGridViewTextBoxColumn
-            // 
-            fechaDesdeDataGridViewTextBoxColumn.DataPropertyName = "fechaDesde";
-            fechaDesdeDataGridViewTextBoxColumn.HeaderText = "Desde";
-            fechaDesdeDataGridViewTextBoxColumn.Name = "fechaDesdeDataGridViewTextBoxColumn";
-            fechaDesdeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaHastaDataGridViewTextBoxColumn
-            // 
-            fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
-            fechaHastaDataGridViewTextBoxColumn.HeaderText = "fechaHasta";
-            fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
-            fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
-            fechaHastaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // fechaVencimiento
-            // 
-            fechaVencimiento.DataPropertyName = "fechaVencimiento";
-            fechaVencimiento.HeaderText = "Vencimiento";
-            fechaVencimiento.Name = "fechaVencimiento";
-            fechaVencimiento.ReadOnly = true;
-            // 
-            // idCuotaDataGridViewTextBoxColumn
-            // 
-            idCuotaDataGridViewTextBoxColumn.DataPropertyName = "idCuota";
-            idCuotaDataGridViewTextBoxColumn.HeaderText = "idCuota";
-            idCuotaDataGridViewTextBoxColumn.Name = "idCuotaDataGridViewTextBoxColumn";
-            idCuotaDataGridViewTextBoxColumn.ReadOnly = true;
-            idCuotaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idMembresiaDataGridViewTextBoxColumn
-            // 
-            idMembresiaDataGridViewTextBoxColumn.DataPropertyName = "idMembresia";
-            idMembresiaDataGridViewTextBoxColumn.HeaderText = "idMembresia";
-            idMembresiaDataGridViewTextBoxColumn.Name = "idMembresiaDataGridViewTextBoxColumn";
-            idMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
-            idMembresiaDataGridViewTextBoxColumn.Visible = false;
-            // 
             // ucBordertd1
             // 
             ucBordertd1.BackColor = Color.White;
@@ -540,6 +491,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(chkCuotaUnica);
             groupBox2.Controls.Add(txtInstructor);
             groupBox2.Controls.Add(cmdGenerar);
             groupBox2.Controls.Add(txtDisponibilidadBack);
@@ -576,6 +528,18 @@
             groupBox2.TabIndex = 51;
             groupBox2.TabStop = false;
             groupBox2.Text = "Tipo de membresía";
+            // 
+            // chkCuotaUnica
+            // 
+            chkCuotaUnica.AutoSize = true;
+            chkCuotaUnica.Enabled = false;
+            chkCuotaUnica.ForeColor = Color.White;
+            chkCuotaUnica.Location = new Point(85, 248);
+            chkCuotaUnica.Name = "chkCuotaUnica";
+            chkCuotaUnica.Size = new Size(91, 19);
+            chkCuotaUnica.TabIndex = 80;
+            chkCuotaUnica.Text = "Cuota Única";
+            chkCuotaUnica.UseVisualStyleBackColor = true;
             // 
             // txtInstructor
             // 
@@ -643,12 +607,12 @@
             txtDisponibilidadBack.EnabledCalc = false;
             txtDisponibilidadBack.Font = new Font("Segoe UI", 9F);
             txtDisponibilidadBack.ForeColor = Color.Red;
-            txtDisponibilidadBack.Location = new Point(347, 134);
+            txtDisponibilidadBack.Location = new Point(371, 134);
             txtDisponibilidadBack.MaxLength = 32767;
             txtDisponibilidadBack.MultiLine = false;
             txtDisponibilidadBack.Name = "txtDisponibilidadBack";
             txtDisponibilidadBack.ReadOnly = false;
-            txtDisponibilidadBack.Size = new Size(55, 29);
+            txtDisponibilidadBack.Size = new Size(49, 29);
             txtDisponibilidadBack.TabIndex = 78;
             txtDisponibilidadBack.Text = "1";
             txtDisponibilidadBack.TextAlign = HorizontalAlignment.Left;
@@ -658,11 +622,11 @@
             // 
             thunderLabel19.BackColor = Color.Transparent;
             thunderLabel19.ForeColor = Color.WhiteSmoke;
-            thunderLabel19.Location = new Point(301, 134);
+            thunderLabel19.Location = new Point(279, 134);
             thunderLabel19.Name = "thunderLabel19";
-            thunderLabel19.Size = new Size(81, 29);
+            thunderLabel19.Size = new Size(106, 29);
             thunderLabel19.TabIndex = 77;
-            thunderLabel19.Text = "Disp.";
+            thunderLabel19.Text = "Disponibilidad";
             // 
             // txtCupo
             // 
@@ -706,7 +670,7 @@
             txtHoraDesde.EnabledCalc = false;
             txtHoraDesde.Font = new Font("Segoe UI", 9F);
             txtHoraDesde.ForeColor = Color.Black;
-            txtHoraDesde.Location = new Point(65, 210);
+            txtHoraDesde.Location = new Point(76, 210);
             txtHoraDesde.MaxLength = 32767;
             txtHoraDesde.MultiLine = false;
             txtHoraDesde.Name = "txtHoraDesde";
@@ -751,7 +715,7 @@
             chkDomingo.AutoSize = true;
             chkDomingo.Enabled = false;
             chkDomingo.ForeColor = Color.White;
-            chkDomingo.Location = new Point(379, 223);
+            chkDomingo.Location = new Point(364, 223);
             chkDomingo.Name = "chkDomingo";
             chkDomingo.Size = new Size(34, 19);
             chkDomingo.TabIndex = 66;
@@ -763,7 +727,7 @@
             chkSabado.AutoSize = true;
             chkSabado.Enabled = false;
             chkSabado.ForeColor = Color.White;
-            chkSabado.Location = new Point(379, 203);
+            chkSabado.Location = new Point(364, 203);
             chkSabado.Name = "chkSabado";
             chkSabado.Size = new Size(32, 19);
             chkSabado.TabIndex = 65;
@@ -775,7 +739,7 @@
             chkViernes.AutoSize = true;
             chkViernes.Enabled = false;
             chkViernes.ForeColor = Color.White;
-            chkViernes.Location = new Point(339, 203);
+            chkViernes.Location = new Point(324, 203);
             chkViernes.Name = "chkViernes";
             chkViernes.Size = new Size(33, 19);
             chkViernes.TabIndex = 64;
@@ -787,7 +751,7 @@
             chkJueves.AutoSize = true;
             chkJueves.Enabled = false;
             chkJueves.ForeColor = Color.White;
-            chkJueves.Location = new Point(301, 203);
+            chkJueves.Location = new Point(286, 203);
             chkJueves.Name = "chkJueves";
             chkJueves.Size = new Size(30, 19);
             chkJueves.TabIndex = 63;
@@ -799,7 +763,7 @@
             chkMiercoles.AutoSize = true;
             chkMiercoles.Enabled = false;
             chkMiercoles.ForeColor = Color.White;
-            chkMiercoles.Location = new Point(379, 184);
+            chkMiercoles.Location = new Point(364, 184);
             chkMiercoles.Name = "chkMiercoles";
             chkMiercoles.Size = new Size(40, 19);
             chkMiercoles.TabIndex = 62;
@@ -811,7 +775,7 @@
             chkMartes.AutoSize = true;
             chkMartes.Enabled = false;
             chkMartes.ForeColor = Color.White;
-            chkMartes.Location = new Point(339, 184);
+            chkMartes.Location = new Point(324, 184);
             chkMartes.Name = "chkMartes";
             chkMartes.Size = new Size(43, 19);
             chkMartes.TabIndex = 61;
@@ -823,7 +787,7 @@
             chkLunes.AutoSize = true;
             chkLunes.Enabled = false;
             chkLunes.ForeColor = Color.White;
-            chkLunes.Location = new Point(301, 184);
+            chkLunes.Location = new Point(286, 184);
             chkLunes.Name = "chkLunes";
             chkLunes.Size = new Size(32, 19);
             chkLunes.TabIndex = 60;
@@ -834,7 +798,7 @@
             // 
             thunderLabel10.BackColor = Color.Transparent;
             thunderLabel10.ForeColor = Color.WhiteSmoke;
-            thunderLabel10.Location = new Point(301, 167);
+            thunderLabel10.Location = new Point(280, 167);
             thunderLabel10.Name = "thunderLabel10";
             thunderLabel10.Size = new Size(110, 16);
             thunderLabel10.TabIndex = 59;
@@ -864,7 +828,7 @@
             txtCuotas.EnabledCalc = false;
             txtCuotas.Font = new Font("Segoe UI", 9F);
             txtCuotas.ForeColor = Color.Black;
-            txtCuotas.Location = new Point(65, 172);
+            txtCuotas.Location = new Point(77, 172);
             txtCuotas.MaxLength = 32767;
             txtCuotas.MultiLine = false;
             txtCuotas.Name = "txtCuotas";
@@ -881,7 +845,7 @@
             txtPrecio.EnabledCalc = false;
             txtPrecio.Font = new Font("Segoe UI", 9F);
             txtPrecio.ForeColor = Color.Black;
-            txtPrecio.Location = new Point(65, 134);
+            txtPrecio.Location = new Point(77, 134);
             txtPrecio.MaxLength = 32767;
             txtPrecio.MultiLine = false;
             txtPrecio.Name = "txtPrecio";
@@ -899,7 +863,7 @@
             thunderLabel5.Name = "thunderLabel5";
             thunderLabel5.Size = new Size(49, 29);
             thunderLabel5.TabIndex = 52;
-            thunderLabel5.Text = "Cant. cuotas";
+            thunderLabel5.Text = "Cant. meses";
             // 
             // thunderLabel4
             // 
@@ -934,7 +898,7 @@
             // 
             thunderLabel18.BackColor = Color.Transparent;
             thunderLabel18.ForeColor = Color.WhiteSmoke;
-            thunderLabel18.Location = new Point(151, 134);
+            thunderLabel18.Location = new Point(157, 134);
             thunderLabel18.Name = "thunderLabel18";
             thunderLabel18.Size = new Size(42, 29);
             thunderLabel18.TabIndex = 75;
@@ -944,7 +908,7 @@
             // 
             thunderLabel16.BackColor = Color.Transparent;
             thunderLabel16.ForeColor = Color.WhiteSmoke;
-            thunderLabel16.Location = new Point(151, 214);
+            thunderLabel16.Location = new Point(157, 214);
             thunderLabel16.Name = "thunderLabel16";
             thunderLabel16.Size = new Size(57, 25);
             thunderLabel16.TabIndex = 71;
@@ -955,9 +919,9 @@
             thunderLabel9.BackColor = Color.Transparent;
             thunderLabel9.Font = new Font("Segoe UI", 7F);
             thunderLabel9.ForeColor = Color.WhiteSmoke;
-            thunderLabel9.Location = new Point(151, 172);
+            thunderLabel9.Location = new Point(157, 172);
             thunderLabel9.Name = "thunderLabel9";
-            thunderLabel9.Size = new Size(73, 29);
+            thunderLabel9.Size = new Size(69, 36);
             thunderLabel9.TabIndex = 57;
             thunderLabel9.Text = "Cant. días max";
             // 
@@ -1053,6 +1017,64 @@
             groupBox3.TabIndex = 62;
             groupBox3.TabStop = false;
             // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
+            numeroDataGridViewTextBoxColumn.HeaderText = "Nro";
+            numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            numeroDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            precioDataGridViewTextBoxColumn.HeaderText = "Precio";
+            precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            precioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaDesdeDataGridViewTextBoxColumn
+            // 
+            fechaDesdeDataGridViewTextBoxColumn.DataPropertyName = "fechaDesde";
+            fechaDesdeDataGridViewTextBoxColumn.HeaderText = "Desde";
+            fechaDesdeDataGridViewTextBoxColumn.Name = "fechaDesdeDataGridViewTextBoxColumn";
+            fechaDesdeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaHastaDataGridViewTextBoxColumn
+            // 
+            fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            fechaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            fechaHastaDataGridViewTextBoxColumn.HeaderText = "Hasta";
+            fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
+            fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaVencimiento
+            // 
+            fechaVencimiento.DataPropertyName = "fechaVencimiento";
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 192, 192);
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            fechaVencimiento.DefaultCellStyle = dataGridViewCellStyle2;
+            fechaVencimiento.HeaderText = "Vencimiento";
+            fechaVencimiento.Name = "fechaVencimiento";
+            fechaVencimiento.ReadOnly = true;
+            // 
+            // idCuotaDataGridViewTextBoxColumn
+            // 
+            idCuotaDataGridViewTextBoxColumn.DataPropertyName = "idCuota";
+            idCuotaDataGridViewTextBoxColumn.HeaderText = "idCuota";
+            idCuotaDataGridViewTextBoxColumn.Name = "idCuotaDataGridViewTextBoxColumn";
+            idCuotaDataGridViewTextBoxColumn.ReadOnly = true;
+            idCuotaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idMembresiaDataGridViewTextBoxColumn
+            // 
+            idMembresiaDataGridViewTextBoxColumn.DataPropertyName = "idMembresia";
+            idMembresiaDataGridViewTextBoxColumn.HeaderText = "idMembresia";
+            idMembresiaDataGridViewTextBoxColumn.Name = "idMembresiaDataGridViewTextBoxColumn";
+            idMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
+            idMembresiaDataGridViewTextBoxColumn.Visible = false;
+            // 
             // FrmMembresiaAlta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1139,13 +1161,6 @@
         private CheckBox chkMiercoles;
         private CheckBox chkMartes;
         private CheckBox chkDomingo;
-        private DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fechaDesdeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fechaHastaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fechaVencimiento;
-        private DataGridViewTextBoxColumn idCuotaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn idMembresiaDataGridViewTextBoxColumn;
         private GroupBox groupBox3;
         private ReaLTaiizor.Controls.AloneTextBox txtHoraHasta;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel16;
@@ -1160,5 +1175,13 @@
         private ReaLTaiizor.Controls.AloneTextBox txtDisponibilidadBack;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel19;
         private ReaLTaiizor.Controls.AloneTextBox txtInstructor;
+        private CheckBox chkCuotaUnica;
+        private DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaDesdeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaHastaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaVencimiento;
+        private DataGridViewTextBoxColumn idCuotaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn idMembresiaDataGridViewTextBoxColumn;
     }
 }

@@ -102,6 +102,9 @@ namespace Fitzone.EF.Migrations
                     b.Property<int>("numero")
                         .HasColumnType("int");
 
+                    b.Property<bool>("pagada")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("precio")
                         .HasColumnType("decimal(8,2)");
 
@@ -468,6 +471,9 @@ namespace Fitzone.EF.Migrations
 
                     b.Property<int>("cantidadDiasSemanales")
                         .HasColumnType("int");
+
+                    b.Property<bool>("cuotaUnica")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("cupoClase")
                         .HasColumnType("int");

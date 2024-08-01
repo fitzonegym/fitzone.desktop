@@ -149,7 +149,7 @@ namespace Fitzone.EF.Migrations
 						    INSERT INTO [dbo].[TipoMembresia]
 								(nombre, descripcion, precioTotal, cantidadCuotas, cantidadDiasSemanales, 
 								diasHabilitados,
-								horadesde, horahasta, idActividad, idInstructor,cupoClase)
+								horadesde, horahasta, idActividad, idInstructor,cupoClase, cuotaUnica)
 							VALUES
 								
 								('Pase Libre Musculación',
@@ -162,7 +162,8 @@ namespace Fitzone.EF.Migrations
 								 ,'20000101 23:59:59'
 								 ,1
 								 ,1,
-								 null),
+								 null,
+								 0),
 								 
 								('Pase Musculación X 3 Dias',
 								 'Pase Libre Musculación X 3 Dias A La Semana - Cualquier Dia',
@@ -174,7 +175,8 @@ namespace Fitzone.EF.Migrations
 								 ,'20000101 23:59:59'
 								 ,1
 								 ,1,
-								 null),								 		
+								 null,
+								 0),								 		
 								 
 								('Zumba 3 Dias - Anual', 
 								'Zumba 3 Dias A La Semana - Pase Por Un Año',
@@ -186,7 +188,8 @@ namespace Fitzone.EF.Migrations
 								 ,'20000101 21:00:00'
 								 ,2
 								 ,2,
-								 10),
+								 10,
+								 1),
 								 
 								  
 								('Pilates 3 Dias - 6 Meses',
@@ -199,12 +202,13 @@ namespace Fitzone.EF.Migrations
 								 ,'20000101 20:30:00'
 								 ,3
 								 ,4,
-								 12);
+								 12,
+								 0);
 								 ;
 
 							GO						
 							
-
+							
 							INSERT INTO [dbo].[Membresia]
 									   ([precio]
 									   ,[fechaAlta]
@@ -239,7 +243,7 @@ namespace Fitzone.EF.Migrations
 									   ,3						-- idTipoMembresia
 									   )
 							GO
-
+							
 
 						  
                     ");

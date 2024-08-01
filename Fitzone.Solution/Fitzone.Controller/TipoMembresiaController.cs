@@ -29,9 +29,7 @@ namespace Fitzone.Controller
         
 
         public TipoMembresia? GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+         => contexto.TipoMembresia.Include("Actividad").FirstOrDefault(c => c.idTipoMembresia == id);
 
         public TipoMembresia? GetByName(string nombre)
         {

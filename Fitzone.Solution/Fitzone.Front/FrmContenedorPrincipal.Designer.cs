@@ -50,6 +50,7 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             panelPrincipal = new Panel();
+            tipoDeMembresíaToolStripMenuItem = new ToolStripMenuItem();
             statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -128,7 +129,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(160, 240);
+            menuStrip1.Size = new Size(160, 259);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -220,6 +221,7 @@
             // 
             // configuraciónToolStripMenuItem
             // 
+            configuraciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeMembresíaToolStripMenuItem });
             configuraciónToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             configuraciónToolStripMenuItem.ForeColor = Color.Black;
             configuraciónToolStripMenuItem.Margin = new Padding(5);
@@ -278,6 +280,15 @@
             panelPrincipal.DoubleClick += panelPrincipal_DoubleClick;
             panelPrincipal.MouseDown += panelPrincipal_MouseDown;
             // 
+            // tipoDeMembresíaToolStripMenuItem
+            // 
+            tipoDeMembresíaToolStripMenuItem.BackColor = Color.FromArgb(81, 45, 168);
+            tipoDeMembresíaToolStripMenuItem.ForeColor = Color.White;
+            tipoDeMembresíaToolStripMenuItem.Name = "tipoDeMembresíaToolStripMenuItem";
+            tipoDeMembresíaToolStripMenuItem.Size = new Size(246, 30);
+            tipoDeMembresíaToolStripMenuItem.Text = "Tipo de membresía";
+            tipoDeMembresíaToolStripMenuItem.Click += tipoDeMembresíaToolStripMenuItem_Click;
+            // 
             // FrmContenedorPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -331,6 +342,7 @@
         private ToolStripMenuItem membresíaToolStripMenuItem;
         private ToolStripMenuItem admnistraciónToolStripMenuItem;
         private ToolStripMenuItem altaToolStripMenuItem1;
+        private ToolStripMenuItem tipoDeMembresíaToolStripMenuItem;
     }
 }
 

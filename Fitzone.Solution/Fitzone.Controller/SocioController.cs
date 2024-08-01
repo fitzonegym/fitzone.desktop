@@ -199,5 +199,55 @@ namespace Fitzone.Controller
                 throw;
             }
         }
+    
+        public EnumEstadoCuotaSocio VerificarEstadoCuota(string dni, DateTime fecha, ref string actividades, ref string vencimiento, ref string nombre)
+        {
+            var socio = contexto.Socio
+              .FirstOrDefault(s => s.anulado == false && s.numeroDocumento == dni);
+
+            if (socio == null)
+                return EnumEstadoCuotaSocio.No_se_encontró_el_socio;
+
+            nombre = socio.NombreCompleto;
+
+            MembresiaController membresiaController = new MembresiaController();
+            var membresias = membresiaController.GetByIdSocioFecha(socio.idSocio, fecha);
+            if (membresias == null)
+                return EnumEstadoCuotaSocio.No_se_encontró_la_membresía;
+
+            var membresiasActivas = membresias.Where(m => m.idEstadoMembresia == 1);
+            if (membresiasActivas == null)
+            {
+                return EnumEstadoCuotaSocio.Problemas_con_la_membresía;
+            }
+
+            //tiene al menos 1 membresia vigente y activa
+            CuotaController cuotaController = new CuotaController();
+            TipoMembresiaController tipoMembresiaController = new TipoMembresiaController();
+
+            bool encontroMembresia = false;
+            actividades = "";
+            
+
+            foreach (var itemMembresia in membresias)
+            {
+                var cuotas = cuotaController.GetAllByMembresiaFechaPagada(itemMembresia.idMembresia, fecha);
+                //si al menos encuentra una cuota vigente y pagada
+                if (cuotas.Count> 0)
+                {
+                    encontroMembresia = true;
+                    var tipo = tipoMembresiaController.GetById(itemMembresia.idTipoMembresia);
+                    actividades += tipo.ActividadNombre + " | ";
+                }
+            }
+
+            if (!encontroMembresia)
+            {
+                return EnumEstadoCuotaSocio.Cuota_vencida;
+            }
+
+            return EnumEstadoCuotaSocio.Cuota_al_dia;
+        }
+    
     }
 }

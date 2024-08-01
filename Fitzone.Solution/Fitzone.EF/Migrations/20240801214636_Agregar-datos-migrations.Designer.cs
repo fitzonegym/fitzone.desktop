@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitzone.EF.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240801140849_Agregar-datos-migrations")]
+    [Migration("20240801214636_Agregar-datos-migrations")]
     partial class Agregardatosmigrations
     {
         /// <inheritdoc />
@@ -104,6 +104,9 @@ namespace Fitzone.EF.Migrations
 
                     b.Property<int>("numero")
                         .HasColumnType("int");
+
+                    b.Property<bool>("pagada")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("precio")
                         .HasColumnType("decimal(8,2)");
@@ -471,6 +474,9 @@ namespace Fitzone.EF.Migrations
 
                     b.Property<int>("cantidadDiasSemanales")
                         .HasColumnType("int");
+
+                    b.Property<bool>("cuotaUnica")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("cupoClase")
                         .HasColumnType("int");

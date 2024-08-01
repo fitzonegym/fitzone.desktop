@@ -20,9 +20,10 @@ namespace Fitzone.Front
             //Application.Run(new FrmSociosAdmin());            
             //Application.Run(new FrmSociosAlta());                        
             //Application.Run(new FrmMembresiaAlta());
-            Application.Run(new FrmMembresiaAdmin());            
+            //Application.Run(new FrmMembresiaAdmin());            
             //Application.Run(new FrmTipoMembresiaAdmin());            
             //Application.Run(new FrmTipoMembresiaAlta());
+            Application.Run(new FRMIngresosRegistrar());
 
 
             //Application.Run(new FrmLogin());

@@ -303,7 +303,7 @@
             // 
             // bindingSource1
             // 
-            bindingSource1.DataSource = typeof(Entidades.Membresia);
+            bindingSource1.DataSource = typeof(Entidades.Cuota);
             // 
             // txtNombre
             // 
