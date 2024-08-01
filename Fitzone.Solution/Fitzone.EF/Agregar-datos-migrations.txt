@@ -31,7 +31,7 @@ namespace Fitzone.EF.Migrations
                             GO
 
 
-                           INSERT INTO [dbo].[Socio] (nombre, apellido, numeroDocumento, telefono1, telefono2, mail, tipoDocumento, calle, calleNumero, anulado, imagen, fechaAlta, fechaNacimiento, idBarrio) VALUES
+                           INSERT INTO [dbo].[Socio] (nombre, apellido, numeroDocumento, telefono2, telefono1, mail, tipoDocumento, calle, calleNumero, anulado, imagen, fechaAlta, fechaNacimiento, idBarrio) VALUES
                             ('Juan', 'Perez', '24345678', '1234567', '3518765432', 'juan.perez@gmail.com', 'DNI', 'Av. Colón', '123', 0, NULL, '2024-07-15 12:34:56', '1980-05-14 00:00:00', 1),
                             ('María', 'González', '30654321', '7654321', '3512345678', 'maria.gonzalez@gmail.com', 'DNI', 'Av. General Paz', '456', 0, NULL, '2024-07-14 09:45:30', '1985-08-22 00:00:00', 2),
                             ('Carlos', 'Rodríguez', '35223344', '1122334', '3511122334', 'carlos.rodriguez@gmail.com', 'DNI', 'Calle San Martín', '789', 0, NULL, '2024-07-13 15:20:10', '1990-03-12 00:00:00', 3),
@@ -77,17 +77,17 @@ namespace Fitzone.EF.Migrations
 							
 							INSERT INTO [dbo].EstadoEquipamiento (nombre)
 							VALUES
-								('HABILITADO'),
-								('NO UTILIZABLE'),
-								('PRONTO A ROMPERSE')
+								('Habilitado'),
+								('No Utilizable'),
+								('Pronto A Romperse')
 							
 							GO
 							
 							INSERT INTO [dbo].Marca (nombre)
 							VALUES
-								('BALANCED BODY'),
-								('AERO'),
-								('ALIGN')
+								('Balanced Body'),
+								('Aero'),
+								('Align')
 							
 							GO
 							
@@ -113,9 +113,10 @@ namespace Fitzone.EF.Migrations
 							
 								INSERT INTO [dbo].[EstadoMembresia] (nombre, descripcion)
 								VALUES
-									('ACTIVA', 'MEMBRESIA ACTIVA'),
-									('VENCIDA', 'NO PAGO LA CUOTA EN TERMINO'),
-									('CANCELADA', 'CANCELADA MANUALMENTE');
+									('Activa', 'Membresia Activa'),
+									('Vencida', 'No Pago La Cuota En Termino'),
+									('Cancelada', 'Cancelada Manualmente');
+
 									
 							GO
 									
@@ -128,6 +129,20 @@ namespace Fitzone.EF.Migrations
 								('Ana', 'Lopez', '3514567890', NULL, 'ana.lopez@example.com', 'DNI', '45678901', 'Boulevard Las Flores', '101', GETDATE(), '1992-01-17', 0, 4),
 								('Carlos', 'Fernandez', '3515678901', NULL, 'carlos.fernandez@example.com', 'DNI', '56789012', 'Calle Las Palmas', '202', GETDATE(), '1987-07-09', 0, 5);
 		
+							GO
+
+							INSERT INTO [dbo].[InstructorActividad]
+									   ([idInstructor]
+									   ,[idActividad])
+								 VALUES
+									   (1,1),
+									   (2,2),
+									   (2,3),
+									   (3,3),
+									   (4,2),
+									   (4,3),
+									   (5,3)
+
 
                           GO	
 						  
@@ -137,8 +152,8 @@ namespace Fitzone.EF.Migrations
 								horadesde, horahasta, idActividad, idInstructor,cupoClase)
 							VALUES
 								
-								('PASE LIBRE MUSCULACIÓN',
-								 'PASE FULL TODOS LOS DIAS A CUALQUIER HORA PARA MUSCULACIÓN',
+								('Pase Libre Musculación',
+								 'Pase Full Todos Los Dias A Cualquier Hora Para Musculación',
 								 15000,
 								 1,
 								 6,
@@ -146,11 +161,11 @@ namespace Fitzone.EF.Migrations
 								 ,'20000101 00:00:00'
 								 ,'20000101 23:59:59'
 								 ,1
-								 ,null,
+								 ,1,
 								 null),
 								 
-								('PASE MUSCULACIÓN X 3 DIAS',
-								 'PASE LIBRE MUSCULACIÓN X 3 DIAS A LA SEMANA - CUALQUIER DIA',
+								('Pase Musculación X 3 Dias',
+								 'Pase Libre Musculación X 3 Dias A La Semana - Cualquier Dia',
 								 36000,
 								 3,
 								 3,
@@ -158,11 +173,11 @@ namespace Fitzone.EF.Migrations
 								 ,'20000101 00:00:00'
 								 ,'20000101 23:59:59'
 								 ,1
-								 ,null,
+								 ,1,
 								 null),								 		
 								 
-								('ZUMBA 3 DIAS - ANUAL',
-								 'ZUMBA 3 DIAS A LA SEMANA - PASE POR UN AÑO',
+								('Zumba 3 Dias - Anual', 
+								'Zumba 3 Dias A La Semana - Pase Por Un Año',
 								 120000,
 								 12,
 								 3,
@@ -170,12 +185,12 @@ namespace Fitzone.EF.Migrations
 								  ,'20000101 20:00:00'
 								 ,'20000101 21:00:00'
 								 ,2
-								 ,1,
-								 20),
+								 ,2,
+								 10),
 								 
 								  
-								('PILATES 3 DIAS - 6 MESES',
-								 'PILATES 3 DIAS A LA SEMANA - PASE POR 6 MESES',
+								('Pilates 3 Dias - 6 Meses',
+								'Pilates 3 Dias A La Semana - Pase Por 6 Meses',
 								 90000,
 								 12,
 								 3,
@@ -183,8 +198,8 @@ namespace Fitzone.EF.Migrations
 								  ,'20000101 19:00:00'
 								 ,'20000101 20:30:00'
 								 ,3
-								 ,2,
-								 15);
+								 ,4,
+								 12);
 								 ;
 
 							GO						

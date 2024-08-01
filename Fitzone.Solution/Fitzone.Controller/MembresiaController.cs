@@ -42,7 +42,7 @@ namespace Fitzone.Controller
             return contexto.Membresia
                 .Include("Socio")
                 .Include("EstadoMembresia")
-                .Include("TipoMembresia")
+                //.Include("TipoMembresia")
                 .Where(c => (c.Socio != null && (c.Socio.nombre.Trim()+ c.Socio.apellido.Trim()).ToUpper().Contains(nombre)))
                 .Where(c => c.fechaAlta >= membresia.fechaDesde && c.fechaAlta <= membresia.fechaHasta)                
                 .OrderByDescending(c => c.fechaAlta)
@@ -91,9 +91,20 @@ namespace Fitzone.Controller
             throw new NotImplementedException();
         }
 
-        public List<TipoMembresia>? GetAllTipoMembresia()
-        {
-            return contexto.TipoMembresia.OrderBy(c=>c.nombre).ToList();
+        //public List<TipoMembresia>? GetAllTipoMembresia() => 
+        //    contexto.TipoMembresia.OrderBy(c=>c.nombre).ToList();
+
+        public int? GetDisponibilidad(TipoMembresia tipo) {
+            //obtengo el cupo del tipo de membresia
+            int? cupo = contexto.TipoMembresia.FirstOrDefault(t => t.idTipoMembresia == tipo.idTipoMembresia).cupoClase;
+            //cuento las membresias existentes con esa actividad
+
+            if (cupo == null)
+                return null;
+
+            int cant = contexto.Membresia.Count(m => m.idActividad == tipo.idActividad && m.idEstadoMembresia == 1);
+
+            return cupo - cant;
         }
     }
 }

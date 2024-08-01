@@ -71,7 +71,7 @@
             thunderLabel2 = new ReaLTaiizor.Controls.ThunderLabel();
             txtNombre = new ReaLTaiizor.Controls.AloneTextBox();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
-            ucTituloLabel1 = new UserControls.UCTituloLabel();
+            ucTitulo = new UserControls.UCTituloLabel();
             ucBorder1 = new UserControls.UCBorderLR();
             ucBorder2 = new UserControls.UCBorderLR();
             ucBordertd1 = new UserControls.UCBorderTD();
@@ -697,14 +697,14 @@
             thunderLabel1.TabIndex = 11;
             thunderLabel1.Text = "Nombre";
             // 
-            // ucTituloLabel1
+            // ucTitulo
             // 
-            ucTituloLabel1._titulo = "Agregar socio";
-            ucTituloLabel1.BackColor = Color.FromArgb(103, 58, 183);
-            ucTituloLabel1.Location = new Point(4, 4);
-            ucTituloLabel1.Name = "ucTituloLabel1";
-            ucTituloLabel1.Size = new Size(143, 34);
-            ucTituloLabel1.TabIndex = 49;
+            ucTitulo._titulo = "Agregar socio";
+            ucTitulo.BackColor = Color.FromArgb(103, 58, 183);
+            ucTitulo.Location = new Point(4, 4);
+            ucTitulo.Name = "ucTitulo";
+            ucTitulo.Size = new Size(143, 34);
+            ucTitulo.TabIndex = 49;
             // 
             // ucBorder1
             // 
@@ -822,7 +822,7 @@
             Controls.Add(ucBorder1);
             Controls.Add(botonesForms3);
             Controls.Add(groupBox2);
-            Controls.Add(ucTituloLabel1);
+            Controls.Add(ucTitulo);
             Controls.Add(btnGuardar);
             Controls.Add(cyberButton1);
             FormBorderStyle = FormBorderStyle.None;
@@ -886,7 +886,7 @@
         private PictureBox pictureBoxImagen;
         private Label label1;
         private Label label2;
-        private UserControls.UCTituloLabel ucTituloLabel1;
+        private UserControls.UCTituloLabel ucTitulo;
         private UserControls.UCBorderLR ucBorder1;
         private UserControls.UCBorderLR ucBorder2;
         private UserControls.UCBorderTD ucBordertd1;

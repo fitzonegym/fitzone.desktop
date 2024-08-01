@@ -34,7 +34,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
+            BackColor = Color.White;
             Name = "UCPintarFilasPares";
             Size = new Size(33, 27);
             Load += UCPintarFilasPares_Load;

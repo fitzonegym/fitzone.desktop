@@ -130,6 +130,9 @@ namespace Fitzone.Controller
                 actualizar.telefono2 = entidad.telefono2;
                 actualizar.idBarrio = entidad.idBarrio;
 
+                actualizar.fechaNacimiento = entidad.fechaNacimiento;
+
+
                 contexto.SaveChanges(true);
 
                 return true;

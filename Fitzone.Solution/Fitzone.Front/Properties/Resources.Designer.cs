@@ -213,9 +213,9 @@ namespace Fitzone.Front.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap reload_filtros {
+        internal static System.Drawing.Bitmap reload_filtros1 {
             get {
-                object obj = ResourceManager.GetObject("reload_filtros", resourceCulture);
+                object obj = ResourceManager.GetObject("reload_filtros1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

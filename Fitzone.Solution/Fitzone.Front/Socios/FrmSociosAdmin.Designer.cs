@@ -720,14 +720,12 @@
             // 
             // ucClearFilters1
             // 
-            ucClearFilters1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ucClearFilters1.Location = new Point(666, 82);
+            ucClearFilters1.Location = new Point(546, 81);
             ucClearFilters1.Name = "ucClearFilters1";
-            ucClearFilters1.Size = new Size(30, 30);
+            ucClearFilters1.Size = new Size(25, 25);
             ucClearFilters1.TabIndex = 65;
             toolTip1.SetToolTip(ucClearFilters1, "Limpiar filtros");
             ucClearFilters1._ClickUCAgregar += ucClearFilters1__ClickUCAgregar;
-            ucClearFilters1.Load += ucClearFilters1_Load;
             // 
             // ucCantidadregistros1
             // 

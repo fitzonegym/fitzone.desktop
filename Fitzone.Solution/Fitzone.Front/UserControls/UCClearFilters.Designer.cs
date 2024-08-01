@@ -36,10 +36,10 @@
             // 
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.reload_filtros;
+            pictureBox1.Image = Properties.Resources.reload_filtros1;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(30, 30);
+            pictureBox1.Size = new Size(25, 25);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -51,7 +51,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(pictureBox1);
             Name = "UCClearFilters";
-            Size = new Size(30, 30);
+            Size = new Size(25, 25);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

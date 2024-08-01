@@ -13,7 +13,9 @@ namespace Fitzone.Entidades
         public int idActividad { get; set; }
 
         [MaxLength(50)]
-        public string nombre { get; set; }        
-     
+        public string nombre { get; set; }
+
+        public ICollection<InstructorActividad> InstructorActividades { get; set; }
+
     }
 }

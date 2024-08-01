@@ -1,6 +1,7 @@
 ﻿using Fitzone.Front.FormsExtras;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,6 +72,16 @@ namespace Fitzone.Front
             string fileName = $"{baseName}_{dateTime}.{extension}";
 
             return fileName;
+        }
+
+        public static string Capitalize(string str)
+        {
+            if (string.IsNullOrEmpty(str))
+            {
+                return str;
+            }
+            TextInfo textInfo = new CultureInfo("es-ES", false).TextInfo;
+            return textInfo.ToTitleCase(str.ToLower());
         }
 
     }

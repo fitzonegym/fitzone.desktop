@@ -17,10 +17,9 @@ namespace Fitzone.EF
         public DbSet<Equipamiento> Equipamiento { get; set; }        
         public DbSet<EquipamientoTipoMembresia> EquipamientoTipoMembresia { get; set; }
         public DbSet<EstadoEquipamiento> EstadoEquipamiento { get; set; }
-
         public DbSet<Marca> Marca { get; set; }
-
-
+        public DbSet<InstructorActividad> InstructorActividad { get; set; }
+        
 
         public DbSet<Configuraciones> Configuraciones { get; set; }
 
@@ -35,6 +34,23 @@ namespace Fitzone.EF
                 optionsBuilder.UseSqlServer(connString);
             }
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<InstructorActividad>()
+                .HasKey(ia => ia.id);
+
+            modelBuilder.Entity<InstructorActividad>()
+                .HasOne(ia => ia.Instructor)
+                .WithMany(i => i.InstructorActividades)
+                .HasForeignKey(ia => ia.idInstructor);
+
+            modelBuilder.Entity<InstructorActividad>()
+                .HasOne(ia => ia.Actividad)
+                .WithMany(a => a.InstructorActividades)
+                .HasForeignKey(ia => ia.idActividad);
+        }
+
     }
 
    

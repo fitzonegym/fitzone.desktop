@@ -39,19 +39,18 @@ namespace Fitzone.Entidades
         public string? calle { get; set; }
         [MaxLength(10)]
         public string? calleNumero { get; set; }
-
         public DateTime fechaAlta { get; set; } = DateTime.Now;
         public DateTime fechaNacimiento { get; set; } = DateTime.Now;   
-
         public bool anulado { get; set; } = false;
-
+        public ICollection<InstructorActividad> InstructorActividades { get; set; }
         #endregion
 
         #region ForeignKey
 
         [ForeignKey("Barrio")]
         public int idBarrio { get; set; }
-        public Barrio? Barrio { get; set; }
+        public Barrio? Barrio { get; set; }        
+      
 
         #endregion
 

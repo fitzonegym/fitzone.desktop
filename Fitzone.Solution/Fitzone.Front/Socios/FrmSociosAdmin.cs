@@ -142,12 +142,12 @@ namespace Fitzone.Front.Socios
         }
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            DataGridView dataGridView = sender as DataGridView;
+        //    DataGridView dataGridView = sender as DataGridView;
 
-            if (e.RowIndex % 2 == 0) // Si es una fila par
-            {
-                dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(209, 196, 234); // Cambia el color de fondo
-            }
+        //    if (e.RowIndex % 2 == 0) // Si es una fila par
+        //    {
+        //        dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(209, 196, 234); // Cambia el color de fondo
+        //    }
         }
 
         private void CargarGrilla()
@@ -209,6 +209,7 @@ namespace Fitzone.Front.Socios
 
             FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
             frmSociosAlta._EnumModoForm = EnumModoForm.Alta;
+            frmSociosAlta._id_socio = 0;
 
             frmSociosAlta.ShowDialog();
 
@@ -223,20 +224,20 @@ namespace Fitzone.Front.Socios
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
-            return;
+            //new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
+            //return;
 
-            //if (bindingSource1.DataSource == null || bindingSource1.Current == null)
-            //    return;
+            if (bindingSource1.DataSource == null || bindingSource1.Current == null)
+                return;
 
-            //FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
-            //frmSociosAlta._EnumModoForm = EnumModoForm.Modificacion;
+            FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
+            frmSociosAlta._EnumModoForm = EnumModoForm.Modificacion;
 
-            //frmSociosAlta._id_socio = ((Socio)bindingSource1.Current).idSocio;
+            frmSociosAlta._id_socio = ((Socio)bindingSource1.Current).idSocio;
 
-            //frmSociosAlta.ShowDialog();
+            frmSociosAlta.ShowDialog();
 
-            //CargarGrilla();
+            CargarGrilla();
         }
 
         private void BtnAnular_Click(object sender, EventArgs e)
@@ -559,11 +560,6 @@ namespace Fitzone.Front.Socios
                 textBox.TB.SelectionStart = selectionStart > textBox.Text.Length ? textBox.Text.Length : selectionStart;
                 textBox.TB.SelectionLength = selectionLength;
             }
-        }
-
-        private void ucClearFilters1_Load(object sender, EventArgs e)
-        {
-
         }
 
         //private void btnConsultar_Click(object sender, EventArgs e)

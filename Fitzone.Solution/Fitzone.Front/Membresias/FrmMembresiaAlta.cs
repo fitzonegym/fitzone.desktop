@@ -25,7 +25,7 @@ namespace Fitzone.Front.Membresias
         private const int HTBOTTOMLEFT = 16;
         private const int HTBOTTOMRIGHT = 17;
         private const int BORDER_SIZE = 15; // Tamaño de los bordes para redimensionar
-                                           //   // Funciones necesarias para permitir el movimiento del formulario
+                                            //   // Funciones necesarias para permitir el movimiento del formulario
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
 
@@ -79,21 +79,23 @@ namespace Fitzone.Front.Membresias
         {
             InitializeComponent();
         }
-
         private void FrmMembresia_Load(object sender, EventArgs e)
         {
-            CargarTipos();
+            CargarTipos();            
+
             txtFechaDesde.Value = Statics.DateTimeNowSinHora();
 
             LimpiarControles();
 
+            RefreshTipoMembresia();
+
+          
 
         }
-
         private void LimpiarControles()
         {
             _listaCuotas = new List<Cuota>();
-            bindingSource1.DataSource = _listaCuotas;
+            bindingSourceCuotas.DataSource = _listaCuotas;
             txtDescripcionMembresía.Text = "";
 
             _Socio = null;
@@ -103,11 +105,6 @@ namespace Fitzone.Front.Membresias
             txtDocumento.Text = "";
             txtTelefono.Text = "";
             txtDireccion.Text = "";
-
-        }
-
-        private void CargarSocio()
-        {
 
         }
         private void btnBuscarSocio_Click(object sender, EventArgs e)
@@ -126,26 +123,25 @@ namespace Fitzone.Front.Membresias
                 txtDireccion.Text = _Socio.calle + " " + _Socio.calleNumero;
             }
 
-
         }
-
-
         private void CargarTipos()
         {
-            MembresiaController membresiaController = new MembresiaController();
-            bindingSource2.DataSource = membresiaController.GetAllTipoMembresia();
+            TipoMembresiaController membresiaController = new TipoMembresiaController();
+            bindingSourceTipo.DataSource = membresiaController.GetAll();
             RefreshTipoMembresia();
         }
-
+        //private void CargarInstructores(int idActividad)
+        //{
+        //    InstructorController controller = new InstructorController();
+        //    bindingSourceInstructor.DataSource = controller.GetInstructoresActividad(idActividad);
+        //}
         private void RefreshTipoMembresia()
         {
-            if (bindingSource2.DataSource == null)
+
+            if (bindingSourceTipo.Current == null)
                 return;
 
-            if (bindingSource2.Current == null)
-                return;
-
-            _tipoMembresiaSeleccionada = (TipoMembresia)bindingSource2.Current;
+            _tipoMembresiaSeleccionada = (TipoMembresia)bindingSourceTipo.Current;
 
             txtDetalleTipo.Text = _tipoMembresiaSeleccionada.descripcion;
             txtPrecio.Text = _tipoMembresiaSeleccionada.precioTotal.ToString();
@@ -159,11 +155,26 @@ namespace Fitzone.Front.Membresias
             chkJueves.Checked = dias.Contains("jueves");
             chkViernes.Checked = dias.Contains("viernes");
             chkSabado.Checked = dias.Contains("sabado");
+            chkDomingo.Checked = dias.Contains("domingo");
+
+            txtCupo.Text = _tipoMembresiaSeleccionada.cupoClase.ToString();
+            txtHoraDesde.Text = _tipoMembresiaSeleccionada.horadesde.ToShortTimeString();
+            txtHoraHasta.Text = _tipoMembresiaSeleccionada.horaHasta.ToShortTimeString();
 
             CalcularFechasMembresia();
 
-        }
+            Disponibilidad();
 
+            AgregarDetalle();
+
+         //   CargarInstructores(_tipoMembresiaSeleccionada.idActividad);
+
+            _listaCuotas = new List<Cuota>();
+            bindingSourceCuotas.DataSource = _listaCuotas;
+
+            txtInstructor.Text = _tipoMembresiaSeleccionada.InstructorNombreCompleto;
+
+        }
         private void CalcularFechasMembresia()
         {
             try
@@ -178,13 +189,16 @@ namespace Fitzone.Front.Membresias
 
 
         }
-
         private void txtFechaDesde_ValueChanged(object sender, EventArgs e)
         {
             CalcularFechasMembresia();
         }
-
         private void cmdGenerar_Click(object sender, EventArgs e)
+        {
+            GenerarCuotas();
+        }
+
+        private void GenerarCuotas()
         {
             int cant = _tipoMembresiaSeleccionada.cantidadCuotas;
             string? diasVenc = new ConfiguracionesController().GetValueByName("CuotaCantDiasVencimiento");
@@ -204,39 +218,42 @@ namespace Fitzone.Front.Membresias
                 c.numero = i + 1;
                 c.fechaDesde = desde;
                 c.fechaHasta = desde.AddMonths(1);
-                c.fechaVencimiento = desde.AddDays(diasVencimiento-1);
+                c.fechaVencimiento = desde.AddDays(diasVencimiento - 1);
 
                 _listaCuotas.Add(c);
             }
 
-            bindingSource1.DataSource = _listaCuotas;
+            bindingSourceCuotas.DataSource = _listaCuotas;
 
-            ucAgregar1__ClickUCAgregar(null, null);
+            AgregarDetalle();
         }
 
         private void bindingSource2_CurrentItemChanged(object sender, EventArgs e)
         {
             RefreshTipoMembresia();
         }
-
         private void ucAgregar1__ClickUCAgregar(object sender, EventArgs e)
         {
+            AgregarDetalle();
+        }
+
+        private void AgregarDetalle()
+        {
             txtDescripcionMembresía.Text = String.Format(" {0} | {1} | Desde: {2} Hasta: {3} | Cantidad de días por semana: {4} | Días habilitados: {5}",
-              _tipoMembresiaSeleccionada.nombre,
-              _tipoMembresiaSeleccionada.descripcion,
-              Statics.DateTimeNowSinHoraString(txtFechaDesde.Value),
-              Statics.DateTimeNowSinHoraString(txtFechaHasta.Value),
-              _tipoMembresiaSeleccionada.cantidadDiasSemanales,
-              _tipoMembresiaSeleccionada.diasHabilitados
-              );
+            _tipoMembresiaSeleccionada.nombre,
+            _tipoMembresiaSeleccionada.descripcion,
+            Statics.DateTimeNowSinHoraString(txtFechaDesde.Value),
+            Statics.DateTimeNowSinHoraString(txtFechaHasta.Value),
+            _tipoMembresiaSeleccionada.cantidadDiasSemanales,
+            _tipoMembresiaSeleccionada.diasHabilitados
+            );
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             Guardar();
-            
-        }
 
+        }
         private bool ValidarGuardar()
         {
             string mensaje = "";
@@ -247,8 +264,14 @@ namespace Fitzone.Front.Membresias
             if (_tipoMembresiaSeleccionada == null)
                 mensaje += "\nSeleccione el tipo de membresía";
 
+            //if (bindingSourceInstructor.Current == null)
+            //    mensaje += "\nSeleccione el instructor";
+
             if (!_listaCuotas.Any())
                 mensaje += "\nDebe generar las cuotas";
+
+            if (txtDisponibilidadBack.Text == "0")
+                mensaje += "\nNo hay disponibilidad";
 
             if (!mensaje.IsNullOrEmpty())
             {
@@ -258,52 +281,58 @@ namespace Fitzone.Front.Membresias
 
             return true;
         }
-
         private void Guardar()
         {
             if (!ValidarGuardar())
                 return;
-
-            if (_Socio == null)
+                      if (_Socio == null)
                 return;
 
             try
-            {
-                Membresia m = new Membresia();                
+            {               
+
+
+                Membresia m = new Membresia();
                 m.idSocio = _Socio.idSocio;
                 m.precio = _tipoMembresiaSeleccionada.precioTotal;
                 m.fechaAlta = DateTime.Now;
                 m.detalle = txtDescripcionMembresía.Text;
-                m.idEstadoMembresia = 1;
-                //m.idTipoMembresia = _tipoMembresiaSeleccionada.idTipoMembresia;
                 m.fechaDesde = txtFechaDesde.Value;
                 m.fechaHasta = txtFechaHasta.Value;
                 m.Cuotas = _listaCuotas;
                 m.cantidadDiasSemanales = _tipoMembresiaSeleccionada.cantidadDiasSemanales;
                 m.diasHabilitados = _tipoMembresiaSeleccionada.diasHabilitados;
 
+                m.horadesde = _tipoMembresiaSeleccionada.horadesde;
+                m.horaHasta = _tipoMembresiaSeleccionada.horaHasta;
+                m.idActividad = _tipoMembresiaSeleccionada.idActividad;
+                m.idInstructor = _tipoMembresiaSeleccionada.idInstructor;
+
+                m.idTipoMembresia = _tipoMembresiaSeleccionada.idTipoMembresia;
+                m.idEstadoMembresia = 1;
+
                 var mes = new MessageBoxCustom(EnumModoMessageBoxCustom.ConfirmaGuardar);
-                mes.ShowDialog();                
+                mes.ShowDialog();
                 if (mes.response == DialogResult.No)
                 {
                     return;
-                }    
+                }
 
                 new MembresiaController().Insert(m);
 
                 new MessageBoxCustom(EnumModoMessageBoxCustom.DatosGuardadosCorrectamente).ShowDialog();
                 LimpiarControles();
+                RefreshTipoMembresia();
             }
             catch (Exception ex)
             {
 
-                new MessageBoxCustom(ex.Message,EnumModoMessageBoxCustom.SeEncontraronErrores,50);
+                new MessageBoxCustom(ex.Message, EnumModoMessageBoxCustom.SeEncontraronErrores, 50);
                 throw;
             }
 
 
         }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             if (_listaCuotas.Count == 0 && _Socio == null)
@@ -319,6 +348,76 @@ namespace Fitzone.Front.Membresias
             if (mes.response == DialogResult.Yes)
                 Close();
 
+        }
+        private void cmbTipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //var tipo = (TipoMembresia)cmbTipoMembresia.SelectedItem;
+
+            //int? cant = 0;
+            //if (tipo != null)
+            //{
+            //    MembresiaController con = new MembresiaController();
+            //    cant = con.GetDisponibilidad(tipo);
+            //}
+
+            //if (cant == null)
+            //{
+            //    txtDisponibilidadBack.Text = "";
+            //    txtDisponibilidadBack.BackColor = Color.Transparent;
+            //}
+            //else
+            //{
+            //    if (cant == 0)
+            //    {
+            //        txtDisponibilidadBack.BackColor = Color.Red;
+            //    }
+            //    if (cant > 0 && cant <= 5)
+            //    {
+            //        txtDisponibilidadBack.BackColor = Color.Yellow;
+            //    }
+            //    if (cant >= 6)
+            //    {
+            //        txtDisponibilidadBack.BackColor = Color.Green;
+            //    }
+
+            //    txtDisponibilidadBack.Text = cant.ToString();
+            //}
+
+        }
+        private void Disponibilidad()
+        {
+            //  var tipo = (TipoMembresia)cmbTipoMembresia.SelectedItem;
+            var tipo = _tipoMembresiaSeleccionada;
+
+            int? cant = 0;
+            if (tipo != null)
+            {
+                MembresiaController con = new MembresiaController();
+                cant = con.GetDisponibilidad(tipo);
+            }
+
+            if (cant == null)
+            {
+                txtDisponibilidadBack.Text = "";
+                txtDisponibilidadBack.BackColor = Color.Transparent;
+            }
+            else
+            {
+                if (cant == 0)
+                {
+                    txtDisponibilidadBack.BackColor = Color.Red;
+                }
+                if (cant > 0 && cant <= 5)
+                {
+                    txtDisponibilidadBack.BackColor = Color.Yellow;
+                }
+                if (cant >= 6)
+                {
+                    txtDisponibilidadBack.BackColor = Color.Green;
+                }
+
+                txtDisponibilidadBack.Text = cant.ToString();
+            }
         }
     }
 }

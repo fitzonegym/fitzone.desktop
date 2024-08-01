@@ -16,9 +16,9 @@ namespace Fitzone.Front.Socios
     {
         private VideoCapture _capture;
         private Mat _frame;
-        public int _id_socio = 0;
+        public int _id_socio = 1;
         Socio? _socio;
-        public EnumModoForm _EnumModoForm = EnumModoForm.Alta;
+        public EnumModoForm _EnumModoForm = EnumModoForm.Modificacion;
 
         #region redimensionar
 
@@ -131,6 +131,15 @@ namespace Fitzone.Front.Socios
                 btnGuardar.Visible = false;
                 HabilitarControlles(false);
 
+                ucTitulo._titulo = "Consultar socio";
+            }
+            if (_EnumModoForm == EnumModoForm.Modificacion)
+            {
+                ucTitulo._titulo = "Modificar socio";
+            }
+            if (_EnumModoForm == EnumModoForm.Alta)
+            {
+                ucTitulo._titulo = "Agregar socio";
             }
 
             //habilitar en el sprint 2
@@ -204,13 +213,13 @@ namespace Fitzone.Front.Socios
             txtApellido.Text = _socio.apellido;
             txtNroDoc.Text = _socio.numeroDocumento;
 
-            if (_socio.tipoDocumento == "DNI")
-                rdbDNI.Checked = true;
-            else
-                rdbOtro.Checked = true;
+            rdbDNI.Checked = _socio.tipoDocumento == "DNI";
+            rdbOtro.Checked = _socio.tipoDocumento != "DNI";            
 
             txtCelular.Text = _socio.telefono1;
             txtTelefono.Text = _socio.telefono2;
+            
+            txtFechaNac.Value = _socio.fechaNacimiento;
 
             //imagen            
             //pictureBoxImagen.Image = null;
@@ -347,12 +356,21 @@ namespace Fitzone.Front.Socios
                 msg.ShowDialog();
                 return;
             }
-          
 
-            msg = new MessageBoxCustom("Se dió de alta el socio " + "("+_socio.idSocio.ToString()+") " + _socio.NombreCompleto + "\n¿Desea agregar uno nuevo?",EnumModoMessageBoxCustom.YesNo,50);
-            msg.ShowDialog();
-            if (msg.response == DialogResult.No)
-                Close();
+            if (_EnumModoForm == EnumModoForm.Modificacion)
+            {
+                msg = new MessageBoxCustom("Se actualizaron los datos del socio", EnumModoMessageBoxCustom.Aceptar);
+                msg.ShowDialog();
+                Close();    
+            }
+
+            if (_EnumModoForm == EnumModoForm.Alta)
+            {
+                msg = new MessageBoxCustom("Se dió de alta el socio " + "(" + _socio.idSocio.ToString() + ") " + _socio.NombreCompleto + "\n¿Desea agregar uno nuevo?", EnumModoMessageBoxCustom.YesNo, 50);
+                msg.ShowDialog();
+                if (msg.response == DialogResult.No)
+                    Close();
+            }
 
             LimpiarTodo();
             
@@ -370,24 +388,14 @@ namespace Fitzone.Front.Socios
             ucErrorIconoCel.Visible = cel.Length != 10;
 
             ucErrorIconoNombre.Visible = String.IsNullOrWhiteSpace(txtNombre.Text);
-            txtNombre.Text = CapitalizeWords(txtNombre.Text);
+            txtNombre.Text = Statics.Capitalize(txtNombre.Text);
 
             ucErrorIconoApellido.Visible = String.IsNullOrWhiteSpace(txtApellido.Text);
-            txtApellido.Text = CapitalizeWords(txtApellido.Text);
+            txtApellido.Text = Statics.Capitalize(txtApellido.Text);
 
             ucErrorIconoMail.Visible = !String.IsNullOrWhiteSpace(txtMail.Text) && !IsValidEmail(txtMail.Text);
 
-        }
-
-        private string CapitalizeWords(string str)
-        {
-            if (string.IsNullOrEmpty(str))
-            {
-                return str;
-            }
-            TextInfo textInfo = new CultureInfo("es-ES", false).TextInfo;
-            return textInfo.ToTitleCase(str.ToLower());
-        }
+        }     
 
         private void txtNroDoc_Click_1(object sender, EventArgs e)
         {

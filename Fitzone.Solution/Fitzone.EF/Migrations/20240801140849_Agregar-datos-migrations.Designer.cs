@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitzone.EF.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240728222802_Agregar-datos-migrations")]
+    [Migration("20240801140849_Agregar-datos-migrations")]
     partial class Agregardatosmigrations
     {
         /// <inheritdoc />
@@ -282,6 +282,29 @@ namespace Fitzone.EF.Migrations
                     b.ToTable("Instructor");
                 });
 
+            modelBuilder.Entity("Fitzone.Entidades.InstructorActividad", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int>("idActividad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idInstructor")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("idActividad");
+
+                    b.HasIndex("idInstructor");
+
+                    b.ToTable("InstructorActividad");
+                });
+
             modelBuilder.Entity("Fitzone.Entidades.Marca", b =>
                 {
                     b.Property<int>("idMarca")
@@ -331,11 +354,11 @@ namespace Fitzone.EF.Migrations
                     b.Property<DateTime?>("fechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("horaHasta")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeOnly>("horaHasta")
+                        .HasColumnType("time");
 
-                    b.Property<DateTime>("horadesde")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeOnly>("horadesde")
+                        .HasColumnType("time");
 
                     b.Property<int>("idActividad")
                         .HasColumnType("int");
@@ -460,11 +483,11 @@ namespace Fitzone.EF.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("horaHasta")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeOnly>("horaHasta")
+                        .HasColumnType("time");
 
-                    b.Property<DateTime>("horadesde")
-                        .HasColumnType("datetime2");
+                    b.Property<TimeOnly>("horadesde")
+                        .HasColumnType("time");
 
                     b.Property<int>("idActividad")
                         .HasColumnType("int");
@@ -548,6 +571,25 @@ namespace Fitzone.EF.Migrations
                     b.Navigation("Barrio");
                 });
 
+            modelBuilder.Entity("Fitzone.Entidades.InstructorActividad", b =>
+                {
+                    b.HasOne("Fitzone.Entidades.Actividad", "Actividad")
+                        .WithMany("InstructorActividades")
+                        .HasForeignKey("idActividad")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitzone.Entidades.Instructor", "Instructor")
+                        .WithMany("InstructorActividades")
+                        .HasForeignKey("idInstructor")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Actividad");
+
+                    b.Navigation("Instructor");
+                });
+
             modelBuilder.Entity("Fitzone.Entidades.Membresia", b =>
                 {
                     b.HasOne("Fitzone.Entidades.Actividad", "Actividad")
@@ -607,6 +649,16 @@ namespace Fitzone.EF.Migrations
                     b.Navigation("Actividad");
 
                     b.Navigation("Instructor");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.Actividad", b =>
+                {
+                    b.Navigation("InstructorActividades");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.Instructor", b =>
+                {
+                    b.Navigation("InstructorActividades");
                 });
 
             modelBuilder.Entity("Fitzone.Entidades.Membresia", b =>

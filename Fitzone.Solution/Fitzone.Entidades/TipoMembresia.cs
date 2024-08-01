@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 
 namespace Fitzone.Entidades
 {
@@ -23,8 +24,8 @@ namespace Fitzone.Entidades
 
         public string diasHabilitados { get; set; } = "";
 
-        public DateTime horadesde { get; set; }
-        public DateTime horaHasta { get; set; }
+        public TimeOnly horadesde { get; set; }
+        public TimeOnly horaHasta { get; set; }
 
         public int? cupoClase { get; set; }
 
@@ -35,6 +36,41 @@ namespace Fitzone.Entidades
         [ForeignKey("Actividad")]
         public int idActividad { get; set; }
         public Actividad? Actividad { get; set; }
+
+        [NotMapped]
+        public string InstructorNombreCompleto
+        {
+            get
+            {
+                return Instructor == null ? "" : Instructor.NombreCompleto;
+            }
+        }
+        [NotMapped]
+        public string ActividadNombre
+        {
+            get
+            {
+                return Actividad == null ? "" : Actividad.nombre;
+            }
+        }
+
+        [NotMapped]
+        public string HoraDesdeString
+        {
+            get
+            {
+                return horadesde.ToShortTimeString();    
+            }
+        }
+
+        [NotMapped]
+        public string HoraHastaString
+        {
+            get
+            {
+                return horaHasta.ToShortTimeString();
+            }
+        }
 
     }
 }

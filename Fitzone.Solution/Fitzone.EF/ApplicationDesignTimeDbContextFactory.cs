@@ -9,7 +9,7 @@ namespace Fitzone.EF
         public Contexto CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<Contexto>();
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Fitzone09;integrated security=true;TrustServerCertificate=true");
+            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=Fitzone02;integrated security=true;TrustServerCertificate=true");
             return new Contexto(optionsBuilder.Options);
         }
     }

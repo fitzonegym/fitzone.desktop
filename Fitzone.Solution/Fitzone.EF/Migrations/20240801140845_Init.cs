@@ -184,6 +184,32 @@ namespace Fitzone.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "InstructorActividad",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    idInstructor = table.Column<int>(type: "int", nullable: false),
+                    idActividad = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InstructorActividad", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_InstructorActividad_Actividad_idActividad",
+                        column: x => x.idActividad,
+                        principalTable: "Actividad",
+                        principalColumn: "idActividad",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_InstructorActividad_Instructor_idInstructor",
+                        column: x => x.idInstructor,
+                        principalTable: "Instructor",
+                        principalColumn: "idInstructor",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TipoMembresia",
                 columns: table => new
                 {
@@ -195,8 +221,8 @@ namespace Fitzone.EF.Migrations
                     cantidadCuotas = table.Column<int>(type: "int", nullable: false),
                     cantidadDiasSemanales = table.Column<int>(type: "int", nullable: false),
                     diasHabilitados = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    horadesde = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    horaHasta = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    horadesde = table.Column<TimeOnly>(type: "time", nullable: false),
+                    horaHasta = table.Column<TimeOnly>(type: "time", nullable: false),
                     cupoClase = table.Column<int>(type: "int", nullable: true),
                     idInstructor = table.Column<int>(type: "int", nullable: true),
                     idActividad = table.Column<int>(type: "int", nullable: false)
@@ -231,8 +257,8 @@ namespace Fitzone.EF.Migrations
                     detalle = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     cantidadDiasSemanales = table.Column<int>(type: "int", nullable: false),
                     diasHabilitados = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    horadesde = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    horaHasta = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    horadesde = table.Column<TimeOnly>(type: "time", nullable: false),
+                    horaHasta = table.Column<TimeOnly>(type: "time", nullable: false),
                     idTipoMembresia = table.Column<int>(type: "int", nullable: false),
                     idEstadoMembresia = table.Column<int>(type: "int", nullable: false),
                     idSocio = table.Column<int>(type: "int", nullable: false),
@@ -349,6 +375,16 @@ namespace Fitzone.EF.Migrations
                 column: "idBarrio");
 
             migrationBuilder.CreateIndex(
+                name: "IX_InstructorActividad_idActividad",
+                table: "InstructorActividad",
+                column: "idActividad");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InstructorActividad_idInstructor",
+                table: "InstructorActividad",
+                column: "idInstructor");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Membresia_idActividad",
                 table: "Membresia",
                 column: "idActividad");
@@ -395,6 +431,9 @@ namespace Fitzone.EF.Migrations
 
             migrationBuilder.DropTable(
                 name: "EquipamientoTipoMembresia");
+
+            migrationBuilder.DropTable(
+                name: "InstructorActividad");
 
             migrationBuilder.DropTable(
                 name: "Membresia");
