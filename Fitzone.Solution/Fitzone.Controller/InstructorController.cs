@@ -12,7 +12,7 @@ namespace Fitzone.Controller
 {
     public class InstructorController : IControllerClasesAuxiliares<Instructor>
     {
-        Contexto? contexto = new Contexto();
+        Contexto contexto = new Contexto();
         public List<Instructor>? GetAll()
         {
             return contexto.Instructor

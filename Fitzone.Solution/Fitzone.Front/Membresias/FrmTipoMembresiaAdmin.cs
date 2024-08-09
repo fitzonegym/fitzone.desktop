@@ -1,5 +1,6 @@
 ﻿using Fitzone.Controller;
 using Fitzone.Entidades;
+using Fitzone.Front.Socios;
 using Fitzone.Front.UserControls;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,9 @@ namespace Fitzone.Front.Membresias
 
         public FrmTipoMembresiaAdmin()
         {
+            dataGridView1.Columns.Clear();
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = false;
         }
         #region redimensionar
 
@@ -89,11 +92,60 @@ namespace Fitzone.Front.Membresias
         }
 
         private void CargarGrilla()
-        {            
-           
+        {
+
             _listaTipos = new TipoMembresiaController().GetAll();
-            bindingSource1.DataSource = _listaTipos;            
+            tipoMembresiaBindingSource.DataSource = _listaTipos;
         }
 
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            FrmTipoMembresiaAlta frm = new FrmTipoMembresiaAlta();
+            frm._EnumModoForm = EnumModoForm.Alta;
+            frm.ShowDialog();
+
+            CargarGrilla();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            //new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
+            //return;
+
+            if (tipoMembresiaBindingSource.DataSource == null || tipoMembresiaBindingSource.Current == null)
+                return;
+
+            FrmTipoMembresiaAlta frm = new FrmTipoMembresiaAlta();
+            frm._EnumModoForm = EnumModoForm.Modificacion;
+
+            frm._tipo = ((TipoMembresia)tipoMembresiaBindingSource.Current);
+            frm._id_tipo = ((TipoMembresia)tipoMembresiaBindingSource.Current).idTipoMembresia;
+
+            frm.ShowDialog();
+
+            CargarGrilla();
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {     
+
+            if (tipoMembresiaBindingSource.DataSource == null || tipoMembresiaBindingSource.Current == null)
+                return;
+
+            FrmTipoMembresiaAlta frm = new FrmTipoMembresiaAlta();
+            frm._EnumModoForm = EnumModoForm.Consulta;
+
+            frm._tipo = ((TipoMembresia)tipoMembresiaBindingSource.Current);
+            frm._id_tipo = ((TipoMembresia)tipoMembresiaBindingSource.Current).idTipoMembresia;
+
+            frm.ShowDialog();
+
+     
+        }
     }
 }

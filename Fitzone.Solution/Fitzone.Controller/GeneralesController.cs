@@ -11,7 +11,7 @@ namespace Fitzone.Controller
 {
     public  class GeneralesController
     {
-        Contexto? contexto = new Contexto();
+        Contexto contexto = new Contexto();
 
         public List<Actividad>? GetActividad()=>        
             contexto.Actividad.ToList();

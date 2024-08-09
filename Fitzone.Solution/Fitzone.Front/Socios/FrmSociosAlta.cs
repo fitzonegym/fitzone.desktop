@@ -18,7 +18,7 @@ namespace Fitzone.Front.Socios
         private Mat _frame;
         public int _id_socio = 1;
         Socio? _socio;
-        public EnumModoForm _EnumModoForm = EnumModoForm.Modificacion;
+        public EnumModoForm _EnumModoForm = EnumModoForm.Consulta;
 
         #region redimensionar
 
@@ -177,7 +177,7 @@ namespace Fitzone.Front.Socios
 
         private void HabilitarControlles(bool _enabled)
         {
-            cmbBarrio.Enabled = _enabled;
+            cmbBarrio.EnabledCalc = _enabled;
 
             txtMail.Enabled = _enabled;
             txtCalle.Enabled = _enabled;
@@ -187,9 +187,10 @@ namespace Fitzone.Front.Socios
             txtApellido.Enabled = _enabled  ;
             txtNroDoc.Enabled = _enabled;
 
+            txtFechaNac.Enabled = _enabled;
             
             rdbDNI.Enabled = _enabled;
-            
+            rdbOtro.Enabled = _enabled;    
 
             txtCelular.Enabled = _enabled;
             txtTelefono.Enabled = _enabled;

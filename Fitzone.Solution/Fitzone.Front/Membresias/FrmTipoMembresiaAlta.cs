@@ -19,8 +19,8 @@ namespace Fitzone.Front.Membresias
     {
         private VideoCapture _capture;
         public int _id_tipo = 1;
-        TipoMembresia? _tipo;
-        public EnumModoForm _EnumModoForm = EnumModoForm.Alta;
+        public TipoMembresia? _tipo;
+        public EnumModoForm _EnumModoForm = EnumModoForm.Consulta;
 
         #region redimensionar
 
@@ -91,10 +91,14 @@ namespace Fitzone.Front.Membresias
         private void FrmTipoMembresiaAlta_Load(object sender, EventArgs e)
         {
 
+            CargarActividad();
+            CargarInstructor();
+
             if (_EnumModoForm == EnumModoForm.Modificacion)
             {
                 ucTituloLabel1._titulo = "Modificar tipo de membresía";
                 Cargar();
+                cmbActividad.EnabledCalc = false;                
             }
             if (_EnumModoForm == EnumModoForm.Alta)
             {
@@ -102,9 +106,17 @@ namespace Fitzone.Front.Membresias
                 ucTituloLabel1._titulo = "Agregar tipo de membresía";
                 Limpiar();
             }
+            if (_EnumModoForm == EnumModoForm.Consulta)
+            {
+                ucTituloLabel1._titulo = "Consultar tipo de membresía";
+                ucErrorIconoDias.Visible = false;
+                ucErrorIconoNombre.Visible = false;
 
-            CargarActividad();
-            CargarInstructor();
+                Cargar();
+                EnabledDisabled(false);
+            }
+
+            _Validating(null, null);
         }
 
         private void CargarActividad()
@@ -123,6 +135,40 @@ namespace Fitzone.Front.Membresias
 
             ucErrorIconoInstructor.Visible = list == null || list.Count == 0;
 
+        }     
+
+        private void EnabledDisabled(bool _enabled)
+        {
+
+            txtNombre.Enabled = _enabled;
+            cmbActividad.EnabledCalc = _enabled;            
+            cmbInstructor.EnabledCalc = _enabled;
+
+            spnPrecio.Enabled = _enabled;
+
+            spnCuotas.Enabled = _enabled;
+            spnCantDias.Enabled = _enabled;
+            chkSinCupo.Enabled = _enabled;
+            txtDetalle.Enabled = _enabled;
+
+            spnDesde.Enabled = _enabled;
+            spnHasta.Enabled = _enabled;
+
+            rdnUnica.Enabled = _enabled;
+            rdnMensual.Enabled = _enabled;  
+            
+            chkLunes.Enabled = _enabled;
+            chkMartes.Enabled = _enabled;
+            chkMiercoles.Enabled = _enabled;
+            chkJueves.Enabled = _enabled;
+            chkViernes.Enabled = _enabled;
+            chkSabado.Enabled = _enabled;
+            chkDomingo.Enabled = _enabled;
+
+
+            spnCupo.Enabled = _enabled;
+            chkCualquierHora.Enabled = _enabled;    
+            
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -141,7 +187,7 @@ namespace Fitzone.Front.Membresias
             string mensajeErrores = "";
             if (!Validar(ref mensajeErrores))
             {
-                msg = new MessageBoxCustom("Verifique los campos obligatorios \n" + mensajeErrores, EnumModoMessageBoxCustom.Aceptar, 0, 50);
+                msg = new MessageBoxCustom("Verifique los campos obligatorios \n" + mensajeErrores, EnumModoMessageBoxCustom.Aceptar, 100, 100);
                 msg.ShowDialog();
                 return;
             }
@@ -153,13 +199,13 @@ namespace Fitzone.Front.Membresias
 
             _tipo.cantidadCuotas = (int)spnCuotas.Value;
             _tipo.cantidadDiasSemanales = (int)spnCantDias.Value;
-            _tipo.cupoClase = chkSinCupo.Checked ? null : (int)spnCupo.Value;
+            _tipo.cupoClase = chkSinCupo.Checked ? (int)spnCupo.Value : null;
             _tipo.descripcion = txtDetalle.Text;
 
             _tipo.horadesde = TimeOnly.FromDateTime(spnDesde.Value);
             _tipo.horaHasta = TimeOnly.FromDateTime(spnHasta.Value);
 
-            _tipo.cuotaUnica = rdbUnica.Checked;
+            _tipo.cuotaUnica = rdnUnica.Checked;
 
             string dias = "";
             dias += chkLunes.Checked ? "lunes," : "";
@@ -228,11 +274,13 @@ namespace Fitzone.Front.Membresias
             _tipo.idInstructor = 1;
             _tipo.horadesde = new TimeOnly(0, 0);
             _tipo.horaHasta = new TimeOnly(0, 0);
-            chkCualquierHora.Checked = false;
+            chkCualquierHora.Checked = true;
             chkSinCupo.Checked = false;
             _tipo.cupoClase = 1;
-            rdbMensual.Checked = true;
-            rdbUnica.Checked = false;
+            _tipo.cuotaUnica = true;
+            rdnMensual.Checked = false;
+            rdnUnica.Checked = true;
+
             Cargar();
 
             _Validating(null, null);
@@ -243,13 +291,17 @@ namespace Fitzone.Front.Membresias
             cmbActividad.SelectedValue = _tipo.idActividad;
             cmbInstructor.SelectedValue = _tipo.idInstructor;
 
+            spnDesde.Value = new DateTime(new DateOnly(2000,1,1),_tipo.horadesde);
+            spnHasta.Value = new DateTime(new DateOnly(2000,1,1), _tipo.horaHasta);
+
+
             txtNombre.Text = _tipo.nombre;
             txtDetalle.Text = _tipo.descripcion;
             spnPrecio.Value = _tipo.precioTotal;
             spnCuotas.Value = _tipo.cantidadCuotas;
             spnCantDias.Value = _tipo.cantidadDiasSemanales;
-            rdbMensual.Checked = !_tipo.cuotaUnica;
-            rdbUnica.Checked = _tipo.cuotaUnica;
+            rdnMensual.Checked = !_tipo.cuotaUnica;
+            rdnUnica.Checked = _tipo.cuotaUnica;
 
             string dias = _tipo.diasHabilitados;
             chkLunes.Checked = dias.Contains("lunes");
@@ -264,13 +316,13 @@ namespace Fitzone.Front.Membresias
             {
                 spnCupo.Value = 1;
                 spnCupo.Enabled = false;
-                chkSinCupo.Checked = true;
+                chkSinCupo.Checked = false;
             }
             else
             {
                 spnCupo.Value = (int)_tipo.cupoClase;
                 spnCupo.Enabled = true;
-                chkSinCupo.Checked = false;
+                chkSinCupo.Checked = true;
             }
 
             txtHoraDesde.Text = _tipo.horadesde.ToShortTimeString();
@@ -303,12 +355,20 @@ namespace Fitzone.Front.Membresias
                 mensaje += "\nInstructor";
 
 
+
             bool cond = chkLunes.Checked || chkMartes.Checked ||
                 chkMiercoles.Checked || chkJueves.Checked ||
                 chkViernes.Checked || chkSabado.Checked || chkDomingo.Checked;
 
             if (!cond)
                 mensaje += "\nDías de la semana";
+
+
+            TimeOnly d = new TimeOnly(spnDesde.Value.Hour, spnDesde.Value.Minute);
+            TimeOnly h = new TimeOnly(spnHasta.Value.Hour, spnHasta.Value.Minute);
+
+            if (d >= h)
+                mensaje += "\nLa hora 'desde' debe ser menor a hora 'hasta'";
 
             if (!String.IsNullOrWhiteSpace(mensaje))
             {
@@ -327,10 +387,10 @@ namespace Fitzone.Front.Membresias
 
         private void chkCualquierHora_CheckedChanged(object sender, EventArgs e)
         {
-            spnDesde.Enabled = !chkCualquierHora.Checked;
-            spnHasta.Enabled = !chkCualquierHora.Checked;
+            spnDesde.Enabled = chkCualquierHora.Checked;
+            spnHasta.Enabled = chkCualquierHora.Checked;
 
-            if (chkCualquierHora.Checked)
+            if (!chkCualquierHora.Checked)
             {
                 spnDesde.Value = new DateTime(2000, 1, 1, 0, 0, 0);
                 spnHasta.Value = new DateTime(2000, 1, 1, 23, 59, 59);
@@ -353,7 +413,7 @@ namespace Fitzone.Front.Membresias
             decimal cantidad = spnCuotas.Value;
 
             decimal valorCuota = precio / cantidad;
-            if (rdbUnica.Checked)
+            if (rdnUnica.Checked)
             {
                 valorCuota = precio;
             }
@@ -366,11 +426,19 @@ namespace Fitzone.Front.Membresias
 
         private void chkSinCupo_CheckedChanged(object sender, EventArgs e)
         {
-            spnCupo.Enabled = !chkSinCupo.Checked;
+            spnCupo.Enabled = chkSinCupo.Checked;
+            spnCupo.Visible = chkSinCupo.Checked;
+
+            //if (!chkSinCupo.Checked)
+            //    spnCupo.Value = 1;
         }
 
         private void _Validating(object sender, CancelEventArgs e)
         {
+
+            if (_EnumModoForm == EnumModoForm.Consulta)
+                return;
+
             ucErrorIconoNombre.Visible = String.IsNullOrWhiteSpace(txtNombre.Text);
             txtNombre.Text = Statics.Capitalize(txtNombre.Text);
 
@@ -386,6 +454,22 @@ namespace Fitzone.Front.Membresias
         }
 
         private void rdbMensual_CheckedChanged(object sender, EventArgs e)
+        {
+            ActualizarPrecioCuota();
+        }
+
+        private void spnPrecioCuota_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rdnUnica_CheckedChanged(object sender, EventArgs e)
+        {
+            ActualizarPrecioCuota();
+
+        }
+
+        private void rdnMensual_CheckedChanged(object sender, EventArgs e)
         {
             ActualizarPrecioCuota();
         }

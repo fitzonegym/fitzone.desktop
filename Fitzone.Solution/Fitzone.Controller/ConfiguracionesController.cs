@@ -10,7 +10,7 @@ namespace Fitzone.Controller
 {
     public  class ConfiguracionesController
     {
-        Contexto? contexto = new Contexto();
+        Contexto contexto = new Contexto();
         public string? GetValueByName(string name)
         {
             return contexto.Configuraciones.FirstOrDefault(i => i.nombre.ToUpper() == name.ToUpper()).valor;

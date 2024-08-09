@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Fitzone.EF.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20240801214632_Init")]
-    partial class Init
+    [Migration("20240808185505_Agregar-datos-migrations")]
+    partial class Agregardatosmigrations
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -334,6 +334,9 @@ namespace Fitzone.EF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idMembresia"));
 
+                    b.Property<int?>("TipoMembresiaidTipoMembresia")
+                        .HasColumnType("int");
+
                     b.Property<int>("cantidadDiasSemanales")
                         .HasColumnType("int");
 
@@ -382,6 +385,8 @@ namespace Fitzone.EF.Migrations
                         .HasColumnType("decimal(8,2)");
 
                     b.HasKey("idMembresia");
+
+                    b.HasIndex("TipoMembresiaidTipoMembresia");
 
                     b.HasIndex("idActividad");
 
@@ -598,6 +603,10 @@ namespace Fitzone.EF.Migrations
 
             modelBuilder.Entity("Fitzone.Entidades.Membresia", b =>
                 {
+                    b.HasOne("Fitzone.Entidades.TipoMembresia", "TipoMembresia")
+                        .WithMany()
+                        .HasForeignKey("TipoMembresiaidTipoMembresia");
+
                     b.HasOne("Fitzone.Entidades.Actividad", "Actividad")
                         .WithMany()
                         .HasForeignKey("idActividad")
@@ -627,6 +636,8 @@ namespace Fitzone.EF.Migrations
                     b.Navigation("Instructor");
 
                     b.Navigation("Socio");
+
+                    b.Navigation("TipoMembresia");
                 });
 
             modelBuilder.Entity("Fitzone.Entidades.Socio", b =>

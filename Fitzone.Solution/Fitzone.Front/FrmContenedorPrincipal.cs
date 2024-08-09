@@ -190,6 +190,18 @@ namespace Fitzone.Front
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
             frm.BringToFront();
+            frm.WindowState = FormWindowState.Maximized;
+        }
+
+        private void controlDeAccesosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FRMControlAcceso frm = new FRMControlAcceso();
+            //frm.TopMost = true;
+            //frm.MdiParent = this;
+            //panelPrincipal.Controls.Add(frm);
+            //frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+            //frm.BringToFront();
         }
     }
 }

@@ -13,7 +13,8 @@ namespace Fitzone.Entidades
         Cuota_proxima_a_vencer = 2,
         Cuota_vencida = 3,
         Problemas_con_la_membresía = 4,
-        No_se_encontró_la_membresía = 0,
+        No_se_encontró_la_membresía = 5,
+        Fuera_de_horario = 6
 
     }
 }

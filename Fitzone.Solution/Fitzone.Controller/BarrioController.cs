@@ -12,7 +12,7 @@ namespace Fitzone.Controller
 {
     public class BarrioController : IControllerClasesAuxiliares<Barrio>
     {
-        Contexto? contexto = new Contexto();      
+        Contexto contexto = new Contexto();      
 
         public List<Barrio>? GetAll()
         {

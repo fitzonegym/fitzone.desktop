@@ -205,46 +205,8 @@ namespace Fitzone.EF.Migrations
 								 12,
 								 0);
 								 ;
-
-							GO						
-							
-							
-							INSERT INTO [dbo].[Membresia]
-									   ([precio]
-									   ,[fechaAlta]
-									   ,[fechaModificacion]
-									   ,[fechaDesde]
-									   ,[fechaHasta]
-									   ,[detalle]
-									   ,[cantidadDiasSemanales]
-									   ,[diasHabilitados]
-									   ,[horadesde]
-									   ,[horaHasta]
-									   ,[idEstadoMembresia]
-									   ,[idSocio]
-									   ,[idInstructor]
-									   ,[idActividad]
-									   ,[idTipoMembresia])
-								 VALUES
-									   (120000 					--<precio, decimal(8,2),>
-									   ,'20240720 15:10:00'		--<fechaAlta, datetime2(7),>
-									   ,null					--<fechaModificacion, datetime2(7),>
-									   ,'20240721 00:00:00'		--<fechaDesde, datetime2(7),>
-									   ,'20250720 00:00:00'		--<fechaHasta, datetime2(7),>
-									   ,'ZUMBA 3 DIAS A LA SEMANA - PASE POR UN AÑO'		--<detalle, nvarchar(1000),>
-									   ,3						--<cantidadDiasSemanales, int,>
-									   ,'[lunes,miercoles,viernes]'		--<diasHabilitados, nvarchar(max),>
-									   ,'2000-01-01 21:00:00'	--<horadesde, datetime2(7),>
-									   ,'2000-01-01 21:00:00'	--<horaHasta, datetime2(7),>
-									   ,1						--<idEstadoMembresia, int,>
-									   ,1						--<idSocio, int,>
-									   ,1						--<idInstructor, int,>
-									   ,3						--<idActividad, int,>
-									   ,3						-- idTipoMembresia
-									   )
+						
 							GO
-							
-
 						  
                     ");
         }

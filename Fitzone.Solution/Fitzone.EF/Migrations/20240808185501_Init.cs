@@ -245,6 +245,33 @@ namespace Fitzone.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EquipamientoTipoMembresia",
+                columns: table => new
+                {
+                    idexc = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    idEquipamiento = table.Column<int>(type: "int", nullable: false),
+                    idTipoMembresia = table.Column<int>(type: "int", nullable: false),
+                    cantidadEquipamiento = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EquipamientoTipoMembresia", x => x.idexc);
+                    table.ForeignKey(
+                        name: "FK_EquipamientoTipoMembresia_Equipamiento_idEquipamiento",
+                        column: x => x.idEquipamiento,
+                        principalTable: "Equipamiento",
+                        principalColumn: "idEquipamiento",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_EquipamientoTipoMembresia_TipoMembresia_idTipoMembresia",
+                        column: x => x.idTipoMembresia,
+                        principalTable: "TipoMembresia",
+                        principalColumn: "idTipoMembresia",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Membresia",
                 columns: table => new
                 {
@@ -260,11 +287,12 @@ namespace Fitzone.EF.Migrations
                     diasHabilitados = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     horadesde = table.Column<TimeOnly>(type: "time", nullable: false),
                     horaHasta = table.Column<TimeOnly>(type: "time", nullable: false),
-                    idTipoMembresia = table.Column<int>(type: "int", nullable: false),
                     idEstadoMembresia = table.Column<int>(type: "int", nullable: false),
                     idSocio = table.Column<int>(type: "int", nullable: false),
                     idInstructor = table.Column<int>(type: "int", nullable: true),
-                    idActividad = table.Column<int>(type: "int", nullable: false)
+                    idActividad = table.Column<int>(type: "int", nullable: false),
+                    idTipoMembresia = table.Column<int>(type: "int", nullable: false),
+                    TipoMembresiaidTipoMembresia = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -292,33 +320,11 @@ namespace Fitzone.EF.Migrations
                         principalTable: "Socio",
                         principalColumn: "idSocio",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "EquipamientoTipoMembresia",
-                columns: table => new
-                {
-                    idexc = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    idEquipamiento = table.Column<int>(type: "int", nullable: false),
-                    idTipoMembresia = table.Column<int>(type: "int", nullable: false),
-                    cantidadEquipamiento = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EquipamientoTipoMembresia", x => x.idexc);
                     table.ForeignKey(
-                        name: "FK_EquipamientoTipoMembresia_Equipamiento_idEquipamiento",
-                        column: x => x.idEquipamiento,
-                        principalTable: "Equipamiento",
-                        principalColumn: "idEquipamiento",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_EquipamientoTipoMembresia_TipoMembresia_idTipoMembresia",
-                        column: x => x.idTipoMembresia,
+                        name: "FK_Membresia_TipoMembresia_TipoMembresiaidTipoMembresia",
+                        column: x => x.TipoMembresiaidTipoMembresia,
                         principalTable: "TipoMembresia",
-                        principalColumn: "idTipoMembresia",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "idTipoMembresia");
                 });
 
             migrationBuilder.CreateTable(
@@ -407,6 +413,11 @@ namespace Fitzone.EF.Migrations
                 column: "idSocio");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Membresia_TipoMembresiaidTipoMembresia",
+                table: "Membresia",
+                column: "TipoMembresiaidTipoMembresia");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Socio_idBarrio",
                 table: "Socio",
                 column: "idBarrio");
@@ -444,13 +455,13 @@ namespace Fitzone.EF.Migrations
                 name: "Equipamiento");
 
             migrationBuilder.DropTable(
-                name: "TipoMembresia");
-
-            migrationBuilder.DropTable(
                 name: "EstadoMembresia");
 
             migrationBuilder.DropTable(
                 name: "Socio");
+
+            migrationBuilder.DropTable(
+                name: "TipoMembresia");
 
             migrationBuilder.DropTable(
                 name: "EstadoEquipamiento");

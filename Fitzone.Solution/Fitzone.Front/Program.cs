@@ -7,25 +7,29 @@ namespace Fitzone.Front
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            QuestPDF.Settings.License = LicenseType.Community;
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            //ApplicationConfiguration.Initialize();
-            //Application.Run(new FrmSociosAdmin());            
-            //Application.Run(new FrmSociosAlta());                        
-            //Application.Run(new FrmMembresiaAlta());
+            QuestPDF.Settings.License = LicenseType.Community;        
+            ApplicationConfiguration.Initialize();
+
+            //                  SOCIOS
+            //Application.Run(new FrmSociosAdmin());
+            //Application.Run(new FrmSociosAlta());
+
+            //              MEMBRESIAS
             //Application.Run(new FrmMembresiaAdmin());            
+            //Application.Run(new FrmMembresiaAlta());
+
             //Application.Run(new FrmTipoMembresiaAdmin());            
             //Application.Run(new FrmTipoMembresiaAlta());
-            Application.Run(new FRMIngresosRegistrar());
+
+            //          CONTROL DE ACCESOS
+            //Application.Run(new FRMIngresosRegistrar());
 
 
+            //          MENU PRINCIPAL           
+            Application.Run(new FrmContenedorPrincipal());
             //Application.Run(new FrmLogin());
 
 

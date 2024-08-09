@@ -1,6 +1,6 @@
 ﻿namespace Fitzone.Front.Socios
 {
-    partial class FRMIngresosRegistrar
+    partial class FRMControlAcceso
     {
         /// <summary>
         /// Required designer variable.
@@ -41,8 +41,10 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             panel5 = new Panel();
             panel7 = new Panel();
-            lblVencimiento = new Label();
             label7 = new Label();
+            label6 = new Label();
+            lblNombre = new Label();
+            label2 = new Label();
             lblActividad = new Label();
             label5 = new Label();
             label4 = new Label();
@@ -58,8 +60,6 @@
             label3 = new Label();
             panel9 = new Panel();
             txtFecha = new DateTimePicker();
-            label2 = new Label();
-            lblNombre = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             panel5.SuspendLayout();
@@ -133,13 +133,13 @@
             // 
             // label1
             // 
-            label1.BackColor = Color.FromArgb(103, 58, 183);
+            label1.BackColor = Color.Transparent;
             label1.Dock = DockStyle.Top;
             label1.Font = new Font("Segoe UI", 30F);
             label1.ForeColor = Color.White;
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
-            label1.Size = new Size(855, 73);
+            label1.Size = new Size(855, 49);
             label1.TabIndex = 38;
             label1.Text = "Bienvenido a Fitzone";
             label1.TextAlign = ContentAlignment.TopCenter;
@@ -151,7 +151,7 @@
             // 
             // lblDiaHora
             // 
-            lblDiaHora.BackColor = Color.FromArgb(103, 58, 183);
+            lblDiaHora.BackColor = Color.Transparent;
             lblDiaHora.Dock = DockStyle.Bottom;
             lblDiaHora.Font = new Font("Segoe UI", 15F);
             lblDiaHora.ForeColor = Color.White;
@@ -186,8 +186,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.697585F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 11.6851482F));
             tableLayoutPanel1.Size = new Size(1904, 1065);
-            tableLayoutPanel1.TabIndex = 40;
-            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
+            tableLayoutPanel1.TabIndex = 40;            
             tableLayoutPanel1.MouseDown += tableLayoutPanel1_MouseDown;
             // 
             // panel5
@@ -205,10 +204,10 @@
             // panel7
             // 
             panel7.BackColor = Color.FromArgb(103, 58, 183);
+            panel7.Controls.Add(label7);
+            panel7.Controls.Add(label6);
             panel7.Controls.Add(lblNombre);
             panel7.Controls.Add(label2);
-            panel7.Controls.Add(lblVencimiento);
-            panel7.Controls.Add(label7);
             panel7.Controls.Add(lblActividad);
             panel7.Controls.Add(label5);
             panel7.Controls.Add(label4);
@@ -219,46 +218,71 @@
             panel7.Size = new Size(855, 479);
             panel7.TabIndex = 1;
             // 
-            // lblVencimiento
-            // 
-            lblVencimiento.Font = new Font("Segoe UI", 20F);
-            lblVencimiento.ForeColor = Color.White;
-            lblVencimiento.Location = new Point(68, 356);
-            lblVencimiento.Name = "lblVencimiento";
-            lblVencimiento.Size = new Size(303, 89);
-            lblVencimiento.TabIndex = 46;
-            lblVencimiento.Text = "No encontrado";
-            lblVencimiento.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 15F);
+            label7.BackColor = Color.Transparent;
+            label7.Font = new Font("Segoe UI", 8F);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(3, 328);
+            label7.Location = new Point(68, 113);
             label7.Name = "label7";
-            label7.Size = new Size(120, 28);
-            label7.TabIndex = 45;
-            label7.Text = "Vencimiento";
+            label7.Size = new Size(158, 13);
+            label7.TabIndex = 50;
+            label7.Text = "Presione [Enter] para ingresar";
             label7.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.Font = new Font("Segoe UI", 8F);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(68, 93);
+            label6.Name = "label6";
+            label6.Size = new Size(177, 13);
+            label6.TabIndex = 49;
+            label6.Text = "Presione [Espacio] para comenzar";
+            label6.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // lblNombre
+            // 
+            lblNombre.Font = new Font("Segoe UI", 20F);
+            lblNombre.ForeColor = Color.White;
+            lblNombre.Location = new Point(68, 165);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(303, 66);
+            lblNombre.TabIndex = 48;
+            lblNombre.Text = "No encontrado";
+            lblNombre.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15F);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(6, 137);
+            label2.Name = "label2";
+            label2.Size = new Size(85, 28);
+            label2.TabIndex = 47;
+            label2.Text = "Nombre";
+            label2.TextAlign = ContentAlignment.TopCenter;
             // 
             // lblActividad
             // 
             lblActividad.Font = new Font("Segoe UI", 20F);
             lblActividad.ForeColor = Color.White;
-            lblActividad.Location = new Point(68, 246);
+            lblActividad.Location = new Point(68, 301);
             lblActividad.Name = "lblActividad";
-            lblActividad.Size = new Size(303, 66);
+            lblActividad.Size = new Size(769, 174);
             lblActividad.TabIndex = 44;
             lblActividad.Text = "No encontrado";
-            lblActividad.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 15F);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(6, 218);
+            label5.Location = new Point(6, 242);
             label5.Name = "label5";
             label5.Size = new Size(109, 28);
             label5.TabIndex = 43;
@@ -289,7 +313,6 @@
             txtNroDoc.Text = "27655483";
             txtNroDoc.TextAlign = HorizontalAlignment.Center;
             txtNroDoc.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            txtNroDoc.MaskInputRejected += txtNroDoc_MaskInputRejected;
             txtNroDoc.Click += txtNroDoc_Click;
             txtNroDoc.Enter += txtNroDoc_Enter;
             txtNroDoc.KeyPress += txtNroDoc_KeyPress;
@@ -351,6 +374,7 @@
             // 
             // panel4
             // 
+            panel4.BackColor = Color.FromArgb(103, 58, 183);
             panel4.Controls.Add(label1);
             panel4.Controls.Add(lblDiaHora);
             panel4.Dock = DockStyle.Fill;
@@ -409,30 +433,7 @@
             txtFecha.ShowUpDown = true;
             txtFecha.Size = new Size(113, 23);
             txtFecha.TabIndex = 47;
-            txtFecha.ValueChanged += dateTimePicker1_ValueChanged;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 15F);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(6, 113);
-            label2.Name = "label2";
-            label2.Size = new Size(85, 28);
-            label2.TabIndex = 47;
-            label2.Text = "Nombre";
-            label2.TextAlign = ContentAlignment.TopCenter;
-            // 
-            // lblNombre
-            // 
-            lblNombre.Font = new Font("Segoe UI", 20F);
-            lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(68, 141);
-            lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(303, 66);
-            lblNombre.TabIndex = 48;
-            lblNombre.Text = "No encontrado";
-            lblNombre.TextAlign = ContentAlignment.MiddleLeft;
+            
             // 
             // FRMIngresosRegistrar
             // 
@@ -489,8 +490,6 @@
         private Label lblMensaje;
         private Label lblActividad;
         private Label label5;
-        private Label lblVencimiento;
-        private Label label7;
         private Panel panel2;
         private Panel panel4;
         private Panel panel3;
@@ -499,5 +498,7 @@
         private DateTimePicker txtFecha;
         private Label lblNombre;
         private Label label2;
+        private Label label7;
+        private Label label6;
     }
 }

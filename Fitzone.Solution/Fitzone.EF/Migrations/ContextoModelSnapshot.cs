@@ -331,6 +331,9 @@ namespace Fitzone.EF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idMembresia"));
 
+                    b.Property<int?>("TipoMembresiaidTipoMembresia")
+                        .HasColumnType("int");
+
                     b.Property<int>("cantidadDiasSemanales")
                         .HasColumnType("int");
 
@@ -379,6 +382,8 @@ namespace Fitzone.EF.Migrations
                         .HasColumnType("decimal(8,2)");
 
                     b.HasKey("idMembresia");
+
+                    b.HasIndex("TipoMembresiaidTipoMembresia");
 
                     b.HasIndex("idActividad");
 
@@ -595,6 +600,10 @@ namespace Fitzone.EF.Migrations
 
             modelBuilder.Entity("Fitzone.Entidades.Membresia", b =>
                 {
+                    b.HasOne("Fitzone.Entidades.TipoMembresia", "TipoMembresia")
+                        .WithMany()
+                        .HasForeignKey("TipoMembresiaidTipoMembresia");
+
                     b.HasOne("Fitzone.Entidades.Actividad", "Actividad")
                         .WithMany()
                         .HasForeignKey("idActividad")
@@ -624,6 +633,8 @@ namespace Fitzone.EF.Migrations
                     b.Navigation("Instructor");
 
                     b.Navigation("Socio");
+
+                    b.Navigation("TipoMembresia");
                 });
 
             modelBuilder.Entity("Fitzone.Entidades.Socio", b =>

@@ -106,7 +106,7 @@ namespace Fitzone.Front.Socios
             txtFechaDesde.Checked = true;
             txtFechaHasta.Checked = true;
             txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-1);
-            txtFechaHasta.Value = Statics.DateTimeNow235959();            
+            txtFechaHasta.Value = Statics.DateTimeNow235959();
             txtApellido.Text = "";
             txtDocumento.Text = "";
             txtNombre.Text = "";
@@ -128,7 +128,7 @@ namespace Fitzone.Front.Socios
                 btnAceptar.Visible = true;
                 btnCancelar.Visible = true;
                 // btnAceptar.Location = btnCancelar.Location;
-               // CargarGrilla();
+                // CargarGrilla();
             }
             if (_EnumModoFormulario == EnumModoFormulario.Administracion)
             {
@@ -142,12 +142,12 @@ namespace Fitzone.Front.Socios
         }
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-        //    DataGridView dataGridView = sender as DataGridView;
+            //    DataGridView dataGridView = sender as DataGridView;
 
-        //    if (e.RowIndex % 2 == 0) // Si es una fila par
-        //    {
-        //        dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(209, 196, 234); // Cambia el color de fondo
-        //    }
+            //    if (e.RowIndex % 2 == 0) // Si es una fila par
+            //    {
+            //        dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(209, 196, 234); // Cambia el color de fondo
+            //    }
         }
 
         private void CargarGrilla()
@@ -562,21 +562,21 @@ namespace Fitzone.Front.Socios
             }
         }
 
-        //private void btnConsultar_Click(object sender, EventArgs e)
-        //{
-        //    if (bindingSource1 == null || bindingSource1.Current == null)
-        //    {
-        //        new MessageBoxCustom("Seleccione un socio",Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
-        //        return;
-        //    }            
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            if (bindingSource1 == null || bindingSource1.Current == null)
+            {
+                new MessageBoxCustom("Seleccione un socio", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                return;
+            }
 
-        //    FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
-        //    frmSociosAlta._EnumModoForm = EnumModoForm.Consulta;
-        //    frmSociosAlta._id_socio = ((Socio)bindingSource1.Current).idSocio;
+            FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
+            frmSociosAlta._EnumModoForm = EnumModoForm.Consulta;
+            frmSociosAlta._id_socio = ((Socio)bindingSource1.Current).idSocio;
 
-        //    frmSociosAlta.ShowDialog();
+            frmSociosAlta.ShowDialog();
 
-        //    CargarGrilla();
-        //}
+            CargarGrilla();
+        }      
     }
 }

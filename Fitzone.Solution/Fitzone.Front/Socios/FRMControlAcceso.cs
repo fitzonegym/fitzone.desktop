@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace Fitzone.Front.Socios
 {
-    public partial class FRMIngresosRegistrar : Form
+    public partial class FRMControlAcceso : Form
     {
 
-        public FRMIngresosRegistrar()
+        public FRMControlAcceso()
         {
             InitializeComponent();
         }
@@ -111,11 +111,7 @@ namespace Fitzone.Front.Socios
         {
             OnMouseDown(e);
         }
-
-        private void txtNroDoc_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
+  
 
         private void txtNroDoc_Click(object sender, EventArgs e)
         {
@@ -126,12 +122,7 @@ namespace Fitzone.Front.Socios
             //if (String.IsNullOrWhiteSpace(resultado))
             txtNroDoc.SelectionStart = 0;
             txtNroDoc.SelectionLength = 10;
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        }    
 
         private void txtNroDoc_Enter(object sender, EventArgs e)
         {
@@ -145,6 +136,8 @@ namespace Fitzone.Front.Socios
             {
                 e.Handled = true;
                 Buscar();
+                txtNroDoc.SelectionStart = 0;
+                txtNroDoc.SelectionLength = 10;
             }
         }
 
@@ -158,11 +151,12 @@ namespace Fitzone.Front.Socios
             string vencimientos = "";
             string nombre = "";
 
-            var mensaje = socioController.VerificarEstadoCuota(txtNroDoc.Text,hoy, ref actividades,ref vencimientos, ref nombre);
+            var respuesta = socioController.VerificarEstadoCuota(txtNroDoc.Text,hoy);
 
-            lblMensaje.Text = mensaje.ToString().Replace('_',' ');
-            lblActividad.Text = actividades;
-            lblNombre.Text = nombre; 
+            lblMensaje.Text = respuesta.EnumEstadoCuotaSocio.ToString().Replace('_',' ');
+            lblActividad.Text = respuesta.actividades ?? "No encontrado";
+            lblNombre.Text = respuesta.nombreSocio ?? "No encontrado";
+            lblMensaje.BackColor = respuesta.Color;
         }
 
         private void FRMIngresosRegistrar_KeyPress(object sender, KeyPressEventArgs e)
@@ -170,15 +164,24 @@ namespace Fitzone.Front.Socios
             if (e.KeyChar == (char)Keys.Space)
             {
                 e.Handled = true;
+                txtNroDoc.Text = "";
                 txtNroDoc.SelectionStart = 0;
                 txtNroDoc.SelectionLength = 10;
                 txtNroDoc.Focus();
             }
+            //if (e.KeyChar == (char)Keys.Enter)
+            //{   
+                
+            //    e.Handled = true;
+               
+            //    txtNroDoc.Focus();
+            //    //Buscar();
+            //  //  txtNroDoc.SelectionStart = 0;
+            //  //  txtNroDoc.SelectionLength = 10;
+
+            //}
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

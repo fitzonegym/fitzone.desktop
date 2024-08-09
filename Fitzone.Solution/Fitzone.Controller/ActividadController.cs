@@ -11,7 +11,7 @@ namespace Fitzone.Controller
 {
     public class ActividadController : IControllerClasesAuxiliares<Actividad>
     {
-        Contexto? contexto = new Contexto();
+        Contexto contexto = new Contexto();
 
         public List<Actividad>? GetAll()
         {

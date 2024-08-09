@@ -13,7 +13,7 @@ namespace Fitzone.Controller
 {
     public class MembresiaController : IControllersClasesPrincipales<Membresia>
     {
-        Contexto? contexto = new Contexto();
+        Contexto contexto = new Contexto();
         public MembresiaController() { }
 
         public bool Anular(int id)
@@ -45,22 +45,31 @@ namespace Fitzone.Controller
 
             string? nombre = membresia.SocioNombre.ToUpper().Trim();
 
-            return contexto.Membresia
+            var membresias = contexto.Membresia
                 .Include("Socio")
-                .Include("EstadoMembresia")
-                //.Include("TipoMembresia")
+                .Include("EstadoMembresia")                
                 .Where(c => (c.Socio != null && (c.Socio.nombre.Trim()+ c.Socio.apellido.Trim()).ToUpper().Contains(nombre)))
                 .Where(c => c.fechaAlta >= membresia.fechaDesde && c.fechaAlta <= membresia.fechaHasta)                
                 .OrderByDescending(c => c.fechaAlta)
                 .ToList();
 
+            foreach (var item in membresias)
+            {
+                item.TipoMembresia = contexto.TipoMembresia.FirstOrDefault(c=>c.idTipoMembresia == item.idTipoMembresia);
+            }
             //.Where(c => c.Socio == null ? true : (c.Socio.nombre + c.Socio.apellido).ToUpper().Contains(nombre))
-            // .Where(c => c.idSocio == membresia.idSocio || membresia.idSocio == 0)
+            // .Where(c => c.idSocio == membresia.idSocio || membresia.idSocio == 0)            
+
+            return membresias;
         }
 
         public Membresia? GetById(int id)
         {
-            throw new NotImplementedException();
+            return contexto.Membresia
+              .Include("Socio")
+              .Include("Cuotas")
+              .FirstOrDefault(c=>c.idMembresia == id);
+              
         }
 
         public Membresia? GetByName(string nombre)

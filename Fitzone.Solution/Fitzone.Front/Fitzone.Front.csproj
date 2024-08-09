@@ -11,6 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Membresias\FrmTipoMembresiaAdmin.Designer.cs~RF13f595b.TMP" />
+    <None Remove="Socios\FRMIngresosRegistrar.cs~RF56700d.TMP" />
     <None Remove="Socios\FrmSociosAlta.cs~RFe5265a.TMP" />
     <None Remove="Test.Designer.cs~RFf88120.TMP" />
   </ItemGroup>

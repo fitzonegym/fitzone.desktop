@@ -32,7 +32,7 @@ namespace Fitzone.Entidades
         
         //este campo se necesita porque cuando quiero verificar la disponibilidad de equipamiento
         //se hace a partir del tipo de membresia
-        public int idTipoMembresia { get; set; }
+      //  public int idTipoMembresia { get; set; }       
 
         #region ForeignKey
 
@@ -50,17 +50,23 @@ namespace Fitzone.Entidades
 
         [ForeignKey("Actividad")]
         public int idActividad { get; set; }
-        public Actividad? Actividad { get; set; }      
+        public Actividad? Actividad { get; set; }
+
+      //  [ForeignKey("TipoMembresia")]        
+        public int idTipoMembresia { get; set; }
+        public TipoMembresia? TipoMembresia { get; set; }
 
         #endregion
 
         #region No Mapped
         [NotMapped]
         public string? SocioNombre { get { return Socio != null ? Socio.nombre + " " + Socio.apellido : ""; }}
+
         [NotMapped]
         public string? EstadoMembresiaNombre { get { return EstadoMembresia != null ? EstadoMembresia.nombre : ""; } }
-        //[NotMapped]
-        //public string? TipoMembresiaNombre { get { return TipoMembresia != null ? TipoMembresia.nombre : ""; } }
+
+        [NotMapped]
+        public string? TipoMembresiaNombre { get { return TipoMembresia != null ? TipoMembresia.nombre : ""; } }
 
         #endregion
 

@@ -83,6 +83,7 @@ namespace Fitzone.Front.Membresias
         #endregion
         public FrmMembresiaAdmin()
         {
+            
             InitializeComponent();
         }
 
@@ -152,6 +153,8 @@ namespace Fitzone.Front.Membresias
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             FrmMembresiaAlta frm = new FrmMembresiaAlta();
+            frm._EnumModoForm = EnumModoForm.Alta;
+            frm._id_membresia = 0;
             frm.ShowDialog();
             CargarGrilla();
         }
@@ -164,8 +167,15 @@ namespace Fitzone.Front.Membresias
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
-            return;
+            if (bindingSource1.DataSource == null || bindingSource1.Current == null)
+                return;
+
+            FrmMembresiaAlta frm = new FrmMembresiaAlta();
+            frm._EnumModoForm = EnumModoForm.Consulta;
+
+            frm._id_membresia = ((Membresia)bindingSource1.Current).idMembresia;
+
+            frm.ShowDialog();            
         }
 
         private void ucBuscar1_Load_1(object sender, EventArgs e)

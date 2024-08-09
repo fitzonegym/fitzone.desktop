@@ -76,6 +76,7 @@
             ucCantidadregistros1 = new UserControls.UCCantidadregistros();
             ucPintarFilasPares1 = new UserControls.UCPintarFilasPares();
             toolTip1 = new ToolTip(components);
+            btnConsultar = new ReaLTaiizor.Controls.CyberButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -108,7 +109,7 @@
             btnModificar.Lighting = false;
             btnModificar.LinearGradient_Background = false;
             btnModificar.LinearGradientPen = false;
-            btnModificar.Location = new Point(106, 435);
+            btnModificar.Location = new Point(104, 435);
             btnModificar.Name = "btnModificar";
             btnModificar.PenWidth = 15;
             btnModificar.Rounding = true;
@@ -150,7 +151,7 @@
             BtnAnular.Lighting = false;
             BtnAnular.LinearGradient_Background = false;
             BtnAnular.LinearGradientPen = false;
-            BtnAnular.Location = new Point(204, 435);
+            BtnAnular.Location = new Point(299, 435);
             BtnAnular.Name = "BtnAnular";
             BtnAnular.PenWidth = 15;
             BtnAnular.Rounding = true;
@@ -746,12 +747,55 @@
             ucPintarFilasPares1.Size = new Size(33, 27);
             ucPintarFilasPares1.TabIndex = 64;
             // 
+            // btnConsultar
+            // 
+            btnConsultar.Alpha = 20;
+            btnConsultar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnConsultar.BackColor = Color.Transparent;
+            btnConsultar.Background = true;
+            btnConsultar.Background_WidthPen = 4F;
+            btnConsultar.BackgroundPen = true;
+            btnConsultar.ColorBackground = Color.Black;
+            btnConsultar.ColorBackground_1 = Color.Black;
+            btnConsultar.ColorBackground_2 = Color.Gray;
+            btnConsultar.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btnConsultar.ColorLighting = Color.FromArgb(81, 45, 168);
+            btnConsultar.ColorPen_1 = Color.Black;
+            btnConsultar.ColorPen_2 = Color.Gray;
+            btnConsultar.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnConsultar.Effect_1 = true;
+            btnConsultar.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            btnConsultar.Effect_1_Transparency = 25;
+            btnConsultar.Effect_2 = true;
+            btnConsultar.Effect_2_ColorBackground = Color.White;
+            btnConsultar.Effect_2_Transparency = 20;
+            btnConsultar.Font = new Font("Arial", 11F);
+            btnConsultar.ForeColor = Color.FromArgb(245, 245, 245);
+            btnConsultar.Lighting = false;
+            btnConsultar.LinearGradient_Background = false;
+            btnConsultar.LinearGradientPen = false;
+            btnConsultar.Location = new Point(202, 435);
+            btnConsultar.Name = "btnConsultar";
+            btnConsultar.PenWidth = 15;
+            btnConsultar.Rounding = true;
+            btnConsultar.RoundingInt = 70;
+            btnConsultar.Size = new Size(99, 40);
+            btnConsultar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnConsultar.TabIndex = 65;
+            btnConsultar.Tag = "Cyber";
+            btnConsultar.TextButton = "Consultar";
+            btnConsultar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnConsultar.Timer_Effect_1 = 5;
+            btnConsultar.Timer_RGB = 300;
+            btnConsultar.Click += btnConsultar_Click;
+            // 
             // FrmSociosAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
             ClientSize = new Size(729, 486);
+            Controls.Add(btnConsultar);
             Controls.Add(ucPintarFilasPares1);
             Controls.Add(ucCantidadregistros1);
             Controls.Add(groupBox1);
@@ -827,5 +871,6 @@
         private DataGridViewTextBoxColumn idBarrioDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn TieneImagen;
         private DataGridViewCheckBoxColumn anuladoDataGridViewCheckBoxColumn;
+        private ReaLTaiizor.Controls.CyberButton btnConsultar;
     }
 }

@@ -3,8 +3,10 @@ using Fitzone.Entidades;
 using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
 using Fitzone.Front.Socios;
+using Microsoft.EntityFrameworkCore.Design.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics.Eventing.Reader;
+using System.Reflection.Metadata.Ecma335;
 using System.Windows.Forms;
 
 namespace Fitzone.Front.Membresias
@@ -14,6 +16,9 @@ namespace Fitzone.Front.Membresias
         Socio? _Socio = null;
         TipoMembresia _tipoMembresiaSeleccionada = null;
         List<Cuota> _listaCuotas = new List<Cuota>();
+        DateTime fechaHastaSeleccionada;
+        public EnumModoForm _EnumModoForm = EnumModoForm.Consulta;
+        public int _id_membresia = 2;
 
         #region redimensionar
 
@@ -90,9 +95,77 @@ namespace Fitzone.Front.Membresias
 
             RefreshTipoMembresia();
 
-          
+            fechaHastaSeleccionada = txtFechaHasta.Value;
 
+            if (_EnumModoForm == EnumModoForm.Consulta)
+            {
+                btnAceptar.Enabled = false; 
+                Cargar();
+                cmbTipoMembresia.EnabledCalc = false;
+                btnBuscarSocio.Visible = false; 
+                cmdGenerar.Visible = false; 
+                txtFechaDesde.Enabled= false;   
+                txtDescripcionMembresía.Enabled = false;    
+                btnAceptar.Visible = false; 
+            }
         }
+
+        private void Cargar()
+        {
+            MembresiaController membresiaController = new MembresiaController();
+            Membresia m = membresiaController.GetById(_id_membresia);
+            if (m != null)
+            {
+               
+
+                _Socio = m.Socio;
+
+                if (_Socio != null)
+                {
+                    txtNombre.Text = _Socio.nombre;
+                    txtApellido.Text = _Socio.apellido;
+                    txtDocumento.Text = _Socio.numeroDocumento;
+                    txtTelefono.Text = _Socio.telefono1;
+                    txtDireccion.Text = _Socio.calle + " " + _Socio.calleNumero;
+                }
+
+                cmbTipoMembresia.SelectedValue = m.idTipoMembresia;                
+
+                txtDetalleTipo.Text = m.detalle;
+                txtPrecio.Text = m.precio.ToString();
+                txtCuotas.Text = _tipoMembresiaSeleccionada.cantidadCuotas.ToString();
+                txtCantDias.Text = m.cantidadDiasSemanales.ToString();
+
+                string dias = m.diasHabilitados;
+                chkLunes.Checked = dias.Contains("lunes");
+                chkMartes.Checked = dias.Contains("martes");
+                chkMiercoles.Checked = dias.Contains("miercoles");
+                chkJueves.Checked = dias.Contains("jueves");
+                chkViernes.Checked = dias.Contains("viernes");
+                chkSabado.Checked = dias.Contains("sabado");
+                chkDomingo.Checked = dias.Contains("domingo");
+
+                txtCupo.Text = _tipoMembresiaSeleccionada.cupoClase.ToString();
+                txtHoraDesde.Text = m.horadesde.ToShortTimeString();
+                txtHoraHasta.Text = m.horaHasta.ToShortTimeString();
+
+                chkCuotaUnica.Checked = _tipoMembresiaSeleccionada.cuotaUnica;
+
+                txtFechaHasta.Value = m.fechaDesde;
+                txtFechaHasta.Value = m.fechaHasta;
+
+                Disponibilidad();
+
+                AgregarDetalle();
+
+                _listaCuotas = m.Cuotas??new List<Cuota>();
+                bindingSourceCuotas.DataSource = _listaCuotas;
+
+                txtInstructor.Text = _tipoMembresiaSeleccionada.InstructorNombreCompleto;
+
+            }
+        }
+
         private void LimpiarControles()
         {
             _listaCuotas = new List<Cuota>();
@@ -197,11 +270,14 @@ namespace Fitzone.Front.Membresias
         }
         private void txtFechaDesde_ValueChanged(object sender, EventArgs e)
         {
+
             CalcularFechasMembresia();
         }
         private void cmdGenerar_Click(object sender, EventArgs e)
         {
             GenerarCuotas();
+
+            fechaHastaSeleccionada = txtFechaHasta.Value;
         }
 
         private void GenerarCuotas()
@@ -210,7 +286,6 @@ namespace Fitzone.Front.Membresias
 
             if (_tipoMembresiaSeleccionada.cuotaUnica)
                 cant = 1;
-
 
             string? diasVenc = new ConfiguracionesController().GetValueByName("CuotaCantDiasVencimiento");
             //por defecto 10, por si no esta configurado
@@ -227,7 +302,12 @@ namespace Fitzone.Front.Membresias
                 c.precio = _tipoMembresiaSeleccionada.precioTotal / cant;
                 c.numero = i + 1;
                 c.fechaDesde = desde;
-                c.fechaHasta = desde.AddMonths(1).AddSeconds(-1);
+                
+                if (cant == 1)
+                    c.fechaHasta = txtFechaHasta.Value;
+                else
+                    c.fechaHasta = desde.AddMonths(1).AddSeconds(-1);
+
                 if (i == 0)
                     c.fechaVencimiento = desde.AddDays(1).AddSeconds(-1);
                 else
@@ -284,13 +364,18 @@ namespace Fitzone.Front.Membresias
 
             if (!_listaCuotas.Any())
                 mensaje += "\nDebe generar las cuotas";
+            else
+                if (fechaHastaSeleccionada != txtFechaHasta.Value)
+                    mensaje += "\nLa fecha desde/hasta cambió, debe generar de nuevo las cuotas";
 
             if (txtDisponibilidadBack.Text == "0")
                 mensaje += "\nNo hay disponibilidad";
 
+            
+
             if (!mensaje.IsNullOrEmpty())
             {
-                new MessageBoxCustom(mensaje, EnumModoMessageBoxCustom.SeEncontraronErrores).ShowDialog();
+                new MessageBoxCustom(mensaje, EnumModoMessageBoxCustom.SeEncontraronErrores,130).ShowDialog();
                 return false;
             }
 
@@ -300,7 +385,7 @@ namespace Fitzone.Front.Membresias
         {
             if (!ValidarGuardar())
                 return;
-                      if (_Socio == null)
+            if (_Socio == null)
                 return;
 
             try
@@ -350,6 +435,12 @@ namespace Fitzone.Front.Membresias
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            if (_EnumModoForm == EnumModoForm.Consulta)
+            {
+                Close();
+                return;
+            }
+
             if (_listaCuotas.Count == 0 && _Socio == null)
             {
                 Close();

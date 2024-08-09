@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             ucBordertd2 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
             ucBorderlr1 = new UserControls.UCBorderLR();
@@ -47,6 +47,13 @@
             txtDocumento = new ReaLTaiizor.Controls.AloneTextBox();
             bindingSourceCuotas = new BindingSource(components);
             dataGridView1 = new DataGridView();
+            numeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            precioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaDesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaVencimiento = new DataGridViewTextBoxColumn();
+            idCuotaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            idMembresiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ucBordertd1 = new UserControls.UCBorderTD();
             groupBox1 = new GroupBox();
             txtDireccion = new ReaLTaiizor.Controls.AloneTextBox();
@@ -56,7 +63,6 @@
             cmbTipoMembresia = new ReaLTaiizor.Controls.AloneComboBox();
             bindingSourceTipo = new BindingSource(components);
             groupBox2 = new GroupBox();
-            chkCuotaUnica = new CheckBox();
             txtInstructor = new ReaLTaiizor.Controls.AloneTextBox();
             cmdGenerar = new ReaLTaiizor.Controls.CyberButton();
             txtDisponibilidadBack = new ReaLTaiizor.Controls.AloneTextBox();
@@ -94,13 +100,7 @@
             txtDescripcionMembresía = new TextBox();
             ucAgregar1 = new UserControls.UCAgregar();
             groupBox3 = new GroupBox();
-            numeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            precioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaDesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaVencimiento = new DataGridViewTextBoxColumn();
-            idCuotaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            idMembresiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            chkCuotaUnica = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)bindingSourceCuotas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -384,6 +384,64 @@
             dataGridView1.Size = new Size(785, 235);
             dataGridView1.TabIndex = 39;
             // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
+            numeroDataGridViewTextBoxColumn.HeaderText = "Nro";
+            numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            numeroDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            precioDataGridViewTextBoxColumn.HeaderText = "Precio";
+            precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            precioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaDesdeDataGridViewTextBoxColumn
+            // 
+            fechaDesdeDataGridViewTextBoxColumn.DataPropertyName = "fechaDesde";
+            fechaDesdeDataGridViewTextBoxColumn.HeaderText = "Desde";
+            fechaDesdeDataGridViewTextBoxColumn.Name = "fechaDesdeDataGridViewTextBoxColumn";
+            fechaDesdeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaHastaDataGridViewTextBoxColumn
+            // 
+            fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = null;
+            fechaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            fechaHastaDataGridViewTextBoxColumn.HeaderText = "Hasta";
+            fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
+            fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaVencimiento
+            // 
+            fechaVencimiento.DataPropertyName = "fechaVencimiento";
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(255, 192, 192);
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            fechaVencimiento.DefaultCellStyle = dataGridViewCellStyle6;
+            fechaVencimiento.HeaderText = "Vencimiento";
+            fechaVencimiento.Name = "fechaVencimiento";
+            fechaVencimiento.ReadOnly = true;
+            // 
+            // idCuotaDataGridViewTextBoxColumn
+            // 
+            idCuotaDataGridViewTextBoxColumn.DataPropertyName = "idCuota";
+            idCuotaDataGridViewTextBoxColumn.HeaderText = "idCuota";
+            idCuotaDataGridViewTextBoxColumn.Name = "idCuotaDataGridViewTextBoxColumn";
+            idCuotaDataGridViewTextBoxColumn.ReadOnly = true;
+            idCuotaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idMembresiaDataGridViewTextBoxColumn
+            // 
+            idMembresiaDataGridViewTextBoxColumn.DataPropertyName = "idMembresia";
+            idMembresiaDataGridViewTextBoxColumn.HeaderText = "idMembresia";
+            idMembresiaDataGridViewTextBoxColumn.Name = "idMembresiaDataGridViewTextBoxColumn";
+            idMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
+            idMembresiaDataGridViewTextBoxColumn.Visible = false;
+            // 
             // ucBordertd1
             // 
             ucBordertd1.BackColor = Color.White;
@@ -528,18 +586,6 @@
             groupBox2.TabIndex = 51;
             groupBox2.TabStop = false;
             groupBox2.Text = "Tipo de membresía";
-            // 
-            // chkCuotaUnica
-            // 
-            chkCuotaUnica.AutoSize = true;
-            chkCuotaUnica.Enabled = false;
-            chkCuotaUnica.ForeColor = Color.White;
-            chkCuotaUnica.Location = new Point(85, 248);
-            chkCuotaUnica.Name = "chkCuotaUnica";
-            chkCuotaUnica.Size = new Size(91, 19);
-            chkCuotaUnica.TabIndex = 80;
-            chkCuotaUnica.Text = "Cuota Única";
-            chkCuotaUnica.UseVisualStyleBackColor = true;
             // 
             // txtInstructor
             // 
@@ -1017,63 +1063,17 @@
             groupBox3.TabIndex = 62;
             groupBox3.TabStop = false;
             // 
-            // numeroDataGridViewTextBoxColumn
+            // chkCuotaUnica
             // 
-            numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
-            numeroDataGridViewTextBoxColumn.HeaderText = "Nro";
-            numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            numeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
-            precioDataGridViewTextBoxColumn.HeaderText = "Precio";
-            precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            precioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaDesdeDataGridViewTextBoxColumn
-            // 
-            fechaDesdeDataGridViewTextBoxColumn.DataPropertyName = "fechaDesde";
-            fechaDesdeDataGridViewTextBoxColumn.HeaderText = "Desde";
-            fechaDesdeDataGridViewTextBoxColumn.Name = "fechaDesdeDataGridViewTextBoxColumn";
-            fechaDesdeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaHastaDataGridViewTextBoxColumn
-            // 
-            fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            fechaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            fechaHastaDataGridViewTextBoxColumn.HeaderText = "Hasta";
-            fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
-            fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaVencimiento
-            // 
-            fechaVencimiento.DataPropertyName = "fechaVencimiento";
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 192, 192);
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            fechaVencimiento.DefaultCellStyle = dataGridViewCellStyle2;
-            fechaVencimiento.HeaderText = "Vencimiento";
-            fechaVencimiento.Name = "fechaVencimiento";
-            fechaVencimiento.ReadOnly = true;
-            // 
-            // idCuotaDataGridViewTextBoxColumn
-            // 
-            idCuotaDataGridViewTextBoxColumn.DataPropertyName = "idCuota";
-            idCuotaDataGridViewTextBoxColumn.HeaderText = "idCuota";
-            idCuotaDataGridViewTextBoxColumn.Name = "idCuotaDataGridViewTextBoxColumn";
-            idCuotaDataGridViewTextBoxColumn.ReadOnly = true;
-            idCuotaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idMembresiaDataGridViewTextBoxColumn
-            // 
-            idMembresiaDataGridViewTextBoxColumn.DataPropertyName = "idMembresia";
-            idMembresiaDataGridViewTextBoxColumn.HeaderText = "idMembresia";
-            idMembresiaDataGridViewTextBoxColumn.Name = "idMembresiaDataGridViewTextBoxColumn";
-            idMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
-            idMembresiaDataGridViewTextBoxColumn.Visible = false;
+            chkCuotaUnica.AutoSize = true;
+            chkCuotaUnica.Enabled = false;
+            chkCuotaUnica.ForeColor = Color.White;
+            chkCuotaUnica.Location = new Point(85, 248);
+            chkCuotaUnica.Name = "chkCuotaUnica";
+            chkCuotaUnica.Size = new Size(90, 19);
+            chkCuotaUnica.TabIndex = 80;
+            chkCuotaUnica.Text = "Cuota única";
+            chkCuotaUnica.UseVisualStyleBackColor = true;
             // 
             // FrmMembresiaAlta
             // 
@@ -1175,7 +1175,6 @@
         private ReaLTaiizor.Controls.AloneTextBox txtDisponibilidadBack;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel19;
         private ReaLTaiizor.Controls.AloneTextBox txtInstructor;
-        private CheckBox chkCuotaUnica;
         private DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fechaDesdeDataGridViewTextBoxColumn;
@@ -1183,5 +1182,6 @@
         private DataGridViewTextBoxColumn fechaVencimiento;
         private DataGridViewTextBoxColumn idCuotaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn idMembresiaDataGridViewTextBoxColumn;
+        private CheckBox chkCuotaUnica;
     }
 }

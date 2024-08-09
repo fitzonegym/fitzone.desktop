@@ -12,7 +12,7 @@ namespace Fitzone.Controller
 {
     public class TipoMembresiaController : IControllersClasesPrincipales<TipoMembresia>
     {
-        Contexto? contexto = new Contexto();
+        Contexto contexto = new Contexto();
 
         public bool Anular(int id)
         {
@@ -54,7 +54,38 @@ namespace Fitzone.Controller
 
         public bool Update(TipoMembresia entidad, int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //busco en la BD el objeto a modificar
+                var actualizar = contexto.TipoMembresia.FirstOrDefault(i => i.idTipoMembresia == id);
+                if (actualizar == null)
+                    return false;
+
+                //actualizo los valores
+                actualizar.nombre = entidad.nombre;
+                actualizar.diasHabilitados = entidad.diasHabilitados;
+                actualizar.idActividad = entidad.idActividad;
+                actualizar.cantidadCuotas = entidad.cantidadCuotas;
+                actualizar.cuotaUnica = entidad.cuotaUnica;
+                actualizar.cantidadDiasSemanales = entidad.cantidadDiasSemanales;
+                actualizar.cupoClase = entidad.cupoClase;
+                actualizar.descripcion = entidad.descripcion;
+
+                actualizar.horadesde = entidad.horadesde;
+                actualizar.horaHasta = entidad.horaHasta;
+                actualizar.precioTotal = entidad.precioTotal;
+
+                actualizar.idInstructor = entidad.idInstructor;                
+
+                contexto.SaveChanges(true);
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

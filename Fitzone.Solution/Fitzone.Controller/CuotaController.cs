@@ -12,7 +12,7 @@ namespace Fitzone.Controller
 {
     public class CuotaController : IControllersClasesPrincipales<Cuota>
     {
-        Contexto? contexto = new Contexto();
+        Contexto contexto = new Contexto();
         public bool Anular(int id)
         {
             throw new NotImplementedException();
@@ -28,11 +28,21 @@ namespace Fitzone.Controller
             throw new NotImplementedException();
         }
 
-        public List<Cuota>? GetAllByMembresiaFechaPagada(int idMembresia, DateTime fecha)
+        public Cuota? GetAllByIdMembresiaFechaPagada(int idMembresia, DateTime fecha)
         {
-            return contexto.Cuota
-               .Where(i => i.idMembresia == idMembresia && fecha >= i.fechaDesde && fecha<=i.fechaVencimiento && i.pagada)
-               .ToList();
+            //si no esta paga, la fecha debe ser menor a la fecha de vencimiento
+            var cuotaValida = contexto.Cuota
+               .FirstOrDefault(i => i.idMembresia == idMembresia &&
+                    (fecha >= i.fechaDesde && fecha <= i.fechaHasta && i.pagada)
+                    ||
+                    (fecha >= i.fechaDesde && fecha <= i.fechaVencimiento)
+                    );
+               
+
+            //aca hay un problema.
+            //si tiene cuotas vencidas de antes y no pagadas
+
+            return cuotaValida;
         }
 
         public Cuota? GetById(int id)
