@@ -30,18 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             dataGridView1 = new DataGridView();
-            tipoMembresiaBindingSource = new BindingSource(components);
-            btnModificar = new ReaLTaiizor.Controls.CyberButton();
-            BtnAnular = new ReaLTaiizor.Controls.CyberButton();
-            ucBordertd2 = new UserControls.UCBorderTD();
-            ucBordertd1 = new UserControls.UCBorderTD();
-            ucBorderlr2 = new UserControls.UCBorderLR();
-            ucBorderlr1 = new UserControls.UCBorderLR();
-            ucTituloLabel1 = new UserControls.UCTituloLabel();
-            botonesForms2 = new UserControls.UCBotonesForms();
-            btnCancelar = new ReaLTaiizor.Controls.CyberButton();
-            btnAgregar = new ReaLTaiizor.Controls.CyberButton();
-            btnConsultar = new ReaLTaiizor.Controls.CyberButton();
             nombre = new DataGridViewTextBoxColumn();
             descripcion = new DataGridViewTextBoxColumn();
             ActividadNombre = new DataGridViewTextBoxColumn();
@@ -54,6 +42,19 @@
             cantidadCuotas = new DataGridViewTextBoxColumn();
             cupoClase = new DataGridViewTextBoxColumn();
             cuotaUnica = new DataGridViewCheckBoxColumn();
+            tipoMembresiaBindingSource = new BindingSource(components);
+            btnModificar = new ReaLTaiizor.Controls.CyberButton();
+            BtnAnular = new ReaLTaiizor.Controls.CyberButton();
+            ucBordertd2 = new UserControls.UCBorderTD();
+            ucBordertd1 = new UserControls.UCBorderTD();
+            ucBorderlr2 = new UserControls.UCBorderLR();
+            ucBorderlr1 = new UserControls.UCBorderLR();
+            ucTituloLabel1 = new UserControls.UCTituloLabel();
+            botonesForms2 = new UserControls.UCBotonesForms();
+            btnCancelar = new ReaLTaiizor.Controls.CyberButton();
+            btnAgregar = new ReaLTaiizor.Controls.CyberButton();
+            btnConsultar = new ReaLTaiizor.Controls.CyberButton();
+            ucPintarFilasPares1 = new UserControls.UCPintarFilasPares();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tipoMembresiaBindingSource).BeginInit();
             SuspendLayout();
@@ -75,6 +76,98 @@
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.Size = new Size(1075, 378);
             dataGridView1.TabIndex = 69;
+            // 
+            // nombre
+            // 
+            nombre.DataPropertyName = "nombre";
+            nombre.HeaderText = "Nombre";
+            nombre.Name = "nombre";
+            nombre.ReadOnly = true;
+            nombre.Width = 150;
+            // 
+            // descripcion
+            // 
+            descripcion.DataPropertyName = "descripcion";
+            descripcion.HeaderText = "Descripcion";
+            descripcion.Name = "descripcion";
+            descripcion.ReadOnly = true;
+            descripcion.Width = 150;
+            // 
+            // ActividadNombre
+            // 
+            ActividadNombre.DataPropertyName = "ActividadNombre";
+            ActividadNombre.HeaderText = "Actividad";
+            ActividadNombre.Name = "ActividadNombre";
+            ActividadNombre.ReadOnly = true;
+            // 
+            // InstructorNombreCompleto
+            // 
+            InstructorNombreCompleto.DataPropertyName = "InstructorNombreCompleto";
+            InstructorNombreCompleto.HeaderText = "Instructor";
+            InstructorNombreCompleto.Name = "InstructorNombreCompleto";
+            InstructorNombreCompleto.ReadOnly = true;
+            // 
+            // horadesde
+            // 
+            horadesde.DataPropertyName = "HoraDesdeString";
+            horadesde.HeaderText = "Desde";
+            horadesde.Name = "horadesde";
+            horadesde.ReadOnly = true;
+            horadesde.Width = 50;
+            // 
+            // horaHasta
+            // 
+            horaHasta.DataPropertyName = "HoraHastaString";
+            horaHasta.HeaderText = "Hasta";
+            horaHasta.Name = "horaHasta";
+            horaHasta.ReadOnly = true;
+            horaHasta.Width = 50;
+            // 
+            // precioTotal
+            // 
+            precioTotal.DataPropertyName = "precioTotal";
+            precioTotal.HeaderText = "Precio";
+            precioTotal.Name = "precioTotal";
+            precioTotal.ReadOnly = true;
+            precioTotal.Width = 70;
+            // 
+            // cantidadDiasSemanales
+            // 
+            cantidadDiasSemanales.DataPropertyName = "cantidadDiasSemanales";
+            cantidadDiasSemanales.HeaderText = "Cant Dias";
+            cantidadDiasSemanales.Name = "cantidadDiasSemanales";
+            cantidadDiasSemanales.ReadOnly = true;
+            cantidadDiasSemanales.Width = 50;
+            // 
+            // diasHabilitados
+            // 
+            diasHabilitados.DataPropertyName = "diasHabilitados";
+            diasHabilitados.HeaderText = "Dias Habilitados";
+            diasHabilitados.Name = "diasHabilitados";
+            diasHabilitados.ReadOnly = true;
+            // 
+            // cantidadCuotas
+            // 
+            cantidadCuotas.DataPropertyName = "cantidadCuotas";
+            cantidadCuotas.HeaderText = "Cant Meses";
+            cantidadCuotas.Name = "cantidadCuotas";
+            cantidadCuotas.ReadOnly = true;
+            cantidadCuotas.Width = 50;
+            // 
+            // cupoClase
+            // 
+            cupoClase.DataPropertyName = "cupoClase";
+            cupoClase.HeaderText = "Cupo";
+            cupoClase.Name = "cupoClase";
+            cupoClase.ReadOnly = true;
+            cupoClase.Width = 50;
+            // 
+            // cuotaUnica
+            // 
+            cuotaUnica.DataPropertyName = "cuotaUnica";
+            cuotaUnica.HeaderText = "Cuota Unica";
+            cuotaUnica.Name = "cuotaUnica";
+            cuotaUnica.ReadOnly = true;
             // 
             // tipoMembresiaBindingSource
             // 
@@ -343,97 +436,14 @@
             btnConsultar.Timer_RGB = 300;
             btnConsultar.Click += btnConsultar_Click;
             // 
-            // nombre
+            // ucPintarFilasPares1
             // 
-            nombre.DataPropertyName = "nombre";
-            nombre.HeaderText = "Nombre";
-            nombre.Name = "nombre";
-            nombre.ReadOnly = true;
-            nombre.Width = 150;
-            // 
-            // descripcion
-            // 
-            descripcion.DataPropertyName = "descripcion";
-            descripcion.HeaderText = "Descripcion";
-            descripcion.Name = "descripcion";
-            descripcion.ReadOnly = true;
-            descripcion.Width = 150;
-            // 
-            // ActividadNombre
-            // 
-            ActividadNombre.DataPropertyName = "ActividadNombre";
-            ActividadNombre.HeaderText = "Actividad";
-            ActividadNombre.Name = "ActividadNombre";
-            ActividadNombre.ReadOnly = true;
-            // 
-            // InstructorNombreCompleto
-            // 
-            InstructorNombreCompleto.DataPropertyName = "InstructorNombreCompleto";
-            InstructorNombreCompleto.HeaderText = "Instructor";
-            InstructorNombreCompleto.Name = "InstructorNombreCompleto";
-            InstructorNombreCompleto.ReadOnly = true;
-            // 
-            // horadesde
-            // 
-            horadesde.DataPropertyName = "HoraDesdeString";
-            horadesde.HeaderText = "Desde";
-            horadesde.Name = "horadesde";
-            horadesde.ReadOnly = true;
-            horadesde.Width = 50;
-            // 
-            // horaHasta
-            // 
-            horaHasta.DataPropertyName = "HoraHastaString";
-            horaHasta.HeaderText = "Hasta";
-            horaHasta.Name = "horaHasta";
-            horaHasta.ReadOnly = true;
-            horaHasta.Width = 50;
-            // 
-            // precioTotal
-            // 
-            precioTotal.DataPropertyName = "precioTotal";
-            precioTotal.HeaderText = "Precio";
-            precioTotal.Name = "precioTotal";
-            precioTotal.ReadOnly = true;
-            precioTotal.Width = 70;
-            // 
-            // cantidadDiasSemanales
-            // 
-            cantidadDiasSemanales.DataPropertyName = "cantidadDiasSemanales";
-            cantidadDiasSemanales.HeaderText = "Cant Dias";
-            cantidadDiasSemanales.Name = "cantidadDiasSemanales";
-            cantidadDiasSemanales.ReadOnly = true;
-            cantidadDiasSemanales.Width = 50;
-            // 
-            // diasHabilitados
-            // 
-            diasHabilitados.DataPropertyName = "diasHabilitados";
-            diasHabilitados.HeaderText = "Dias Habilitados";
-            diasHabilitados.Name = "diasHabilitados";
-            diasHabilitados.ReadOnly = true;
-            // 
-            // cantidadCuotas
-            // 
-            cantidadCuotas.DataPropertyName = "cantidadCuotas";
-            cantidadCuotas.HeaderText = "Cant Meses";
-            cantidadCuotas.Name = "cantidadCuotas";
-            cantidadCuotas.ReadOnly = true;
-            cantidadCuotas.Width = 50;
-            // 
-            // cupoClase
-            // 
-            cupoClase.DataPropertyName = "cupoClase";
-            cupoClase.HeaderText = "Cupo";
-            cupoClase.Name = "cupoClase";
-            cupoClase.ReadOnly = true;
-            cupoClase.Width = 50;
-            // 
-            // cuotaUnica
-            // 
-            cuotaUnica.DataPropertyName = "cuotaUnica";
-            cuotaUnica.HeaderText = "Cuota Unica";
-            cuotaUnica.Name = "cuotaUnica";
-            cuotaUnica.ReadOnly = true;
+            ucPintarFilasPares1._dataGridView = dataGridView1;
+            ucPintarFilasPares1.BackColor = Color.White;
+            ucPintarFilasPares1.Location = new Point(12, 12);
+            ucPintarFilasPares1.Name = "ucPintarFilasPares1";
+            ucPintarFilasPares1.Size = new Size(33, 27);
+            ucPintarFilasPares1.TabIndex = 82;
             // 
             // FrmTipoMembresiaAdmin
             // 
@@ -453,6 +463,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnAgregar);
             Controls.Add(dataGridView1);
+            Controls.Add(ucPintarFilasPares1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmTipoMembresiaAdmin";
             Text = "FrmTipoMembresiaAdmin";
@@ -488,5 +499,6 @@
         private DataGridViewTextBoxColumn cantidadCuotas;
         private DataGridViewTextBoxColumn cupoClase;
         private DataGridViewCheckBoxColumn cuotaUnica;
+        private UserControls.UCPintarFilasPares ucPintarFilasPares1;
     }
 }

@@ -20,9 +20,9 @@ namespace Fitzone.Front.Membresias
 
         public FrmTipoMembresiaAdmin()
         {
-            dataGridView1.Columns.Clear();
+
             InitializeComponent();
-            dataGridView1.AutoGenerateColumns = false;
+
         }
         #region redimensionar
 
