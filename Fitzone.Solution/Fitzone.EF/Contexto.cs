@@ -18,8 +18,9 @@ namespace Fitzone.EF
         public DbSet<EquipamientoTipoMembresia> EquipamientoTipoMembresia { get; set; }
         public DbSet<EstadoEquipamiento> EstadoEquipamiento { get; set; }
         public DbSet<Marca> Marca { get; set; }
-        public DbSet<InstructorActividad> InstructorActividad { get; set; }        
-
+        public DbSet<InstructorActividad> InstructorActividad { get; set; }
+        public DbSet<Factura> Factura { get; set; }
+        public DbSet<DetalleFactura> DetalleFactura { get; set; }
         public DbSet<Configuraciones> Configuraciones { get; set; }
 
         public Contexto() { }
@@ -49,14 +50,12 @@ namespace Fitzone.EF
                 .WithMany(a => a.InstructorActividades)
                 .HasForeignKey(ia => ia.idActividad);
 
-            //modelBuilder.Entity<Membresia>().         
-         ; // Aquí especificamos el comportamiento de eliminación.
+            modelBuilder.Entity<Membresia>()
+              .HasOne(m => m.TipoMembresia)
+              .WithMany()
+              .HasForeignKey(m => m.idTipoMembresia)
+              .OnDelete(DeleteBehavior.Restrict); // o .OnDelete(DeleteBehavior.NoAction)
 
-
-            //  modelBuilder.Entity<Membresia>()
-            //.HasMany(m => m.Cuotas)
-            //.WithOne(c => c.Membresia)
-            //.HasForeignKey(c => c.idMembresia);
         }
 
     }

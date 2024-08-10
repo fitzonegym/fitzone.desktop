@@ -49,9 +49,6 @@ namespace Fitzone.Controller
         {
             throw new NotImplementedException();
         }
-
-
-
         public Cuota? GetByName(string nombre)
         {
             throw new NotImplementedException();
@@ -65,6 +62,85 @@ namespace Fitzone.Controller
         public bool Update(Cuota entidad, int id)
         {
             throw new NotImplementedException();
+        }
+
+        public bool Pagar(int idCuota)
+        {
+            try
+            {
+                //busco en la BD el objeto a modificar
+                var actualizar = contexto.Cuota.FirstOrDefault(i => i.idCuota == idCuota);
+                if (actualizar == null)
+                    return false;
+
+                //actualizo los valores
+                actualizar.pagada = true;
+
+                contexto.SaveChanges(true);
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<Cuota> GetCuotasPendientesDePagoTodas(int idMembresia, DateTime fecha)
+        {
+
+            var membresia = contexto.Membresia.FirstOrDefault(m => m.idMembresia == idMembresia && m.idEstadoMembresia == 1);
+
+            if (membresia == null)
+                return new List<Cuota>();
+
+
+
+            //si no esta paga, la fecha debe ser menor a la fecha de vencimiento
+            var cuotas = contexto.Cuota
+               .Where(i => i.idMembresia == idMembresia && !i.pagada
+                    //  (fecha >= i.fechaDesde && fecha <= i.fechaHasta && !i.pagada)
+                    ).ToList();            
+
+            return cuotas;
+        }
+
+        public List<Cuota> GetCuotasTodas(int idMembresia, DateTime fecha)
+        {
+
+            var membresia = contexto.Membresia.FirstOrDefault(m => m.idMembresia == idMembresia && m.idEstadoMembresia == 1);
+
+            if (membresia == null)
+                return new List<Cuota>();
+
+
+
+            //si no esta paga, la fecha debe ser menor a la fecha de vencimiento
+            var cuotas = contexto.Cuota
+               .Where(i => i.idMembresia == idMembresia 
+                    //  (fecha >= i.fechaDesde && fecha <= i.fechaHasta && !i.pagada)
+                    ).ToList();
+
+            return cuotas;
+        }
+
+        public List<Cuota> GetCuotasPendientesDePagoAlDia(int idMembresia, DateTime fecha)
+        {
+
+            var membresia = contexto.Membresia.FirstOrDefault(m => m.idMembresia == idMembresia && m.idEstadoMembresia == 1);
+
+            if (membresia == null)
+                return new List<Cuota>();
+            
+            //si no esta paga, la fecha debe ser menor a la fecha de vencimiento
+            var cuotas = contexto.Cuota
+               .Where(i => i.idMembresia == idMembresia 
+               && !i.pagada
+               && i.fechaVencimiento <= fecha
+               ).ToList();
+
+            return cuotas;
         }
     }
 }

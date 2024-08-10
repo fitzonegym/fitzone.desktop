@@ -79,6 +79,24 @@ namespace Fitzone.EF.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Factura",
+                columns: table => new
+                {
+                    idFactura = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    numero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    tipoFactura = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    letra = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    metodoDePago = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    total = table.Column<decimal>(type: "decimal(8,2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Factura", x => x.idFactura);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Marca",
                 columns: table => new
                 {
@@ -291,8 +309,7 @@ namespace Fitzone.EF.Migrations
                     idSocio = table.Column<int>(type: "int", nullable: false),
                     idInstructor = table.Column<int>(type: "int", nullable: true),
                     idActividad = table.Column<int>(type: "int", nullable: false),
-                    idTipoMembresia = table.Column<int>(type: "int", nullable: false),
-                    TipoMembresiaidTipoMembresia = table.Column<int>(type: "int", nullable: true)
+                    idTipoMembresia = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -321,10 +338,11 @@ namespace Fitzone.EF.Migrations
                         principalColumn: "idSocio",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Membresia_TipoMembresia_TipoMembresiaidTipoMembresia",
-                        column: x => x.TipoMembresiaidTipoMembresia,
+                        name: "FK_Membresia_TipoMembresia_idTipoMembresia",
+                        column: x => x.idTipoMembresia,
                         principalTable: "TipoMembresia",
-                        principalColumn: "idTipoMembresia");
+                        principalColumn: "idTipoMembresia",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -352,10 +370,49 @@ namespace Fitzone.EF.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "DetalleFactura",
+                columns: table => new
+                {
+                    idDetalleFactura = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    cantidad = table.Column<int>(type: "int", nullable: false),
+                    precioUnitario = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
+                    total = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
+                    idFactura = table.Column<int>(type: "int", nullable: false),
+                    idCuota = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DetalleFactura", x => x.idDetalleFactura);
+                    table.ForeignKey(
+                        name: "FK_DetalleFactura_Cuota_idCuota",
+                        column: x => x.idCuota,
+                        principalTable: "Cuota",
+                        principalColumn: "idCuota",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DetalleFactura_Factura_idFactura",
+                        column: x => x.idFactura,
+                        principalTable: "Factura",
+                        principalColumn: "idFactura",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Cuota_idMembresia",
                 table: "Cuota",
                 column: "idMembresia");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetalleFactura_idCuota",
+                table: "DetalleFactura",
+                column: "idCuota");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetalleFactura_idFactura",
+                table: "DetalleFactura",
+                column: "idFactura");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Equipamiento_idEstadoEquipamiento",
@@ -413,9 +470,9 @@ namespace Fitzone.EF.Migrations
                 column: "idSocio");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Membresia_TipoMembresiaidTipoMembresia",
+                name: "IX_Membresia_idTipoMembresia",
                 table: "Membresia",
-                column: "TipoMembresiaidTipoMembresia");
+                column: "idTipoMembresia");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Socio_idBarrio",
@@ -440,7 +497,7 @@ namespace Fitzone.EF.Migrations
                 name: "Configuraciones");
 
             migrationBuilder.DropTable(
-                name: "Cuota");
+                name: "DetalleFactura");
 
             migrationBuilder.DropTable(
                 name: "EquipamientoTipoMembresia");
@@ -449,10 +506,22 @@ namespace Fitzone.EF.Migrations
                 name: "InstructorActividad");
 
             migrationBuilder.DropTable(
-                name: "Membresia");
+                name: "Cuota");
+
+            migrationBuilder.DropTable(
+                name: "Factura");
 
             migrationBuilder.DropTable(
                 name: "Equipamiento");
+
+            migrationBuilder.DropTable(
+                name: "Membresia");
+
+            migrationBuilder.DropTable(
+                name: "EstadoEquipamiento");
+
+            migrationBuilder.DropTable(
+                name: "Marca");
 
             migrationBuilder.DropTable(
                 name: "EstadoMembresia");
@@ -462,12 +531,6 @@ namespace Fitzone.EF.Migrations
 
             migrationBuilder.DropTable(
                 name: "TipoMembresia");
-
-            migrationBuilder.DropTable(
-                name: "EstadoEquipamiento");
-
-            migrationBuilder.DropTable(
-                name: "Marca");
 
             migrationBuilder.DropTable(
                 name: "Actividad");

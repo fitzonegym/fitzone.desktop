@@ -205,7 +205,6 @@ namespace Fitzone.Controller
                 throw;
             }
         }
-    
         public VerificarEstadoCuotaResponse VerificarEstadoCuota(string dni, DateTime fecha)
         {
 
@@ -246,14 +245,18 @@ namespace Fitzone.Controller
                 TimeOnly.FromDateTime(fecha) >= m.horadesde 
                 &&
                 TimeOnly.FromDateTime(fecha) <= m.horaHasta
-                );
-            if (membresiasFueraHorarioDia == null || membresiasFueraHorarioDia.Count() == 0)
+                ).ToList();
+            if (membresiasFueraHorarioDia == null || membresiasFueraHorarioDia.Count == 0)
             {
                 respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Fuera_de_horario;
-                respuesta.Color = rojo;
+                respuesta.Color = rojo;                
                 return respuesta;
             }
 
+            foreach (var item in membresiasFueraHorarioDia)
+            {
+                membresias.RemoveAll(c=>c.idMembresia == item.idMembresia); 
+            }
 
             //tiene al menos 1 membresia vigente y activa
             CuotaController cuotaController = new CuotaController();
@@ -270,7 +273,7 @@ namespace Fitzone.Controller
                 {
                     encontroMembresia = true;
                     var tipo = tipoMembresiaController.GetById(itemMembresia.idTipoMembresia);
-                    respuesta.actividades += tipo.ActividadNombre + " | Vencimiento: " + cuota.fechaVencimiento.ToShortDateString() +  " | ";
+                    respuesta.actividades += tipo.ActividadNombre + " " + itemMembresia.horadesde + " -> "  + itemMembresia.horaHasta+  " | Vencimiento: " + cuota.fechaVencimiento.ToShortDateString() +  "\n ";
 
                 }
             }

@@ -343,6 +343,7 @@
             txtNombre.TabIndex = 49;
             txtNombre.TextAlign = HorizontalAlignment.Left;
             txtNombre.UseSystemPasswordChar = false;
+            txtNombre.KeyPress += txtNombre_KeyPress;
             // 
             // thunderLabel1
             // 

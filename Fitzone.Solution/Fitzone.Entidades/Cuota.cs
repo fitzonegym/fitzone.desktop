@@ -14,8 +14,7 @@ namespace Fitzone.Entidades
         public int idCuota { get; set; }
 
         [Column(TypeName = "decimal(8,2)")]
-        public decimal precio{ get; set; }
-
+        public decimal precio{ get; set; }        
         public int numero{ get; set; }
 
         public DateTime fechaDesde { get; set; }
@@ -29,5 +28,8 @@ namespace Fitzone.Entidades
         [ForeignKey("Membresia")]
         public int idMembresia { get; set; }
         public Membresia? Membresia { get; set; }
+
+        [NotMapped]
+        public bool seleccionada { get; set; }
     }
 }

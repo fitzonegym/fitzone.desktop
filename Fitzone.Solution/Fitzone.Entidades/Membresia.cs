@@ -52,9 +52,10 @@ namespace Fitzone.Entidades
         public int idActividad { get; set; }
         public Actividad? Actividad { get; set; }
 
-      //  [ForeignKey("TipoMembresia")]        
+        [ForeignKey("TipoMembresia")]
         public int idTipoMembresia { get; set; }
         public TipoMembresia? TipoMembresia { get; set; }
+
 
         #endregion
 

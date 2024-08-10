@@ -577,6 +577,13 @@ namespace Fitzone.Front.Socios
             frmSociosAlta.ShowDialog();
 
             CargarGrilla();
-        }      
+        }
+
+        private void Cuota_Click(object sender, EventArgs e)
+        {
+            FrmPagarCuota frm = new FrmPagarCuota();
+            frm.ShowDialog();
+
+        }
     }
 }

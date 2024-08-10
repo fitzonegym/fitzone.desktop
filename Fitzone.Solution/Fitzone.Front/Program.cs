@@ -16,6 +16,7 @@ namespace Fitzone.Front
             //                  SOCIOS
             //Application.Run(new FrmSociosAdmin());
             //Application.Run(new FrmSociosAlta());
+            //Application.Run(new FrmPagarCuota());
 
             //              MEMBRESIAS
             //Application.Run(new FrmMembresiaAdmin());            

@@ -26,5 +26,6 @@ namespace Fitzone.Entidades
 
         [Column(TypeName = "decimal(8,2)")]
         public decimal total { get; set; }
+        public List<DetalleFactura> DetalleFactura { get; set; } = new List<DetalleFactura>();
     }
 }

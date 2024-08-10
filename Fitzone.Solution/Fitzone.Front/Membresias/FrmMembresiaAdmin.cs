@@ -83,8 +83,8 @@ namespace Fitzone.Front.Membresias
         #endregion
         public FrmMembresiaAdmin()
         {
-            
             InitializeComponent();
+            txtNombre.TB.KeyPress += txtNombre_KeyPress;
         }
 
         private void FrmMembresiaAdmin_Load(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace Fitzone.Front.Membresias
 
             filtro.Socio = null;
 
-            if (!String.IsNullOrWhiteSpace( txtNombre.Text))
+            if (!String.IsNullOrWhiteSpace(txtNombre.Text))
             {
                 filtro.Socio = new Socio();
                 filtro.Socio.nombre = txtNombre.Text.Trim();
@@ -175,12 +175,23 @@ namespace Fitzone.Front.Membresias
 
             frm._id_membresia = ((Membresia)bindingSource1.Current).idMembresia;
 
-            frm.ShowDialog();            
+            frm.ShowDialog();
         }
 
         private void ucBuscar1_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                CargarGrilla();
+                // Prevenir el sonido de beep
+                //e.Handled = true;
+
+            }
         }
     }
 }

@@ -115,6 +115,38 @@ namespace Fitzone.EF.Migrations
                     b.ToTable("Cuota");
                 });
 
+            modelBuilder.Entity("Fitzone.Entidades.DetalleFactura", b =>
+                {
+                    b.Property<int>("idDetalleFactura")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idDetalleFactura"));
+
+                    b.Property<int>("cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idCuota")
+                        .HasColumnType("int");
+
+                    b.Property<int>("idFactura")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("precioUnitario")
+                        .HasColumnType("decimal(8,2)");
+
+                    b.Property<decimal>("total")
+                        .HasColumnType("decimal(8,2)");
+
+                    b.HasKey("idDetalleFactura");
+
+                    b.HasIndex("idCuota");
+
+                    b.HasIndex("idFactura");
+
+                    b.ToTable("DetalleFactura");
+                });
+
             modelBuilder.Entity("Fitzone.Entidades.Equipamiento", b =>
                 {
                     b.Property<int>("idEquipamiento")
@@ -212,6 +244,41 @@ namespace Fitzone.EF.Migrations
                     b.HasKey("idEstadoMembresia");
 
                     b.ToTable("EstadoMembresia");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.Factura", b =>
+                {
+                    b.Property<int>("idFactura")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idFactura"));
+
+                    b.Property<DateTime>("fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("letra")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("metodoDePago")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("numero")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("tipoFactura")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("total")
+                        .HasColumnType("decimal(8,2)");
+
+                    b.HasKey("idFactura");
+
+                    b.ToTable("Factura");
                 });
 
             modelBuilder.Entity("Fitzone.Entidades.Instructor", b =>
@@ -331,9 +398,6 @@ namespace Fitzone.EF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idMembresia"));
 
-                    b.Property<int?>("TipoMembresiaidTipoMembresia")
-                        .HasColumnType("int");
-
                     b.Property<int>("cantidadDiasSemanales")
                         .HasColumnType("int");
 
@@ -383,8 +447,6 @@ namespace Fitzone.EF.Migrations
 
                     b.HasKey("idMembresia");
 
-                    b.HasIndex("TipoMembresiaidTipoMembresia");
-
                     b.HasIndex("idActividad");
 
                     b.HasIndex("idEstadoMembresia");
@@ -392,6 +454,8 @@ namespace Fitzone.EF.Migrations
                     b.HasIndex("idInstructor");
 
                     b.HasIndex("idSocio");
+
+                    b.HasIndex("idTipoMembresia");
 
                     b.ToTable("Membresia");
                 });
@@ -530,6 +594,25 @@ namespace Fitzone.EF.Migrations
                     b.Navigation("Membresia");
                 });
 
+            modelBuilder.Entity("Fitzone.Entidades.DetalleFactura", b =>
+                {
+                    b.HasOne("Fitzone.Entidades.Cuota", "Cuota")
+                        .WithMany()
+                        .HasForeignKey("idCuota")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitzone.Entidades.Factura", "Factura")
+                        .WithMany("DetalleFactura")
+                        .HasForeignKey("idFactura")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cuota");
+
+                    b.Navigation("Factura");
+                });
+
             modelBuilder.Entity("Fitzone.Entidades.Equipamiento", b =>
                 {
                     b.HasOne("Fitzone.Entidades.EstadoEquipamiento", "EstadoEquipamiento")
@@ -600,10 +683,6 @@ namespace Fitzone.EF.Migrations
 
             modelBuilder.Entity("Fitzone.Entidades.Membresia", b =>
                 {
-                    b.HasOne("Fitzone.Entidades.TipoMembresia", "TipoMembresia")
-                        .WithMany()
-                        .HasForeignKey("TipoMembresiaidTipoMembresia");
-
                     b.HasOne("Fitzone.Entidades.Actividad", "Actividad")
                         .WithMany()
                         .HasForeignKey("idActividad")
@@ -624,6 +703,12 @@ namespace Fitzone.EF.Migrations
                         .WithMany()
                         .HasForeignKey("idSocio")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Fitzone.Entidades.TipoMembresia", "TipoMembresia")
+                        .WithMany()
+                        .HasForeignKey("idTipoMembresia")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Actividad");
@@ -668,6 +753,11 @@ namespace Fitzone.EF.Migrations
             modelBuilder.Entity("Fitzone.Entidades.Actividad", b =>
                 {
                     b.Navigation("InstructorActividades");
+                });
+
+            modelBuilder.Entity("Fitzone.Entidades.Factura", b =>
+                {
+                    b.Navigation("DetalleFactura");
                 });
 
             modelBuilder.Entity("Fitzone.Entidades.Instructor", b =>

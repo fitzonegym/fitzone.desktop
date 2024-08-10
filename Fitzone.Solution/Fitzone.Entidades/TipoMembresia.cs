@@ -6,7 +6,7 @@ namespace Fitzone.Entidades
 {
     public class TipoMembresia
     {
-        [Key]
+        [Key]      
         public int idTipoMembresia { get; set; }
 
         [MaxLength(50)]

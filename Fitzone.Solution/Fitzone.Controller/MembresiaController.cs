@@ -40,6 +40,12 @@ namespace Fitzone.Controller
             //devuelvo membresias en la fecha pero en cualquier estado
             return contexto.Membresia.Where(m=> m.idSocio == idSocio && fecha >= m.fechaDesde && fecha <= m.fechaHasta).ToList();
         }
+
+        public List<Membresia>? GetByIdSocioFechaTipoMembresia(int idSocio, DateTime fecha)
+        {
+            //devuelvo membresias en la fecha pero en cualquier estado
+            return contexto.Membresia.Include("TipoMembresia").Where(m => m.idSocio == idSocio && fecha >= m.fechaDesde && fecha <= m.fechaHasta).ToList();
+        }
         public List<Membresia>? GetAll(Membresia membresia)
         {
 
@@ -99,9 +105,6 @@ namespace Fitzone.Controller
             throw new NotImplementedException();
         }
 
-        //public List<TipoMembresia>? GetAllTipoMembresia() => 
-        //    contexto.TipoMembresia.OrderBy(c=>c.nombre).ToList();
-
         public int? GetDisponibilidad(TipoMembresia tipo) {
             //obtengo el cupo del tipo de membresia
             int? cupo = contexto.TipoMembresia.FirstOrDefault(t => t.idTipoMembresia == tipo.idTipoMembresia).cupoClase;
@@ -114,5 +117,8 @@ namespace Fitzone.Controller
 
             return cupo - cant;
         }
+
+    
+
     }
 }
