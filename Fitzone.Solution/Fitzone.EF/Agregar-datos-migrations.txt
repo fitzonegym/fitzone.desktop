@@ -64,7 +64,7 @@ namespace Fitzone.EF.Migrations
                                        )
                                  VALUES
                                        ('CuotaCantDiasVencimiento'
-                                       ,'10'
+                                       ,'0'
                                        )
                             GO
 							

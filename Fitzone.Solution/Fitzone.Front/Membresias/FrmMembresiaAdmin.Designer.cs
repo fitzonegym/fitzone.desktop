@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             ucBordertd2 = new UserControls.UCBorderTD();
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
@@ -38,19 +40,6 @@
             btnCancelar = new ReaLTaiizor.Controls.CyberButton();
             btnAgregar = new ReaLTaiizor.Controls.CyberButton();
             dataGridView1 = new DataGridView();
-            idMembresiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            Tipo = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            precioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            fechaDesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            horadesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            horaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            estadoMembresiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             bindingSource1 = new BindingSource(components);
             txtNombre = new ReaLTaiizor.Controls.AloneTextBox();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
@@ -65,6 +54,19 @@
             btnModificar = new ReaLTaiizor.Controls.CyberButton();
             ucCantidadregistros1 = new UserControls.UCCantidadregistros();
             ucPintarFilasPares1 = new UserControls.UCPintarFilasPares();
+            idMembresiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            Tipo = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            precioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            fechaDesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            horadesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            horaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            estadoMembresiaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -226,103 +228,6 @@
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.Size = new Size(1138, 278);
             dataGridView1.TabIndex = 39;
-            // 
-            // idMembresiaDataGridViewTextBoxColumn
-            // 
-            idMembresiaDataGridViewTextBoxColumn.DataPropertyName = "idMembresia";
-            idMembresiaDataGridViewTextBoxColumn.HeaderText = "Id";
-            idMembresiaDataGridViewTextBoxColumn.Name = "idMembresiaDataGridViewTextBoxColumn";
-            idMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
-            idMembresiaDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // Tipo
-            // 
-            Tipo.DataPropertyName = "TipoMembresiaNombre";
-            Tipo.HeaderText = "Tipo";
-            Tipo.Name = "Tipo";
-            Tipo.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "SocioNombre";
-            dataGridViewTextBoxColumn5.HeaderText = "Socio";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
-            precioDataGridViewTextBoxColumn.HeaderText = "Precio";
-            precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            precioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "cantidadDiasSemanales";
-            dataGridViewTextBoxColumn3.HeaderText = "Cant Dias";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "diasHabilitados";
-            dataGridViewTextBoxColumn4.HeaderText = "Dias Habilitados";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
-            dataGridViewTextBoxColumn4.Width = 150;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "detalle";
-            dataGridViewTextBoxColumn2.HeaderText = "Detalle";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // fechaDesdeDataGridViewTextBoxColumn
-            // 
-            fechaDesdeDataGridViewTextBoxColumn.DataPropertyName = "fechaDesde";
-            fechaDesdeDataGridViewTextBoxColumn.HeaderText = "Desde";
-            fechaDesdeDataGridViewTextBoxColumn.Name = "fechaDesdeDataGridViewTextBoxColumn";
-            fechaDesdeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaHastaDataGridViewTextBoxColumn
-            // 
-            fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
-            fechaHastaDataGridViewTextBoxColumn.HeaderText = "Hasta";
-            fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
-            fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // horadesdeDataGridViewTextBoxColumn
-            // 
-            horadesdeDataGridViewTextBoxColumn.DataPropertyName = "horadesde";
-            horadesdeDataGridViewTextBoxColumn.HeaderText = "Hora Desde";
-            horadesdeDataGridViewTextBoxColumn.Name = "horadesdeDataGridViewTextBoxColumn";
-            horadesdeDataGridViewTextBoxColumn.ReadOnly = true;
-            horadesdeDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // horaHastaDataGridViewTextBoxColumn
-            // 
-            horaHastaDataGridViewTextBoxColumn.DataPropertyName = "horaHasta";
-            horaHastaDataGridViewTextBoxColumn.HeaderText = "Hora Hasta";
-            horaHastaDataGridViewTextBoxColumn.Name = "horaHastaDataGridViewTextBoxColumn";
-            horaHastaDataGridViewTextBoxColumn.ReadOnly = true;
-            horaHastaDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // estadoMembresiaDataGridViewTextBoxColumn
-            // 
-            estadoMembresiaDataGridViewTextBoxColumn.DataPropertyName = "EstadoMembresia";
-            estadoMembresiaDataGridViewTextBoxColumn.HeaderText = "Estado";
-            estadoMembresiaDataGridViewTextBoxColumn.Name = "estadoMembresiaDataGridViewTextBoxColumn";
-            estadoMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
-            estadoMembresiaDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "fechaAlta";
-            dataGridViewTextBoxColumn1.HeaderText = "Alta";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // bindingSource1
             // 
@@ -562,6 +467,109 @@
             ucPintarFilasPares1.Name = "ucPintarFilasPares1";
             ucPintarFilasPares1.Size = new Size(33, 27);
             ucPintarFilasPares1.TabIndex = 66;
+            // 
+            // idMembresiaDataGridViewTextBoxColumn
+            // 
+            idMembresiaDataGridViewTextBoxColumn.DataPropertyName = "idMembresia";
+            idMembresiaDataGridViewTextBoxColumn.HeaderText = "Id";
+            idMembresiaDataGridViewTextBoxColumn.Name = "idMembresiaDataGridViewTextBoxColumn";
+            idMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
+            idMembresiaDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // Tipo
+            // 
+            Tipo.DataPropertyName = "TipoMembresiaNombre";
+            Tipo.HeaderText = "Tipo";
+            Tipo.Name = "Tipo";
+            Tipo.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.DataPropertyName = "SocioNombre";
+            dataGridViewTextBoxColumn5.HeaderText = "Socio";
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            precioDataGridViewTextBoxColumn.HeaderText = "Precio";
+            precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            precioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.DataPropertyName = "cantidadDiasSemanales";
+            dataGridViewTextBoxColumn3.HeaderText = "Cant Dias";
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumn3.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.DataPropertyName = "diasHabilitados";
+            dataGridViewTextBoxColumn4.HeaderText = "Dias Habilitados";
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.ReadOnly = true;
+            dataGridViewTextBoxColumn4.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.DataPropertyName = "detalle";
+            dataGridViewTextBoxColumn2.HeaderText = "Detalle";
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // fechaDesdeDataGridViewTextBoxColumn
+            // 
+            fechaDesdeDataGridViewTextBoxColumn.DataPropertyName = "fechaDesde";
+            fechaDesdeDataGridViewTextBoxColumn.HeaderText = "Desde";
+            fechaDesdeDataGridViewTextBoxColumn.Name = "fechaDesdeDataGridViewTextBoxColumn";
+            fechaDesdeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaHastaDataGridViewTextBoxColumn
+            // 
+            fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
+            fechaHastaDataGridViewTextBoxColumn.HeaderText = "Hasta";
+            fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
+            fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // horadesdeDataGridViewTextBoxColumn
+            // 
+            horadesdeDataGridViewTextBoxColumn.DataPropertyName = "horadesde";
+            dataGridViewCellStyle1.Format = "t";
+            dataGridViewCellStyle1.NullValue = null;
+            horadesdeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            horadesdeDataGridViewTextBoxColumn.HeaderText = "Hora Desde";
+            horadesdeDataGridViewTextBoxColumn.Name = "horadesdeDataGridViewTextBoxColumn";
+            horadesdeDataGridViewTextBoxColumn.ReadOnly = true;
+            horadesdeDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // horaHastaDataGridViewTextBoxColumn
+            // 
+            horaHastaDataGridViewTextBoxColumn.DataPropertyName = "horaHasta";
+            dataGridViewCellStyle2.Format = "t";
+            dataGridViewCellStyle2.NullValue = null;
+            horaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            horaHastaDataGridViewTextBoxColumn.HeaderText = "Hora Hasta";
+            horaHastaDataGridViewTextBoxColumn.Name = "horaHastaDataGridViewTextBoxColumn";
+            horaHastaDataGridViewTextBoxColumn.ReadOnly = true;
+            horaHastaDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // estadoMembresiaDataGridViewTextBoxColumn
+            // 
+            estadoMembresiaDataGridViewTextBoxColumn.DataPropertyName = "EstadoMembresia";
+            estadoMembresiaDataGridViewTextBoxColumn.HeaderText = "Estado";
+            estadoMembresiaDataGridViewTextBoxColumn.Name = "estadoMembresiaDataGridViewTextBoxColumn";
+            estadoMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
+            estadoMembresiaDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.DataPropertyName = "fechaAlta";
+            dataGridViewTextBoxColumn1.HeaderText = "Alta";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // FrmMembresiaAdmin
             // 

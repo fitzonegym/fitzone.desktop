@@ -41,6 +41,12 @@ namespace Fitzone.Controller
             return contexto.Membresia.Where(m=> m.idSocio == idSocio && fecha >= m.fechaDesde && fecha <= m.fechaHasta).ToList();
         }
 
+        public List<Membresia>? GetByIdSocioFechaActivas(int idSocio, DateTime fecha)
+        {
+            //devuelvo membresias en la fecha pero en cualquier estado
+            return contexto.Membresia.Where(m => m.idSocio == idSocio && fecha >= m.fechaDesde && fecha <= m.fechaHasta && m.idEstadoMembresia == 1).ToList();
+        }
+
         public List<Membresia>? GetByIdSocioFechaTipoMembresia(int idSocio, DateTime fecha)
         {
             //devuelvo membresias en la fecha pero en cualquier estado

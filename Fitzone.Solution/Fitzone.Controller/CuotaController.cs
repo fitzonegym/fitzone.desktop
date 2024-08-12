@@ -44,6 +44,66 @@ namespace Fitzone.Controller
 
             return cuotaValida;
         }
+        public Cuota? GetAllByIdMembresiaFechaNoPagada(int idMembresia, DateTime fecha)
+        {
+            //si no esta paga, la fecha debe ser menor a la fecha de vencimiento
+            var cuotaValida = contexto.Cuota
+               .FirstOrDefault(i => i.idMembresia == idMembresia &&
+                    (fecha >= i.fechaDesde && fecha <= i.fechaHasta && !i.pagada)
+                    ||
+                    (fecha >= i.fechaDesde && fecha <= i.fechaVencimiento)
+                    );
+
+
+            //aca hay un problema.
+            //si tiene cuotas vencidas de antes y no pagadas
+
+            return cuotaValida;
+        }
+
+        //public Cuota? GetAllByIdMembresiaFechaVencimiento(int idMembresia, DateTime fecha)
+        //{
+        //    //si no esta paga, la fecha debe ser menor a la fecha de vencimiento
+        //    var cuotaValida = contexto.Cuota
+        //       .FirstOrDefault(i => i.idMembresia == idMembresia &&
+        //            (fecha >= i.fechaDesde && fecha <= i.fechaHasta)
+        //            ||
+        //            (fecha >= i.fechaDesde && fecha <= i.fechaVencimiento)
+        //            );
+
+
+        //    //aca hay un problema.
+        //    //si tiene cuotas vencidas de antes y no pagadas
+
+        //    return cuotaValida;
+        //}
+
+        public Cuota? GetAllByIdMembresiaFecha(int idMembresia, DateTime fecha)
+        {
+            //si no esta paga, la fecha debe ser menor a la fecha de vencimiento
+            var cuotaValida = contexto.Cuota
+               .FirstOrDefault(i => i.idMembresia == idMembresia &&
+                    (fecha >= i.fechaDesde && fecha <= i.fechaHasta)                    
+                    );
+            //aca hay un problema.
+            //si tiene cuotas vencidas de antes y no pagadas
+
+            return cuotaValida;
+        }
+
+        public Cuota? GetProxima(int idMembresia, DateTime fechaDesde)
+        {
+            //si no esta paga, la fecha debe ser menor a la fecha de vencimiento
+            var cuotas = contexto.Cuota.Where(i => i.idMembresia == idMembresia &&
+                    ( i.fechaDesde >= fechaDesde)
+                    ).OrderBy(c=>c.fechaDesde).ToList();
+            if (cuotas.Count >= 2)
+            {
+                return cuotas[1];
+            }
+
+            return cuotas[0];
+        }
 
         public Cuota? GetById(int id)
         {

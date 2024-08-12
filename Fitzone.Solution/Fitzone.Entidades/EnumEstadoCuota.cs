@@ -12,9 +12,9 @@ namespace Fitzone.Entidades
         Cuota_al_dia = 1,
         Cuota_proxima_a_vencer = 2,
         Cuota_vencida = 3,
-        Problemas_con_la_membresía = 4,
+        Membresía_deshabilitada = 4,
         No_se_encontró_la_membresía = 5,
-        Fuera_de_horario = 6
+        Fuera_de_horario_o_día = 6
 
     }
 }

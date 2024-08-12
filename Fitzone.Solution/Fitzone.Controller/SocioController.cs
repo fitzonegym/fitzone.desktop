@@ -205,7 +205,7 @@ namespace Fitzone.Controller
                 throw;
             }
         }
-        public VerificarEstadoCuotaResponse VerificarEstadoCuota(string dni, DateTime fecha)
+        public VerificarEstadoCuotaResponse VerificarEstadoCuota(string dni, DateTime fechaHoy)
         {
 
             Color rojo = Color.Red, amarillo = Color.Yellow, verde = Color.Green;
@@ -226,70 +226,114 @@ namespace Fitzone.Controller
             respuesta.nombreSocio = socio.NombreCompleto;
 
             MembresiaController membresiaController = new MembresiaController();
-            var membresias = membresiaController.GetByIdSocioFecha(socio.idSocio, fecha);
+
+            //membresias en la fecha establecida.
+            var membresias = membresiaController.GetByIdSocioFecha(socio.idSocio, fechaHoy);
             if (membresias == null || membresias.Count == 0)
             {
                 respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.No_se_encontró_la_membresía;
                 respuesta.Color = rojo;
                 return respuesta;
             }
-            var membresiasActivas = membresias.Where(m => m.idEstadoMembresia == 1);
-            if (membresiasActivas == null || membresiasActivas.Count() == 0)
+
+            //membresias en la fecha establecida y activas
+            var membresiasActivas = membresias.Where(m => m.idEstadoMembresia == 1).ToList();
+            if (membresiasActivas == null || membresiasActivas.Count == 0)
             {
-                respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Problemas_con_la_membresía;
+                respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Membresía_deshabilitada;
                 respuesta.Color = rojo;
                 return respuesta;                
             }
 
-            var membresiasFueraHorarioDia = membresias.Where(m =>
-                TimeOnly.FromDateTime(fecha) >= m.horadesde 
+            string diaDeLaSemana = Statics.DiaDeLaSemanaEnEspañol(fechaHoy);
+
+
+            //membresias en la fecha establecida / activas / en horario
+            var membresiasDentroHorarioDia = membresias.Where(m =>
+                TimeOnly.FromDateTime(fechaHoy) >= m.horadesde 
                 &&
-                TimeOnly.FromDateTime(fecha) <= m.horaHasta
+                TimeOnly.FromDateTime(fechaHoy) <= m.horaHasta
+                &&
+                m.diasHabilitados.Contains(diaDeLaSemana)
                 ).ToList();
-            if (membresiasFueraHorarioDia == null || membresiasFueraHorarioDia.Count == 0)
+            if (membresiasDentroHorarioDia == null || membresiasDentroHorarioDia.Count == 0)
             {
-                respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Fuera_de_horario;
-                respuesta.Color = rojo;                
+                respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Fuera_de_horario_o_día;
+                respuesta.Color = rojo;
+
+                respuesta.actividades = GetTextoActividades(socio.idSocio,fechaHoy);
+
                 return respuesta;
             }
 
-            foreach (var item in membresiasFueraHorarioDia)
-            {
-                membresias.RemoveAll(c=>c.idMembresia == item.idMembresia); 
-            }
-
-            //tiene al menos 1 membresia vigente y activa
+            //membresias en la fecha establecida / activas / en horario
             CuotaController cuotaController = new CuotaController();
             TipoMembresiaController tipoMembresiaController = new TipoMembresiaController();
 
             bool encontroMembresia = false;
             respuesta.actividades = "";
-              
-            foreach (var itemMembresia in membresias)
+            /////////////filtro las que estan sin pagar///////////////
+            foreach (var itemMembresia in membresiasDentroHorarioDia)
             {
-                var cuota = cuotaController.GetAllByIdMembresiaFechaPagada(itemMembresia.idMembresia, fecha);
+                var cuota = cuotaController.GetAllByIdMembresiaFechaPagada(itemMembresia.idMembresia, fechaHoy);
                 //si al menos encuentra una cuota vigente y pagada
                 if (cuota!=null)
                 {
+                    string venc = cuota.fechaVencimiento.ToShortDateString();
+
+                    //si esta todo bien, muestro el vencimiento de la proxima cuota
+                    var cuotaSiguiente = cuotaController.GetProxima(itemMembresia.idMembresia, cuota.fechaDesde);
+                    if (cuotaSiguiente != null)
+                        venc = cuotaSiguiente.fechaVencimiento.ToShortDateString();
+
+                    //caso exitoso
                     encontroMembresia = true;
                     var tipo = tipoMembresiaController.GetById(itemMembresia.idTipoMembresia);
-                    respuesta.actividades += tipo.ActividadNombre + " " + itemMembresia.horadesde + " -> "  + itemMembresia.horaHasta+  " | Vencimiento: " + cuota.fechaVencimiento.ToShortDateString() +  "\n ";
+                    respuesta.actividades += tipo.ActividadNombre + " " + itemMembresia.horadesde + " -> "  + itemMembresia.horaHasta+  " | Vencimiento: " + venc +  "\n ";
 
                 }
             }
 
+            ///////////// no tiene cuotas vigentes
             if (!encontroMembresia)
-            {
+            {             
                 respuesta.Color = rojo;
                 respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Cuota_vencida;
+                respuesta.actividades = GetTextoActividades(socio.idSocio, fechaHoy);
+
                 return respuesta;
                 
             }
+
+            //caso exitoso
             respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Cuota_al_dia;
             respuesta.actividades = respuesta.actividades.Remove(respuesta.actividades.Length - 2);
             respuesta.Color = verde;
 
             return respuesta;
+        }
+
+        private string GetTextoActividades(int idSocio, DateTime fechaHoy)
+        {
+            //membresias en la fecha establecida.
+            var membresias = new MembresiaController().GetByIdSocioFechaActivas(idSocio, fechaHoy);
+            if (membresias == null || membresias.Count == 0)
+            {              
+                return "";
+            }
+            TipoMembresiaController tipoMembresiaController = new TipoMembresiaController();
+            CuotaController cuotaController = new CuotaController();
+            string actividades = "";
+            foreach (var itemMembresia in membresias)
+            {
+                var tipo = tipoMembresiaController.GetById(itemMembresia.idTipoMembresia) ?? new TipoMembresia();                
+                var cuota = cuotaController.GetAllByIdMembresiaFecha(itemMembresia.idMembresia, fechaHoy) ?? new Cuota();
+
+                actividades += tipo.ActividadNombre + " " + itemMembresia.horadesde + " -> " + itemMembresia.horaHasta + " | Vencimiento: " + cuota.fechaVencimiento.ToShortDateString() + "\n";
+            }
+         
+
+            return actividades;
         }
     
     }
