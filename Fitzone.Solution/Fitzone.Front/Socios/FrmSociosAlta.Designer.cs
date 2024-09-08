@@ -102,7 +102,7 @@
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(431, 37);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(201, 395);
+            groupBox2.Size = new Size(198, 397);
             groupBox2.TabIndex = 48;
             groupBox2.TabStop = false;
             groupBox2.Text = "Imagen";
@@ -112,7 +112,7 @@
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 7F);
-            label2.Location = new Point(147, 304);
+            label2.Location = new Point(144, 306);
             label2.Name = "label2";
             label2.Size = new Size(39, 12);
             label2.TabIndex = 52;
@@ -124,7 +124,7 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 7F);
-            label1.Location = new Point(150, 131);
+            label1.Location = new Point(147, 131);
             label1.Name = "label1";
             label1.Size = new Size(38, 12);
             label1.TabIndex = 51;
@@ -139,7 +139,7 @@
             pictureBoxImagen.Image = Properties.Resources.no_foto_img;
             pictureBoxImagen.Location = new Point(6, 19);
             pictureBoxImagen.Name = "pictureBoxImagen";
-            pictureBoxImagen.Size = new Size(189, 330);
+            pictureBoxImagen.Size = new Size(186, 332);
             pictureBoxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxImagen.TabIndex = 50;
             pictureBoxImagen.TabStop = false;
@@ -150,7 +150,7 @@
             lblCargandoCamara.Font = new Font("Segoe UI", 7F);
             lblCargandoCamara.Location = new Point(24, 68);
             lblCargandoCamara.Name = "lblCargandoCamara";
-            lblCargandoCamara.Size = new Size(152, 27);
+            lblCargandoCamara.Size = new Size(149, 27);
             lblCargandoCamara.TabIndex = 49;
             lblCargandoCamara.Text = "Cargando cámara en segundo plano...";
             lblCargandoCamara.TextAlign = ContentAlignment.MiddleCenter;
@@ -162,7 +162,7 @@
             groupBox1.Controls.Add(rdbCam2);
             groupBox1.Controls.Add(rdbCam1);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(6, 352);
+            groupBox1.Location = new Point(6, 354);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(76, 31);
             groupBox1.TabIndex = 47;
@@ -221,12 +221,12 @@
             btnCapturar.Lighting = false;
             btnCapturar.LinearGradient_Background = false;
             btnCapturar.LinearGradientPen = false;
-            btnCapturar.Location = new Point(88, 355);
+            btnCapturar.Location = new Point(88, 357);
             btnCapturar.Name = "btnCapturar";
             btnCapturar.PenWidth = 15;
             btnCapturar.Rounding = true;
             btnCapturar.RoundingInt = 70;
-            btnCapturar.Size = new Size(107, 31);
+            btnCapturar.Size = new Size(104, 31);
             btnCapturar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             btnCapturar.TabIndex = 46;
             btnCapturar.Tag = "Cyber";
@@ -242,7 +242,7 @@
             pictureBoxVideo.BackColor = Color.Snow;
             pictureBoxVideo.Location = new Point(6, 19);
             pictureBoxVideo.Name = "pictureBoxVideo";
-            pictureBoxVideo.Size = new Size(189, 130);
+            pictureBoxVideo.Size = new Size(186, 130);
             pictureBoxVideo.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxVideo.TabIndex = 44;
             pictureBoxVideo.TabStop = false;
@@ -342,7 +342,7 @@
             // 
             botonesForms3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms3.BackColor = Color.Transparent;
-            botonesForms3.Location = new Point(592, 6);
+            botonesForms3.Location = new Point(589, 6);
             botonesForms3.Name = "botonesForms3";
             botonesForms3.Size = new Size(44, 20);
             botonesForms3.TabIndex = 37;
@@ -557,7 +557,7 @@
             cyberButton1.Lighting = false;
             cyberButton1.LinearGradient_Background = false;
             cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(532, 436);
+            cyberButton1.Location = new Point(529, 438);
             cyberButton1.Name = "cyberButton1";
             cyberButton1.PenWidth = 15;
             cyberButton1.Rounding = true;
@@ -599,7 +599,7 @@
             btnGuardar.Lighting = false;
             btnGuardar.LinearGradient_Background = false;
             btnGuardar.LinearGradientPen = false;
-            btnGuardar.Location = new Point(434, 436);
+            btnGuardar.Location = new Point(431, 438);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.PenWidth = 15;
             btnGuardar.Rounding = true;
@@ -712,16 +712,16 @@
             ucBorder1.Dock = DockStyle.Left;
             ucBorder1.Location = new Point(0, 0);
             ucBorder1.Name = "ucBorder1";
-            ucBorder1.Size = new Size(2, 488);
+            ucBorder1.Size = new Size(2, 490);
             ucBorder1.TabIndex = 50;
             // 
             // ucBorder2
             // 
             ucBorder2.BackColor = Color.White;
             ucBorder2.Dock = DockStyle.Right;
-            ucBorder2.Location = new Point(641, 0);
+            ucBorder2.Location = new Point(638, 0);
             ucBorder2.Name = "ucBorder2";
-            ucBorder2.Size = new Size(2, 488);
+            ucBorder2.Size = new Size(2, 490);
             ucBorder2.TabIndex = 51;
             // 
             // ucBordertd1
@@ -730,16 +730,16 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(639, 3);
+            ucBordertd1.Size = new Size(636, 3);
             ucBordertd1.TabIndex = 52;
             // 
             // ucBordertd2
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 485);
+            ucBordertd2.Location = new Point(2, 487);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(639, 3);
+            ucBordertd2.Size = new Size(636, 3);
             ucBordertd2.TabIndex = 53;
             // 
             // groupBox3
@@ -777,7 +777,7 @@
             groupBox3.Controls.Add(thunderLabel4);
             groupBox3.Location = new Point(16, 37);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(409, 395);
+            groupBox3.Size = new Size(409, 397);
             groupBox3.TabIndex = 54;
             groupBox3.TabStop = false;
             // 
@@ -814,7 +814,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(643, 488);
+            ClientSize = new Size(640, 490);
             Controls.Add(groupBox3);
             Controls.Add(ucBordertd2);
             Controls.Add(ucBordertd1);

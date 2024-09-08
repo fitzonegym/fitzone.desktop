@@ -1,3 +1,4 @@
+using Fitzone.Front.Instructores;
 using Fitzone.Front.Login;
 using Fitzone.Front.Membresias;
 using Fitzone.Front.Socios;
@@ -28,9 +29,12 @@ namespace Fitzone.Front
             //          CONTROL DE ACCESOS
             //Application.Run(new FRMIngresosRegistrar());
 
+            //          INSTRUCTORES
+            Application.Run(new FrmInstructoresAdmin());
+            //Application.Run(new FrmInstructoresAlta());
 
             //          MENU PRINCIPAL           
-            Application.Run(new FrmContenedorPrincipal());
+            //Application.Run(new FrmContenedorPrincipal());
             //Application.Run(new FrmLogin());
 
 

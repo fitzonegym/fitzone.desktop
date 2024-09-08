@@ -83,9 +83,9 @@ namespace Fitzone.Front.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap agregar {
+        internal static System.Drawing.Bitmap agregar2 {
             get {
-                object obj = ResourceManager.GetObject("agregar", resourceCulture);
+                object obj = ResourceManager.GetObject("agregar2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace Fitzone.Front.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap agregar2 {
+        internal static System.Drawing.Bitmap eliminar {
             get {
-                object obj = ResourceManager.GetObject("agregar2", resourceCulture);
+                object obj = ResourceManager.GetObject("eliminar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,26 +186,6 @@ namespace Fitzone.Front.Properties {
         internal static System.Drawing.Bitmap obligatorio {
             get {
                 object obj = ResourceManager.GetObject("obligatorio", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap obligatorio1 {
-            get {
-                object obj = ResourceManager.GetObject("obligatorio1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap obligatorio2 {
-            get {
-                object obj = ResourceManager.GetObject("obligatorio2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

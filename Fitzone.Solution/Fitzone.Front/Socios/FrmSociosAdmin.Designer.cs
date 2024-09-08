@@ -77,7 +77,7 @@
             ucPintarFilasPares1 = new UserControls.UCPintarFilasPares();
             toolTip1 = new ToolTip(components);
             btnConsultar = new ReaLTaiizor.Controls.CyberButton();
-            Cuota = new ReaLTaiizor.Controls.CyberButton();
+            btnCuota = new ReaLTaiizor.Controls.CyberButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -110,7 +110,7 @@
             btnModificar.Lighting = false;
             btnModificar.LinearGradient_Background = false;
             btnModificar.LinearGradientPen = false;
-            btnModificar.Location = new Point(104, 436);
+            btnModificar.Location = new Point(104, 429);
             btnModificar.Name = "btnModificar";
             btnModificar.PenWidth = 15;
             btnModificar.Rounding = true;
@@ -152,7 +152,7 @@
             BtnAnular.Lighting = false;
             BtnAnular.LinearGradient_Background = false;
             BtnAnular.LinearGradientPen = false;
-            BtnAnular.Location = new Point(405, 435);
+            BtnAnular.Location = new Point(405, 428);
             BtnAnular.Name = "BtnAnular";
             BtnAnular.PenWidth = 15;
             BtnAnular.Rounding = true;
@@ -194,7 +194,7 @@
             btnAgregar.Lighting = false;
             btnAgregar.LinearGradient_Background = false;
             btnAgregar.LinearGradientPen = false;
-            btnAgregar.Location = new Point(7, 436);
+            btnAgregar.Location = new Point(7, 429);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.PenWidth = 15;
             btnAgregar.Rounding = true;
@@ -225,7 +225,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(796, 222);
+            dataGridView1.Size = new Size(793, 215);
             dataGridView1.TabIndex = 20;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             dataGridView1.ColumnHeaderMouseClick += dataGridView1_ColumnHeaderMouseClick;
@@ -370,7 +370,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(709, 436);
+            btnCancelar.Location = new Point(706, 429);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -413,7 +413,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(613, 436);
+            btnAceptar.Location = new Point(610, 429);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -556,7 +556,7 @@
             // 
             botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(774, 6);
+            botonesForms2.Location = new Point(771, 6);
             botonesForms2.Name = "botonesForms2";
             botonesForms2.Size = new Size(46, 20);
             botonesForms2.TabIndex = 1;
@@ -576,16 +576,16 @@
             ucBorderlr1.Dock = DockStyle.Left;
             ucBorderlr1.Location = new Point(0, 0);
             ucBorderlr1.Name = "ucBorderlr1";
-            ucBorderlr1.Size = new Size(2, 487);
+            ucBorderlr1.Size = new Size(2, 480);
             ucBorderlr1.TabIndex = 25;
             // 
             // ucBorderlr2
             // 
             ucBorderlr2.BackColor = Color.White;
             ucBorderlr2.Dock = DockStyle.Right;
-            ucBorderlr2.Location = new Point(821, 0);
+            ucBorderlr2.Location = new Point(818, 0);
             ucBorderlr2.Name = "ucBorderlr2";
-            ucBorderlr2.Size = new Size(2, 487);
+            ucBorderlr2.Size = new Size(2, 480);
             ucBorderlr2.TabIndex = 26;
             // 
             // ucBordertd1
@@ -594,16 +594,16 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(819, 3);
+            ucBordertd1.Size = new Size(816, 3);
             ucBordertd1.TabIndex = 27;
             // 
             // ucBordertd2
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 484);
+            ucBordertd2.Location = new Point(2, 477);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(819, 3);
+            ucBordertd2.Size = new Size(816, 3);
             ucBordertd2.TabIndex = 28;
             // 
             // btnImprimir
@@ -716,7 +716,7 @@
             groupBox1.Controls.Add(txtDocumento);
             groupBox1.Location = new Point(12, 37);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(796, 118);
+            groupBox1.Size = new Size(793, 118);
             groupBox1.TabIndex = 62;
             groupBox1.TabStop = false;
             // 
@@ -734,7 +734,7 @@
             ucCantidadregistros1._cantidad = 0;
             ucCantidadregistros1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ucCantidadregistros1.BackColor = Color.Transparent;
-            ucCantidadregistros1.Location = new Point(709, 186);
+            ucCantidadregistros1.Location = new Point(706, 186);
             ucCantidadregistros1.Name = "ucCantidadregistros1";
             ucCantidadregistros1.Size = new Size(103, 16);
             ucCantidadregistros1.TabIndex = 63;
@@ -775,7 +775,7 @@
             btnConsultar.Lighting = false;
             btnConsultar.LinearGradient_Background = false;
             btnConsultar.LinearGradientPen = false;
-            btnConsultar.Location = new Point(202, 436);
+            btnConsultar.Location = new Point(202, 429);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.PenWidth = 15;
             btnConsultar.Rounding = true;
@@ -790,55 +790,55 @@
             btnConsultar.Timer_RGB = 300;
             btnConsultar.Click += btnConsultar_Click;
             // 
-            // Cuota
+            // btnCuota
             // 
-            Cuota.Alpha = 20;
-            Cuota.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            Cuota.BackColor = Color.Transparent;
-            Cuota.Background = true;
-            Cuota.Background_WidthPen = 4F;
-            Cuota.BackgroundPen = true;
-            Cuota.ColorBackground = Color.Black;
-            Cuota.ColorBackground_1 = Color.Black;
-            Cuota.ColorBackground_2 = Color.Gray;
-            Cuota.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
-            Cuota.ColorLighting = Color.FromArgb(81, 45, 168);
-            Cuota.ColorPen_1 = Color.Black;
-            Cuota.ColorPen_2 = Color.Gray;
-            Cuota.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            Cuota.Effect_1 = true;
-            Cuota.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
-            Cuota.Effect_1_Transparency = 25;
-            Cuota.Effect_2 = true;
-            Cuota.Effect_2_ColorBackground = Color.White;
-            Cuota.Effect_2_Transparency = 20;
-            Cuota.Font = new Font("Arial", 11F);
-            Cuota.ForeColor = Color.FromArgb(245, 245, 245);
-            Cuota.Lighting = false;
-            Cuota.LinearGradient_Background = false;
-            Cuota.LinearGradientPen = false;
-            Cuota.Location = new Point(302, 435);
-            Cuota.Name = "Cuota";
-            Cuota.PenWidth = 15;
-            Cuota.Rounding = true;
-            Cuota.RoundingInt = 70;
-            Cuota.Size = new Size(99, 40);
-            Cuota.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Cuota.TabIndex = 66;
-            Cuota.Tag = "Cyber";
-            Cuota.TextButton = "Cuotas";
-            Cuota.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            Cuota.Timer_Effect_1 = 5;
-            Cuota.Timer_RGB = 300;
-            Cuota.Click += Cuota_Click;
+            btnCuota.Alpha = 20;
+            btnCuota.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnCuota.BackColor = Color.Transparent;
+            btnCuota.Background = true;
+            btnCuota.Background_WidthPen = 4F;
+            btnCuota.BackgroundPen = true;
+            btnCuota.ColorBackground = Color.Black;
+            btnCuota.ColorBackground_1 = Color.Black;
+            btnCuota.ColorBackground_2 = Color.Gray;
+            btnCuota.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btnCuota.ColorLighting = Color.FromArgb(81, 45, 168);
+            btnCuota.ColorPen_1 = Color.Black;
+            btnCuota.ColorPen_2 = Color.Gray;
+            btnCuota.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnCuota.Effect_1 = true;
+            btnCuota.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            btnCuota.Effect_1_Transparency = 25;
+            btnCuota.Effect_2 = true;
+            btnCuota.Effect_2_ColorBackground = Color.White;
+            btnCuota.Effect_2_Transparency = 20;
+            btnCuota.Font = new Font("Arial", 11F);
+            btnCuota.ForeColor = Color.FromArgb(245, 245, 245);
+            btnCuota.Lighting = false;
+            btnCuota.LinearGradient_Background = false;
+            btnCuota.LinearGradientPen = false;
+            btnCuota.Location = new Point(302, 428);
+            btnCuota.Name = "btnCuota";
+            btnCuota.PenWidth = 15;
+            btnCuota.Rounding = true;
+            btnCuota.RoundingInt = 70;
+            btnCuota.Size = new Size(99, 40);
+            btnCuota.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnCuota.TabIndex = 66;
+            btnCuota.Tag = "Cyber";
+            btnCuota.TextButton = "Cuotas";
+            btnCuota.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnCuota.Timer_Effect_1 = 5;
+            btnCuota.Timer_RGB = 300;
+            btnCuota.Click += Cuota_Click;
             // 
             // FrmSociosAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(823, 487);
-            Controls.Add(Cuota);
+            ClientSize = new Size(820, 480);
+            Controls.Add(btnCuota);
             Controls.Add(btnConsultar);
             Controls.Add(ucPintarFilasPares1);
             Controls.Add(ucCantidadregistros1);
@@ -917,5 +917,6 @@
         private DataGridViewCheckBoxColumn anuladoDataGridViewCheckBoxColumn;
         private ReaLTaiizor.Controls.CyberButton btnConsultar;
         private ReaLTaiizor.Controls.CyberButton Cuota;
+        private ReaLTaiizor.Controls.CyberButton btnCuota;
     }
 }

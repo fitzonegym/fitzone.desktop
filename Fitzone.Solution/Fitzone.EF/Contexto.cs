@@ -14,10 +14,10 @@ namespace Fitzone.EF
         public DbSet<Cuota> Cuota { get; set; }        
         public DbSet<Actividad> Actividad{ get; set; }
         public DbSet<Instructor> Instructor { get; set; }        
-        public DbSet<Equipamiento> Equipamiento { get; set; }        
-        public DbSet<EquipamientoTipoMembresia> EquipamientoTipoMembresia { get; set; }
-        public DbSet<EstadoEquipamiento> EstadoEquipamiento { get; set; }
-        public DbSet<Marca> Marca { get; set; }
+        //public DbSet<Equipamiento> Equipamiento { get; set; }        
+        //public DbSet<EquipamientoTipoMembresia> EquipamientoTipoMembresia { get; set; }
+        //public DbSet<EstadoEquipamiento> EstadoEquipamiento { get; set; }
+        //public DbSet<Marca> Marca { get; set; }
         public DbSet<InstructorActividad> InstructorActividad { get; set; }
         public DbSet<Factura> Factura { get; set; }
         public DbSet<DetalleFactura> DetalleFactura { get; set; }
@@ -37,8 +37,12 @@ namespace Fitzone.EF
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<InstructorActividad>()
-                .HasKey(ia => ia.id);
+            modelBuilder.Entity<Instructor>()
+                  .HasMany(i => i.InstructorActividades)
+                  .WithOne(ia => ia.Instructor)  // Indica que InstructorActividad tiene una referencia a Instructor
+                  .HasForeignKey(ia => ia.idInstructor)
+                  .OnDelete(DeleteBehavior.Cascade);  // Configura eliminación en cascada
+
 
             modelBuilder.Entity<InstructorActividad>()
                 .HasOne(ia => ia.Instructor)

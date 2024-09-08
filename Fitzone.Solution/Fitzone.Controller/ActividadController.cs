@@ -1,6 +1,7 @@
 ﻿using Fitzone.Controller.Interfaces;
 using Fitzone.EF;
 using Fitzone.Entidades;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,8 @@ namespace Fitzone.Controller
 
         public List<Actividad>? GetAll()
         {
-            throw new NotImplementedException();
+            return contexto.Actividad                
+                .ToList();
         }
 
         public Actividad? GetById(int id)

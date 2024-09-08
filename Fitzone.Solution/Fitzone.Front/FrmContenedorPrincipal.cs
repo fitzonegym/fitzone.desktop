@@ -1,4 +1,5 @@
 ﻿using Fitzone.Front.FormsExtras;
+using Fitzone.Front.Instructores;
 using Fitzone.Front.Membresias;
 using Fitzone.Front.Socios;
 using System;
@@ -202,6 +203,23 @@ namespace Fitzone.Front
             //frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
             //frm.BringToFront();
+        }
+
+        private void administraciónToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void instructoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FrmInstructoresAdmin frm = new FrmInstructoresAdmin();
+            frm.TopMost = true;
+            frm.MdiParent = this;
+            panelPrincipal.Controls.Add(frm);
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+            frm.BringToFront();
+            frm.WindowState = FormWindowState.Maximized;
         }
     }
 }

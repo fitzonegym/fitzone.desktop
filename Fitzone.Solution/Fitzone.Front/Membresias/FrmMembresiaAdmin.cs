@@ -114,7 +114,7 @@ namespace Fitzone.Front.Membresias
                 filtro.Socio.apellido = "";
             }
 
-            _listaMembresias = new MembresiaController().GetAll(filtro);
+            _listaMembresias = new MembresiaController().GetAllFilters(filtro);
 
             bindingSource1.DataSource = _listaMembresias;
 

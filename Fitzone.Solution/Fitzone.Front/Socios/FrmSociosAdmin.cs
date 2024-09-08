@@ -98,7 +98,7 @@ namespace Fitzone.Front.Socios
         }
         private void VisibleBotones(bool visible)
         {
-            btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = visible;
+            btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = btnConsultar.Visible = btnCuota.Visible = visible;
         }
 
         private void LimpiarFiltros()
@@ -197,15 +197,7 @@ namespace Fitzone.Front.Socios
         }
 
         private void cyberButton1_Click(object sender, EventArgs e)
-        {
-            /*
-             
-              FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
-            frmSociosAlta.MdiParent = this;
-            panelPrincipal.Controls.Add(frmSociosAlta);
-            frmSociosAlta.StartPosition = FormStartPosition.CenterParent;
-            frmSociosAlta.Show();
-             */
+        {       
 
             FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
             frmSociosAlta._EnumModoForm = EnumModoForm.Alta;

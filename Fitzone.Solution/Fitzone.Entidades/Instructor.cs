@@ -42,7 +42,9 @@ namespace Fitzone.Entidades
         public DateTime fechaAlta { get; set; } = DateTime.Now;
         public DateTime fechaNacimiento { get; set; } = DateTime.Now;   
         public bool anulado { get; set; } = false;
-        public ICollection<InstructorActividad> InstructorActividades { get; set; }
+        
+        public List<InstructorActividad> InstructorActividades { get; set; }        
+        
         #endregion
 
         #region ForeignKey

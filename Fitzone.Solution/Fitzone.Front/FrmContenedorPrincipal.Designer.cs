@@ -42,14 +42,14 @@
             membresíaToolStripMenuItem = new ToolStripMenuItem();
             admnistraciónToolStripMenuItem = new ToolStripMenuItem();
             altaToolStripMenuItem1 = new ToolStripMenuItem();
-            instructoresToolStripMenuItem = new ToolStripMenuItem();
+            controlDeAccesosToolStripMenuItem = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
             tipoDeMembresíaToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             panelPrincipal = new Panel();
-            controlDeAccesosToolStripMenuItem = new ToolStripMenuItem();
+            instructoresToolStripMenuItem1 = new ToolStripMenuItem();
             statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -123,12 +123,12 @@
             // 
             menuStrip1.BackColor = Color.Transparent;
             menuStrip1.Dock = DockStyle.Fill;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, membresíaToolStripMenuItem, controlDeAccesosToolStripMenuItem, instructoresToolStripMenuItem, configuraciónToolStripMenuItem, salirToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, membresíaToolStripMenuItem, controlDeAccesosToolStripMenuItem, configuraciónToolStripMenuItem, salirToolStripMenuItem });
             menuStrip1.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(189, 249);
+            menuStrip1.Size = new Size(189, 210);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -139,7 +139,7 @@
             sociosToolStripMenuItem.ForeColor = Color.Black;
             sociosToolStripMenuItem.Margin = new Padding(5);
             sociosToolStripMenuItem.Name = "sociosToolStripMenuItem";
-            sociosToolStripMenuItem.Size = new Size(143, 29);
+            sociosToolStripMenuItem.Size = new Size(172, 29);
             sociosToolStripMenuItem.Text = "Socios";
             sociosToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -167,7 +167,7 @@
             membresíaToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             membresíaToolStripMenuItem.Margin = new Padding(5);
             membresíaToolStripMenuItem.Name = "membresíaToolStripMenuItem";
-            membresíaToolStripMenuItem.Size = new Size(143, 29);
+            membresíaToolStripMenuItem.Size = new Size(172, 29);
             membresíaToolStripMenuItem.Text = "Membresía";
             membresíaToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -189,24 +189,22 @@
             altaToolStripMenuItem1.Text = "Alta";
             altaToolStripMenuItem1.Click += altaToolStripMenuItem1_Click;
             // 
-            // instructoresToolStripMenuItem
+            // controlDeAccesosToolStripMenuItem
             // 
-            instructoresToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            instructoresToolStripMenuItem.ForeColor = Color.Black;
-            instructoresToolStripMenuItem.Margin = new Padding(5);
-            instructoresToolStripMenuItem.Name = "instructoresToolStripMenuItem";
-            instructoresToolStripMenuItem.Size = new Size(143, 29);
-            instructoresToolStripMenuItem.Text = "Instructores";
-            instructoresToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
+            controlDeAccesosToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            controlDeAccesosToolStripMenuItem.Name = "controlDeAccesosToolStripMenuItem";
+            controlDeAccesosToolStripMenuItem.Size = new Size(182, 29);
+            controlDeAccesosToolStripMenuItem.Text = "Control de accesos";
+            controlDeAccesosToolStripMenuItem.Click += controlDeAccesosToolStripMenuItem_Click;
             // 
             // configuraciónToolStripMenuItem
             // 
-            configuraciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeMembresíaToolStripMenuItem });
+            configuraciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeMembresíaToolStripMenuItem, instructoresToolStripMenuItem1 });
             configuraciónToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             configuraciónToolStripMenuItem.ForeColor = Color.Black;
             configuraciónToolStripMenuItem.Margin = new Padding(5);
             configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            configuraciónToolStripMenuItem.Size = new Size(143, 29);
+            configuraciónToolStripMenuItem.Size = new Size(172, 29);
             configuraciónToolStripMenuItem.Text = "Configuración";
             configuraciónToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -225,7 +223,7 @@
             salirToolStripMenuItem.ForeColor = Color.Black;
             salirToolStripMenuItem.Margin = new Padding(5);
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(143, 29);
+            salirToolStripMenuItem.Size = new Size(172, 29);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
@@ -269,13 +267,14 @@
             panelPrincipal.DoubleClick += panelPrincipal_DoubleClick;
             panelPrincipal.MouseDown += panelPrincipal_MouseDown;
             // 
-            // controlDeAccesosToolStripMenuItem
+            // instructoresToolStripMenuItem1
             // 
-            controlDeAccesosToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            controlDeAccesosToolStripMenuItem.Name = "controlDeAccesosToolStripMenuItem";
-            controlDeAccesosToolStripMenuItem.Size = new Size(182, 29);
-            controlDeAccesosToolStripMenuItem.Text = "Control de accesos";
-            controlDeAccesosToolStripMenuItem.Click += controlDeAccesosToolStripMenuItem_Click;
+            instructoresToolStripMenuItem1.BackColor = Color.FromArgb(81, 45, 168);
+            instructoresToolStripMenuItem1.ForeColor = Color.White;
+            instructoresToolStripMenuItem1.Name = "instructoresToolStripMenuItem1";
+            instructoresToolStripMenuItem1.Size = new Size(246, 30);
+            instructoresToolStripMenuItem1.Text = "Instructores";
+            instructoresToolStripMenuItem1.Click += instructoresToolStripMenuItem1_Click;
             // 
             // FrmContenedorPrincipal
             // 
@@ -316,7 +315,6 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem sociosToolStripMenuItem;
-        private ToolStripMenuItem instructoresToolStripMenuItem;
         private ToolStripMenuItem configuraciónToolStripMenuItem;
         private Panel panel2;
         private Panel panel1;
@@ -330,6 +328,7 @@
         private ToolStripMenuItem altaToolStripMenuItem1;
         private ToolStripMenuItem tipoDeMembresíaToolStripMenuItem;
         private ToolStripMenuItem controlDeAccesosToolStripMenuItem;
+        private ToolStripMenuItem instructoresToolStripMenuItem1;
     }
 }
 

@@ -72,43 +72,7 @@ namespace Fitzone.EF.Migrations
 								(nombre) 
 								values 
 								('Gimnasio'), ('Zumba'),('Pilates'),('Karate'),('Boxeo')
-								
-							GO
-							
-							INSERT INTO [dbo].EstadoEquipamiento (nombre)
-							VALUES
-								('Habilitado'),
-								('No Utilizable'),
-								('Pronto A Romperse')
-							
-							GO
-							
-							INSERT INTO [dbo].Marca (nombre)
-							VALUES
-								('Balanced Body'),
-								('Aero'),
-								('Align')
-							
-							GO
-							
-							INSERT INTO [dbo].[Equipamiento]
-								   ([nombre]
-								   ,[dimensiones]
-								   ,[modelo]
-								   ,[idEstadoEquipamiento]
-								   ,[idMarca])
-							 VALUES
-									('Reformer'
-								   ,'2.5 MTS X 0.8 MTS'           
-								   ,'Reformer Pilares'           
-								   ,1
-								   ,1),
-								   ('Fitball'
-								   ,'80 cm diametro'           
-								   ,'Gama-Fit'           
-								   ,1
-								   ,2)
-								   
+
 							GO
 							
 								INSERT INTO [dbo].[EstadoMembresia] (nombre, descripcion)

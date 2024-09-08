@@ -35,6 +35,16 @@ namespace Fitzone.Controller
                 .OrderByDescending(c => c.fechaAlta).ToList();
         }
 
+        public List<Membresia>? GetActivasXInstructorXActividad(int idInstructor, int idActividad)
+        {
+            return contexto.Membresia
+                .Include("Socio")
+                .Include("EstadoMembresia")
+                .Include("TipoMembresia")
+                .Where(c=>c.idEstadoMembresia == 1 && c.idInstructor == idInstructor && c.idActividad == idActividad)
+                .OrderByDescending(c => c.fechaAlta).ToList();
+        }
+
         public List<Membresia>? GetByIdSocioFecha(int idSocio, DateTime fecha)
         {
             //devuelvo membresias en la fecha pero en cualquier estado
@@ -52,7 +62,7 @@ namespace Fitzone.Controller
             //devuelvo membresias en la fecha pero en cualquier estado
             return contexto.Membresia.Include("TipoMembresia").Where(m => m.idSocio == idSocio && fecha >= m.fechaDesde && fecha <= m.fechaHasta).ToList();
         }
-        public List<Membresia>? GetAll(Membresia membresia)
+        public List<Membresia>? GetAllFilters(Membresia membresia)
         {
 
             string? nombre = membresia.SocioNombre.ToUpper().Trim();
