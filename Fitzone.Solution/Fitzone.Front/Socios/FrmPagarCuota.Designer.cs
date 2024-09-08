@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
             ucBorderlr1 = new UserControls.UCBorderLR();
@@ -37,13 +38,6 @@
             ucTituloLabel1 = new UserControls.UCTituloLabel();
             botonesForms2 = new UserControls.UCBotonesForms();
             dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewCheckBoxColumn();
-            numeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaDesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaVencimiento = new DataGridViewTextBoxColumn();
-            precioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            pagadaDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             bindingSourceCuotas = new BindingSource(components);
             btnCancelar = new ReaLTaiizor.Controls.CyberButton();
             btnAceptar = new ReaLTaiizor.Controls.CyberButton();
@@ -61,8 +55,15 @@
             cmbTipoPago = new ReaLTaiizor.Controls.AloneComboBox();
             aloneTextBox2 = new ReaLTaiizor.Controls.AloneTextBox();
             groupBox2 = new GroupBox();
-            thunderLabel3 = new ReaLTaiizor.Controls.ThunderLabel();
             txtTotal = new ReaLTaiizor.Controls.AloneTextBox();
+            thunderLabel3 = new ReaLTaiizor.Controls.ThunderLabel();
+            seleccionadaCol = new DataGridViewCheckBoxColumn();
+            numeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaDesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaHastaDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaVencimientoCol = new DataGridViewTextBoxColumn();
+            precioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            pagadaCol = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceCuotas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceMembresia).BeginInit();
@@ -133,7 +134,7 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.FromArgb(81, 45, 168);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, numeroDataGridViewTextBoxColumn, fechaDesdeDataGridViewTextBoxColumn, fechaHastaDataGridViewTextBoxColumn, fechaVencimiento, precioDataGridViewTextBoxColumn, pagadaDataGridViewCheckBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { seleccionadaCol, numeroDataGridViewTextBoxColumn, fechaDesdeDataGridViewTextBoxColumn, fechaHastaDataGridViewTextBoxColumn, fechaVencimientoCol, precioDataGridViewTextBoxColumn, pagadaCol });
             dataGridView1.DataSource = bindingSourceCuotas;
             dataGridView1.GridColor = SystemColors.InfoText;
             dataGridView1.Location = new Point(12, 248);
@@ -141,60 +142,7 @@
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.Size = new Size(664, 269);
             dataGridView1.TabIndex = 40;
-            // 
-            // Column1
-            // 
-            Column1.DataPropertyName = "seleccionada";
-            Column1.HeaderText = " ";
-            Column1.Name = "Column1";
-            Column1.Width = 25;
-            // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
-            numeroDataGridViewTextBoxColumn.HeaderText = "Nro.";
-            numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            numeroDataGridViewTextBoxColumn.ReadOnly = true;
-            numeroDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // fechaDesdeDataGridViewTextBoxColumn
-            // 
-            fechaDesdeDataGridViewTextBoxColumn.DataPropertyName = "fechaDesde";
-            fechaDesdeDataGridViewTextBoxColumn.HeaderText = "Desde";
-            fechaDesdeDataGridViewTextBoxColumn.Name = "fechaDesdeDataGridViewTextBoxColumn";
-            fechaDesdeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaHastaDataGridViewTextBoxColumn
-            // 
-            fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
-            fechaHastaDataGridViewTextBoxColumn.HeaderText = "Hasta";
-            fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
-            fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaVencimiento
-            // 
-            fechaVencimiento.DataPropertyName = "fechaVencimiento";
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 192, 192);
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            fechaVencimiento.DefaultCellStyle = dataGridViewCellStyle3;
-            fechaVencimiento.HeaderText = "Vencimiento";
-            fechaVencimiento.Name = "fechaVencimiento";
-            fechaVencimiento.ReadOnly = true;
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
-            precioDataGridViewTextBoxColumn.HeaderText = "Total";
-            precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            precioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // pagadaDataGridViewCheckBoxColumn
-            // 
-            pagadaDataGridViewCheckBoxColumn.DataPropertyName = "pagada";
-            pagadaDataGridViewCheckBoxColumn.HeaderText = "Pagada";
-            pagadaDataGridViewCheckBoxColumn.Name = "pagadaDataGridViewCheckBoxColumn";
-            pagadaDataGridViewCheckBoxColumn.ReadOnly = true;
+            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             // 
             // bindingSourceCuotas
             // 
@@ -279,7 +227,7 @@
             btnAceptar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             btnAceptar.TabIndex = 41;
             btnAceptar.Tag = "Cyber";
-            btnAceptar.TextButton = "Registrar";
+            btnAceptar.TextButton = "Aceptar";
             btnAceptar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             btnAceptar.Timer_Effect_1 = 5;
             btnAceptar.Timer_RGB = 300;
@@ -303,6 +251,7 @@
             // bindingSourceMembresia
             // 
             bindingSourceMembresia.DataSource = typeof(Entidades.Membresia);
+            bindingSourceMembresia.CurrentItemChanged += bindingSourceMembresia_CurrentItemChanged;
             // 
             // thunderLabel13
             // 
@@ -471,16 +420,6 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Datos del Pago";
             // 
-            // thunderLabel3
-            // 
-            thunderLabel3.BackColor = Color.Transparent;
-            thunderLabel3.ForeColor = Color.WhiteSmoke;
-            thunderLabel3.Location = new Point(306, 32);
-            thunderLabel3.Name = "thunderLabel3";
-            thunderLabel3.Size = new Size(93, 16);
-            thunderLabel3.TabIndex = 88;
-            thunderLabel3.Text = "Total";
-            // 
             // txtTotal
             // 
             txtTotal.BackColor = Color.Transparent;
@@ -497,6 +436,72 @@
             txtTotal.TabIndex = 89;
             txtTotal.TextAlign = HorizontalAlignment.Left;
             txtTotal.UseSystemPasswordChar = false;
+            // 
+            // thunderLabel3
+            // 
+            thunderLabel3.BackColor = Color.Transparent;
+            thunderLabel3.ForeColor = Color.WhiteSmoke;
+            thunderLabel3.Location = new Point(306, 32);
+            thunderLabel3.Name = "thunderLabel3";
+            thunderLabel3.Size = new Size(93, 16);
+            thunderLabel3.TabIndex = 88;
+            thunderLabel3.Text = "Total";
+            // 
+            // seleccionadaCol
+            // 
+            seleccionadaCol.DataPropertyName = "seleccionada";
+            seleccionadaCol.HeaderText = " Seleccionar";
+            seleccionadaCol.Name = "seleccionadaCol";
+            seleccionadaCol.Width = 80;
+            // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            numeroDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            numeroDataGridViewTextBoxColumn.HeaderText = "Nro.";
+            numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            numeroDataGridViewTextBoxColumn.ReadOnly = true;
+            numeroDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // fechaDesdeDataGridViewTextBoxColumn
+            // 
+            fechaDesdeDataGridViewTextBoxColumn.DataPropertyName = "fechaDesde";
+            fechaDesdeDataGridViewTextBoxColumn.HeaderText = "Desde";
+            fechaDesdeDataGridViewTextBoxColumn.Name = "fechaDesdeDataGridViewTextBoxColumn";
+            fechaDesdeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaHastaDataGridViewTextBoxColumn
+            // 
+            fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
+            fechaHastaDataGridViewTextBoxColumn.HeaderText = "Hasta";
+            fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
+            fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaVencimientoCol
+            // 
+            fechaVencimientoCol.DataPropertyName = "fechaVencimiento";
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 192, 192);
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            fechaVencimientoCol.DefaultCellStyle = dataGridViewCellStyle2;
+            fechaVencimientoCol.HeaderText = "Vencimiento";
+            fechaVencimientoCol.Name = "fechaVencimientoCol";
+            fechaVencimientoCol.ReadOnly = true;
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            precioDataGridViewTextBoxColumn.HeaderText = "Total";
+            precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            precioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pagadaCol
+            // 
+            pagadaCol.DataPropertyName = "pagada";
+            pagadaCol.HeaderText = "Pagada";
+            pagadaCol.Name = "pagadaCol";
+            pagadaCol.ReadOnly = true;
             // 
             // FrmPagarCuota
             // 
@@ -551,18 +556,18 @@
         private RadioButton opTodas;
         private RadioButton opProxima;
         private GroupBox groupBox1;
-        private DataGridViewCheckBoxColumn Column1;
-        private DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fechaDesdeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fechaHastaDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fechaVencimiento;
-        private DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
-        private DataGridViewCheckBoxColumn pagadaDataGridViewCheckBoxColumn;
         private ReaLTaiizor.Controls.AloneComboBox cmbTipoPago;
         private ReaLTaiizor.Controls.AloneTextBox aloneTextBox2;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel2;
         private GroupBox groupBox2;
         private ReaLTaiizor.Controls.AloneTextBox txtTotal;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel3;
+        private DataGridViewCheckBoxColumn seleccionadaCol;
+        private DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaDesdeDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaHastaDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fechaVencimientoCol;
+        private DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn pagadaCol;
     }
 }

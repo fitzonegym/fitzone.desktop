@@ -1,5 +1,7 @@
 ﻿using Fitzone.Controller;
 using Fitzone.Entidades;
+using Fitzone.Front.Enumeraciones;
+using Fitzone.Front.FormsExtras;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using Microsoft.EntityFrameworkCore.Query;
 using System;
@@ -152,7 +154,13 @@ namespace Fitzone.Front.Socios
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            var CuotasPagar = _cuotas.Where(c => c.seleccionada);
+            var CuotasPagar = _cuotas.Where(c => c.seleccionada).ToList();
+
+            if (CuotasPagar.Count == 0)
+            {
+                new MessageBoxCustom("Selecciona una o varias cuotas para pagar", EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                return;
+            }
             Factura f = new Factura();
             f.tipoFactura = "F";
             f.fecha = DateTime.Now;
@@ -173,15 +181,76 @@ namespace Fitzone.Front.Socios
                 d.total = item.precio * d.cantidad;
 
                 f.DetalleFactura.Add(d);
-                
+
             }
 
+
+
+            //listo para guardar
+            MessageBoxCustom msg = new MessageBoxCustom(Enumeraciones.EnumModoMessageBoxCustom.ConfirmaGuardar);
+            msg.ShowDialog();
+            if (msg.response == DialogResult.No)
+                return;
+
             facturaController.Insert(f);
+
+            new MessageBoxCustom(EnumModoMessageBoxCustom.DatosGuardadosCorrectamente).ShowDialog();
+            CargarCuotas();
         }
 
         private void bindingSourceCuotas_CurrentItemChanged(object sender, EventArgs e)
         {
-            txtTotal.Text = _cuotas.Where(c=>c.seleccionada).Sum(c => c.precio).ToString();
+
+            txtTotal.Text = _cuotas.Where(c => c.seleccionada).Sum(c => c.precio).ToString();
+
+        }
+        private void bindingSourceMembresia_CurrentItemChanged(object sender, EventArgs e)
+        {
+            CargarCuotas();
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // No se puede seleccionar cuotas que ya estan pagadas
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "seleccionadaCol")
+            {
+                // Obtén la fila actual
+                var fila = dataGridView1.Rows[e.RowIndex];
+
+                // Verifica si la columna 'pagada' es true
+                if (Convert.ToBoolean(fila.Cells["pagadaCol"].Value) == true)
+                {
+                    // Si pagada es true, deshabilita la celda de checkbox
+                    fila.Cells["seleccionadaCol"].ReadOnly = true;
+                    fila.Cells["seleccionadaCol"].Style.BackColor = Color.LightGray;  // Opcional: Cambiar el color para indicar que está deshabilitado
+                }
+                else
+                {
+                    // Habilita el checkbox si no está pagada
+                    fila.Cells["seleccionadaCol"].ReadOnly = false;
+                    fila.Cells["seleccionadaCol"].Style.BackColor = Color.White;  // Restaurar color si es editable
+                }
+            }
+            else           // pintar de rojo solo las vencidas
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "pagadaCol")
+            {
+                // Obtén la fila actual
+                var fila = dataGridView1.Rows[e.RowIndex];
+
+                // Verifica si la columna 'pagada' es true
+                if (Convert.ToDateTime(fila.Cells["fechaVencimientoCol"].Value) > Statics.DateTimeNowSinHora()
+                    || Convert.ToBoolean(fila.Cells["pagadaCol"].Value) == true)
+                {
+                    // Si pagada es true, deshabilita la celda de checkbox                    
+                    fila.Cells["fechaVencimientoCol"].Style.BackColor = Color.LightGreen;  // Opcional: Cambiar el color para indicar que está deshabilitado
+                }
+                else
+                {
+                    // Habilita el checkbox si no está pagada                    
+                    //  fila.Cells["seleccionadaCol"].Style.BackColor = Color.LightCyan;  // Restaurar color si es editable
+                    //se pintan de rosa por diseño
+                }
+            }
         }
     }
 }

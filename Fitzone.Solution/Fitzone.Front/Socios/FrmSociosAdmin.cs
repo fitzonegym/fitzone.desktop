@@ -105,7 +105,7 @@ namespace Fitzone.Front.Socios
         {
             txtFechaDesde.Checked = true;
             txtFechaHasta.Checked = true;
-            txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-1);
+            txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-6);
             txtFechaHasta.Value = Statics.DateTimeNow235959();
             txtApellido.Text = "";
             txtDocumento.Text = "";
@@ -581,7 +581,14 @@ namespace Fitzone.Front.Socios
 
         private void Cuota_Click(object sender, EventArgs e)
         {
+            if (bindingSource1 == null || bindingSource1.Current == null)
+            {
+                new MessageBoxCustom("Seleccione un socio", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                return;
+            }
+
             FrmPagarCuota frm = new FrmPagarCuota();
+            frm._idSocio = ((Socio)bindingSource1.Current).idSocio;
             frm.ShowDialog();
 
         }

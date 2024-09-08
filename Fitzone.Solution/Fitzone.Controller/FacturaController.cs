@@ -40,10 +40,11 @@ namespace Fitzone.Controller
                     if (actualizar == null)
                         break;   
 
-                    //actualizo los valores
+                    //actualizo la cuota
                     actualizar.pagada = true;
 
                 }
+                //inserto el detalle de factura
                 contexto.Add(entidad);
 
                 contexto.SaveChanges();
