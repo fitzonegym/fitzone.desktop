@@ -13,7 +13,8 @@ namespace Fitzone.Controller
         Contexto contexto = new Contexto();
         public string? GetValueByName(string name)
         {
-            return contexto.Configuraciones.FirstOrDefault(i => i.nombre.ToUpper() == name.ToUpper()).valor;
+            return contexto.Configuraciones.FirstOrDefault(i => i.nombre.ToUpper() == name.ToUpper())?.valor;            
+
         }
     }
 }

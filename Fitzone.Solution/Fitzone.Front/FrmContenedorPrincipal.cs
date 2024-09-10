@@ -93,15 +93,34 @@ namespace Fitzone.Front
         }
         private void administraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmSociosAdmin frm = new FrmSociosAdmin();
-            frm.TopMost = true;
-            frm.MdiParent = this;
-            panelPrincipal.Controls.Add(frm);
-            frm.StartPosition = FormStartPosition.CenterParent;
-            frm._EnumModoFormulario = Enumeraciones.EnumModoFormulario.Administracion;
+            // Verificar si el formulario ya está abierto
+            FrmSociosAdmin frm = null;
 
-            frm.Show();
+            //foreach (Form frmAbierto in this.MdiChildren)
+            foreach (Form frmAbierto in this.panelPrincipal.Controls)
+            {
+                if (frmAbierto is FrmSociosAdmin)
+                {
+                    frm = (FrmSociosAdmin)frmAbierto;
+                    break;
+                }
+            }
+
+            // Si no se encontró una instancia abierta, se crea una nueva
+            if (frm == null)
+            {
+                frm = new FrmSociosAdmin();
+                frm.MdiParent = this;
+                this.panelPrincipal.Controls.Add(frm);
+                frm.StartPosition = FormStartPosition.CenterParent;
+                frm._EnumModoFormulario = Enumeraciones.EnumModoFormulario.Administracion;
+                frm.Show();
+            }
+
+            // Traer el formulario al frente si ya existía o si es nuevo
+            frm.TopMost = true;
             frm.BringToFront();
+
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -124,6 +143,8 @@ namespace Fitzone.Front
 
             frm.Show();
             frm.BringToFront();
+
+
         }
 
         private void admnistraciónToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,6 +157,8 @@ namespace Fitzone.Front
 
             frm.Show();
             frm.BringToFront();
+
+
         }
 
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -147,6 +170,9 @@ namespace Fitzone.Front
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
             frm.BringToFront();
+
+
+
         }
 
         private void BringToFrontForm(Form form)
@@ -192,17 +218,16 @@ namespace Fitzone.Front
             frm.Show();
             frm.BringToFront();
             frm.WindowState = FormWindowState.Maximized;
+
+
         }
 
         private void controlDeAccesosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FRMControlAcceso frm = new FRMControlAcceso();
-            //frm.TopMost = true;
-            //frm.MdiParent = this;
-            //panelPrincipal.Controls.Add(frm);
-            //frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();
-            //frm.BringToFront();
+
+
         }
 
         private void administraciónToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -220,6 +245,53 @@ namespace Fitzone.Front
             frm.Show();
             frm.BringToFront();
             frm.WindowState = FormWindowState.Maximized;
+
         }
+
+        //private void AbrirForm<TipoForm>() //where TipoForm : Form, new()
+        //{
+        //    // Verificar si el formulario ya está abierto
+        //    TipoForm frm = null;
+
+        //    foreach (Form frmAbierto in panelPrincipal.Controls)
+        //    {
+        //        if (frmAbierto is TipoForm)
+        //        {
+        //            frm = (TipoForm)frmAbierto;
+        //            break;
+        //        }
+        //    }
+
+        //    // Si no se encontró una instancia abierta, se crea una nueva
+        //    if (frm == null)
+        //    {
+
+        //        //FrmSociosAdmin frm = new FrmSociosAdmin();
+        //        //frm.TopMost = true;
+        //        //frm.MdiParent = this;
+        //        //panelPrincipal.Controls.Add(frm);
+        //        //frm.StartPosition = FormStartPosition.CenterParent;
+        //        //frm._EnumModoFormulario = Enumeraciones.EnumModoFormulario.Administracion;
+
+        //        //frm.Show();
+        //        //frm.BringToFront();
+
+
+        //        frm = new TipoForm();
+        //        frm.MdiParent = this;
+        //        frm.TopMost = true;
+        //        panelPrincipal.Controls.Add(frm);
+        //        frm._EnumModoFormulario = Enumeraciones.EnumModoFormulario.Administracion;
+
+        //        frm.StartPosition = FormStartPosition.CenterParent;
+
+        //        frm.Show();
+        //    }
+
+        //    // Traer el formulario al frente si ya existía o si es nuevo
+        //    frm.BringToFront();
+        //}
+
+
     }
 }

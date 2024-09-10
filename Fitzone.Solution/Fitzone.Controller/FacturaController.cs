@@ -39,7 +39,7 @@ namespace Fitzone.Controller
                 if (num > max)
                     max = num;
             }
-            string maxString = "00000000" + max.ToString();  
+            string maxString = "00000000" + (max+1).ToString();  
             string resultado = maxString.Substring(maxString.Length-8,8);
             return "0000-" + resultado;
         }

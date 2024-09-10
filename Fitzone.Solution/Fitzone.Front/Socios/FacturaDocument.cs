@@ -8,20 +8,14 @@ using System.Collections.Generic;
 
 public class FacturaDocument : IDocument
 {
-    private string _nombreCliente;
-    private string _direccionCliente;
-    private string _fecha;
-    private List<DetalleFactura> _items;  // (nombre, cantidad, precio unitario)
-    private decimal _impuestoPorcentaje;
+    Factura fac;
+    
 
     //public FacturaDocument(string nombreCliente, string direccionCliente, string fecha, List<(string, int, decimal)> items, decimal impuestoPorcentaje)
         public FacturaDocument(Factura f)
     {
-        _nombreCliente = f.clienteNombre;
-        _direccionCliente = f.clienteDireccion;
-        _fecha = f.fecha.ToShortDateString();
-        _items = f.DetalleFactura;
-        //_impuestoPorcentaje = impuestoPorcentaje;
+        fac = f;    
+        
     }
 
     public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
@@ -43,25 +37,44 @@ public class FacturaDocument : IDocument
 
     void ComposeHeader(IContainer container)
     {
+        string imagePath = "D:\\Fitzone\\fitzone.desktop\\Fitzone.Solution\\Fitzone.Front\\Imagenes\\logo-factura.png"; // Actualiza 
+
+        int size_font = 10;
+
         container
             .Border(1)
             .Row(row =>
-        {
-            row.RelativeColumn().Stack(stack =>
-            {                
-                stack.Item().Text(new ConfiguracionesController().GetValueByName("EmpresaNombre") ?? "").SemiBold().FontSize(18);
-                stack.Item().Text("San jeronimo 123").FontSize(12);
-                stack.Item().Text("Teléfono: +54 9 381 123 4567").FontSize(12);
-                stack.Item().Text("Correo: fitzone@gmail.com").FontSize(12);
-            });
-            string imagePath = "D:\\Fitzone\\fitzone.desktop\\Fitzone.Solution\\Fitzone.Front\\Imagenes\\logo2.png"; // Actualiza 
-            //row.ConstantColumn(100).Image(Placeholders.Image(100, 50));  // Aquí podrías poner un logo real
-            row.ConstantColumn(100).Image(imagePath);  // Aquí podrías poner un logo real
-        });
+                {
+                    row.RelativeItem()
+                    .Padding(5)
+                    .Column(column =>
+                    {
+                        column.Item().Text(new ConfiguracionesController().GetValueByName("EmpresaNombre") ?? "FITZONE").SemiBold().FontSize(18);
+                        column.Item().Text(new ConfiguracionesController().GetValueByName("EmpresaDireccion") ?? "San Jeronimo 2215").FontSize(size_font);                
+                        column.Item().Text("Teléfono: " + (new ConfiguracionesController().GetValueByName("EmpresaTelefono") ?? "3516175681")).FontSize(size_font);               
+                        column.Item().Text("Correo: " + (new ConfiguracionesController().GetValueByName("EmpresaMail") ?? "fitzone@gmail.com")).FontSize(size_font);
+                        column.Item().Text("CUIT: " + (new ConfiguracionesController().GetValueByName("EmpresaCUIT") ?? "20-12345678-2")).FontSize(size_font);
+                        column.Item().Text("IngresosBrutos: " + (new ConfiguracionesController().GetValueByName("EmpresaIngresosBrutos") ?? "4512478955")).FontSize(size_font);
+                        column.Item().Text("Inicio Actividades: " + (new ConfiguracionesController().GetValueByName("EmpresaInicioActividades") ?? "01/10/2020")).FontSize(size_font);
+
+                    });
+
+                    string spaces = "      ";
+                    row.RelativeItem()
+                    .PaddingTop(10)                        
+                    .Column(col =>
+                    {
+                        col.Item().Text(spaces+"Factura").AlignStart();
+                        col.Item().Text(spaces+"  C").AlignStart().FontSize(16);
+                    });
+                    row.ConstantItem(150).Image(imagePath).FitArea();//logo  
+                });
     }
 
     void ComposeContent(IContainer container)
     {
+        int size_col1 = 12;
+
         //datos cliente + detalle
         container
             .Border(1) 
@@ -70,41 +83,45 @@ public class FacturaDocument : IDocument
             // Información del cliente
             column.Item().Row(row =>
             {
-                row.RelativeColumn().Stack(stack =>
+                row.RelativeItem().Padding(5).Column(column =>
                 {
-                    stack.Item().Text($"Cliente: {_nombreCliente}").Bold();
-                    stack.Item().Text($"Dirección: {_direccionCliente}");
+                    column.Item().Text($"Cliente: {fac.clienteNombre}").Bold().FontSize(size_col1);
+                    column.Item().Text($"Dirección: {fac.clienteDireccion}").FontSize(size_col1);
                 });
 
-                row.ConstantColumn(100).Stack(stack =>
+                row.ConstantItem(150).Padding(5).Column(column =>
                 {
-                    stack.Item().Text($"Fecha: {_fecha}");
-                    stack.Item().Text($"N° Factura: {Guid.NewGuid().ToString().Substring(0, 8)}");  // Simulación de número de factura
+                    column.Item().Text($"Fecha: {fac.fecha.ToShortDateString()}").FontSize(size_col1);
+                    column.Item().Text($"N° Factura: {fac.numero}").FontSize(size_col1);  // Simulación de número de factura
                 });
             });
 
             column.Item().PaddingVertical(10).Element(ComposeTable);  // Agregamos ComposeTable como argumento
 
             // Subtotal, impuestos y total
-            column.Item().PaddingTop(20).AlignRight().Stack(stack =>
-            {
-                decimal subtotal = 0;
-                foreach (var item in _items)
-                    subtotal += item.total;
+            column.Item()                
+                .PaddingTop(20)
+                .AlignRight()
+                .Column(column =>
+                {
+                    decimal subtotal = 0;
+                    foreach (var item in fac.DetalleFactura)
+                        subtotal += item.total;
 
-                //decimal impuestos = subtotal * _impuestoPorcentaje / 100;
-                decimal total = subtotal;// + impuestos;
+                    //decimal impuestos = subtotal * _impuestoPorcentaje / 100;
+                    decimal total = subtotal;// + impuestos;
 
-                //stack.Item().Text($"Subtotal: {subtotal:C}").FontSize(12);
-                //stack.Item().Text($"Descuentos ({_impuestoPorcentaje}%): {impuestos:C}").FontSize(12);
-                stack.Item().Text($"Total: {total:C}").Bold().FontSize(14);
-            });
+                    //stack.Item().Text($"Subtotal: {subtotal:C}").FontSize(12);
+                    //stack.Item().Text($"Descuentos ({_impuestoPorcentaje}%): {impuestos:C}").FontSize(12);
+                    column.Item().Text($"Total: {total:C}").Bold().FontSize(14);
+                });
         });
     }
 
     void ComposeTable(IContainer container)
     {
-        
+        int size_col1 = 10;
+
         container
             .Border(1)
             .Table(table =>
@@ -124,19 +141,19 @@ public class FacturaDocument : IDocument
             .Header(header =>
             {
                 
-                header.Cell().Border(1).Element(CellStyle).Text("Cant.");
-                header.Cell().Border(1).Element(CellStyle).Text("Descripción");
-                header.Cell().Border(1).Element(CellStyle).AlignRight().Text("Precio Unitario");
-                header.Cell().Border(1).Element(CellStyle).AlignRight().Text("Total");
+                header.Cell().Border(1).Element(CellStyle).Text("Cant.").FontSize(size_col1); 
+                header.Cell().Border(1).Element(CellStyle).Text("Descripción").FontSize(size_col1); 
+                header.Cell().Border(1).Element(CellStyle).AlignRight().Text("Precio Unitario").FontSize(size_col1); 
+                header.Cell().Border(1).Element(CellStyle).AlignRight().Text("Total").FontSize(size_col1);
             });
 
             // Añadir filas con los ítems
-            foreach (DetalleFactura det in _items)
+            foreach (DetalleFactura det in fac.DetalleFactura)
             {
-                table.Cell().Element(CellStyle).Text(det.cantidad.ToString()).FontSize(10);
-                table.Cell().Element(CellStyle).Text(det.descripcion).FontSize(10);
-                table.Cell().Element(CellStyle).AlignRight().Text($"{det.precioUnitario:C}").FontSize(10);
-                table.Cell().Element(CellStyle).AlignRight().Text($"{det.total:C}").FontSize(10);
+                table.Cell().Element(CellStyle).Text(det.cantidad.ToString()).FontSize(size_col1);
+                table.Cell().Element(CellStyle).Text(det.descripcion).FontSize(size_col1);
+                table.Cell().Element(CellStyle).AlignRight().Text($"{det.precioUnitario:C}").FontSize(size_col1);
+                table.Cell().Element(CellStyle).AlignRight().Text($"{det.total:C}").FontSize(size_col1);
             }
         });
     }

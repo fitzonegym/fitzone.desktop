@@ -1,18 +1,12 @@
-﻿using Emgu.CV;
-using Fitzone.Controller;
+﻿using Fitzone.Controller;
 using Fitzone.Entidades;
 using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Microsoft.IdentityModel.Tokens;
 using QuestPDF.Fluent;
-using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
 using System.Data;
 using System.Diagnostics;
 using Color = System.Drawing.Color;
-using IContainer = QuestPDF.Infrastructure.IContainer;
 
 namespace Fitzone.Front.Socios
 {
@@ -181,7 +175,7 @@ namespace Fitzone.Front.Socios
                 d.cantidad = 1;
                 d.precioUnitario = item.precio;
                 d.total = item.precio * d.cantidad;
-                d.descripcion = "Cuota " + Statics.GetMesAñoTexto(item.fechaVencimiento) + " - " + cmbTipoMembresia.Text.Substring(0, 15);
+                d.descripcion = "Cuota " + item.numero.ToString() + " " + Statics.GetMesAñoTexto(item.fechaVencimiento) + " - " + cmbTipoMembresia.Text.Substring(0, 15);
 
                 f.DetalleFactura.Add(d);
 
@@ -199,6 +193,7 @@ namespace Fitzone.Front.Socios
 
             new MessageBoxCustom(EnumModoMessageBoxCustom.DatosGuardadosCorrectamente).ShowDialog();
             CargarCuotas();
+            ImprimirFactura(f);
         }
 
         private void bindingSourceCuotas_CurrentItemChanged(object sender, EventArgs e)
@@ -256,7 +251,7 @@ namespace Fitzone.Front.Socios
             }
         }
 
-        private void Imprimir2(Factura fac)
+        private void ImprimirFactura(Factura fac)
         {
             var facturaDocument = new FacturaDocument(fac);
 
@@ -268,8 +263,8 @@ namespace Fitzone.Front.Socios
 
         private void cyberButton1_Click(object sender, EventArgs e)
         {
-            var f = new FacturaController().GetById(1);            
-            Imprimir2(f);
+            var f = new FacturaController().GetById(1);
+            ImprimirFactura(f);
 
         }
     }

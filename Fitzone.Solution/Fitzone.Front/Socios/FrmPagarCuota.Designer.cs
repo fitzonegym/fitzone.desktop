@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
             ucBorderlr1 = new UserControls.UCBorderLR();
@@ -155,8 +155,8 @@
             // numeroDataGridViewTextBoxColumn
             // 
             numeroDataGridViewTextBoxColumn.DataPropertyName = "numero";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            numeroDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            numeroDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             numeroDataGridViewTextBoxColumn.HeaderText = "Nro.";
             numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
             numeroDataGridViewTextBoxColumn.ReadOnly = true;
@@ -179,10 +179,10 @@
             // fechaVencimientoCol
             // 
             fechaVencimientoCol.DataPropertyName = "fechaVencimiento";
-            dataGridViewCellStyle4.BackColor = Color.FromArgb(255, 192, 192);
-            dataGridViewCellStyle4.Format = "d";
-            dataGridViewCellStyle4.NullValue = null;
-            fechaVencimientoCol.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 192, 192);
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            fechaVencimientoCol.DefaultCellStyle = dataGridViewCellStyle2;
             fechaVencimientoCol.HeaderText = "Vencimiento";
             fechaVencimientoCol.Name = "fechaVencimientoCol";
             fechaVencimientoCol.ReadOnly = true;
@@ -531,7 +531,7 @@
             cyberButton1.Lighting = false;
             cyberButton1.LinearGradient_Background = false;
             cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(53, 523);
+            cyberButton1.Location = new Point(8, 520);
             cyberButton1.Name = "cyberButton1";
             cyberButton1.PenWidth = 15;
             cyberButton1.Rounding = true;
