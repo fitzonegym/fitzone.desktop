@@ -15,6 +15,8 @@ namespace Fitzone.Entidades
 
         public int cantidad { get; set; }
 
+        public string descripcion { get; set; } 
+
         [Column(TypeName = "decimal(8,2)")]
         public decimal precioUnitario { get; set; }
 

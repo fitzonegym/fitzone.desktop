@@ -60,12 +60,16 @@ namespace Fitzone.EF.Migrations
 
                             INSERT INTO [dbo].[Configuraciones]
                                        ([nombre]
-                                       ,[valor]                                       
+                                       ,[valor]									   
                                        )
                                  VALUES
-                                       ('CuotaCantDiasVencimiento'
-                                       ,'0'
-                                       )
+                                       ('CuotaCantDiasVencimiento','0'),
+									   ('EmpresaCuit','30-64756489-1'),
+									   ('EmpresaIngresosBrutos','250319223'),
+									   ('EmpresaInicioActividades','01/01/2018'),
+									   ('EmpresaNombre','FIT-ZONE'),
+									   ('EmpresaDireccion','SAN JERONIMO 684')
+									   
                             GO
 							
 							INSERT INTO [dbo].[Actividad] 

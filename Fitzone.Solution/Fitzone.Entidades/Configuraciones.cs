@@ -11,8 +11,7 @@ namespace Fitzone.Entidades
         public int id {  get; set; }    
         public string nombre { get; set; }    
         public string valor { get; set;}
-
-        public static DateTime fechaHoy { get; set; } = DateTime.Now;
+        public static DateTime fechaHoy { get; set; } = DateTime.Now;        
 
     }
 }

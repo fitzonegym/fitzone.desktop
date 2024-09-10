@@ -1,6 +1,7 @@
 ﻿using Fitzone.Controller.Interfaces;
 using Fitzone.EF;
 using Fitzone.Entidades;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Fitzone.Controller
 
         public Factura? GetById(int id)
         {
-            throw new NotImplementedException();
+            return contexto.Factura.Include("DetalleFactura").FirstOrDefault(i => i.idFactura == id);
         }
 
         public Factura? GetByName(string nombre)
@@ -28,7 +29,21 @@ namespace Fitzone.Controller
             throw new NotImplementedException();
         }
 
-        public bool Insert(Factura entidad)
+        public string getNumeroProximo()
+        {
+            int max = 1;
+            var facturas = contexto.Factura.ToList();
+            foreach (var fac in facturas)
+            {
+                int.TryParse(fac.numero.Replace("-",""),out int num);
+                if (num > max)
+                    max = num;
+            }
+            string maxString = "00000000" + max.ToString();  
+            string resultado = maxString.Substring(maxString.Length-8,8);
+            return "0000-" + resultado;
+        }
+        public int Insert(Factura entidad)
         {
             entidad.idFactura = 0;
             try
@@ -48,13 +63,18 @@ namespace Fitzone.Controller
                 contexto.Add(entidad);
 
                 contexto.SaveChanges();
-                return true;
+                return entidad.idFactura;
 
             }
             catch (Exception)
             {
                 throw;
             }            
+        }
+
+        bool IControllerClasesAuxiliares<Factura>.Insert(Factura entidad)
+        {
+            throw new NotImplementedException();
         }
     }
 }

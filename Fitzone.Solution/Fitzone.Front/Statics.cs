@@ -112,5 +112,13 @@ namespace Fitzone.Front
             return "noEncontrado";
 
         }
+        public static string GetMesAñoTexto(DateTime fecha)
+        {
+            // Cultura en español para obtener el nombre del mes en español
+            CultureInfo cultura = new CultureInfo("es-ES");
+
+            // Formatear la fecha para mostrar solo el mes completo y el año
+            return fecha.ToString("MMMM yyyy", cultura);
+        }
     }
 }

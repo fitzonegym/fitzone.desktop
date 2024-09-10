@@ -1,18 +1,18 @@
-﻿using Fitzone.Controller;
+﻿using Emgu.CV;
+using Fitzone.Controller;
 using Fitzone.Entidades;
 using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
-using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.IdentityModel.Tokens;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Diagnostics;
+using Color = System.Drawing.Color;
+using IContainer = QuestPDF.Infrastructure.IContainer;
 
 namespace Fitzone.Front.Socios
 {
@@ -166,8 +166,10 @@ namespace Fitzone.Front.Socios
             f.fecha = DateTime.Now;
             f.letra = "C";
             f.metodoDePago = cmbTipoPago.Text;
-            f.numero = "000-0000001";
+            f.numero = new FacturaController().getNumeroProximo();
             f.total = _cuotas.Where(c => c.seleccionada).Sum(c => c.precio);
+            f.clienteNombre = _socio.NombreCompleto;
+            f.clienteDireccion = String.Join(" ", _socio.calle, _socio.calleNumero, _socio.BarrioNombre);
 
             f.DetalleFactura = new List<DetalleFactura>();
 
@@ -179,6 +181,7 @@ namespace Fitzone.Front.Socios
                 d.cantidad = 1;
                 d.precioUnitario = item.precio;
                 d.total = item.precio * d.cantidad;
+                d.descripcion = "Cuota " + Statics.GetMesAñoTexto(item.fechaVencimiento) + " - " + cmbTipoMembresia.Text.Substring(0, 15);
 
                 f.DetalleFactura.Add(d);
 
@@ -251,6 +254,23 @@ namespace Fitzone.Front.Socios
                     //se pintan de rosa por diseño
                 }
             }
+        }
+
+        private void Imprimir2(Factura fac)
+        {
+            var facturaDocument = new FacturaDocument(fac);
+
+            string fileName = "c:\\Reportes\\" + Statics.GenerarNombreArchivoUnico("Factura", "PDF");            
+            facturaDocument.GeneratePdf(fileName);
+            Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
+
+        }     
+
+        private void cyberButton1_Click(object sender, EventArgs e)
+        {
+            var f = new FacturaController().GetById(1);            
+            Imprimir2(f);
+
         }
     }
 }

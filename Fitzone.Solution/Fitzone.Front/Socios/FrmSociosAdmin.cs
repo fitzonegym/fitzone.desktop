@@ -132,7 +132,8 @@ namespace Fitzone.Front.Socios
             }
             if (_EnumModoFormulario == EnumModoFormulario.Administracion)
             {
-                btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = true;
+                //   btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = btnConsultar.Visible = btnCuota.Visible = true;
+                VisibleBotones(true);
                 btnAceptar.Visible = false;
                 this.WindowState = FormWindowState.Maximized;
             }

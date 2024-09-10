@@ -15,6 +15,10 @@ namespace Fitzone.Entidades
 
         public string numero { get; set; }
 
+        public string clienteNombre { get; set; }
+
+        public string clienteDireccion { get; set; }
+
         public string tipoFactura { get; set; }
 
         public string letra { get; set; }
