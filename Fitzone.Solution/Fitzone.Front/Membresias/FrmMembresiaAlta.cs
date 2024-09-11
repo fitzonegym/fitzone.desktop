@@ -134,7 +134,7 @@ namespace Fitzone.Front.Membresias
                 txtDetalleTipo.Text = m.detalle;
                 txtPrecio.Text = m.precio.ToString();
                 txtCuotas.Text = _tipoMembresiaSeleccionada.cantidadCuotas.ToString();
-                txtCantDias.Text = m.cantidadDiasSemanales.ToString();
+                //txtCantDias.Text = m.cantidadDiasSemanales.ToString();
 
                 string dias = m.diasHabilitados;
                 chkLunes.Checked = dias.Contains("lunes");
@@ -220,7 +220,7 @@ namespace Fitzone.Front.Membresias
             txtDetalleTipo.Text = _tipoMembresiaSeleccionada.descripcion;
             txtPrecio.Text = _tipoMembresiaSeleccionada.precioTotal.ToString();
             txtCuotas.Text = _tipoMembresiaSeleccionada.cantidadCuotas.ToString();
-            txtCantDias.Text = _tipoMembresiaSeleccionada.cantidadDiasSemanales.ToString();
+            //txtCantDias.Text = _tipoMembresiaSeleccionada.cantidadDiasSemanales.ToString();
 
             string dias = _tipoMembresiaSeleccionada.diasHabilitados;
             chkLunes.Checked = dias.Contains("lunes");
@@ -334,12 +334,11 @@ namespace Fitzone.Front.Membresias
 
         private void AgregarDetalle()
         {
-            txtDescripcionMembresía.Text = String.Format(" {0} | {1} | Desde: {2} Hasta: {3} | Cantidad de días por semana: {4} | Días habilitados: {5}",
+            txtDescripcionMembresía.Text = String.Format(" {0} | {1} | Desde: {2} Hasta: {3} | Días habilitados: {4}",
             _tipoMembresiaSeleccionada.nombre,
             _tipoMembresiaSeleccionada.descripcion,
             Statics.DateTimeNowSinHoraString(txtFechaDesde.Value),
-            Statics.DateTimeNowSinHoraString(txtFechaHasta.Value),
-            _tipoMembresiaSeleccionada.cantidadDiasSemanales,
+            Statics.DateTimeNowSinHoraString(txtFechaHasta.Value),            
             _tipoMembresiaSeleccionada.diasHabilitados
             );
         }
@@ -400,7 +399,7 @@ namespace Fitzone.Front.Membresias
                 m.fechaDesde = txtFechaDesde.Value;
                 m.fechaHasta = txtFechaHasta.Value;
                 m.Cuotas = _listaCuotas;
-                m.cantidadDiasSemanales = _tipoMembresiaSeleccionada.cantidadDiasSemanales;
+                //m.cantidadDiasSemanales = 0;//_tipoMembresiaSeleccionada.cantidadDiasSemanales;
                 m.diasHabilitados = _tipoMembresiaSeleccionada.diasHabilitados;
 
                 m.horadesde = _tipoMembresiaSeleccionada.horadesde;

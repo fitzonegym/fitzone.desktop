@@ -147,7 +147,7 @@ namespace Fitzone.Front.Membresias
             spnPrecio.Enabled = _enabled;
 
             spnCuotas.Enabled = _enabled;
-            spnCantDias.Enabled = _enabled;
+            
             chkSinCupo.Enabled = _enabled;
             txtDetalle.Enabled = _enabled;
 
@@ -198,7 +198,7 @@ namespace Fitzone.Front.Membresias
             _tipo.precioTotal = spnPrecio.Value;
 
             _tipo.cantidadCuotas = (int)spnCuotas.Value;
-            _tipo.cantidadDiasSemanales = (int)spnCantDias.Value;
+            //_tipo.cantidadDiasSemanales = (int)spnCantDias.Value;
             _tipo.cupoClase = chkSinCupo.Checked ? (int)spnCupo.Value : null;
             _tipo.descripcion = txtDetalle.Text;
 
@@ -268,7 +268,7 @@ namespace Fitzone.Front.Membresias
         {
             _tipo = new TipoMembresia();
             _tipo.cantidadCuotas = 1;
-            _tipo.cantidadDiasSemanales = 1;
+            //_tipo.cantidadDiasSemanales = 1;
             _tipo.precioTotal = 1;
             cmbActividad.SelectedValue = 1;
             _tipo.idInstructor = 1;
@@ -299,7 +299,7 @@ namespace Fitzone.Front.Membresias
             txtDetalle.Text = _tipo.descripcion;
             spnPrecio.Value = _tipo.precioTotal;
             spnCuotas.Value = _tipo.cantidadCuotas;
-            spnCantDias.Value = _tipo.cantidadDiasSemanales;
+            //spnCantDias.Value = _tipo.cantidadDiasSemanales;
             rdnMensual.Checked = !_tipo.cuotaUnica;
             rdnUnica.Checked = _tipo.cuotaUnica;
 

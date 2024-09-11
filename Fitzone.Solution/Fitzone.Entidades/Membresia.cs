@@ -24,7 +24,7 @@ namespace Fitzone.Entidades
         [MaxLength(1000)]
         public string? detalle{ get; set; }
         public List<Cuota>? Cuotas { get; set; }
-        public int cantidadDiasSemanales { get; set; }
+        //public int cantidadDiasSemanales { get; set; }
         public string diasHabilitados { get; set; } = "";
 
         public TimeOnly horadesde { get; set; }

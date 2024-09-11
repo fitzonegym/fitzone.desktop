@@ -46,7 +46,6 @@
             spnHasta = new DateTimePicker();
             chkCualquierHora = new CheckBox();
             spnDesde = new DateTimePicker();
-            spnCantDias = new NumericUpDown();
             spnCuotas = new NumericUpDown();
             spnPrecio = new NumericUpDown();
             cmbInstructor = new ReaLTaiizor.Controls.AloneComboBox();
@@ -67,7 +66,6 @@
             chkMartes = new CheckBox();
             chkLunes = new CheckBox();
             thunderLabel10 = new ReaLTaiizor.Controls.ThunderLabel();
-            txtCantDias = new ReaLTaiizor.Controls.AloneTextBox();
             txtCuotas = new ReaLTaiizor.Controls.AloneTextBox();
             txtPrecio = new ReaLTaiizor.Controls.AloneTextBox();
             thunderLabel5 = new ReaLTaiizor.Controls.ThunderLabel();
@@ -77,7 +75,6 @@
             bindingSourceActividad = new BindingSource(components);
             thunderLabel17 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel16 = new ReaLTaiizor.Controls.ThunderLabel();
-            thunderLabel9 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel13 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel1 = new ReaLTaiizor.Controls.ThunderLabel();
             botonesForms2 = new UserControls.UCBotonesForms();
@@ -91,7 +88,6 @@
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)spnPrecioCuota).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spnCupo).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)spnCantDias).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spnCuotas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)spnPrecio).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceInstructor).BeginInit();
@@ -122,7 +118,6 @@
             groupBox2.Controls.Add(spnHasta);
             groupBox2.Controls.Add(chkCualquierHora);
             groupBox2.Controls.Add(spnDesde);
-            groupBox2.Controls.Add(spnCantDias);
             groupBox2.Controls.Add(spnCuotas);
             groupBox2.Controls.Add(spnPrecio);
             groupBox2.Controls.Add(cmbInstructor);
@@ -142,7 +137,6 @@
             groupBox2.Controls.Add(chkMartes);
             groupBox2.Controls.Add(chkLunes);
             groupBox2.Controls.Add(thunderLabel10);
-            groupBox2.Controls.Add(txtCantDias);
             groupBox2.Controls.Add(txtCuotas);
             groupBox2.Controls.Add(txtPrecio);
             groupBox2.Controls.Add(thunderLabel5);
@@ -151,7 +145,6 @@
             groupBox2.Controls.Add(cmbActividad);
             groupBox2.Controls.Add(thunderLabel17);
             groupBox2.Controls.Add(thunderLabel16);
-            groupBox2.Controls.Add(thunderLabel9);
             groupBox2.Controls.Add(thunderLabel13);
             groupBox2.Controls.Add(thunderLabel1);
             groupBox2.ForeColor = Color.White;
@@ -167,16 +160,16 @@
             thunderLabel6.BackColor = Color.Transparent;
             thunderLabel6.Enabled = false;
             thunderLabel6.ForeColor = Color.WhiteSmoke;
-            thunderLabel6.Location = new Point(346, 192);
+            thunderLabel6.Location = new Point(215, 203);
             thunderLabel6.Name = "thunderLabel6";
-            thunderLabel6.Size = new Size(57, 22);
+            thunderLabel6.Size = new Size(42, 22);
             thunderLabel6.TabIndex = 94;
             thunderLabel6.Text = "Cuota";
             // 
             // rdnMensual
             // 
             rdnMensual.AutoSize = true;
-            rdnMensual.Location = new Point(409, 211);
+            rdnMensual.Location = new Point(325, 203);
             rdnMensual.Name = "rdnMensual";
             rdnMensual.Size = new Size(70, 19);
             rdnMensual.TabIndex = 93;
@@ -188,7 +181,7 @@
             // 
             rdnUnica.AutoSize = true;
             rdnUnica.Checked = true;
-            rdnUnica.Location = new Point(348, 211);
+            rdnUnica.Location = new Point(264, 203);
             rdnUnica.Name = "rdnUnica";
             rdnUnica.Size = new Size(55, 19);
             rdnUnica.TabIndex = 92;
@@ -282,7 +275,7 @@
             // 
             chkSinCupo.AutoSize = true;
             chkSinCupo.ForeColor = Color.White;
-            chkSinCupo.Location = new Point(192, 242);
+            chkSinCupo.Location = new Point(197, 242);
             chkSinCupo.Name = "chkSinCupo";
             chkSinCupo.Size = new Size(15, 14);
             chkSinCupo.TabIndex = 8;
@@ -334,21 +327,10 @@
             spnDesde.TabIndex = 9;
             spnDesde.Value = new DateTime(2024, 8, 1, 0, 0, 0, 0);
             // 
-            // spnCantDias
-            // 
-            spnCantDias.Font = new Font("Segoe UI", 8F);
-            spnCantDias.Location = new Point(108, 237);
-            spnCantDias.Maximum = new decimal(new int[] { 7, 0, 0, 0 });
-            spnCantDias.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            spnCantDias.Name = "spnCantDias";
-            spnCantDias.Size = new Size(50, 22);
-            spnCantDias.TabIndex = 6;
-            spnCantDias.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
             // spnCuotas
             // 
             spnCuotas.Font = new Font("Segoe UI", 8F);
-            spnCuotas.Location = new Point(274, 199);
+            spnCuotas.Location = new Point(109, 237);
             spnCuotas.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             spnCuotas.Name = "spnCuotas";
             spnCuotas.Size = new Size(50, 22);
@@ -395,7 +377,7 @@
             thunderLabel18.BackColor = Color.Transparent;
             thunderLabel18.Enabled = false;
             thunderLabel18.ForeColor = Color.WhiteSmoke;
-            thunderLabel18.Location = new Point(207, 242);
+            thunderLabel18.Location = new Point(215, 242);
             thunderLabel18.Name = "thunderLabel18";
             thunderLabel18.Size = new Size(42, 17);
             thunderLabel18.TabIndex = 75;
@@ -628,23 +610,6 @@
             thunderLabel10.TabIndex = 59;
             thunderLabel10.Text = "Días";
             // 
-            // txtCantDias
-            // 
-            txtCantDias.BackColor = Color.Transparent;
-            txtCantDias.Enabled = false;
-            txtCantDias.EnabledCalc = false;
-            txtCantDias.Font = new Font("Segoe UI", 9F);
-            txtCantDias.ForeColor = Color.Black;
-            txtCantDias.Location = new Point(99, 234);
-            txtCantDias.MaxLength = 32767;
-            txtCantDias.MultiLine = false;
-            txtCantDias.Name = "txtCantDias";
-            txtCantDias.ReadOnly = false;
-            txtCantDias.Size = new Size(68, 29);
-            txtCantDias.TabIndex = 58;
-            txtCantDias.TextAlign = HorizontalAlignment.Left;
-            txtCantDias.UseSystemPasswordChar = false;
-            // 
             // txtCuotas
             // 
             txtCuotas.BackColor = Color.Transparent;
@@ -652,7 +617,7 @@
             txtCuotas.EnabledCalc = false;
             txtCuotas.Font = new Font("Segoe UI", 9F);
             txtCuotas.ForeColor = Color.Black;
-            txtCuotas.Location = new Point(265, 196);
+            txtCuotas.Location = new Point(100, 234);
             txtCuotas.MaxLength = 32767;
             txtCuotas.MultiLine = false;
             txtCuotas.Name = "txtCuotas";
@@ -684,7 +649,7 @@
             thunderLabel5.BackColor = Color.Transparent;
             thunderLabel5.Enabled = false;
             thunderLabel5.ForeColor = Color.WhiteSmoke;
-            thunderLabel5.Location = new Point(207, 199);
+            thunderLabel5.Location = new Point(27, 237);
             thunderLabel5.Name = "thunderLabel5";
             thunderLabel5.Size = new Size(49, 29);
             thunderLabel5.TabIndex = 52;
@@ -752,18 +717,6 @@
             thunderLabel16.Size = new Size(41, 30);
             thunderLabel16.TabIndex = 71;
             thunderLabel16.Text = "Hora Hasta";
-            // 
-            // thunderLabel9
-            // 
-            thunderLabel9.BackColor = Color.Transparent;
-            thunderLabel9.Enabled = false;
-            thunderLabel9.Font = new Font("Segoe UI", 7F);
-            thunderLabel9.ForeColor = Color.WhiteSmoke;
-            thunderLabel9.Location = new Point(26, 234);
-            thunderLabel9.Name = "thunderLabel9";
-            thunderLabel9.Size = new Size(73, 29);
-            thunderLabel9.TabIndex = 7;
-            thunderLabel9.Text = "Cant. días max";
             // 
             // thunderLabel13
             // 
@@ -942,7 +895,6 @@
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)spnPrecioCuota).EndInit();
             ((System.ComponentModel.ISupportInitialize)spnCupo).EndInit();
-            ((System.ComponentModel.ISupportInitialize)spnCantDias).EndInit();
             ((System.ComponentModel.ISupportInitialize)spnCuotas).EndInit();
             ((System.ComponentModel.ISupportInitialize)spnPrecio).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceInstructor).EndInit();
@@ -968,7 +920,6 @@
         private CheckBox chkMartes;
         private CheckBox chkLunes;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel10;
-        private ReaLTaiizor.Controls.AloneTextBox txtCantDias;
         private ReaLTaiizor.Controls.AloneTextBox txtCuotas;
         private ReaLTaiizor.Controls.AloneTextBox txtPrecio;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel5;
@@ -978,7 +929,6 @@
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel17;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel18;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel16;
-        private ReaLTaiizor.Controls.ThunderLabel thunderLabel9;
         private UserControls.UCBotonesForms botonesForms2;
         private UserControls.UCBorderTD ucBordertd2;
         private UserControls.UCBorderLR ucBorderlr2;
@@ -998,7 +948,6 @@
         private ReaLTaiizor.Controls.AloneTextBox txtCupo;
         private CheckBox chkCualquierHora;
         private DateTimePicker spnDesde;
-        private NumericUpDown spnCantDias;
         private DateTimePicker spnHasta;
         private NumericUpDown spnCupo;
         private NumericUpDown spnPrecioCuota;

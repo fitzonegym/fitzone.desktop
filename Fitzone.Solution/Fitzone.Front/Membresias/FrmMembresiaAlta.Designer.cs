@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             ucBordertd2 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
             ucBorderlr1 = new UserControls.UCBorderLR();
@@ -63,6 +63,7 @@
             cmbTipoMembresia = new ReaLTaiizor.Controls.AloneComboBox();
             bindingSourceTipo = new BindingSource(components);
             groupBox2 = new GroupBox();
+            chkCuotaUnica = new CheckBox();
             txtInstructor = new ReaLTaiizor.Controls.AloneTextBox();
             cmdGenerar = new ReaLTaiizor.Controls.CyberButton();
             txtDisponibilidadBack = new ReaLTaiizor.Controls.AloneTextBox();
@@ -81,7 +82,6 @@
             chkMartes = new CheckBox();
             chkLunes = new CheckBox();
             thunderLabel10 = new ReaLTaiizor.Controls.ThunderLabel();
-            txtCantDias = new ReaLTaiizor.Controls.AloneTextBox();
             txtCuotas = new ReaLTaiizor.Controls.AloneTextBox();
             txtPrecio = new ReaLTaiizor.Controls.AloneTextBox();
             thunderLabel5 = new ReaLTaiizor.Controls.ThunderLabel();
@@ -90,7 +90,6 @@
             thunderLabel17 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel18 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel16 = new ReaLTaiizor.Controls.ThunderLabel();
-            thunderLabel9 = new ReaLTaiizor.Controls.ThunderLabel();
             txtFechaHasta = new DateTimePicker();
             txtFechaDesde = new DateTimePicker();
             thunderLabel7 = new ReaLTaiizor.Controls.ThunderLabel();
@@ -100,7 +99,6 @@
             txtDescripcionMembresía = new TextBox();
             ucAgregar1 = new UserControls.UCAgregar();
             groupBox3 = new GroupBox();
-            chkCuotaUnica = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)bindingSourceCuotas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
@@ -208,7 +206,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(702, 695);
+            btnCancelar.Location = new Point(702, 692);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -260,7 +258,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(604, 695);
+            btnAceptar.Location = new Point(604, 692);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -408,9 +406,9 @@
             // fechaHastaDataGridViewTextBoxColumn
             // 
             fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            fechaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            fechaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             fechaHastaDataGridViewTextBoxColumn.HeaderText = "Hasta";
             fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
             fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -418,10 +416,10 @@
             // fechaVencimiento
             // 
             fechaVencimiento.DataPropertyName = "fechaVencimiento";
-            dataGridViewCellStyle6.BackColor = Color.FromArgb(255, 192, 192);
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            fechaVencimiento.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 192, 192);
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            fechaVencimiento.DefaultCellStyle = dataGridViewCellStyle2;
             fechaVencimiento.HeaderText = "Vencimiento";
             fechaVencimiento.Name = "fechaVencimiento";
             fechaVencimiento.ReadOnly = true;
@@ -568,7 +566,6 @@
             groupBox2.Controls.Add(chkMartes);
             groupBox2.Controls.Add(chkLunes);
             groupBox2.Controls.Add(thunderLabel10);
-            groupBox2.Controls.Add(txtCantDias);
             groupBox2.Controls.Add(txtCuotas);
             groupBox2.Controls.Add(txtPrecio);
             groupBox2.Controls.Add(thunderLabel5);
@@ -578,7 +575,6 @@
             groupBox2.Controls.Add(thunderLabel17);
             groupBox2.Controls.Add(thunderLabel18);
             groupBox2.Controls.Add(thunderLabel16);
-            groupBox2.Controls.Add(thunderLabel9);
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(370, 45);
             groupBox2.Name = "groupBox2";
@@ -586,6 +582,18 @@
             groupBox2.TabIndex = 51;
             groupBox2.TabStop = false;
             groupBox2.Text = "Tipo de membresía";
+            // 
+            // chkCuotaUnica
+            // 
+            chkCuotaUnica.AutoSize = true;
+            chkCuotaUnica.Enabled = false;
+            chkCuotaUnica.ForeColor = Color.White;
+            chkCuotaUnica.Location = new Point(85, 248);
+            chkCuotaUnica.Name = "chkCuotaUnica";
+            chkCuotaUnica.Size = new Size(90, 19);
+            chkCuotaUnica.TabIndex = 80;
+            chkCuotaUnica.Text = "Cuota única";
+            chkCuotaUnica.UseVisualStyleBackColor = true;
             // 
             // txtInstructor
             // 
@@ -699,7 +707,7 @@
             txtHoraHasta.EnabledCalc = false;
             txtHoraHasta.Font = new Font("Segoe UI", 9F);
             txtHoraHasta.ForeColor = Color.Black;
-            txtHoraHasta.Location = new Point(223, 210);
+            txtHoraHasta.Location = new Point(225, 169);
             txtHoraHasta.MaxLength = 32767;
             txtHoraHasta.MultiLine = false;
             txtHoraHasta.Name = "txtHoraHasta";
@@ -716,7 +724,7 @@
             txtHoraDesde.EnabledCalc = false;
             txtHoraDesde.Font = new Font("Segoe UI", 9F);
             txtHoraDesde.ForeColor = Color.Black;
-            txtHoraDesde.Location = new Point(76, 210);
+            txtHoraDesde.Location = new Point(78, 169);
             txtHoraDesde.MaxLength = 32767;
             txtHoraDesde.MultiLine = false;
             txtHoraDesde.Name = "txtHoraDesde";
@@ -730,7 +738,7 @@
             // 
             thunderLabel15.BackColor = Color.Transparent;
             thunderLabel15.ForeColor = Color.WhiteSmoke;
-            thunderLabel15.Location = new Point(5, 214);
+            thunderLabel15.Location = new Point(7, 173);
             thunderLabel15.Name = "thunderLabel15";
             thunderLabel15.Size = new Size(49, 25);
             thunderLabel15.TabIndex = 69;
@@ -761,7 +769,7 @@
             chkDomingo.AutoSize = true;
             chkDomingo.Enabled = false;
             chkDomingo.ForeColor = Color.White;
-            chkDomingo.Location = new Point(364, 223);
+            chkDomingo.Location = new Point(237, 223);
             chkDomingo.Name = "chkDomingo";
             chkDomingo.Size = new Size(34, 19);
             chkDomingo.TabIndex = 66;
@@ -773,7 +781,7 @@
             chkSabado.AutoSize = true;
             chkSabado.Enabled = false;
             chkSabado.ForeColor = Color.White;
-            chkSabado.Location = new Point(364, 203);
+            chkSabado.Location = new Point(199, 223);
             chkSabado.Name = "chkSabado";
             chkSabado.Size = new Size(32, 19);
             chkSabado.TabIndex = 65;
@@ -785,7 +793,7 @@
             chkViernes.AutoSize = true;
             chkViernes.Enabled = false;
             chkViernes.ForeColor = Color.White;
-            chkViernes.Location = new Point(324, 203);
+            chkViernes.Location = new Point(367, 205);
             chkViernes.Name = "chkViernes";
             chkViernes.Size = new Size(33, 19);
             chkViernes.TabIndex = 64;
@@ -797,7 +805,7 @@
             chkJueves.AutoSize = true;
             chkJueves.Enabled = false;
             chkJueves.ForeColor = Color.White;
-            chkJueves.Location = new Point(286, 203);
+            chkJueves.Location = new Point(332, 206);
             chkJueves.Name = "chkJueves";
             chkJueves.Size = new Size(30, 19);
             chkJueves.TabIndex = 63;
@@ -809,7 +817,7 @@
             chkMiercoles.AutoSize = true;
             chkMiercoles.Enabled = false;
             chkMiercoles.ForeColor = Color.White;
-            chkMiercoles.Location = new Point(364, 184);
+            chkMiercoles.Location = new Point(286, 206);
             chkMiercoles.Name = "chkMiercoles";
             chkMiercoles.Size = new Size(40, 19);
             chkMiercoles.TabIndex = 62;
@@ -821,7 +829,7 @@
             chkMartes.AutoSize = true;
             chkMartes.Enabled = false;
             chkMartes.ForeColor = Color.White;
-            chkMartes.Location = new Point(324, 184);
+            chkMartes.Location = new Point(237, 206);
             chkMartes.Name = "chkMartes";
             chkMartes.Size = new Size(43, 19);
             chkMartes.TabIndex = 61;
@@ -833,7 +841,7 @@
             chkLunes.AutoSize = true;
             chkLunes.Enabled = false;
             chkLunes.ForeColor = Color.White;
-            chkLunes.Location = new Point(286, 184);
+            chkLunes.Location = new Point(199, 206);
             chkLunes.Name = "chkLunes";
             chkLunes.Size = new Size(32, 19);
             chkLunes.TabIndex = 60;
@@ -844,28 +852,11 @@
             // 
             thunderLabel10.BackColor = Color.Transparent;
             thunderLabel10.ForeColor = Color.WhiteSmoke;
-            thunderLabel10.Location = new Point(280, 167);
+            thunderLabel10.Location = new Point(157, 206);
             thunderLabel10.Name = "thunderLabel10";
             thunderLabel10.Size = new Size(110, 16);
             thunderLabel10.TabIndex = 59;
             thunderLabel10.Text = "Días";
-            // 
-            // txtCantDias
-            // 
-            txtCantDias.BackColor = Color.Transparent;
-            txtCantDias.Enabled = false;
-            txtCantDias.EnabledCalc = false;
-            txtCantDias.Font = new Font("Segoe UI", 9F);
-            txtCantDias.ForeColor = Color.Black;
-            txtCantDias.Location = new Point(223, 172);
-            txtCantDias.MaxLength = 32767;
-            txtCantDias.MultiLine = false;
-            txtCantDias.Name = "txtCantDias";
-            txtCantDias.ReadOnly = true;
-            txtCantDias.Size = new Size(55, 29);
-            txtCantDias.TabIndex = 58;
-            txtCantDias.TextAlign = HorizontalAlignment.Left;
-            txtCantDias.UseSystemPasswordChar = false;
             // 
             // txtCuotas
             // 
@@ -874,7 +865,7 @@
             txtCuotas.EnabledCalc = false;
             txtCuotas.Font = new Font("Segoe UI", 9F);
             txtCuotas.ForeColor = Color.Black;
-            txtCuotas.Location = new Point(77, 172);
+            txtCuotas.Location = new Point(78, 203);
             txtCuotas.MaxLength = 32767;
             txtCuotas.MultiLine = false;
             txtCuotas.Name = "txtCuotas";
@@ -905,7 +896,7 @@
             // 
             thunderLabel5.BackColor = Color.Transparent;
             thunderLabel5.ForeColor = Color.WhiteSmoke;
-            thunderLabel5.Location = new Point(5, 172);
+            thunderLabel5.Location = new Point(6, 203);
             thunderLabel5.Name = "thunderLabel5";
             thunderLabel5.Size = new Size(49, 29);
             thunderLabel5.TabIndex = 52;
@@ -954,22 +945,11 @@
             // 
             thunderLabel16.BackColor = Color.Transparent;
             thunderLabel16.ForeColor = Color.WhiteSmoke;
-            thunderLabel16.Location = new Point(157, 214);
+            thunderLabel16.Location = new Point(159, 173);
             thunderLabel16.Name = "thunderLabel16";
             thunderLabel16.Size = new Size(57, 25);
             thunderLabel16.TabIndex = 71;
             thunderLabel16.Text = "Hora hasta";
-            // 
-            // thunderLabel9
-            // 
-            thunderLabel9.BackColor = Color.Transparent;
-            thunderLabel9.Font = new Font("Segoe UI", 7F);
-            thunderLabel9.ForeColor = Color.WhiteSmoke;
-            thunderLabel9.Location = new Point(157, 172);
-            thunderLabel9.Name = "thunderLabel9";
-            thunderLabel9.Size = new Size(69, 36);
-            thunderLabel9.TabIndex = 57;
-            thunderLabel9.Text = "Cant. días max";
             // 
             // txtFechaHasta
             // 
@@ -1063,18 +1043,6 @@
             groupBox3.TabIndex = 62;
             groupBox3.TabStop = false;
             // 
-            // chkCuotaUnica
-            // 
-            chkCuotaUnica.AutoSize = true;
-            chkCuotaUnica.Enabled = false;
-            chkCuotaUnica.ForeColor = Color.White;
-            chkCuotaUnica.Location = new Point(85, 248);
-            chkCuotaUnica.Name = "chkCuotaUnica";
-            chkCuotaUnica.Size = new Size(90, 19);
-            chkCuotaUnica.TabIndex = 80;
-            chkCuotaUnica.Text = "Cuota única";
-            chkCuotaUnica.UseVisualStyleBackColor = true;
-            // 
             // FrmMembresiaAlta
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1149,8 +1117,6 @@
         private UserControls.UCAgregar ucAgregar1;
         private CheckBox chkLunes;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel10;
-        private ReaLTaiizor.Controls.AloneTextBox txtCantDias;
-        private ReaLTaiizor.Controls.ThunderLabel thunderLabel9;
         private ReaLTaiizor.Controls.AloneTextBox txtDireccion;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel11;
         private ReaLTaiizor.Controls.AloneTextBox txtTelefono;

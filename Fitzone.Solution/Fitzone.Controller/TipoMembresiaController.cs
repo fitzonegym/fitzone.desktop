@@ -67,7 +67,7 @@ namespace Fitzone.Controller
                 actualizar.idActividad = entidad.idActividad;
                 actualizar.cantidadCuotas = entidad.cantidadCuotas;
                 actualizar.cuotaUnica = entidad.cuotaUnica;
-                actualizar.cantidadDiasSemanales = entidad.cantidadDiasSemanales;
+                //actualizar.cantidadDiasSemanales = entidad.cantidadDiasSemanales;
                 actualizar.cupoClase = entidad.cupoClase;
                 actualizar.descripcion = entidad.descripcion;
 

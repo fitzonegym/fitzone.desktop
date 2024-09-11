@@ -69,7 +69,7 @@ namespace Fitzone.EF.Migrations
 									   ('EmpresaInicioActividades','01/01/2018'),
 									   ('EmpresaNombre','FIT-ZONE'),
 									   ('EmpresaDireccion','SAN JERONIMO 684'),
-									   ('EmpresaTelefono','3516175680')
+									   ('EmpresaTelefono','3516175680'),
 									   ('EmpresaMail','fitzone@gmail.com')
 									   
                             GO
@@ -117,7 +117,7 @@ namespace Fitzone.EF.Migrations
                           GO	
 						  
 						    INSERT INTO [dbo].[TipoMembresia]
-								(nombre, descripcion, precioTotal, cantidadCuotas, cantidadDiasSemanales, 
+								(nombre, descripcion, precioTotal, cantidadCuotas, 
 								diasHabilitados,
 								horadesde, horahasta, idActividad, idInstructor,cupoClase, cuotaUnica)
 							VALUES
@@ -126,7 +126,7 @@ namespace Fitzone.EF.Migrations
 								 'Pase Full Todos Los Dias A Cualquier Hora Para Musculación',
 								 15000,
 								 1,
-								 6,
+								 
 								 '[lunes,martes,miercoles,jueves,viernes,sabado]'
 								 ,'20000101 00:00:00'
 								 ,'20000101 23:59:59'
@@ -139,7 +139,7 @@ namespace Fitzone.EF.Migrations
 								 'Pase Libre Musculación X 3 Dias A La Semana - Cualquier Dia',
 								 36000,
 								 3,
-								 3,
+								 
 								 '[lunes,martes,miercoles,jueves,viernes,sabado]'								 
 								 ,'20000101 00:00:00'
 								 ,'20000101 23:59:59'
@@ -152,7 +152,7 @@ namespace Fitzone.EF.Migrations
 								'Zumba 3 Dias A La Semana - Pase Por Un Año',
 								 120000,
 								 12,
-								 3,
+								 
 								 '[lunes,miercoles,viernes]'
 								  ,'20000101 20:00:00'
 								 ,'20000101 21:00:00'
@@ -166,7 +166,7 @@ namespace Fitzone.EF.Migrations
 								'Pilates 3 Dias A La Semana - Pase Por 6 Meses',
 								 90000,
 								 12,
-								 3,
+								 
 								 '[martes,jueves,viernes]'
 								  ,'20000101 19:00:00'
 								 ,'20000101 20:30:00'

@@ -20,7 +20,7 @@ namespace Fitzone.Entidades
 
         public int cantidadCuotas { get; set; }
 
-        public int cantidadDiasSemanales { get; set; }
+        //public int cantidadDiasSemanales { get; set; }
 
         public string diasHabilitados { get; set; } = "";
 
