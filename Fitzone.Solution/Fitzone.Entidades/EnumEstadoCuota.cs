@@ -14,7 +14,8 @@ namespace Fitzone.Entidades
         Cuota_vencida = 3,
         Membresía_deshabilitada = 4,
         No_se_encontró_la_membresía = 5,
-        Fuera_de_horario_o_día = 6
+        Fuera_de_día_horario = 6,
+        Salida = 7
 
     }
 }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fitzone.Entidades
 {
@@ -13,11 +8,20 @@ namespace Fitzone.Entidades
         [Key]
         public int idIngresos {  get; set; }        
         public DateTime Entrada { get; set; }
-        public DateTime Salida { get; set; }
-        public int idMembresia { get; set; }        
-        public List<Membresia> Membresias { get; set; }
+        public DateTime? Salida { get; set; }        
+        public int? idMembresia { get; set; }        
 
-        
+        //public List<Membresia>? Membresias { get; set; }        
+        public bool IngresoAceptado { get; set; }
+        public string? documento { get; set; }
+        //[ForeignKey("Socio")]
+        public int? idSocio { get; set; }        
+
+        [MaxLength(250)]
+        public string? detalle { get; set; }
+
+        [NotMapped]
+        public VerificarEstadoCuotaResponse respuesta { get; set; }
 
     }
 }

@@ -205,12 +205,25 @@ namespace Fitzone.Controller
                 throw;
             }
         }
-        public VerificarEstadoCuotaResponse VerificarEstadoCuota(string dni, DateTime fechaHoy)
+        public Ingresos VerificarEstadoCuota(string dni, DateTime fechaHoy)
         {
+            /*
+                public int idIngresos {  get; set; }        
+                public DateTime Entrada { get; set; }
+                public DateTime Salida { get; set; }
+                public int idMembresia { get; set; }        
+                public List<Membresia> Membresias { get; set; }        
+                public bool IngresoAceptado { get; set; }
+             */
+            Ingresos ingresos = new Ingresos();          
+            ingresos.Entrada = fechaHoy;
+            ingresos.Salida = null;
+            ingresos.documento = dni;
 
-            Color rojo = Color.Red, amarillo = Color.Yellow, verde = Color.Green;
+            Color rojo = Color.Red, amarillo = Color.Yellow, verde = Color.Green, gris = Color.Gray;
 
-            VerificarEstadoCuotaResponse respuesta = new VerificarEstadoCuotaResponse();
+            ingresos.respuesta = new VerificarEstadoCuotaResponse();
+            ingresos.IngresoAceptado = false;
 
             var socio = contexto.Socio
               .FirstOrDefault(s => s.anulado == false && s.numeroDocumento == dni);
@@ -218,12 +231,29 @@ namespace Fitzone.Controller
 
             if (socio == null)
             {
-                respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.No_se_encontró_el_socio;
-                respuesta.Color = rojo;
-                return respuesta;
+                ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.No_se_encontró_el_socio;
+                ingresos.respuesta.Color = rojo;                
+                return ingresos;
             }
 
-            respuesta.nombreSocio = socio.NombreCompleto;
+            ingresos.idSocio = socio.idSocio;
+            ingresos.respuesta.nombreSocio = socio.NombreCompleto;
+
+
+            //si es salida, no hago nada mas
+            var UltimaEntrada = new IngresosController().GetUltimoIngreso(socio.idSocio);
+            if (UltimaEntrada != null && UltimaEntrada.Salida == null)
+            {
+                ingresos.Salida = fechaHoy;
+                ingresos.idIngresos = UltimaEntrada.idIngresos;
+                //caso exitoso
+                ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Salida;
+                ingresos.respuesta.actividades = "-";
+                ingresos.respuesta.Color = gris;
+
+                return ingresos;
+            }
+
 
             MembresiaController membresiaController = new MembresiaController();
 
@@ -231,18 +261,18 @@ namespace Fitzone.Controller
             var membresias = membresiaController.GetByIdSocioFecha(socio.idSocio, fechaHoy);
             if (membresias == null || membresias.Count == 0)
             {
-                respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.No_se_encontró_la_membresía;
-                respuesta.Color = rojo;
-                return respuesta;
+                ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.No_se_encontró_la_membresía;
+                ingresos.respuesta.Color = rojo;                
+                return ingresos;
             }
 
             //membresias en la fecha establecida y activas
             var membresiasActivas = membresias.Where(m => m.idEstadoMembresia == 1).ToList();
             if (membresiasActivas == null || membresiasActivas.Count == 0)
             {
-                respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Membresía_deshabilitada;
-                respuesta.Color = rojo;
-                return respuesta;                
+                ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Membresía_deshabilitada;
+                ingresos.respuesta.Color = rojo;
+                return ingresos;                
             }
 
             string diaDeLaSemana = Statics.DiaDeLaSemanaEnEspañol(fechaHoy);
@@ -258,12 +288,12 @@ namespace Fitzone.Controller
                 ).ToList();
             if (membresiasDentroHorarioDia == null || membresiasDentroHorarioDia.Count == 0)
             {
-                respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Fuera_de_horario_o_día;
-                respuesta.Color = rojo;
+                ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Fuera_de_horario_o_día;
+                ingresos.respuesta.Color = rojo;
 
-                respuesta.actividades = GetTextoActividades(socio.idSocio,fechaHoy);
+                ingresos.respuesta.actividades = GetTextoActividades(socio.idSocio,fechaHoy);
 
-                return respuesta;
+                return ingresos;
             }
 
             //membresias en la fecha establecida / activas / en horario
@@ -271,9 +301,10 @@ namespace Fitzone.Controller
             TipoMembresiaController tipoMembresiaController = new TipoMembresiaController();
 
             bool encontroMembresia = false;
-            respuesta.actividades = "";
+            ingresos.respuesta.actividades = "";
             /////////////filtro las que estan sin pagar///////////////
-            foreach (var itemMembresia in membresiasDentroHorarioDia)
+            
+            foreach (var itemMembresia in membresiasDentroHorarioDia.OrderBy(i=>i.horadesde))
             {
                 var cuota = cuotaController.GetAllByIdMembresiaFechaPagada(itemMembresia.idMembresia, fechaHoy);
                 //si al menos encuentra una cuota vigente y pagada
@@ -289,7 +320,12 @@ namespace Fitzone.Controller
                     //caso exitoso
                     encontroMembresia = true;
                     var tipo = tipoMembresiaController.GetById(itemMembresia.idTipoMembresia);
-                    respuesta.actividades += tipo.ActividadNombre + " " + itemMembresia.horadesde + " -> "  + itemMembresia.horaHasta+  " | Vencimiento: " + venc +  "\n ";
+                    ingresos.respuesta.actividades += tipo.ActividadNombre + " " + itemMembresia.horadesde + " -> "  + itemMembresia.horaHasta+  " | Vencimiento: " + venc +  "\n ";
+
+                    //agrego las membresias validas
+                    ///lo ordeno por hora desde desc asi la ultima que toma sera un tipo que 
+                    ///no sea de 00 a 23.59 (una clase de spinning por ejemplo)
+                    ingresos.idMembresia = tipo.idTipoMembresia;
 
                 }
             }
@@ -297,20 +333,22 @@ namespace Fitzone.Controller
             ///////////// no tiene cuotas vigentes
             if (!encontroMembresia)
             {             
-                respuesta.Color = rojo;
-                respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Cuota_vencida;
-                respuesta.actividades = GetTextoActividades(socio.idSocio, fechaHoy);
+                ingresos.respuesta.Color = rojo;
+                ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Cuota_vencida;
+                ingresos.respuesta.actividades = GetTextoActividades(socio.idSocio, fechaHoy);
 
-                return respuesta;
+                return ingresos;
                 
             }
 
             //caso exitoso
-            respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Cuota_al_dia;
-            respuesta.actividades = respuesta.actividades.Remove(respuesta.actividades.Length - 2);
-            respuesta.Color = verde;
+            ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Cuota_al_dia;
+            ingresos.respuesta.actividades = ingresos.respuesta.actividades.Remove(ingresos.respuesta.actividades.Length - 2);
+            ingresos.respuesta.Color = verde;
 
-            return respuesta;
+            ingresos.IngresoAceptado = true;
+
+            return ingresos;
         }
 
         private string GetTextoActividades(int idSocio, DateTime fechaHoy)

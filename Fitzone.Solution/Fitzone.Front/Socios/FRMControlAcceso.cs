@@ -1,4 +1,5 @@
 ﻿using Fitzone.Controller;
+using Fitzone.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -104,6 +105,7 @@ namespace Fitzone.Front.Socios
         private void FRMIngresosRegistrar_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            txtNroDoc.Text = "";
             timer1.Start();
         }
 
@@ -143,20 +145,38 @@ namespace Fitzone.Front.Socios
 
         private void Buscar()
         {
+
+            if (txtNroDoc.Text.Trim().Length < 8)
+            {
+                lblMensaje.Text = "Ingrese un nro de documento correcto";
+                lblActividad.Text = "";
+                lblNombre.Text = "";
+                lblMensaje.BackColor = Color.Red;
+                return;
+            }
+
+
             DateTime hoy = txtFecha.Value;
 
-            SocioController socioController = new SocioController();
+            SocioController socioController = new SocioController();            
 
-            string actividades = "";
-            string vencimientos = "";
-            string nombre = "";
+            Ingresos ingreso = socioController.VerificarEstadoCuota(txtNroDoc.Text,hoy);
 
-            var respuesta = socioController.VerificarEstadoCuota(txtNroDoc.Text,hoy);
+            if (ingreso.Salida == null)
+            {
+                new IngresosController().Insert(ingreso);
+            }
+            else 
+            {
+                new IngresosController().UpdateSalida(ingreso,ingreso.idIngresos);
+            }
 
-            lblMensaje.Text = respuesta.EnumEstadoCuotaSocio.ToString().Replace('_',' ');
-            lblActividad.Text = respuesta.actividades ?? "No encontrado";
-            lblNombre.Text = respuesta.nombreSocio ?? "No encontrado";
-            lblMensaje.BackColor = respuesta.Color;
+            lblMensaje.Text = ingreso.respuesta.EnumEstadoCuotaSocio.ToString().Replace('_',' ');
+            lblActividad.Text = ingreso.respuesta.actividades ?? "No encontrado";
+            lblNombre.Text = ingreso.respuesta.nombreSocio ?? "No encontrado";
+            lblMensaje.BackColor = ingreso.respuesta.Color;
+
+            txtNroDoc.Text = "";
         }
 
         private void FRMIngresosRegistrar_KeyPress(object sender, KeyPressEventArgs e)

@@ -1,1 +1,2 @@
 ﻿-cuando esta todo bieni con la cuota que muestre el vencimiento que sigue
+-estado de membresias, anulaciones

@@ -58,7 +58,6 @@
             Tipo = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             precioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             fechaDesdeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -219,7 +218,7 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.FromArgb(81, 45, 168);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idMembresiaDataGridViewTextBoxColumn, Tipo, dataGridViewTextBoxColumn5, precioDataGridViewTextBoxColumn, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn2, fechaDesdeDataGridViewTextBoxColumn, fechaHastaDataGridViewTextBoxColumn, horadesdeDataGridViewTextBoxColumn, horaHastaDataGridViewTextBoxColumn, estadoMembresiaDataGridViewTextBoxColumn, dataGridViewTextBoxColumn1 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idMembresiaDataGridViewTextBoxColumn, Tipo, dataGridViewTextBoxColumn5, precioDataGridViewTextBoxColumn, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn2, fechaDesdeDataGridViewTextBoxColumn, fechaHastaDataGridViewTextBoxColumn, horadesdeDataGridViewTextBoxColumn, horaHastaDataGridViewTextBoxColumn, estadoMembresiaDataGridViewTextBoxColumn, dataGridViewTextBoxColumn1 });
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.GridColor = SystemColors.InfoText;
             dataGridView1.Location = new Point(12, 146);
@@ -497,14 +496,6 @@
             precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
             precioDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "cantidadDiasSemanales";
-            dataGridViewTextBoxColumn3.HeaderText = "Cant Dias";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
-            dataGridViewTextBoxColumn3.Width = 50;
-            // 
             // dataGridViewTextBoxColumn4
             // 
             dataGridViewTextBoxColumn4.DataPropertyName = "diasHabilitados";
@@ -639,7 +630,6 @@
         private DataGridViewTextBoxColumn Tipo;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn fechaDesdeDataGridViewTextBoxColumn;

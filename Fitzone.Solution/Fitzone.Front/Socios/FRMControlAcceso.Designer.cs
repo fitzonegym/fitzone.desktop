@@ -186,7 +186,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 6.697585F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 11.6851482F));
             tableLayoutPanel1.Size = new Size(1904, 1065);
-            tableLayoutPanel1.TabIndex = 40;            
+            tableLayoutPanel1.TabIndex = 40;
             tableLayoutPanel1.MouseDown += tableLayoutPanel1_MouseDown;
             // 
             // panel5
@@ -239,9 +239,8 @@
             label6.ForeColor = Color.White;
             label6.Location = new Point(68, 93);
             label6.Name = "label6";
-            label6.Size = new Size(177, 13);
+            label6.Size = new Size(0, 13);
             label6.TabIndex = 49;
-            label6.Text = "Presione [Espacio] para comenzar";
             label6.TextAlign = ContentAlignment.TopCenter;
             // 
             // lblNombre
@@ -296,9 +295,9 @@
             label4.ForeColor = Color.White;
             label4.Location = new Point(6, 14);
             label4.Name = "label4";
-            label4.Size = new Size(138, 28);
+            label4.Size = new Size(271, 28);
             label4.TabIndex = 42;
-            label4.Text = "Ingrese su DNI";
+            label4.Text = "Ingrese su nro. de documento";
             label4.TextAlign = ContentAlignment.TopCenter;
             // 
             // txtNroDoc
@@ -433,9 +432,8 @@
             txtFecha.ShowUpDown = true;
             txtFecha.Size = new Size(113, 23);
             txtFecha.TabIndex = 47;
-            
             // 
-            // FRMIngresosRegistrar
+            // FRMControlAcceso
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -448,7 +446,7 @@
             Controls.Add(ucBordertd1);
             FormBorderStyle = FormBorderStyle.None;
             KeyPreview = true;
-            Name = "FRMIngresosRegistrar";
+            Name = "FRMControlAcceso";
             Text = "FRMIngresosRegistrar";
             Load += FRMIngresosRegistrar_Load;
             KeyPress += FRMIngresosRegistrar_KeyPress;

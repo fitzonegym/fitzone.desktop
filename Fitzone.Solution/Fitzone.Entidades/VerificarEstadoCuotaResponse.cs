@@ -13,6 +13,7 @@ namespace Fitzone.Entidades
         public string vencimientos { get; set; }
         public string nombreSocio { get; set; }
         public EnumEstadoCuotaSocio EnumEstadoCuotaSocio { get; set; } 
-        public Color Color { get; set; }    
+        public Color Color { get; set; }        
+
     }
 }

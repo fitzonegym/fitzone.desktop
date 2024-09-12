@@ -21,6 +21,8 @@ namespace Fitzone.EF
         public DbSet<InstructorActividad> InstructorActividad { get; set; }
         public DbSet<Factura> Factura { get; set; }
         public DbSet<DetalleFactura> DetalleFactura { get; set; }
+
+        public DbSet<Ingresos> Ingresos { get; set; }
         public DbSet<Configuraciones> Configuraciones { get; set; }
 
         public Contexto() { }
