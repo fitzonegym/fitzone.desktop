@@ -288,7 +288,7 @@ namespace Fitzone.Controller
                 ).ToList();
             if (membresiasDentroHorarioDia == null || membresiasDentroHorarioDia.Count == 0)
             {
-                ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Fuera_de_horario_o_día;
+                ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Fuera_de_día_horario;
                 ingresos.respuesta.Color = rojo;
 
                 ingresos.respuesta.actividades = GetTextoActividades(socio.idSocio,fechaHoy);

@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using IContainer = QuestPDF.Infrastructure.IContainer;
 using System.Diagnostics;
 using ReaLTaiizor.Controls;
+using Fitzone.Front.Membresias;
 
 
 namespace Fitzone.Front.Socios
@@ -98,7 +99,7 @@ namespace Fitzone.Front.Socios
         }
         private void VisibleBotones(bool visible)
         {
-            btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnAnular.Visible = btnConsultar.Visible = btnCuota.Visible = visible;
+            btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnMembresía.Visible = btnConsultar.Visible = btnCuota.Visible = visible;
         }
 
         private void LimpiarFiltros()
@@ -198,7 +199,7 @@ namespace Fitzone.Front.Socios
         }
 
         private void cyberButton1_Click(object sender, EventArgs e)
-        {       
+        {
 
             FrmSociosAlta frmSociosAlta = new FrmSociosAlta();
             frmSociosAlta._EnumModoForm = EnumModoForm.Alta;
@@ -233,11 +234,7 @@ namespace Fitzone.Front.Socios
             CargarGrilla();
         }
 
-        private void BtnAnular_Click(object sender, EventArgs e)
-        {
-            new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
-            return;
-        }
+
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -584,6 +581,26 @@ namespace Fitzone.Front.Socios
             frm._idSocio = ((Socio)bindingSource1.Current).idSocio;
             frm.ShowDialog();
 
+        }
+
+        private void BtnMembresía_Click(object sender, EventArgs e)
+        {
+
+            var socio = bindingSource1.Current as Socio;
+
+            if (socio == null)
+            {
+                return;
+            }
+
+
+            FrmMembresiaAlta frm = new FrmMembresiaAlta();
+            frm._EnumModoForm = EnumModoForm.Alta;
+            frm._id_membresia = 0;
+            frm.SetSocio(socio);
+            frm.ShowDialog();
+            
+            
         }
     }
 }

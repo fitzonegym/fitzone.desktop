@@ -140,7 +140,7 @@
             ucTituloLabel1.BackColor = Color.FromArgb(103, 58, 183);
             ucTituloLabel1.Location = new Point(8, 5);
             ucTituloLabel1.Name = "ucTituloLabel1";
-            ucTituloLabel1.Size = new Size(165, 34);
+            ucTituloLabel1.Size = new Size(174, 34);
             ucTituloLabel1.TabIndex = 43;
             // 
             // txtNombre

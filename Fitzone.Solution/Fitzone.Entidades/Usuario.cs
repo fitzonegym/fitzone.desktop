@@ -1,0 +1,33 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Fitzone.Entidades
+{
+    public class Usuario
+    {
+
+        [Key]
+        public int idUsuario { get; set; }
+        [MaxLength(50)]
+        public string Nombre { get; set; }
+        [MaxLength(50)]
+        public string Apellido { get; set; }
+        [MaxLength(50)]
+        public string NombreUsuario { get; set; }        
+        [MaxLength(256)] // Ampliar para almacenar hash
+        public string Password { get; set; }
+        public DateTime FechaAlta { get; set; } 
+      
+        public int idPerfil { get; set; }   
+        /*
+         1-admin
+            hace todo
+         2-control accesos
+            solo se puede abrir el control de accesos
+         3-operador
+            todo menos configuraciones y reportes
+         4-director
+            todo 
+         */
+    }
+
+}

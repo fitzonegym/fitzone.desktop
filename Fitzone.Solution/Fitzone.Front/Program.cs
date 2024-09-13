@@ -2,6 +2,7 @@ using Fitzone.Front.Instructores;
 using Fitzone.Front.Login;
 using Fitzone.Front.Membresias;
 using Fitzone.Front.Socios;
+using Fitzone.Front.Usuarios;
 using QuestPDF.Infrastructure;
 
 namespace Fitzone.Front
@@ -19,6 +20,9 @@ namespace Fitzone.Front
             //Application.Run(new FrmSociosAlta());
             //Application.Run(new FrmPagarCuota());
 
+            //                  USUARIOS
+            //Application.Run(new FrmUsuariosAlta());
+
             //              MEMBRESIAS
             //Application.Run(new FrmMembresiaAdmin());            
             //Application.Run(new FrmMembresiaAlta());
@@ -30,12 +34,12 @@ namespace Fitzone.Front
             //Application.Run(new FRMIngresosRegistrar());
 
             //          INSTRUCTORES
-            Application.Run(new FrmInstructoresAdmin());
+            //Application.Run(new FrmInstructoresAdmin());
             //Application.Run(new FrmInstructoresAlta());
 
             //          MENU PRINCIPAL           
             //Application.Run(new FrmContenedorPrincipal());
-            //Application.Run(new FrmLogin());
+            Application.Run(new FrmLogin());
 
 
         }

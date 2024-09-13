@@ -3,6 +3,7 @@ using Fitzone.Entidades;
 using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
 using Fitzone.Front.Socios;
+using Fitzone.Front.UserControls;
 using Microsoft.EntityFrameworkCore.Design.Internal;
 using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics.Eventing.Reader;
@@ -91,7 +92,7 @@ namespace Fitzone.Front.Membresias
 
             txtFechaDesde.Value = Statics.DateTimeNowSinHora();
 
-            LimpiarControles();
+            //LimpiarControles();
 
             RefreshTipoMembresia();
 
@@ -99,6 +100,8 @@ namespace Fitzone.Front.Membresias
 
             if (_EnumModoForm == EnumModoForm.Consulta)
             {
+                ucTituloLabel1._titulo = "Consultar Membresía";
+
                 btnAceptar.Enabled = false; 
                 Cargar();
                 cmbTipoMembresia.EnabledCalc = false;
@@ -198,6 +201,22 @@ namespace Fitzone.Front.Membresias
             }
 
         }
+
+        public void SetSocio(Socio socio)
+        {
+            
+            _Socio = socio;
+
+            if (_Socio != null)
+            {
+                txtNombre.Text = _Socio.nombre;
+                txtApellido.Text = _Socio.apellido;
+                txtDocumento.Text = _Socio.numeroDocumento;
+                txtTelefono.Text = _Socio.telefono1;
+                txtDireccion.Text = _Socio.calle + " " + _Socio.calleNumero;
+            }
+        }
+
         private void CargarTipos()
         {
             TipoMembresiaController membresiaController = new TipoMembresiaController();

@@ -166,6 +166,7 @@ namespace Fitzone.Front
             FrmMembresiaAlta frm = new FrmMembresiaAlta();
             frm.TopMost = true;
             frm.MdiParent = this;
+            frm._EnumModoForm = EnumModoForm.Alta;
             panelPrincipal.Controls.Add(frm);
             frm.StartPosition = FormStartPosition.CenterParent;
             frm.Show();

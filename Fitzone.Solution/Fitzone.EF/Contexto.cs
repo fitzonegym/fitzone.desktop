@@ -13,16 +13,12 @@ namespace Fitzone.EF
         public DbSet<Membresia> Membresia { get; set; }
         public DbSet<Cuota> Cuota { get; set; }        
         public DbSet<Actividad> Actividad{ get; set; }
-        public DbSet<Instructor> Instructor { get; set; }        
-        //public DbSet<Equipamiento> Equipamiento { get; set; }        
-        //public DbSet<EquipamientoTipoMembresia> EquipamientoTipoMembresia { get; set; }
-        //public DbSet<EstadoEquipamiento> EstadoEquipamiento { get; set; }
-        //public DbSet<Marca> Marca { get; set; }
+        public DbSet<Instructor> Instructor { get; set; }
         public DbSet<InstructorActividad> InstructorActividad { get; set; }
         public DbSet<Factura> Factura { get; set; }
         public DbSet<DetalleFactura> DetalleFactura { get; set; }
-
-        public DbSet<Ingresos> Ingresos { get; set; }
+        public DbSet<Ingresos> Ingresos { get; set; }        
+        public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Configuraciones> Configuraciones { get; set; }
 
         public Contexto() { }

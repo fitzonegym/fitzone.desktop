@@ -1,15 +1,26 @@
-using Fitzone.Controller;
+ï»¿using Fitzone.Controller;
+using Fitzone.Entidades;
+using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
-namespace Fitzone.Front.Login
+namespace Fitzone.Front.Usuarios
 {
-    public partial class FrmLogin : Form
+    public partial class FrmUsuariosAlta : Form
     {
-        public FrmLogin()
+        Usuario _usuario;
+        public FrmUsuariosAlta()
         {
             InitializeComponent();
         }
-
         #region redimensionar
 
         private const int HTLEFT = 10;
@@ -20,7 +31,7 @@ namespace Fitzone.Front.Login
         private const int HTBOTTOM = 15;
         private const int HTBOTTOMLEFT = 16;
         private const int HTBOTTOMRIGHT = 17;
-        private const int BORDER_SIZE = 15; // Tamaño de los bordes para redimensionar
+        private const int BORDER_SIZE = 15; // TamaÃ±o de los bordes para redimensionar
                                             //   // Funciones necesarias para permitir el movimiento del formulario
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
@@ -87,108 +98,64 @@ namespace Fitzone.Front.Login
 
         }
         #endregion
-
-
-        private void inicio_Click(object sender, EventArgs e)
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string NombreUsuario, password;
-
-            NombreUsuario = txtusuario.Text;
-            password = txtcontrasena.Text;            
-
-            if (String.IsNullOrWhiteSpace(NombreUsuario) || String.IsNullOrWhiteSpace(password))
-            {
-                new MessageBoxCustom("Ingrese el usuario y/o contraseña",Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();   
+            //listo para guardar
+            MessageBoxCustom msg = new MessageBoxCustom(Enumeraciones.EnumModoMessageBoxCustom.ConfirmaGuardar);
+            msg.ShowDialog();
+            if (msg.response == DialogResult.No)
                 return;
-            }  
 
-            UsuarioController usuarioController = new UsuarioController();
-            //usuarioController.VerificarContraseña(usuario)
+            UsuarioController controller = new UsuarioController();
 
-            var usuario = usuarioController.GetByName(NombreUsuario);
-            if (usuario == null)
+            try
             {
-                new MessageBoxCustom("Nombre de usuario no encontrado", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
-                return;
-            }
+                _usuario = new Usuario();
 
-            if (usuarioController.VerificarContraseña(password, usuario.Password))            
-            {
-                FrmContenedorPrincipal form2 = new FrmContenedorPrincipal();
-                this.Visible = false;
-                form2.ShowDialog();
+                _usuario.Nombre = txtNombre.Text;
+                _usuario.Apellido = txtApellido.Text;
+                _usuario.FechaAlta = DateTime.Now;
+                _usuario.NombreUsuario = txtUsuario.Text;
+                _usuario.Password = txtContraseÃ±a.Text;
 
+                switch (cmbPerfil.Text)
+                {
+                    case "Administrador":
+                        _usuario.idPerfil = 1;
+                        break;
+                    case "Operador":
+                        _usuario.idPerfil = 3;
+                        break;
+                    case "Gerente":
+                        _usuario.idPerfil = 4;
+                        break;
+                    default:
+                        _usuario.idPerfil = 1;
+                        break;
+                }
+
+                controller.Insert(_usuario);
+
+                new MessageBoxCustom(EnumModoMessageBoxCustom.DatosGuardadosCorrectamente).ShowDialog();
                 Close();
+
             }
-            else
+            catch (Exception ex)
             {
-                new MessageBoxCustom("Contraseña incorrecta", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+
                 return;
             }
-            
 
         }
 
-        private void btnlimpiar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            txtusuario.Text = "";
-            txtcontrasena.Text = "";
+            Close();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void FrmUsuariosAlta_Load(object sender, EventArgs e)
         {
-
+            cmbPerfil.SelectedIndex = 0;    
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            centrado();
-        }
-
-        private void centrado()
-        {
-
-            //obtenemos las dimensiones
-            int altura_forma = Height;
-            int anchura_forma = Width;
-            int altura_groupbox = panel1.Height;
-            int anchura_groupbox = panel1.Width;
-            //obtenemos la nueva posicion del groupBox1
-
-            int nueva_altura = (altura_forma - altura_groupbox) / 2;
-            int nueva_anchura = (anchura_forma - anchura_groupbox) / 2;
-
-            panel1.Location = new Point(nueva_anchura, nueva_altura);
-
-        }
-
-        private void Form1_Load_SizeChange(object sender, EventArgs e)
-        {
-            centrado();
-        }
-
-        private void txtusuario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                inicio_Click(null, null);
-                // Prevenir el sonido de beep
-                e.Handled = true;
-
-            }
-
-            if (e.KeyChar ==124)
-            {
-                txtusuario.Text = "admin";
-                txtcontrasena.Text = "admin";
-                inicio_Click(null, null);
-                // Prevenir el sonido de beep
-                e.Handled = true;
-
-            }
-
-        }
-
     }
 }

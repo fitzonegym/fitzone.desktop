@@ -31,7 +31,7 @@
         {
             components = new System.ComponentModel.Container();
             btnModificar = new ReaLTaiizor.Controls.CyberButton();
-            BtnAnular = new ReaLTaiizor.Controls.CyberButton();
+            BtnMembresía = new ReaLTaiizor.Controls.CyberButton();
             btnAgregar = new ReaLTaiizor.Controls.CyberButton();
             dataGridView1 = new DataGridView();
             idSocioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -125,47 +125,47 @@
             btnModificar.Timer_RGB = 300;
             btnModificar.Click += btnModificar_Click;
             // 
-            // BtnAnular
+            // BtnMembresía
             // 
-            BtnAnular.Alpha = 20;
-            BtnAnular.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            BtnAnular.BackColor = Color.Transparent;
-            BtnAnular.Background = true;
-            BtnAnular.Background_WidthPen = 4F;
-            BtnAnular.BackgroundPen = true;
-            BtnAnular.ColorBackground = Color.Black;
-            BtnAnular.ColorBackground_1 = Color.Black;
-            BtnAnular.ColorBackground_2 = Color.Gray;
-            BtnAnular.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
-            BtnAnular.ColorLighting = Color.FromArgb(81, 45, 168);
-            BtnAnular.ColorPen_1 = Color.Black;
-            BtnAnular.ColorPen_2 = Color.Gray;
-            BtnAnular.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            BtnAnular.Effect_1 = true;
-            BtnAnular.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
-            BtnAnular.Effect_1_Transparency = 25;
-            BtnAnular.Effect_2 = true;
-            BtnAnular.Effect_2_ColorBackground = Color.White;
-            BtnAnular.Effect_2_Transparency = 20;
-            BtnAnular.Font = new Font("Arial", 11F);
-            BtnAnular.ForeColor = Color.FromArgb(245, 245, 245);
-            BtnAnular.Lighting = false;
-            BtnAnular.LinearGradient_Background = false;
-            BtnAnular.LinearGradientPen = false;
-            BtnAnular.Location = new Point(405, 428);
-            BtnAnular.Name = "BtnAnular";
-            BtnAnular.PenWidth = 15;
-            BtnAnular.Rounding = true;
-            BtnAnular.RoundingInt = 70;
-            BtnAnular.Size = new Size(99, 40);
-            BtnAnular.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            BtnAnular.TabIndex = 22;
-            BtnAnular.Tag = "Cyber";
-            BtnAnular.TextButton = "Anular";
-            BtnAnular.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            BtnAnular.Timer_Effect_1 = 5;
-            BtnAnular.Timer_RGB = 300;
-            BtnAnular.Click += BtnAnular_Click;
+            BtnMembresía.Alpha = 20;
+            BtnMembresía.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BtnMembresía.BackColor = Color.Transparent;
+            BtnMembresía.Background = true;
+            BtnMembresía.Background_WidthPen = 4F;
+            BtnMembresía.BackgroundPen = true;
+            BtnMembresía.ColorBackground = Color.Black;
+            BtnMembresía.ColorBackground_1 = Color.Black;
+            BtnMembresía.ColorBackground_2 = Color.Gray;
+            BtnMembresía.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            BtnMembresía.ColorLighting = Color.FromArgb(81, 45, 168);
+            BtnMembresía.ColorPen_1 = Color.Black;
+            BtnMembresía.ColorPen_2 = Color.Gray;
+            BtnMembresía.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            BtnMembresía.Effect_1 = true;
+            BtnMembresía.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            BtnMembresía.Effect_1_Transparency = 25;
+            BtnMembresía.Effect_2 = true;
+            BtnMembresía.Effect_2_ColorBackground = Color.White;
+            BtnMembresía.Effect_2_Transparency = 20;
+            BtnMembresía.Font = new Font("Arial", 10F);
+            BtnMembresía.ForeColor = Color.FromArgb(245, 245, 245);
+            BtnMembresía.Lighting = false;
+            BtnMembresía.LinearGradient_Background = false;
+            BtnMembresía.LinearGradientPen = false;
+            BtnMembresía.Location = new Point(405, 428);
+            BtnMembresía.Name = "BtnMembresía";
+            BtnMembresía.PenWidth = 15;
+            BtnMembresía.Rounding = true;
+            BtnMembresía.RoundingInt = 70;
+            BtnMembresía.Size = new Size(99, 40);
+            BtnMembresía.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            BtnMembresía.TabIndex = 22;
+            BtnMembresía.Tag = "Cyber";
+            BtnMembresía.TextButton = "Agregar Membresía";
+            BtnMembresía.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            BtnMembresía.Timer_Effect_1 = 5;
+            BtnMembresía.Timer_RGB = 300;
+            BtnMembresía.Click += BtnMembresía_Click;
             // 
             // btnAgregar
             // 
@@ -850,7 +850,7 @@
             Controls.Add(ucBorderlr1);
             Controls.Add(ucTituloLabel1);
             Controls.Add(btnModificar);
-            Controls.Add(BtnAnular);
+            Controls.Add(BtnMembresía);
             Controls.Add(btnAgregar);
             Controls.Add(botonesForms2);
             Controls.Add(dataGridView1);
@@ -882,7 +882,7 @@
         private ReaLTaiizor.Controls.CyberButton btnFiltrar;
         private DataGridView dataGridView1;
         private ReaLTaiizor.Controls.CyberButton btnModificar;
-        private ReaLTaiizor.Controls.CyberButton BtnAnular;
+        private ReaLTaiizor.Controls.CyberButton BtnMembresía;
         private ReaLTaiizor.Controls.CyberButton btnAgregar;
         private UserControls.UCTituloLabel ucTituloLabel1;
         private UserControls.UCBorderLR ucBorderlr1;
