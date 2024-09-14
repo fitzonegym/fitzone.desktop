@@ -185,7 +185,7 @@ namespace Fitzone.EF.Migrations
 								('Control Accesos', 'Control Accesos', 'control', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'control'), 2), GETDATE(), 2),
 								('Roman', 'Roman', 'roman', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'roman'), 2), GETDATE(), 3),
 								('Abril', 'Abril', 'abril', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'abril'), 2), GETDATE(), 3),
-								('Paola', 'Paola', 'paola', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'paola'), 2), GETDATE(), 3);
+								('Paola', 'Paola', 'paola', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'paola'), 2), GETDATE(), 3),
 								('Juan', 'Lopez', 'director', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'director'), 2), GETDATE(), 4);
 
 								GO						  

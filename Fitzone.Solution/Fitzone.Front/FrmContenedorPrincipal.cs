@@ -134,10 +134,14 @@ namespace Fitzone.Front
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {        
+
+
             FrmSociosAlta frm = new FrmSociosAlta();
+            frm._id_socio = 0;
             frm.TopMost = true;
             frm.MdiParent = this;
+            frm._EnumModoForm = EnumModoForm.Alta;
             panelPrincipal.Controls.Add(frm);
             frm.StartPosition = FormStartPosition.CenterParent;
 
