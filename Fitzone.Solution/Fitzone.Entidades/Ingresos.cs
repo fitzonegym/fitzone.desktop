@@ -8,10 +8,11 @@ namespace Fitzone.Entidades
         [Key]
         public int idIngresos {  get; set; }        
         public DateTime Entrada { get; set; }
-        public DateTime? Salida { get; set; }        
-        public int? idMembresia { get; set; }        
+        public DateTime? Salida { get; set; }
 
-        //public List<Membresia>? Membresias { get; set; }        
+        [ForeignKey("Membresia")]
+        public int? idMembresia { get; set; }        
+        public Membresia Membresia { get; set; }        
         public bool IngresoAceptado { get; set; }
         public string? documento { get; set; }
         //[ForeignKey("Socio")]

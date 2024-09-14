@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Fitzone.Entidades
 {
@@ -17,7 +18,9 @@ namespace Fitzone.Entidades
         public string Password { get; set; }
         public DateTime FechaAlta { get; set; } 
       
+        [ForeignKey("Perfil")]
         public int idPerfil { get; set; }   
+        public Perfil Perfil { get; set; }  
         /*
          1-admin
             hace todo

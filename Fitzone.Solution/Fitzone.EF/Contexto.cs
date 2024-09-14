@@ -20,6 +20,7 @@ namespace Fitzone.EF
         public DbSet<Ingresos> Ingresos { get; set; }        
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Configuraciones> Configuraciones { get; set; }
+        public DbSet<Perfil> Perfil { get; set; }
 
         public Contexto() { }
 

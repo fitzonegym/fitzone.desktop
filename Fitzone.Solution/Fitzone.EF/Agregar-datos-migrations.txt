@@ -178,6 +178,15 @@ namespace Fitzone.EF.Migrations
 						
 							GO
 
+							INSERT INTO Perfil (nombre)
+							VALUES 
+								('Administrador'),
+								('Control Accesos'),
+								('Operador'),
+								('Gerente')
+
+
+							go
 
 							INSERT INTO Usuario (Nombre, Apellido, NombreUsuario, Password, FechaAlta, idPerfil)
 							VALUES 
