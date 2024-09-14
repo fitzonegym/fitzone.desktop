@@ -120,5 +120,28 @@ namespace Fitzone.Front
             // Formatear la fecha para mostrar solo el mes completo y el año
             return fecha.ToString("MMMM yyyy", cultura);
         }
+        public static Stream ImageToStream(Image image)
+        {
+            // Crear un MemoryStream para almacenar la imagen
+            MemoryStream ms = new MemoryStream();
+
+            // Guardar la imagen en el MemoryStream en formato JPEG (puedes cambiar el formato si es necesario)
+            image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            // Retornar el stream
+            return ms;
+        }
+
+        public static byte[] ImageToByteArray(Image image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // Guardar la imagen en el MemoryStream en formato JPEG (puedes cambiar el formato si es necesario)
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                // Devolver el array de bytes desde el MemoryStream
+                return ms.ToArray();
+            }
+        }
     }
 }

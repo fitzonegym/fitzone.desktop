@@ -37,10 +37,11 @@ public class FacturaDocument : IDocument
 
     void ComposeHeader(IContainer container)
     {
-        string imagePath = "D:\\Fitzone\\fitzone.desktop\\Fitzone.Solution\\Fitzone.Front\\Imagenes\\logo-factura.png"; // Actualiza 
+        System.Drawing.Image im = Fitzone.Front.Properties.Resources.logo_factura;
+        var logo = Fitzone.Front.Statics.ImageToByteArray(im);        
 
         int size_font = 10;
-
+        
         container
             .Border(1)
             .Row(row =>
@@ -67,7 +68,7 @@ public class FacturaDocument : IDocument
                         col.Item().Text(spaces+"Factura").AlignStart();
                         col.Item().Text(spaces+"  C").AlignStart().FontSize(16);
                     });
-                    row.ConstantItem(150).Image(imagePath).FitArea();//logo  
+                    row.ConstantItem(150).Image(logo).FitArea();//logo  
                 });
     }
 

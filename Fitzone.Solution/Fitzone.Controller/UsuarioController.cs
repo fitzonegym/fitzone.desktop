@@ -75,7 +75,7 @@ namespace Fitzone.Controller
             string hashIngresado = new UsuarioController().HashPassword(contraseñaIngresada);
 
             // Comparamos el hash ingresado con el hash almacenado
-            return hashIngresado == contraseñaAlmacenada;
+            return hashIngresado.ToUpper() == contraseñaAlmacenada;
         }
 
         public bool Update(Usuario entidad, int id)

@@ -291,8 +291,9 @@ namespace Fitzone.Front.Socios
             // Datos de ejemplo para la tabla
             var data = _listaSocios;
             // Ruta de la imagen para el encabezado
-            string imagePath = "D:\\Fitzone\\fitzone.desktop\\Fitzone.Solution\\Fitzone.Front\\Imagenes\\logo2.png"; // Actualiza esta ruta con la ubicación de tu imagen
 
+            System.Drawing.Image im = Fitzone.Front.Properties.Resources.logo3;
+            var logo = Fitzone.Front.Statics.ImageToByteArray(im);
 
             // Crear el documento PDF
             Document.Create(document =>
@@ -308,7 +309,7 @@ namespace Fitzone.Front.Socios
                     page.Header()
                     .Background(Colors.White) // Asegurar que el fondo del encabezado sea blanco
                     .Padding(5)
-                    .Element(ComposeHeader(imagePath, filtrosAplicados));
+                    .Element(ComposeHeader(logo, filtrosAplicados));
 
                     /*page.Header()                    
                         .Text("Informe de Socios")
@@ -388,7 +389,7 @@ namespace Fitzone.Front.Socios
             }
         }
 
-        static Action<IContainer> ComposeHeader(string imagePath, string filtrosAplicados)
+        static Action<IContainer> ComposeHeader(byte[] imagePath, string filtrosAplicados)
         {
             return container =>
             {

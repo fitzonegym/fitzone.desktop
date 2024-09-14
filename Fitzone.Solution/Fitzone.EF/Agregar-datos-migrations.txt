@@ -183,9 +183,10 @@ namespace Fitzone.EF.Migrations
 							VALUES 
 								('Administrador', 'Administrador', 'admin', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'admin'), 2), GETDATE(), 1),
 								('Control Accesos', 'Control Accesos', 'control', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'control'), 2), GETDATE(), 2),
-								('Paola', 'Cornejo', 'paola', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'paola'), 2), GETDATE(), 3),
-								('Gonzalo', 'Lopez', 'gonzalo', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'gonzalo'), 2), GETDATE(), 3),
-								('Thiago', 'Perez', 'thiago', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'thiago'), 2), GETDATE(), 4);
+								('Roman', 'Roman', 'roman', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'roman'), 2), GETDATE(), 3),
+								('Abril', 'Abril', 'abril', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'abril'), 2), GETDATE(), 3),
+								('Paola', 'Paola', 'paola', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'paola'), 2), GETDATE(), 3);
+								('Juan', 'Lopez', 'director', CONVERT(VARCHAR(64), HASHBYTES('SHA2_256', 'director'), 2), GETDATE(), 4);
 
 								GO						  
                     ");
