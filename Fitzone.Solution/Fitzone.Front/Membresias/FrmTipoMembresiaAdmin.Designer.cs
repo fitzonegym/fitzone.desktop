@@ -37,7 +37,7 @@
             horadesde = new DataGridViewTextBoxColumn();
             horaHasta = new DataGridViewTextBoxColumn();
             precioTotal = new DataGridViewTextBoxColumn();
-            cantidadDiasSemanales = new DataGridViewTextBoxColumn();
+            
             diasHabilitados = new DataGridViewTextBoxColumn();
             cantidadCuotas = new DataGridViewTextBoxColumn();
             cupoClase = new DataGridViewTextBoxColumn();
@@ -67,7 +67,7 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.FromArgb(81, 45, 168);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombre, descripcion, ActividadNombre, InstructorNombreCompleto, horadesde, horaHasta, precioTotal, cantidadDiasSemanales, diasHabilitados, cantidadCuotas, cupoClase, cuotaUnica });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nombre, descripcion, ActividadNombre, InstructorNombreCompleto, horadesde, horaHasta, precioTotal, diasHabilitados, cantidadCuotas, cupoClase, cuotaUnica });
             dataGridView1.DataSource = tipoMembresiaBindingSource;
             dataGridView1.GridColor = SystemColors.InfoText;
             dataGridView1.Location = new Point(9, 57);
@@ -130,14 +130,7 @@
             precioTotal.Name = "precioTotal";
             precioTotal.ReadOnly = true;
             precioTotal.Width = 70;
-            // 
-            // cantidadDiasSemanales
-            // 
-            cantidadDiasSemanales.DataPropertyName = "cantidadDiasSemanales";
-            cantidadDiasSemanales.HeaderText = "Cant Dias";
-            cantidadDiasSemanales.Name = "cantidadDiasSemanales";
-            cantidadDiasSemanales.ReadOnly = true;
-            cantidadDiasSemanales.Width = 50;
+
             // 
             // diasHabilitados
             // 
@@ -493,8 +486,7 @@
         private DataGridViewTextBoxColumn InstructorNombreCompleto;
         private DataGridViewTextBoxColumn horadesde;
         private DataGridViewTextBoxColumn horaHasta;
-        private DataGridViewTextBoxColumn precioTotal;
-        private DataGridViewTextBoxColumn cantidadDiasSemanales;
+        private DataGridViewTextBoxColumn precioTotal;        
         private DataGridViewTextBoxColumn diasHabilitados;
         private DataGridViewTextBoxColumn cantidadCuotas;
         private DataGridViewTextBoxColumn cupoClase;

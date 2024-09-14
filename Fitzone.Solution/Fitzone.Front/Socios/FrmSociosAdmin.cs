@@ -104,10 +104,15 @@ namespace Fitzone.Front.Socios
 
         private void LimpiarFiltros()
         {
-            txtFechaDesde.Checked = true;
-            txtFechaHasta.Checked = true;
+            //txtFechaDesde.Checked = true;
+            //txtFechaHasta.Checked = true;
             txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-6);
             txtFechaHasta.Value = Statics.DateTimeNow235959();
+
+
+            txtFechaDesde.Checked = false;
+            txtFechaHasta.Checked = false;
+
             txtApellido.Text = "";
             txtDocumento.Text = "";
             txtNombre.Text = "";

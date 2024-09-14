@@ -2,6 +2,7 @@
 using Fitzone.Front.Instructores;
 using Fitzone.Front.Membresias;
 using Fitzone.Front.Socios;
+using Fitzone.Front.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -134,7 +135,7 @@ namespace Fitzone.Front
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
-        {        
+        {
 
 
             FrmSociosAlta frm = new FrmSociosAlta();
@@ -251,6 +252,18 @@ namespace Fitzone.Front
             frm.BringToFront();
             frm.WindowState = FormWindowState.Maximized;
 
+        }
+
+        private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmUsuariosAlta frm = new FrmUsuariosAlta();
+            frm.TopMost = true;
+            frm.MdiParent = this;
+            panelPrincipal.Controls.Add(frm);
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Show();
+            frm.BringToFront();
+            //frm.WindowState = FormWindowState.Maximized;
         }
 
         //private void AbrirForm<TipoForm>() //where TipoForm : Form, new()

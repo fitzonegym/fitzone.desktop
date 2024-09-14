@@ -58,7 +58,6 @@
             anuladoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            instructorActividadesDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             idBarrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             bindingGrilla = new BindingSource(components);
             ucCantidadregistros1 = new UserControls.UCCantidadregistros();
@@ -111,7 +110,7 @@
             // 
             thunderLabel2.BackColor = Color.Transparent;
             thunderLabel2.ForeColor = Color.WhiteSmoke;
-            thunderLabel2.Location = new Point(8, 53);
+            thunderLabel2.Location = new Point(8, 48);
             thunderLabel2.Name = "thunderLabel2";
             thunderLabel2.Size = new Size(56, 20);
             thunderLabel2.TabIndex = 12;
@@ -138,7 +137,7 @@
             // 
             thunderLabel3.BackColor = Color.Transparent;
             thunderLabel3.ForeColor = Color.WhiteSmoke;
-            thunderLabel3.Location = new Point(8, 79);
+            thunderLabel3.Location = new Point(8, 78);
             thunderLabel3.Name = "thunderLabel3";
             thunderLabel3.Size = new Size(108, 22);
             thunderLabel3.TabIndex = 14;
@@ -253,7 +252,7 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.FromArgb(81, 45, 168);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idInstructorDataGridViewTextBoxColumn, nombreCompletoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, fechaAlta, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, TieneImagen, fechaNacimientoDataGridViewTextBoxColumn, anuladoDataGridViewCheckBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, instructorActividadesDataGridViewTextBoxColumn, idBarrioDataGridViewTextBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idInstructorDataGridViewTextBoxColumn, nombreCompletoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, fechaAlta, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, TieneImagen, fechaNacimientoDataGridViewTextBoxColumn, anuladoDataGridViewCheckBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, idBarrioDataGridViewTextBoxColumn });
             dataGridView1.DataSource = bindingGrilla;
             dataGridView1.GridColor = SystemColors.InfoText;
             dataGridView1.Location = new Point(12, 208);
@@ -383,14 +382,6 @@
             apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
             apellidoDataGridViewTextBoxColumn.ReadOnly = true;
             apellidoDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // instructorActividadesDataGridViewTextBoxColumn
-            // 
-            instructorActividadesDataGridViewTextBoxColumn.DataPropertyName = "InstructorActividades";
-            instructorActividadesDataGridViewTextBoxColumn.HeaderText = "InstructorActividades";
-            instructorActividadesDataGridViewTextBoxColumn.Name = "instructorActividadesDataGridViewTextBoxColumn";
-            instructorActividadesDataGridViewTextBoxColumn.ReadOnly = true;
-            instructorActividadesDataGridViewTextBoxColumn.Visible = false;
             // 
             // idBarrioDataGridViewTextBoxColumn
             // 

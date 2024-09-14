@@ -36,5 +36,17 @@ namespace Fitzone.Controller
             return "noEncontrado";
 
         }
+
+        public static string ReducirDias(string diasSemana)
+        {
+            // Dividir el string de entrada por coma para obtener un array de días
+            string[] dias = diasSemana.ToUpper().Split(',');
+
+            // Usar LINQ para seleccionar la primera letra de cada día y luego unirlas por comas
+            string iniciales = string.Join(",", dias.Select(dia => dia.Trim()[0]));
+
+            return iniciales;
+
+        }
     }
 }

@@ -248,14 +248,14 @@ namespace Fitzone.Front.Membresias
 
             if (_EnumModoForm == EnumModoForm.Modificacion)
             {
-                msg = new MessageBoxCustom("Se actualizaron los datos del socio", EnumModoMessageBoxCustom.Aceptar);
+                msg = new MessageBoxCustom("Se actualizó el tipo de membresía", EnumModoMessageBoxCustom.Aceptar);
                 msg.ShowDialog();
                 Close();
             }
 
             if (_EnumModoForm == EnumModoForm.Alta)
             {
-                msg = new MessageBoxCustom("Se dió de alta el tipo de membresía " + _tipo.nombre + "\n¿Desea agregar uno nuevo?", EnumModoMessageBoxCustom.YesNo, 50);
+                msg = new MessageBoxCustom("Se dió de alta el tipo de membresía \n" + _tipo.nombre + "\n¿Desea agregar uno nuevo?", EnumModoMessageBoxCustom.YesNo, 50);
                 msg.ShowDialog();
                 if (msg.response == DialogResult.No)
                     Close();

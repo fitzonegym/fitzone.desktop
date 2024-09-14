@@ -473,6 +473,7 @@
             idMembresiaDataGridViewTextBoxColumn.HeaderText = "Id";
             idMembresiaDataGridViewTextBoxColumn.Name = "idMembresiaDataGridViewTextBoxColumn";
             idMembresiaDataGridViewTextBoxColumn.ReadOnly = true;
+            idMembresiaDataGridViewTextBoxColumn.Visible = false;
             idMembresiaDataGridViewTextBoxColumn.Width = 50;
             // 
             // Tipo

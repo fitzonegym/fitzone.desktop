@@ -320,7 +320,8 @@ namespace Fitzone.Controller
                     //caso exitoso
                     encontroMembresia = true;
                     var tipo = tipoMembresiaController.GetById(itemMembresia.idTipoMembresia);
-                    ingresos.respuesta.actividades += tipo.ActividadNombre + " " + itemMembresia.horadesde + " -> "  + itemMembresia.horaHasta+  " | Vencimiento: " + venc +  "\n ";
+                    ingresos.respuesta.actividades += tipo.ActividadNombre + "\n" + itemMembresia.horadesde + " hs a "  + itemMembresia.horaHasta +" hs | Días: " 
+                        + Statics.ReducirDias(itemMembresia.diasHabilitados.Replace("[","").Replace("]","")) + " | Venc.: " + venc +  "\n ";
 
                     //agrego las membresias validas
                     ///lo ordeno por hora desde desc asi la ultima que toma sera un tipo que 

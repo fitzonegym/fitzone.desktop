@@ -268,7 +268,7 @@
             // 
             // lblActividad
             // 
-            lblActividad.Font = new Font("Segoe UI", 20F);
+            lblActividad.Font = new Font("Segoe UI", 18F);
             lblActividad.ForeColor = Color.White;
             lblActividad.Location = new Point(68, 301);
             lblActividad.Name = "lblActividad";

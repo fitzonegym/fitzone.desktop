@@ -45,11 +45,12 @@
             controlDeAccesosToolStripMenuItem = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
             tipoDeMembresíaToolStripMenuItem = new ToolStripMenuItem();
+            instructoresToolStripMenuItem1 = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             panelPrincipal = new Panel();
-            instructoresToolStripMenuItem1 = new ToolStripMenuItem();
+            usuariosToolStripMenuItem = new ToolStripMenuItem();
             statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -158,7 +159,7 @@
             altaToolStripMenuItem.ForeColor = Color.White;
             altaToolStripMenuItem.Name = "altaToolStripMenuItem";
             altaToolStripMenuItem.Size = new Size(213, 30);
-            altaToolStripMenuItem.Text = "Alta";
+            altaToolStripMenuItem.Text = "Agregar";
             altaToolStripMenuItem.Click += altaToolStripMenuItem_Click;
             // 
             // membresíaToolStripMenuItem
@@ -186,7 +187,7 @@
             altaToolStripMenuItem1.ForeColor = Color.White;
             altaToolStripMenuItem1.Name = "altaToolStripMenuItem1";
             altaToolStripMenuItem1.Size = new Size(208, 30);
-            altaToolStripMenuItem1.Text = "Alta";
+            altaToolStripMenuItem1.Text = "Agregar";
             altaToolStripMenuItem1.Click += altaToolStripMenuItem1_Click;
             // 
             // controlDeAccesosToolStripMenuItem
@@ -199,7 +200,7 @@
             // 
             // configuraciónToolStripMenuItem
             // 
-            configuraciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeMembresíaToolStripMenuItem, instructoresToolStripMenuItem1 });
+            configuraciónToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { tipoDeMembresíaToolStripMenuItem, instructoresToolStripMenuItem1, usuariosToolStripMenuItem });
             configuraciónToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             configuraciónToolStripMenuItem.ForeColor = Color.Black;
             configuraciónToolStripMenuItem.Margin = new Padding(5);
@@ -216,6 +217,15 @@
             tipoDeMembresíaToolStripMenuItem.Size = new Size(246, 30);
             tipoDeMembresíaToolStripMenuItem.Text = "Tipo de membresía";
             tipoDeMembresíaToolStripMenuItem.Click += tipoDeMembresíaToolStripMenuItem_Click;
+            // 
+            // instructoresToolStripMenuItem1
+            // 
+            instructoresToolStripMenuItem1.BackColor = Color.FromArgb(81, 45, 168);
+            instructoresToolStripMenuItem1.ForeColor = Color.White;
+            instructoresToolStripMenuItem1.Name = "instructoresToolStripMenuItem1";
+            instructoresToolStripMenuItem1.Size = new Size(246, 30);
+            instructoresToolStripMenuItem1.Text = "Instructores";
+            instructoresToolStripMenuItem1.Click += instructoresToolStripMenuItem1_Click;
             // 
             // salirToolStripMenuItem
             // 
@@ -267,14 +277,14 @@
             panelPrincipal.DoubleClick += panelPrincipal_DoubleClick;
             panelPrincipal.MouseDown += panelPrincipal_MouseDown;
             // 
-            // instructoresToolStripMenuItem1
+            // usuariosToolStripMenuItem
             // 
-            instructoresToolStripMenuItem1.BackColor = Color.FromArgb(81, 45, 168);
-            instructoresToolStripMenuItem1.ForeColor = Color.White;
-            instructoresToolStripMenuItem1.Name = "instructoresToolStripMenuItem1";
-            instructoresToolStripMenuItem1.Size = new Size(246, 30);
-            instructoresToolStripMenuItem1.Text = "Instructores";
-            instructoresToolStripMenuItem1.Click += instructoresToolStripMenuItem1_Click;
+            usuariosToolStripMenuItem.BackColor = Color.FromArgb(81, 45, 168);
+            usuariosToolStripMenuItem.ForeColor = Color.White;
+            usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            usuariosToolStripMenuItem.Size = new Size(246, 30);
+            usuariosToolStripMenuItem.Text = "Usuarios";
+            usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
             // 
             // FrmContenedorPrincipal
             // 
@@ -329,6 +339,7 @@
         private ToolStripMenuItem tipoDeMembresíaToolStripMenuItem;
         private ToolStripMenuItem controlDeAccesosToolStripMenuItem;
         private ToolStripMenuItem instructoresToolStripMenuItem1;
+        private ToolStripMenuItem usuariosToolStripMenuItem;
     }
 }
 
