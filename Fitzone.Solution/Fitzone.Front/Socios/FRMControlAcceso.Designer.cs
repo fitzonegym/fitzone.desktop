@@ -59,6 +59,8 @@
             panel8 = new Panel();
             label3 = new Label();
             panel9 = new Panel();
+            label8 = new Label();
+            btnProcesar = new Button();
             txtFecha = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -416,12 +418,34 @@
             // 
             // panel9
             // 
+            panel9.Controls.Add(label8);
+            panel9.Controls.Add(btnProcesar);
             panel9.Controls.Add(txtFecha);
             panel9.Dock = DockStyle.Fill;
             panel9.Location = new Point(1525, 941);
             panel9.Name = "panel9";
             panel9.Size = new Size(376, 121);
             panel9.TabIndex = 48;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(193, 100);
+            label8.Name = "label8";
+            label8.Size = new Size(60, 15);
+            label8.TabIndex = 49;
+            label8.Text = "Fecha test";
+            // 
+            // btnProcesar
+            // 
+            btnProcesar.Location = new Point(260, 66);
+            btnProcesar.Name = "btnProcesar";
+            btnProcesar.Size = new Size(113, 23);
+            btnProcesar.TabIndex = 48;
+            btnProcesar.Text = "Procesar";
+            btnProcesar.UseVisualStyleBackColor = true;
+            btnProcesar.Click += btnProcesar_Click;
             // 
             // txtFecha
             // 
@@ -463,6 +487,7 @@
             panel3.ResumeLayout(false);
             panel8.ResumeLayout(false);
             panel9.ResumeLayout(false);
+            panel9.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -498,5 +523,7 @@
         private Label label2;
         private Label label7;
         private Label label6;
+        private Button btnProcesar;
+        private Label label8;
     }
 }

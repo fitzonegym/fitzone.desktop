@@ -23,17 +23,12 @@ namespace Fitzone.Entidades
 
         [MaxLength(1000)]
         public string? detalle{ get; set; }
-        public List<Cuota>? Cuotas { get; set; }
-        //public int cantidadDiasSemanales { get; set; }
+        public List<Cuota>? Cuotas { get; set; }        
         public string diasHabilitados { get; set; } = "";
 
         public TimeOnly horadesde { get; set; }
         public TimeOnly horaHasta { get; set; }
-        
-        //este campo se necesita porque cuando quiero verificar la disponibilidad de equipamiento
-        //se hace a partir del tipo de membresia
-      //  public int idTipoMembresia { get; set; }       
-
+                
         #region ForeignKey
 
         [ForeignKey("EstadoMembresia")]

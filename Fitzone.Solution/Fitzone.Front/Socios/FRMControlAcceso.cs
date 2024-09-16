@@ -113,7 +113,6 @@ namespace Fitzone.Front.Socios
         {
             OnMouseDown(e);
         }
-  
 
         private void txtNroDoc_Click(object sender, EventArgs e)
         {
@@ -124,7 +123,7 @@ namespace Fitzone.Front.Socios
             //if (String.IsNullOrWhiteSpace(resultado))
             txtNroDoc.SelectionStart = 0;
             txtNroDoc.SelectionLength = 10;
-        }    
+        }
 
         private void txtNroDoc_Enter(object sender, EventArgs e)
         {
@@ -158,20 +157,20 @@ namespace Fitzone.Front.Socios
 
             DateTime hoy = txtFecha.Value;
 
-            SocioController socioController = new SocioController();            
+            SocioController socioController = new SocioController();
 
-            Ingresos ingreso = socioController.VerificarEstadoCuota(txtNroDoc.Text,hoy);
+            Ingresos ingreso = socioController.VerificarEstadoCuota(txtNroDoc.Text, hoy);
 
             if (ingreso.Salida == null)
             {
                 new IngresosController().Insert(ingreso);
             }
-            else 
+            else
             {
-                new IngresosController().UpdateSalida(ingreso,ingreso.idIngresos);
+                new IngresosController().UpdateSalida(ingreso, ingreso.idIngresos);
             }
 
-            lblMensaje.Text = ingreso.respuesta.EnumEstadoCuotaSocio.ToString().Replace('_',' ');
+            lblMensaje.Text = ingreso.respuesta.EnumEstadoCuotaSocio.ToString().Replace('_', ' ');
             lblActividad.Text = ingreso.respuesta.actividades ?? "No encontrado";
             lblNombre.Text = ingreso.respuesta.nombreSocio ?? "No encontrado";
             lblMensaje.BackColor = ingreso.respuesta.Color;
@@ -188,20 +187,20 @@ namespace Fitzone.Front.Socios
                 txtNroDoc.SelectionStart = 0;
                 txtNroDoc.SelectionLength = 10;
                 txtNroDoc.Focus();
-            }
-            //if (e.KeyChar == (char)Keys.Enter)
-            //{   
-                
-            //    e.Handled = true;
-               
-            //    txtNroDoc.Focus();
-            //    //Buscar();
-            //  //  txtNroDoc.SelectionStart = 0;
-            //  //  txtNroDoc.SelectionLength = 10;
-
-            //}
+            }          
         }
 
-      
+        public void ProcesarEstadoMembresias(DateTime hoy)
+        {
+            MembresiaController con = new MembresiaController();
+            con.ProcesarEstadoMembresias(hoy);
+        }
+
+        private void btnProcesar_Click(object sender, EventArgs e)
+        {
+            Configuraciones.fechaHoy = txtFecha.Value;
+            DateTime hoy = txtFecha.Value;
+            ProcesarEstadoMembresias(hoy);
+        }
     }
 }

@@ -193,5 +193,37 @@ namespace Fitzone.Front.Membresias
 
             }
         }
+
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            // Obtener la fila actual
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+            // Verificar si la columna "anulado" tiene el valor true
+            if (Convert.ToString(row.Cells["colEstado"].Value) == "Activa")
+            {
+                // Cambiar el color de fondo de la fila
+                row.DefaultCellStyle.BackColor = Color.LightGreen; // Cambia el color según tus preferencias
+                //row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+            }
+            else if (Convert.ToString(row.Cells["colEstado"].Value) == "Vencida")
+            {
+                // Cambiar el color de fondo de la fila
+                row.DefaultCellStyle.BackColor = Color.LightCoral; // Cambia el color según tus preferencias
+              //  row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+            }
+            else if (Convert.ToString(row.Cells["colEstado"].Value) == "Deshabilitada")
+            {
+                // Cambiar el color de fondo de la fila
+                row.DefaultCellStyle.BackColor = Color.LightGray; // Cambia el color según tus preferencias
+               // row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+            }
+            else if (Convert.ToString(row.Cells["colEstado"].Value) == "Finalizada")
+            {
+                // Cambiar el color de fondo de la fila
+                row.DefaultCellStyle.BackColor = Color.LightBlue; // Cambia el color según tus preferencias
+              //  row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+            }
+        }
     }
 }

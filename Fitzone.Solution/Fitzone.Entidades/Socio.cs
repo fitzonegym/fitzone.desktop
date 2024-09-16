@@ -30,7 +30,7 @@ namespace Fitzone.Entidades
         public byte[]? imagen { get; set; }
         public DateTime fechaAlta { get; set; } = DateTime.Now;
         public DateTime fechaNacimiento { get; set; } = DateTime.Now;
-
+        public bool deudor { get; set; } = false;
 
         #endregion
 

@@ -169,7 +169,7 @@ namespace Fitzone.Controller
         public List<Cuota> GetCuotasTodas(int idMembresia, DateTime fecha)
         {
 
-            var membresia = contexto.Membresia.FirstOrDefault(m => m.idMembresia == idMembresia && m.idEstadoMembresia == 1);
+            var membresia = contexto.Membresia.FirstOrDefault(m => m.idMembresia == idMembresia );
 
             if (membresia == null)
                 return new List<Cuota>();

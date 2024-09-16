@@ -14,6 +14,7 @@ using IContainer = QuestPDF.Infrastructure.IContainer;
 using System.Diagnostics;
 using ReaLTaiizor.Controls;
 using Fitzone.Front.Membresias;
+using Color = System.Drawing.Color;
 
 
 namespace Fitzone.Front.Socios
@@ -124,6 +125,9 @@ namespace Fitzone.Front.Socios
 
             LimpiarFiltros();
 
+
+            bindingSource1_PositionChanged(null, null);
+
             //txtFechaDesde.Checked = false;
             //txtFechaHasta.Checked = false;
 
@@ -143,18 +147,21 @@ namespace Fitzone.Front.Socios
                 btnAceptar.Visible = false;
                 this.WindowState = FormWindowState.Maximized;
             }
-
-            //dataGridView1.RowPrePaint += new DataGridViewRowPrePaintEventHandler(dataGridView1_RowPrePaint);
+            
             CargarGrilla();
         }
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            //    DataGridView dataGridView = sender as DataGridView;
+            // Obtener la fila actual
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
-            //    if (e.RowIndex % 2 == 0) // Si es una fila par
-            //    {
-            //        dataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(209, 196, 234); // Cambia el color de fondo
-            //    }
+            // Verificar si la columna "anulado" tiene el valor true
+            if (Convert.ToBoolean(row.Cells["colAnulado"].Value) == true)
+            {
+                // Cambiar el color de fondo de la fila
+                row.DefaultCellStyle.BackColor = Color.LightCoral; // Cambia el color según tus preferencias
+                row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+            }
         }
 
         private void CargarGrilla()
@@ -168,7 +175,7 @@ namespace Fitzone.Front.Socios
             filter.apellido = txtApellido.Text;
             filter.numeroDocumento = txtDocumento.Text;
 
-            _listaSocios = c.GetAll(filter, txtFechaDesde.Checked ? txtFechaDesde.Value : null, txtFechaHasta.Checked ? txtFechaHasta.Value : null);
+            _listaSocios = c.GetAll(filter, txtFechaDesde.Checked ? txtFechaDesde.Value : null, txtFechaHasta.Checked ? txtFechaHasta.Value : null, chkAnulados.Checked);
 
             bindingSource1.DataSource = null;
             bindingSource1.DataSource = _listaSocios;
@@ -402,10 +409,7 @@ namespace Fitzone.Front.Socios
                 {
                     column.Item().Row(row =>
                     {
-                        /*row.ConstantItem(100)
-                            .Height(50)
-                            .Background(Colors.White)
-                            .Image(imagePath);*/
+                      
 
                         row.ConstantItem(100)
                             .AlignLeft()
@@ -431,9 +435,7 @@ namespace Fitzone.Front.Socios
 
                     });
 
-                    //column.Item().AlignRight().Text($"Fecha: {DateTime.Now:dd/MM/yyyy HH:mm:ss}")
-                    //    .FontSize(12)
-                    //    .FontColor(Colors.Grey.Medium);
+                   
                 });
             };
         }
@@ -447,15 +449,7 @@ namespace Fitzone.Front.Socios
                 .AlignCenter();
         }
 
-        //static IContainer CellStyleHeaders(IContainer container)
-        //{
-        //    return container
-        //        .Border(1)
-        //        .BorderColor(Colors.Grey.Lighten2)
-        //        .Padding(5)
-        //        .AlignMiddle()
-        //        .AlignCenter();
-        //}
+
         bool sortAscending;
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -605,8 +599,73 @@ namespace Fitzone.Front.Socios
             frm._id_membresia = 0;
             frm.SetSocio(socio);
             frm.ShowDialog();
-            
-            
+
+
         }
+
+        private void btnAnular_Click(object sender, EventArgs e)
+        {
+
+            var socio = bindingSource1.Current as Socio;
+
+            if (socio == null)
+                return;
+
+            if (socio.anulado)
+            {
+                
+                var msg = new MessageBoxCustom("Desea habilitar el socio [" + socio.NombreCompleto + "]?", EnumModoMessageBoxCustom.YesNo);
+                msg.ShowDialog();
+
+                if (msg.response == DialogResult.Yes)
+                {
+                    new SocioController().AnularHabilitar(socio.idSocio, !socio.anulado);                    
+                    new MessageBoxCustom("El socio se habilitó correctamente", EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                    CargarGrilla();
+                    btnAnular.TextButton = "Anular";
+                }
+
+            }
+            else
+            {
+                
+
+                var msg = new MessageBoxCustom("Desea anular el socio [" + socio.NombreCompleto + "]?", EnumModoMessageBoxCustom.YesNo);
+                msg.ShowDialog();
+
+                if (msg.response == DialogResult.Yes)
+                {
+                    new SocioController().AnularHabilitar(socio.idSocio, !socio.anulado);
+                    new MessageBoxCustom("El socio se anuló correctamente", EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                    CargarGrilla();
+                    btnAnular.TextButton = "Habilitar";
+                }
+
+            }
+        }
+
+        private void bindingSource1_PositionChanged(object sender, EventArgs e)
+        {
+            var socio = bindingSource1.Current as Socio;
+
+            if (socio == null)
+                return;
+
+            if (socio.anulado)
+            {
+                btnAnular.TextButton = "Habilitar";
+
+
+            }
+            else
+            {
+                btnAnular.TextButton = "Anular";
+
+            }
+
+
+
+        }
+   
     }
 }

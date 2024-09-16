@@ -138,10 +138,10 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { seleccionadaCol, numeroDataGridViewTextBoxColumn, fechaDesdeDataGridViewTextBoxColumn, fechaHastaDataGridViewTextBoxColumn, fechaVencimientoCol, precioDataGridViewTextBoxColumn, pagadaCol });
             dataGridView1.DataSource = bindingSourceCuotas;
             dataGridView1.GridColor = SystemColors.InfoText;
-            dataGridView1.Location = new Point(12, 248);
+            dataGridView1.Location = new Point(12, 229);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(664, 269);
+            dataGridView1.Size = new Size(664, 288);
             dataGridView1.TabIndex = 40;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
             // 
@@ -368,38 +368,41 @@
             // 
             opPendientes.AutoSize = true;
             opPendientes.ForeColor = Color.White;
-            opPendientes.Location = new Point(192, 94);
+            opPendientes.Location = new Point(471, 44);
             opPendientes.Name = "opPendientes";
             opPendientes.Size = new Size(83, 19);
             opPendientes.TabIndex = 82;
             opPendientes.Text = "Pendientes";
             opPendientes.UseVisualStyleBackColor = true;
+            opPendientes.Visible = false;
             opPendientes.CheckedChanged += opPendientes_CheckedChanged;
             // 
             // opTodas
             // 
             opTodas.AutoSize = true;
+            opTodas.Checked = true;
             opTodas.ForeColor = Color.White;
-            opTodas.Location = new Point(281, 94);
+            opTodas.Location = new Point(471, 69);
             opTodas.Name = "opTodas";
             opTodas.Size = new Size(55, 19);
             opTodas.TabIndex = 83;
+            opTodas.TabStop = true;
             opTodas.Text = "Todas";
             opTodas.UseVisualStyleBackColor = true;
+            opTodas.Visible = false;
             opTodas.CheckedChanged += opTodas_CheckedChanged;
             // 
             // opProxima
             // 
             opProxima.AutoSize = true;
-            opProxima.Checked = true;
             opProxima.ForeColor = Color.White;
-            opProxima.Location = new Point(117, 94);
+            opProxima.Location = new Point(471, 19);
             opProxima.Name = "opProxima";
             opProxima.Size = new Size(69, 19);
             opProxima.TabIndex = 84;
-            opProxima.TabStop = true;
             opProxima.Text = "Próxima";
             opProxima.UseVisualStyleBackColor = true;
+            opProxima.Visible = false;
             opProxima.CheckedChanged += opProxima_CheckedChanged;
             // 
             // groupBox1
@@ -417,7 +420,7 @@
             groupBox1.ForeColor = Color.White;
             groupBox1.Location = new Point(12, 52);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(661, 120);
+            groupBox1.Size = new Size(661, 101);
             groupBox1.TabIndex = 85;
             groupBox1.TabStop = false;
             groupBox1.Text = "Filtros";
@@ -470,7 +473,7 @@
             groupBox2.Controls.Add(thunderLabel2);
             groupBox2.Controls.Add(aloneTextBox2);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(12, 178);
+            groupBox2.Location = new Point(12, 159);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(664, 64);
             groupBox2.TabIndex = 88;

@@ -57,12 +57,13 @@
             thunderLabel5 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel6 = new ReaLTaiizor.Controls.ThunderLabel();
             groupBox1 = new GroupBox();
+            chkAnulados = new ReaLTaiizor.Controls.AloneCheckBox();
             ucClearFilters1 = new UserControls.UCClearFilters();
             ucCantidadregistros1 = new UserControls.UCCantidadregistros();
-            ucPintarFilasPares1 = new UserControls.UCPintarFilasPares();
             toolTip1 = new ToolTip(components);
             btnConsultar = new ReaLTaiizor.Controls.CyberButton();
             btnCuota = new ReaLTaiizor.Controls.CyberButton();
+            btnAnular = new ReaLTaiizor.Controls.CyberButton();
             idSocioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -77,7 +78,7 @@
             fechaAlta = new DataGridViewTextBoxColumn();
             idBarrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             TieneImagen = new DataGridViewCheckBoxColumn();
-            anuladoDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
+            colAnulado = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -152,7 +153,7 @@
             BtnMembresía.Lighting = false;
             BtnMembresía.LinearGradient_Background = false;
             BtnMembresía.LinearGradientPen = false;
-            BtnMembresía.Location = new Point(405, 428);
+            BtnMembresía.Location = new Point(549, 428);
             BtnMembresía.Name = "BtnMembresía";
             BtnMembresía.PenWidth = 15;
             BtnMembresía.Rounding = true;
@@ -218,21 +219,23 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.FromArgb(81, 45, 168);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSocioDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, fechaAlta, idBarrioDataGridViewTextBoxColumn, TieneImagen, anuladoDataGridViewCheckBoxColumn });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSocioDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, fechaAlta, idBarrioDataGridViewTextBoxColumn, TieneImagen, colAnulado });
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.GridColor = SystemColors.InfoText;
             dataGridView1.Location = new Point(12, 208);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(793, 215);
+            dataGridView1.Size = new Size(981, 215);
             dataGridView1.TabIndex = 20;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             dataGridView1.ColumnHeaderMouseClick += dataGridView1_ColumnHeaderMouseClick;
+            dataGridView1.RowPrePaint += dataGridView1_RowPrePaint;
             // 
             // bindingSource1
             // 
             bindingSource1.DataSource = typeof(Entidades.Socio);
+            bindingSource1.PositionChanged += bindingSource1_PositionChanged;
             // 
             // btnCancelar
             // 
@@ -261,7 +264,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(706, 429);
+            btnCancelar.Location = new Point(894, 429);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -304,7 +307,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(610, 429);
+            btnAceptar.Location = new Point(798, 429);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -447,7 +450,7 @@
             // 
             botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(771, 6);
+            botonesForms2.Location = new Point(959, 6);
             botonesForms2.Name = "botonesForms2";
             botonesForms2.Size = new Size(46, 20);
             botonesForms2.TabIndex = 1;
@@ -474,7 +477,7 @@
             // 
             ucBorderlr2.BackColor = Color.White;
             ucBorderlr2.Dock = DockStyle.Right;
-            ucBorderlr2.Location = new Point(818, 0);
+            ucBorderlr2.Location = new Point(1006, 0);
             ucBorderlr2.Name = "ucBorderlr2";
             ucBorderlr2.Size = new Size(2, 480);
             ucBorderlr2.TabIndex = 26;
@@ -485,7 +488,7 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(816, 3);
+            ucBordertd1.Size = new Size(1004, 3);
             ucBordertd1.TabIndex = 27;
             // 
             // ucBordertd2
@@ -494,7 +497,7 @@
             ucBordertd2.Dock = DockStyle.Bottom;
             ucBordertd2.Location = new Point(2, 477);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(816, 3);
+            ucBordertd2.Size = new Size(1004, 3);
             ucBordertd2.TabIndex = 28;
             // 
             // btnImprimir
@@ -593,6 +596,7 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(chkAnulados);
             groupBox1.Controls.Add(ucClearFilters1);
             groupBox1.Controls.Add(thunderLabel6);
             groupBox1.Controls.Add(txtFechaHasta);
@@ -607,13 +611,25 @@
             groupBox1.Controls.Add(txtDocumento);
             groupBox1.Location = new Point(12, 37);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(793, 118);
+            groupBox1.Size = new Size(981, 118);
             groupBox1.TabIndex = 62;
             groupBox1.TabStop = false;
             // 
+            // chkAnulados
+            // 
+            chkAnulados.BackColor = Color.Transparent;
+            chkAnulados.Checked = false;
+            chkAnulados.EnabledCalc = true;
+            chkAnulados.ForeColor = Color.White;
+            chkAnulados.Location = new Point(555, 50);
+            chkAnulados.Name = "chkAnulados";
+            chkAnulados.Size = new Size(118, 17);
+            chkAnulados.TabIndex = 67;
+            chkAnulados.Text = "Ver anulados";
+            // 
             // ucClearFilters1
             // 
-            ucClearFilters1.Location = new Point(546, 81);
+            ucClearFilters1.Location = new Point(555, 82);
             ucClearFilters1.Name = "ucClearFilters1";
             ucClearFilters1.Size = new Size(25, 25);
             ucClearFilters1.TabIndex = 65;
@@ -625,19 +641,10 @@
             ucCantidadregistros1._cantidad = 0;
             ucCantidadregistros1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ucCantidadregistros1.BackColor = Color.Transparent;
-            ucCantidadregistros1.Location = new Point(706, 186);
+            ucCantidadregistros1.Location = new Point(894, 186);
             ucCantidadregistros1.Name = "ucCantidadregistros1";
             ucCantidadregistros1.Size = new Size(103, 16);
             ucCantidadregistros1.TabIndex = 63;
-            // 
-            // ucPintarFilasPares1
-            // 
-            ucPintarFilasPares1._dataGridView = dataGridView1;
-            ucPintarFilasPares1.BackColor = Color.Transparent;
-            ucPintarFilasPares1.Location = new Point(217, 161);
-            ucPintarFilasPares1.Name = "ucPintarFilasPares1";
-            ucPintarFilasPares1.Size = new Size(33, 27);
-            ucPintarFilasPares1.TabIndex = 64;
             // 
             // btnConsultar
             // 
@@ -708,7 +715,7 @@
             btnCuota.Lighting = false;
             btnCuota.LinearGradient_Background = false;
             btnCuota.LinearGradientPen = false;
-            btnCuota.Location = new Point(302, 428);
+            btnCuota.Location = new Point(453, 428);
             btnCuota.Name = "btnCuota";
             btnCuota.PenWidth = 15;
             btnCuota.Rounding = true;
@@ -722,6 +729,48 @@
             btnCuota.Timer_Effect_1 = 5;
             btnCuota.Timer_RGB = 300;
             btnCuota.Click += Cuota_Click;
+            // 
+            // btnAnular
+            // 
+            btnAnular.Alpha = 20;
+            btnAnular.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnAnular.BackColor = Color.Transparent;
+            btnAnular.Background = true;
+            btnAnular.Background_WidthPen = 4F;
+            btnAnular.BackgroundPen = true;
+            btnAnular.ColorBackground = Color.Black;
+            btnAnular.ColorBackground_1 = Color.Black;
+            btnAnular.ColorBackground_2 = Color.Gray;
+            btnAnular.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btnAnular.ColorLighting = Color.FromArgb(81, 45, 168);
+            btnAnular.ColorPen_1 = Color.Black;
+            btnAnular.ColorPen_2 = Color.Gray;
+            btnAnular.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnAnular.Effect_1 = true;
+            btnAnular.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            btnAnular.Effect_1_Transparency = 25;
+            btnAnular.Effect_2 = true;
+            btnAnular.Effect_2_ColorBackground = Color.White;
+            btnAnular.Effect_2_Transparency = 20;
+            btnAnular.Font = new Font("Arial", 11F);
+            btnAnular.ForeColor = Color.FromArgb(245, 245, 245);
+            btnAnular.Lighting = false;
+            btnAnular.LinearGradient_Background = false;
+            btnAnular.LinearGradientPen = false;
+            btnAnular.Location = new Point(300, 429);
+            btnAnular.Name = "btnAnular";
+            btnAnular.PenWidth = 15;
+            btnAnular.Rounding = true;
+            btnAnular.RoundingInt = 70;
+            btnAnular.Size = new Size(99, 40);
+            btnAnular.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnAnular.TabIndex = 67;
+            btnAnular.Tag = "Cyber";
+            btnAnular.TextButton = "Anular";
+            btnAnular.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnAnular.Timer_Effect_1 = 5;
+            btnAnular.Timer_RGB = 300;
+            btnAnular.Click += btnAnular_Click;
             // 
             // idSocioDataGridViewTextBoxColumn
             // 
@@ -825,23 +874,22 @@
             TieneImagen.ReadOnly = true;
             TieneImagen.Visible = false;
             // 
-            // anuladoDataGridViewCheckBoxColumn
+            // colAnulado
             // 
-            anuladoDataGridViewCheckBoxColumn.DataPropertyName = "anulado";
-            anuladoDataGridViewCheckBoxColumn.HeaderText = "anulado";
-            anuladoDataGridViewCheckBoxColumn.Name = "anuladoDataGridViewCheckBoxColumn";
-            anuladoDataGridViewCheckBoxColumn.ReadOnly = true;
-            anuladoDataGridViewCheckBoxColumn.Visible = false;
+            colAnulado.DataPropertyName = "anulado";
+            colAnulado.HeaderText = "Anulado";
+            colAnulado.Name = "colAnulado";
+            colAnulado.ReadOnly = true;
             // 
             // FrmSociosAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(820, 480);
+            ClientSize = new Size(1008, 480);
+            Controls.Add(btnAnular);
             Controls.Add(btnCuota);
             Controls.Add(btnConsultar);
-            Controls.Add(ucPintarFilasPares1);
             Controls.Add(ucCantidadregistros1);
             Controls.Add(groupBox1);
             Controls.Add(btnImprimir);
@@ -898,12 +946,13 @@
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel6;
         private GroupBox groupBox1;
         private UserControls.UCCantidadregistros ucCantidadregistros1;
-        private UserControls.UCPintarFilasPares ucPintarFilasPares1;
         private UserControls.UCClearFilters ucClearFilters1;
         private ToolTip toolTip1;
         private ReaLTaiizor.Controls.CyberButton btnConsultar;
         private ReaLTaiizor.Controls.CyberButton Cuota;
         private ReaLTaiizor.Controls.CyberButton btnCuota;
+        private ReaLTaiizor.Controls.CyberButton btnAnular;
+        private ReaLTaiizor.Controls.AloneCheckBox chkAnulados;
         private DataGridViewTextBoxColumn idSocioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
@@ -918,6 +967,6 @@
         private DataGridViewTextBoxColumn fechaAlta;
         private DataGridViewTextBoxColumn idBarrioDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn TieneImagen;
-        private DataGridViewCheckBoxColumn anuladoDataGridViewCheckBoxColumn;
+        private DataGridViewCheckBoxColumn colAnulado;
     }
 }

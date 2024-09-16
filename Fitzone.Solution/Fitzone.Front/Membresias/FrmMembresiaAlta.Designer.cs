@@ -648,7 +648,7 @@
             cmdGenerar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             cmdGenerar.TabIndex = 37;
             cmdGenerar.Tag = "Cyber";
-            cmdGenerar.TextButton = "Generar Cuotas";
+            cmdGenerar.TextButton = "Calcular Cuotas";
             cmdGenerar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             cmdGenerar.Timer_Effect_1 = 5;
             cmdGenerar.Timer_RGB = 300;

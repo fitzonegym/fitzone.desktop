@@ -93,8 +93,10 @@ namespace Fitzone.Front.Socios
         private void CargarMembresia()
         {
             MembresiaController membresiaController = new MembresiaController();
-            _membresias = membresiaController.GetByIdSocioFechaTipoMembresia(_socio.idSocio, DateTime.Now) ?? new List<Membresia>();
-
+            _membresias = membresiaController.GetByIdSocioFechaTipoMembresia(_socio.idSocio, Configuraciones.fechaHoy) ?? new List<Membresia>();
+            _membresias = _membresias.Where(m => m.idEstadoMembresia == (int)EstadoMembresiaEnum.Activa
+                        || m.idEstadoMembresia == (int)EstadoMembresiaEnum.Vencida).ToList();
+            
             bindingSourceMembresia.DataSource = _membresias;
         }
 
@@ -194,6 +196,10 @@ namespace Fitzone.Front.Socios
             new MessageBoxCustom(EnumModoMessageBoxCustom.DatosGuardadosCorrectamente).ShowDialog();
             CargarCuotas();
             ImprimirFactura(f);
+
+            new MembresiaController().ProcesarEstadoMembresias(Configuraciones.fechaHoy);
+            new SocioController().ActualizarEstadoDeudor(_socio.idSocio, Configuraciones.fechaHoy);
+
         }
 
         private void bindingSourceCuotas_CurrentItemChanged(object sender, EventArgs e)
@@ -236,7 +242,7 @@ namespace Fitzone.Front.Socios
                 var fila = dataGridView1.Rows[e.RowIndex];
 
                 // Verifica si la columna 'pagada' es true
-                if (Convert.ToDateTime(fila.Cells["fechaVencimientoCol"].Value) > Statics.DateTimeNowSinHora()
+                if (Convert.ToDateTime(fila.Cells["fechaVencimientoCol"].Value) > Statics.DateTimeSinHora(Configuraciones.fechaHoy)
                     || Convert.ToBoolean(fila.Cells["pagadaCol"].Value) == true)
                 {
                     // Si pagada es true, deshabilita la celda de checkbox                    

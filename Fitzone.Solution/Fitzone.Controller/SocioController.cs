@@ -26,8 +26,7 @@ namespace Fitzone.Controller
         public List<Socio>? GetAll(Socio socio)
         {
             
-            var listaresultado = contexto.Socio.Include("Barrio")
-                .Where(i => i.anulado == false)
+            var listaresultado = contexto.Socio.Include("Barrio")                
                 .Where(i => socio.nombre == null || i.nombre.Contains(socio.nombre.Trim()))
                 .Where(i => socio.apellido == null || i.apellido.Contains(socio.apellido.Trim()))
                 .Where(i => socio.numeroDocumento == null || i.numeroDocumento.Contains(socio.numeroDocumento.Trim()))
@@ -36,7 +35,7 @@ namespace Fitzone.Controller
             return listaresultado;
         }
 
-        public List<Socio>? GetAll(Socio socio, DateTime? fechaDesde, DateTime? fechaHasta)
+        public List<Socio>? GetAll(Socio socio, DateTime? fechaDesde, DateTime? fechaHasta, bool verAnulados)
         {
 
             List<Socio>? listaresultado = new SocioController().GetAll(socio);
@@ -49,8 +48,12 @@ namespace Fitzone.Controller
             listaresultado = listaresultado
                 .Where(c => (fechaDesde != null && c.fechaAlta >= fechaDesde) || fechaDesde == null)
                 .Where(c => (fechaHasta != null && c.fechaAlta <= fechaHasta) || fechaHasta == null)
-                .Where(c => !c.anulado )
                 .ToList();
+
+            if (!verAnulados)
+                listaresultado = listaresultado
+                    .Where(c => !c.anulado)
+                    .ToList();
 
             return listaresultado;
         }
@@ -194,6 +197,29 @@ namespace Fitzone.Controller
 
                 //actualizo los valores
                 actualizar.anulado = true;
+
+                contexto.SaveChanges(true);
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool AnularHabilitar(int id, bool valor)
+        {
+            try
+            {
+                //busco en la BD el objeto a anular
+                var actualizar = contexto.Socio.FirstOrDefault(i => i.idSocio == id);
+                if (actualizar == null)
+                    return false;
+
+                //actualizo los valores
+                actualizar.anulado = valor;
 
                 contexto.SaveChanges(true);
 
@@ -351,7 +377,6 @@ namespace Fitzone.Controller
 
             return ingresos;
         }
-
         private string GetTextoActividades(int idSocio, DateTime fechaHoy)
         {
             //membresias en la fecha establecida.
@@ -374,6 +399,26 @@ namespace Fitzone.Controller
 
             return actividades;
         }
-    
+        public void ActualizarEstadoDeudor(int idSocio, DateTime fecha)
+        {
+            //si el socio tiene una o mas membresias con cuotas vencidas le cambio el estado al socio
+            var socio = contexto.Socio.FirstOrDefault(s => s.idSocio == idSocio);
+
+            if (socio == null)
+                return;
+
+            new MembresiaController().ProcesarEstadoMembresias(fecha);
+
+            var membresiavencida = contexto.Membresia.FirstOrDefault(m=>m.idSocio == idSocio && m.idEstadoMembresia == (int)EstadoMembresiaEnum.Vencida);
+            if (membresiavencida == null)
+            {
+                socio.deudor = false;
+            }
+
+            contexto.SaveChanges();
+
+
+        }
+
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Fitzone.Controller
 {
@@ -41,7 +42,7 @@ namespace Fitzone.Controller
                 .Include("Socio")
                 .Include("EstadoMembresia")
                 .Include("TipoMembresia")
-                .Where(c=>c.idEstadoMembresia == 1 && c.idInstructor == idInstructor && c.idActividad == idActividad)
+                .Where(c=>c.idEstadoMembresia == (int)EstadoMembresiaEnum.Activa && c.idInstructor == idInstructor && c.idActividad == idActividad)
                 .OrderByDescending(c => c.fechaAlta).ToList();
         }
 
@@ -129,12 +130,110 @@ namespace Fitzone.Controller
             if (cupo == null)
                 return null;
 
-            int cant = contexto.Membresia.Count(m => m.idActividad == tipo.idActividad && m.idEstadoMembresia == 1);
+            int cant = contexto.Membresia.Count(m => m.idActividad == tipo.idActividad && m.idEstadoMembresia == (int)EstadoMembresiaEnum.Activa);
 
             return cupo - cant;
         }
 
-    
+        public void ProcesarEstadoMembresiasFinalizadas(DateTime hoy)
+        {
+            // marco las nuevas finalizadas 
+            // 
+            var finalizadas = contexto.Membresia
+                          .Where(m => m.fechaHasta < hoy && (m.idEstadoMembresia == (int)EstadoMembresiaEnum.Activa || m.idEstadoMembresia == (int)EstadoMembresiaEnum.Vencida))
+                          .ToList();
+
+            if (finalizadas.Count == 0)
+                return;
+
+            foreach (var item in finalizadas)
+            {
+                ////verifico si estan todas las cuotas pagadas
+                //if (contexto.Cuota.FirstOrDefault(c=>c.idMembresia == item.idMembresia && !c.pagada) == null)
+                //{
+                //    //var m = contexto.Membresia.FirstOrDefault(i=>i.idMembresia == item.idMembresia);
+                //    item.idEstadoMembresia = (int)EstadoMembresiaEnum.Finalizada;
+                //    guardar = true;
+                //}
+                item.idEstadoMembresia = (int)EstadoMembresiaEnum.Finalizada;
+                
+            }
+            
+            contexto.SaveChanges();
+        }
+
+        public void ProcesarEstadoMembresiasVencidas(DateTime hoy)
+        {
+            // tiene una cuota vencida
+            // 
+            var activas = contexto.Membresia
+                          .Where(m => m.idEstadoMembresia == (int)EstadoMembresiaEnum.Activa || m.idEstadoMembresia == (int)EstadoMembresiaEnum.Vencida)
+                          .ToList();
+
+            bool guardar = false;
+
+            if (activas.Count == 0)
+                return;
+
+            foreach (var item in activas)
+            {
+                //verifico si tiene alguna cuotas NO pagada segun la fecha
+                var c = contexto.Cuota.FirstOrDefault(c => c.idMembresia == item.idMembresia && !c.pagada && c.fechaVencimiento < hoy);
+                if (c != null)
+                {
+                    //var m = contexto.Membresia.FirstOrDefault(i => i.idMembresia == item.idMembresia);
+                    item.idEstadoMembresia = (int)EstadoMembresiaEnum.Vencida;
+                    guardar = true;
+                    var socio = contexto.Socio.FirstOrDefault(s => s.idSocio == item.idSocio);
+                    if (socio != null)
+                        socio.deudor = true;
+                }
+                else
+                {
+                    item.idEstadoMembresia = (int)EstadoMembresiaEnum.Activa;
+                    guardar = true;
+                }
+
+            }
+            if (guardar)
+                contexto.SaveChanges();
+        }
+
+        public void ProcesarEstadoMembresiasDeshabilitada(DateTime hoy)
+        {
+            // tiene 2 o mas cuotas vencidas
+            // 
+            var vencidas = contexto.Membresia
+                          .Where(m => m.idEstadoMembresia == (int)EstadoMembresiaEnum.Vencida)
+                          .ToList();
+            bool guardar = false;
+
+            foreach (var item in vencidas)
+            {
+                //verifico si tiene alguna cuotas NO pagada segun la fecha
+                if (contexto.Cuota.Where(c => c.idMembresia == item.idMembresia && !c.pagada && c.fechaVencimiento < hoy).ToList().Count >= 2)
+                {                    
+                    item.idEstadoMembresia = (int)EstadoMembresiaEnum.Deshabilitada;
+                    guardar = true;
+                }
+            }
+
+            if (guardar)
+                contexto.SaveChanges();
+
+        }
+
+        /// <summary>
+        /// actualiza el estado de todas las membresias
+        /// </summary>
+        public void ProcesarEstadoMembresias(DateTime hoy)
+        {
+            MembresiaController con = new MembresiaController();
+            con.ProcesarEstadoMembresiasFinalizadas(hoy);
+            con.ProcesarEstadoMembresiasVencidas(hoy);
+            con.ProcesarEstadoMembresiasDeshabilitada(hoy);
+
+        }
 
     }
 }
