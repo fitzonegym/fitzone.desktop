@@ -98,6 +98,16 @@ namespace Fitzone.Front.Socios
                         || m.idEstadoMembresia == (int)EstadoMembresiaEnum.Vencida).ToList();
             
             bindingSourceMembresia.DataSource = _membresias;
+
+
+            if (_membresias.Count == 0)
+            {
+                new MessageBoxCustom("No se encontró una membresía pendiente de pago",EnumModoMessageBoxCustom.Aceptar,100).ShowDialog();
+                Close();
+                return;
+            }
+
+
         }
 
         private void CargarSocio()

@@ -160,7 +160,13 @@ namespace Fitzone.Front.Socios
             {
                 // Cambiar el color de fondo de la fila
                 row.DefaultCellStyle.BackColor = Color.LightCoral; // Cambia el color según tus preferencias
-                row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+                //row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+            }
+            else if (Convert.ToBoolean(row.Cells["colDeudor"].Value) == true)
+            {
+                // Cambiar el color de fondo de la fila
+                row.DefaultCellStyle.BackColor = Color.LightYellow; // Cambia el color según tus preferencias
+                //row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
             }
         }
 

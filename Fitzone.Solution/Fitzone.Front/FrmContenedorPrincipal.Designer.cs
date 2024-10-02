@@ -46,11 +46,11 @@
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
             tipoDeMembresíaToolStripMenuItem = new ToolStripMenuItem();
             instructoresToolStripMenuItem1 = new ToolStripMenuItem();
+            usuariosToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             panelPrincipal = new Panel();
-            usuariosToolStripMenuItem = new ToolStripMenuItem();
             statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -129,7 +129,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(189, 210);
+            menuStrip1.Size = new Size(189, 191);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -227,6 +227,15 @@
             instructoresToolStripMenuItem1.Text = "Instructores";
             instructoresToolStripMenuItem1.Click += instructoresToolStripMenuItem1_Click;
             // 
+            // usuariosToolStripMenuItem
+            // 
+            usuariosToolStripMenuItem.BackColor = Color.FromArgb(81, 45, 168);
+            usuariosToolStripMenuItem.ForeColor = Color.White;
+            usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
+            usuariosToolStripMenuItem.Size = new Size(246, 30);
+            usuariosToolStripMenuItem.Text = "Usuarios";
+            usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
+            // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
@@ -268,23 +277,15 @@
             // 
             // panelPrincipal
             // 
-            panelPrincipal.BackColor = Color.Black;
+            panelPrincipal.BackColor = Color.MediumPurple;
             panelPrincipal.Dock = DockStyle.Fill;
             panelPrincipal.Location = new Point(0, 0);
             panelPrincipal.Name = "panelPrincipal";
             panelPrincipal.Size = new Size(993, 645);
             panelPrincipal.TabIndex = 0;
+            panelPrincipal.Paint += panelPrincipal_Paint;
             panelPrincipal.DoubleClick += panelPrincipal_DoubleClick;
             panelPrincipal.MouseDown += panelPrincipal_MouseDown;
-            // 
-            // usuariosToolStripMenuItem
-            // 
-            usuariosToolStripMenuItem.BackColor = Color.FromArgb(81, 45, 168);
-            usuariosToolStripMenuItem.ForeColor = Color.White;
-            usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            usuariosToolStripMenuItem.Size = new Size(246, 30);
-            usuariosToolStripMenuItem.Text = "Usuarios";
-            usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
             // 
             // FrmContenedorPrincipal
             // 

@@ -159,10 +159,17 @@ namespace Fitzone.Front.Membresias
             CargarGrilla();
         }
 
-        private void BtnAnular_Click(object sender, EventArgs e)
+        private void BtnCuotas_Click(object sender, EventArgs e)
         {
-            new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
-            return;
+            if (bindingSource1 == null || bindingSource1.Current == null)
+            {
+                new MessageBoxCustom("Seleccione una membresia", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                return;
+            }
+
+            FrmPagarCuota frm = new FrmPagarCuota();
+            frm._idSocio = ((Membresia)bindingSource1.Current).idSocio;
+            frm.ShowDialog();
         }
 
         private void btnModificar_Click(object sender, EventArgs e)

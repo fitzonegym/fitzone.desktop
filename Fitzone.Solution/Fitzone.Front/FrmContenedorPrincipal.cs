@@ -266,6 +266,11 @@ namespace Fitzone.Front
             //frm.WindowState = FormWindowState.Maximized;
         }
 
+        private void panelPrincipal_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         //private void AbrirForm<TipoForm>() //where TipoForm : Form, new()
         //{
         //    // Verificar si el formulario ya está abierto

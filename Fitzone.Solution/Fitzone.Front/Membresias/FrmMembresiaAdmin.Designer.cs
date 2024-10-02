@@ -63,7 +63,7 @@
             thunderLabel7 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel6 = new ReaLTaiizor.Controls.ThunderLabel();
             groupBox1 = new GroupBox();
-            BtnAnular = new ReaLTaiizor.Controls.CyberButton();
+            BtnCuotas = new ReaLTaiizor.Controls.CyberButton();
             btnModificar = new ReaLTaiizor.Controls.CyberButton();
             ucCantidadregistros1 = new UserControls.UCCantidadregistros();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -468,48 +468,47 @@
             groupBox1.TabIndex = 63;
             groupBox1.TabStop = false;
             // 
-            // BtnAnular
+            // BtnCuotas
             // 
-            BtnAnular.Alpha = 20;
-            BtnAnular.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            BtnAnular.BackColor = Color.Transparent;
-            BtnAnular.Background = true;
-            BtnAnular.Background_WidthPen = 4F;
-            BtnAnular.BackgroundPen = true;
-            BtnAnular.ColorBackground = Color.Black;
-            BtnAnular.ColorBackground_1 = Color.Black;
-            BtnAnular.ColorBackground_2 = Color.Gray;
-            BtnAnular.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
-            BtnAnular.ColorLighting = Color.FromArgb(81, 45, 168);
-            BtnAnular.ColorPen_1 = Color.Black;
-            BtnAnular.ColorPen_2 = Color.Gray;
-            BtnAnular.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            BtnAnular.Effect_1 = true;
-            BtnAnular.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
-            BtnAnular.Effect_1_Transparency = 25;
-            BtnAnular.Effect_2 = true;
-            BtnAnular.Effect_2_ColorBackground = Color.White;
-            BtnAnular.Effect_2_Transparency = 20;
-            BtnAnular.Font = new Font("Arial", 11F);
-            BtnAnular.ForeColor = Color.FromArgb(245, 245, 245);
-            BtnAnular.Lighting = false;
-            BtnAnular.LinearGradient_Background = false;
-            BtnAnular.LinearGradientPen = false;
-            BtnAnular.Location = new Point(203, 429);
-            BtnAnular.Name = "BtnAnular";
-            BtnAnular.PenWidth = 15;
-            BtnAnular.Rounding = true;
-            BtnAnular.RoundingInt = 70;
-            BtnAnular.Size = new Size(99, 40);
-            BtnAnular.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            BtnAnular.TabIndex = 41;
-            BtnAnular.Tag = "Cyber";
-            BtnAnular.TextButton = "Anular";
-            BtnAnular.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            BtnAnular.Timer_Effect_1 = 5;
-            BtnAnular.Timer_RGB = 300;
-            BtnAnular.Visible = false;
-            BtnAnular.Click += BtnAnular_Click;
+            BtnCuotas.Alpha = 20;
+            BtnCuotas.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            BtnCuotas.BackColor = Color.Transparent;
+            BtnCuotas.Background = true;
+            BtnCuotas.Background_WidthPen = 4F;
+            BtnCuotas.BackgroundPen = true;
+            BtnCuotas.ColorBackground = Color.Black;
+            BtnCuotas.ColorBackground_1 = Color.Black;
+            BtnCuotas.ColorBackground_2 = Color.Gray;
+            BtnCuotas.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            BtnCuotas.ColorLighting = Color.FromArgb(81, 45, 168);
+            BtnCuotas.ColorPen_1 = Color.Black;
+            BtnCuotas.ColorPen_2 = Color.Gray;
+            BtnCuotas.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            BtnCuotas.Effect_1 = true;
+            BtnCuotas.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            BtnCuotas.Effect_1_Transparency = 25;
+            BtnCuotas.Effect_2 = true;
+            BtnCuotas.Effect_2_ColorBackground = Color.White;
+            BtnCuotas.Effect_2_Transparency = 20;
+            BtnCuotas.Font = new Font("Arial", 11F);
+            BtnCuotas.ForeColor = Color.FromArgb(245, 245, 245);
+            BtnCuotas.Lighting = false;
+            BtnCuotas.LinearGradient_Background = false;
+            BtnCuotas.LinearGradientPen = false;
+            BtnCuotas.Location = new Point(203, 429);
+            BtnCuotas.Name = "BtnCuotas";
+            BtnCuotas.PenWidth = 15;
+            BtnCuotas.Rounding = true;
+            BtnCuotas.RoundingInt = 70;
+            BtnCuotas.Size = new Size(99, 40);
+            BtnCuotas.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            BtnCuotas.TabIndex = 41;
+            BtnCuotas.Tag = "Cyber";
+            BtnCuotas.TextButton = "Cuotas";
+            BtnCuotas.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            BtnCuotas.Timer_Effect_1 = 5;
+            BtnCuotas.Timer_RGB = 300;
+            BtnCuotas.Click += BtnCuotas_Click;
             // 
             // btnModificar
             // 
@@ -578,7 +577,7 @@
             Controls.Add(ucBorderlr2);
             Controls.Add(ucBorderlr1);
             Controls.Add(ucTituloLabel1);
-            Controls.Add(BtnAnular);
+            Controls.Add(BtnCuotas);
             Controls.Add(botonesForms2);
             Controls.Add(btnCancelar);
             Controls.Add(btnAgregar);
@@ -622,7 +621,7 @@
         private DataGridViewTextBoxColumn diasHabilitadosDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn tipoMembresiaNombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn detalleDataGridViewTextBoxColumn;
-        private ReaLTaiizor.Controls.CyberButton BtnAnular;
+        private ReaLTaiizor.Controls.CyberButton BtnCuotas;
         private ReaLTaiizor.Controls.CyberButton btnModificar;
         private UserControls.UCCantidadregistros ucCantidadregistros1;
         private DataGridViewTextBoxColumn idMembresiaDataGridViewTextBoxColumn;

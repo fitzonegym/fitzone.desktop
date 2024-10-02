@@ -79,6 +79,7 @@
             idBarrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             TieneImagen = new DataGridViewCheckBoxColumn();
             colAnulado = new DataGridViewCheckBoxColumn();
+            colDeudor = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -219,7 +220,7 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.FromArgb(81, 45, 168);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSocioDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, fechaAlta, idBarrioDataGridViewTextBoxColumn, TieneImagen, colAnulado });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSocioDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, fechaAlta, idBarrioDataGridViewTextBoxColumn, TieneImagen, colAnulado, colDeudor });
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.GridColor = SystemColors.InfoText;
             dataGridView1.Location = new Point(12, 208);
@@ -881,6 +882,13 @@
             colAnulado.Name = "colAnulado";
             colAnulado.ReadOnly = true;
             // 
+            // colDeudor
+            // 
+            colDeudor.DataPropertyName = "deudor";
+            colDeudor.HeaderText = "Deudor";
+            colDeudor.Name = "colDeudor";
+            colDeudor.ReadOnly = true;
+            // 
             // FrmSociosAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -968,5 +976,6 @@
         private DataGridViewTextBoxColumn idBarrioDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn TieneImagen;
         private DataGridViewCheckBoxColumn colAnulado;
+        private DataGridViewCheckBoxColumn colDeudor;
     }
 }
