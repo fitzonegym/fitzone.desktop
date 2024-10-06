@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Globalization;
 using System.Net.Mail;
+using static QuestPDF.Helpers.Colors;
 
 namespace Fitzone.Front.Socios
 {
@@ -261,11 +262,32 @@ namespace Fitzone.Front.Socios
                 mensaje += "\nIngrese el celular";
             }
 
-
             if (!String.IsNullOrWhiteSpace(e.mail) && !IsValidEmail(e.mail))
             {
                 mensaje += "\nIngrese el mail";
             }
+
+            // Validar edad
+            // Obtener la fecha actual
+            DateTime fechaActual = DateTime.Today;
+
+            // Calcular la diferencia en años entre la fecha actual y la fecha de nacimiento
+            int edad = fechaActual.Year - txtFechaNac.Value.Year;
+
+            // Ajuste si el cumpleaños aún no ha ocurrido este año
+            if (txtFechaNac.Value.Date > fechaActual.AddYears(-edad))
+            {
+                edad--;
+            }
+
+            // Verificar si la edad es mayor o igual a 15 años
+            int edadMinima = Controller.Statics.AniosMinimoSocio;
+            if (edad >= edadMinima) { }
+            else
+            {
+                mensaje += "\nEdad mínima permitida: " + edadMinima + " años";
+            }
+
 
             if (!String.IsNullOrWhiteSpace(mensaje))
             {
@@ -329,8 +351,8 @@ namespace Fitzone.Front.Socios
             if (!ValidarEmpleado(ref mensajeErrores, _socio))
             {
                 //si falla alguna validacion muestro el mensaje y no hago nada mas
-                //msg = new MessageBoxCustom(mensajeErrores, Enumeraciones.EnumModoMessageBoxCustom.SeEncontraronErrores);
-                msg = new MessageBoxCustom("Verifique los campos obligatorios",EnumModoMessageBoxCustom.Aceptar);
+                msg = new MessageBoxCustom(mensajeErrores, Enumeraciones.EnumModoMessageBoxCustom.SeEncontraronErrores);
+                //msg = new MessageBoxCustom("Verifique los campos obligatorios",EnumModoMessageBoxCustom.Aceptar);
                 msg.ShowDialog();
                 return;
             }

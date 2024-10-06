@@ -280,6 +280,7 @@ namespace Fitzone.Controller
                 return ingresos;
             }
 
+            int minutosTolerancia = Statics.MinutosTolerancia;
 
             MembresiaController membresiaController = new MembresiaController();
 
@@ -292,10 +293,24 @@ namespace Fitzone.Controller
                 return ingresos;
             }
 
+
+          
+
             //membresias en la fecha establecida y activas
             var membresiasActivas = membresias.Where(m => m.idEstadoMembresia == 1).ToList();
             if (membresiasActivas == null || membresiasActivas.Count == 0)
             {
+                //no hay ninguna activa, ahora voy a buscar si es alguna vencida
+                //membresias en la fecha establecida y activas
+                bool vencida = membresias.Any(m => m.idEstadoMembresia == 2);
+                if (vencida)
+                {
+                    ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Cuota_vencida;
+                    ingresos.respuesta.Color = rojo;
+                    return ingresos;
+                }
+
+
                 ingresos.respuesta.EnumEstadoCuotaSocio = EnumEstadoCuotaSocio.Membresía_deshabilitada;
                 ingresos.respuesta.Color = rojo;
                 return ingresos;                
@@ -306,9 +321,9 @@ namespace Fitzone.Controller
 
             //membresias en la fecha establecida / activas / en horario
             var membresiasDentroHorarioDia = membresias.Where(m =>
-                TimeOnly.FromDateTime(fechaHoy) >= m.horadesde 
+                TimeOnly.FromDateTime(fechaHoy) >= m.horadesde.AddMinutes(-minutosTolerancia) 
                 &&
-                TimeOnly.FromDateTime(fechaHoy) <= m.horaHasta
+                TimeOnly.FromDateTime(fechaHoy) <= m.horaHasta.AddMinutes(-minutosTolerancia)
                 &&
                 m.diasHabilitados.Contains(diaDeLaSemana)
                 ).ToList();
@@ -352,7 +367,7 @@ namespace Fitzone.Controller
                     //agrego las membresias validas
                     ///lo ordeno por hora desde desc asi la ultima que toma sera un tipo que 
                     ///no sea de 00 a 23.59 (una clase de spinning por ejemplo)
-                    ingresos.idMembresia = tipo.idTipoMembresia;
+                    ingresos.idMembresia = itemMembresia.idMembresia;
 
                 }
             }
@@ -419,6 +434,19 @@ namespace Fitzone.Controller
 
 
         }
+
+        public void ActualizarEstadoDeudorTodos(DateTime fecha)
+        {
+            //si el socio tiene una o mas membresias con cuotas vencidas le cambio el estado al socio
+            var socios = contexto.Socio.ToList();
+
+            foreach (var socio in socios)
+            {
+                ActualizarEstadoDeudor(socio.idSocio, fecha);
+            }
+
+        }
+        
 
     }
 }

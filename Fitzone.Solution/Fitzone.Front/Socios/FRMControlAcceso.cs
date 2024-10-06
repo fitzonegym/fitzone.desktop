@@ -201,6 +201,11 @@ namespace Fitzone.Front.Socios
             Configuraciones.fechaHoy = txtFecha.Value;
             DateTime hoy = txtFecha.Value;
             ProcesarEstadoMembresias(hoy);
+
+            new SocioController().ActualizarEstadoDeudorTodos(hoy);
+
+            MessageBox.Show("Proceso batch completado");
+            
         }
     }
 }

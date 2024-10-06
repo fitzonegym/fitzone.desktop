@@ -23,10 +23,15 @@ namespace Fitzone.Controller
 
         public List<Instructor>? GetAll(Instructor instructor)
         {
-            return contexto.Instructor
+            var instructores = contexto.Instructor
                .Where(i => i.anulado == false)
                .OrderBy(i => i.apellido)
+               .Include(i => i.InstructorActividades)       // Incluye la relación intermedia
+               .ThenInclude(ia => ia.Actividad)
                .ToList();
+
+
+            return instructores;
         }
 
         public Instructor? GetById(int id)

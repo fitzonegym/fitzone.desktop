@@ -70,7 +70,8 @@ namespace Fitzone.EF.Migrations
 									   ('EmpresaNombre','FIT-ZONE'),
 									   ('EmpresaDireccion','SAN JERONIMO 684'),
 									   ('EmpresaTelefono','3516175680'),
-									   ('EmpresaMail','fitzone@gmail.com')
+									   ('MinutosTolerancia','30'),
+									   ('AniosMinimoSocio','15')
 									   
                             GO
 							

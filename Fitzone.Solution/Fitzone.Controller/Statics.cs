@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fitzone.EF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fitzone.Controller
 {
-    public class Statics
+    public static class Statics
     {
         public static string DiaDeLaSemanaEnEspañol(DateTime fecha)
         {
@@ -36,7 +37,6 @@ namespace Fitzone.Controller
             return "noEncontrado";
 
         }
-
         public static string ReducirDias(string diasSemana)
         {
             // Dividir el string de entrada por coma para obtener un array de días
@@ -48,5 +48,37 @@ namespace Fitzone.Controller
             return iniciales;
 
         }
+
+        private static int _MinutosTolerancia = 0;
+        public static int MinutosTolerancia
+        {
+            get
+            {
+                if (_MinutosTolerancia == 0)
+                {
+                    Contexto contexto = new Contexto();
+                    _MinutosTolerancia = Convert.ToInt16(contexto.Configuraciones.FirstOrDefault(c => c.nombre == "MinutosTolerancia").valor);
+                }
+                return _MinutosTolerancia;
+            }
+            set{ _MinutosTolerancia = value; }
+        }
+
+        private static int _AniosMinimoSocio = 0;
+        public static int AniosMinimoSocio
+        {
+            get
+            {
+                if (_AniosMinimoSocio == 0)
+                {
+                    Contexto contexto = new Contexto();
+                    _AniosMinimoSocio = Convert.ToInt16(contexto.Configuraciones.FirstOrDefault(c => c.nombre == "AniosMinimoSocio").valor);
+                }
+                return _AniosMinimoSocio;
+            }
+            set { _AniosMinimoSocio = value; }
+        }
+
+
     }
 }

@@ -885,7 +885,7 @@
             // colDeudor
             // 
             colDeudor.DataPropertyName = "deudor";
-            colDeudor.HeaderText = "Deudor";
+            colDeudor.HeaderText = "Mem. Venc.";
             colDeudor.Name = "colDeudor";
             colDeudor.ReadOnly = true;
             // 

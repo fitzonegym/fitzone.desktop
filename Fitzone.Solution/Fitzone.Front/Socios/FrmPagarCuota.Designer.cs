@@ -31,6 +31,8 @@
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
             ucBorderlr1 = new UserControls.UCBorderLR();
@@ -143,7 +145,9 @@
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.Size = new Size(664, 288);
             dataGridView1.TabIndex = 40;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
+            dataGridView1.CurrentCellDirtyStateChanged += dataGridView1_CurrentCellDirtyStateChanged;
             // 
             // seleccionadaCol
             // 
@@ -172,6 +176,9 @@
             // fechaHastaDataGridViewTextBoxColumn
             // 
             fechaHastaDataGridViewTextBoxColumn.DataPropertyName = "fechaHasta";
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            fechaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             fechaHastaDataGridViewTextBoxColumn.HeaderText = "Hasta";
             fechaHastaDataGridViewTextBoxColumn.Name = "fechaHastaDataGridViewTextBoxColumn";
             fechaHastaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -179,10 +186,10 @@
             // fechaVencimientoCol
             // 
             fechaVencimientoCol.DataPropertyName = "fechaVencimiento";
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(255, 192, 192);
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            fechaVencimientoCol.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(255, 192, 192);
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            fechaVencimientoCol.DefaultCellStyle = dataGridViewCellStyle3;
             fechaVencimientoCol.HeaderText = "Vencimiento";
             fechaVencimientoCol.Name = "fechaVencimientoCol";
             fechaVencimientoCol.ReadOnly = true;
@@ -190,6 +197,10 @@
             // precioDataGridViewTextBoxColumn
             // 
             precioDataGridViewTextBoxColumn.DataPropertyName = "precio";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            precioDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             precioDataGridViewTextBoxColumn.HeaderText = "Total";
             precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
             precioDataGridViewTextBoxColumn.ReadOnly = true;
@@ -547,6 +558,7 @@
             cyberButton1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             cyberButton1.Timer_Effect_1 = 5;
             cyberButton1.Timer_RGB = 300;
+            cyberButton1.Visible = false;
             cyberButton1.Click += cyberButton1_Click;
             // 
             // FrmPagarCuota

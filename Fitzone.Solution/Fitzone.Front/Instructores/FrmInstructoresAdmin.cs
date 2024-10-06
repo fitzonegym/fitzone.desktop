@@ -152,6 +152,10 @@ namespace Fitzone.Front.Instructores
 
             _listaInstructores = c.GetAll(filter);
 
+
+            var a = _listaInstructores.FirstOrDefault();
+            var b = a.ActividadesNames;
+
             bindingGrilla.DataSource = null;
             bindingGrilla.DataSource = _listaInstructores;
 

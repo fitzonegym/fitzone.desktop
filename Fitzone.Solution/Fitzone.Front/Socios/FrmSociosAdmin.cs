@@ -125,7 +125,6 @@ namespace Fitzone.Front.Socios
 
             LimpiarFiltros();
 
-
             bindingSource1_PositionChanged(null, null);
 
             //txtFechaDesde.Checked = false;
@@ -200,8 +199,6 @@ namespace Fitzone.Front.Socios
             {
                 column.SortMode = DataGridViewColumnSortMode.Automatic;
             }
-
-
 
             primeraCarga = false;
 
@@ -586,6 +583,8 @@ namespace Fitzone.Front.Socios
             FrmPagarCuota frm = new FrmPagarCuota();
             frm._idSocio = ((Socio)bindingSource1.Current).idSocio;
             frm.ShowDialog();
+
+            CargarGrilla();
 
         }
 

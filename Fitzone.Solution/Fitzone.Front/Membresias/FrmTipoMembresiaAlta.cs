@@ -111,6 +111,7 @@ namespace Fitzone.Front.Membresias
                 ucTituloLabel1._titulo = "Consultar tipo de membresía";
                 ucErrorIconoDias.Visible = false;
                 ucErrorIconoNombre.Visible = false;
+                btnAceptar.Visible = false;
 
                 Cargar();
                 EnabledDisabled(false);

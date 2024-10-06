@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.Design;
 
 namespace Fitzone.Entidades
 {
@@ -41,8 +42,7 @@ namespace Fitzone.Entidades
         public string? calleNumero { get; set; }
         public DateTime fechaAlta { get; set; } = DateTime.Now;
         public DateTime fechaNacimiento { get; set; } = DateTime.Now;   
-        public bool anulado { get; set; } = false;
-        
+        public bool anulado { get; set; } = false;        
         public List<InstructorActividad> InstructorActividades { get; set; }        
         
         #endregion
@@ -66,6 +66,22 @@ namespace Fitzone.Entidades
             }
         }
 
+        public string ActividadesNames { 
+            get {
+
+                if (InstructorActividades!=null && InstructorActividades.Count>0)
+                    {
+                    string actividades = "";
+                    foreach (var item in InstructorActividades)
+                    {
+                        actividades +=  item.Actividad.nombre + " | ";
+                    }
+                    return "[" + actividades.Remove(actividades.Length - 3) + "]";
+                }
+                else
+                    return "";
+                } 
+        }
         #endregion
 
     }

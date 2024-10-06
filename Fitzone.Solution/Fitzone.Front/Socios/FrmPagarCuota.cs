@@ -96,13 +96,13 @@ namespace Fitzone.Front.Socios
             _membresias = membresiaController.GetByIdSocioFechaTipoMembresia(_socio.idSocio, Configuraciones.fechaHoy) ?? new List<Membresia>();
             _membresias = _membresias.Where(m => m.idEstadoMembresia == (int)EstadoMembresiaEnum.Activa
                         || m.idEstadoMembresia == (int)EstadoMembresiaEnum.Vencida).ToList();
-            
+
             bindingSourceMembresia.DataSource = _membresias;
 
 
             if (_membresias.Count == 0)
             {
-                new MessageBoxCustom("No se encontró una membresía pendiente de pago",EnumModoMessageBoxCustom.Aceptar,100).ShowDialog();
+                new MessageBoxCustom("No se encontró una membresía pendiente de pago", EnumModoMessageBoxCustom.Aceptar, 100).ShowDialog();
                 Close();
                 return;
             }
@@ -193,8 +193,6 @@ namespace Fitzone.Front.Socios
 
             }
 
-
-
             //listo para guardar
             MessageBoxCustom msg = new MessageBoxCustom(Enumeraciones.EnumModoMessageBoxCustom.ConfirmaGuardar);
             msg.ShowDialog();
@@ -237,6 +235,10 @@ namespace Fitzone.Front.Socios
                     // Si pagada es true, deshabilita la celda de checkbox
                     fila.Cells["seleccionadaCol"].ReadOnly = true;
                     fila.Cells["seleccionadaCol"].Style.BackColor = Color.LightGray;  // Opcional: Cambiar el color para indicar que está deshabilitado
+                    fila.Cells["numeroDataGridViewTextBoxColumn"].Style.BackColor = Color.LightGray;
+                    fila.Cells["fechaDesdeDataGridViewTextBoxColumn"].Style.BackColor = Color.LightGray;
+                    fila.Cells["fechaHastaDataGridViewTextBoxColumn"].Style.BackColor = Color.LightGray;
+
                 }
                 else
                 {
@@ -271,17 +273,30 @@ namespace Fitzone.Front.Socios
         {
             var facturaDocument = new FacturaDocument(fac);
 
-            string fileName = "c:\\Reportes\\" + Statics.GenerarNombreArchivoUnico("Factura", "PDF");            
+            string fileName = "c:\\Reportes\\" + Statics.GenerarNombreArchivoUnico("Factura", "PDF");
             facturaDocument.GeneratePdf(fileName);
             Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
 
-        }     
+        }
 
         private void cyberButton1_Click(object sender, EventArgs e)
         {
             var f = new FacturaController().GetById(1);
             ImprimirFactura(f);
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //txtTotal.Text = _cuotas.Where(c => c.seleccionada).Sum(c => c.precio).ToString();
+        }
+
+        private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.IsCurrentCellDirty)
+            {
+                dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
     }
 }
