@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Fitzone.Front.Instructores
 {
@@ -88,9 +89,9 @@ namespace Fitzone.Front.Instructores
         public FrmInstructoresAdmin()
         {
             InitializeComponent();
-            txtNombre.TB.KeyPress += txtNombre_KeyPress;
-            txtApellido.TB.KeyPress += txtApellido_KeyPress;
-            txtDocumento.TB.KeyPress += txtDocumento_KeyPress;
+            txtNombre.TB.KeyPress += filtro_KeyPress;
+            txtApellido.TB.KeyPress += filtro_KeyPress;
+            txtDocumento.TB.KeyPress += filtro_KeyPress;
 
         }
         private void LimpiarFiltros()
@@ -100,25 +101,24 @@ namespace Fitzone.Front.Instructores
             txtNombre.Text = "";
         }
 
-        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        private void filtro_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-        }
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                CargarGrilla();
+                // Prevenir el sonido de beep
+                e.Handled = true;
 
-        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
-        private void txtDocumento_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
+            }
+            
         }
 
         private void FrmInstructoresAdmin_Load(object sender, EventArgs e)
         {
             LimpiarFiltros();
 
+            CargarTipos();
 
             if (_EnumModoFormulario == EnumModoFormulario.Consulta)
             {
@@ -146,15 +146,14 @@ namespace Fitzone.Front.Instructores
 
             Instructor filter = new Instructor();
 
-            filter.nombre = txtNombre.Text;
-            filter.apellido = txtApellido.Text;
-            filter.numeroDocumento = txtDocumento.Text;
+            filter.nombre = txtNombre.Text.Trim();
+            filter.apellido = txtApellido.Text.Trim();
+            filter.numeroDocumento = txtDocumento.Text.Trim();
+            filter.idTipoMembresiaFiltro = (int)cmbTipoMembresia.SelectedValue;
 
-            _listaInstructores = c.GetAll(filter);
+            string acti = ((Actividad)bindingActividad.Current).nombre;
 
-
-            var a = _listaInstructores.FirstOrDefault();
-            var b = a.ActividadesNames;
+            _listaInstructores = c.GetAll(filter).Where(c =>  c.ActividadesNames.Contains(acti) || acti == "TODOS").ToList();
 
             bindingGrilla.DataSource = null;
             bindingGrilla.DataSource = _listaInstructores;
@@ -236,12 +235,21 @@ namespace Fitzone.Front.Instructores
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Close();    
-        }
+            Close();
+        }     
 
-        private void ucClearFilters1_Load(object sender, EventArgs e)
+        private void ucClearFilters1__ClickUCAgregar(object sender, EventArgs e)
         {
             LimpiarFiltros();
+        }
+        private void CargarTipos()
+        {
+            ActividadController membresiaController = new ActividadController();
+            var membresias = membresiaController.GetAll();
+            membresias.Insert(0,new Actividad{ idActividad = 0, nombre = "TODOS" });
+            bindingActividad.DataSource = membresias;
+
+
         }
     }
 }

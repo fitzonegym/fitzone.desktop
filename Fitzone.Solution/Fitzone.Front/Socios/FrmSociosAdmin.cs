@@ -100,7 +100,7 @@ namespace Fitzone.Front.Socios
         }
         private void VisibleBotones(bool visible)
         {
-            btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnMembresía.Visible = btnConsultar.Visible = btnCuota.Visible = visible;
+            btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnMembresía.Visible = btnConsultar.Visible = btnCuota.Visible = btnAnular.Visible = visible;
         }
 
         private void LimpiarFiltros()
@@ -262,16 +262,12 @@ namespace Fitzone.Front.Socios
 
         private void txtCualquierFiltro_KeyPress(object sender, KeyPressEventArgs e)
         {
-
             if (e.KeyChar == (char)Keys.Enter)
             {
                 CargarGrilla();
                 // Prevenir el sonido de beep
                 e.Handled = true;
-
             }
-
-
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

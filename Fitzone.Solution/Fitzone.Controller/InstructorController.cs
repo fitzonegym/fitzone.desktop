@@ -25,6 +25,9 @@ namespace Fitzone.Controller
         {
             var instructores = contexto.Instructor
                .Where(i => i.anulado == false)
+               .Where(i => i.nombre.Contains(instructor.nombre))
+               .Where(i => i.apellido.Contains(instructor.apellido))
+               .Where(i => i.numeroDocumento.Contains(instructor.numeroDocumento))
                .OrderBy(i => i.apellido)
                .Include(i => i.InstructorActividades)       // Incluye la relación intermedia
                .ThenInclude(ia => ia.Actividad)

@@ -58,6 +58,7 @@ namespace Fitzone.Entidades
 
         #region NotMapped
 
+        [NotMapped]
         public string NombreCompleto
         {
             get
@@ -65,7 +66,7 @@ namespace Fitzone.Entidades
                 return apellido + ", " + nombre;
             }
         }
-
+        [NotMapped]
         public string ActividadesNames { 
             get {
 
@@ -82,6 +83,10 @@ namespace Fitzone.Entidades
                     return "";
                 } 
         }
+
+        [NotMapped] //solo para filtrar
+        public int idTipoMembresiaFiltro { get; set; }
+        
         #endregion
 
     }
