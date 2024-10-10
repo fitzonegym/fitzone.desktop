@@ -88,7 +88,7 @@ namespace Fitzone.Front.Membresias
         }
 
         private void FrmMembresiaAdmin_Load(object sender, EventArgs e)
-        {
+        {            
             txtFechaDesde.Value = DateTime.Now.AddDays(-10);
             txtFechaHasta.Value = DateTime.Now.AddMonths(1);
 
@@ -99,11 +99,18 @@ namespace Fitzone.Front.Membresias
 
         private void CargarGrilla()
         {
-            Membresia filtro = new Membresia();
-            //if (_Socio != null)
-            //    filtro.idSocio = _Socio.idSocio;
-            filtro.fechaDesde = txtFechaDesde.Value;
-            filtro.fechaHasta = txtFechaHasta.Value;
+            Membresia filtro = new Membresia();  
+
+            if (chkFecha.Checked)
+            {
+                filtro.fechaDesde = Statics.DateTimeSinHora(txtFechaDesde.Value);
+                filtro.fechaHasta = Statics.DateTimeSinHora(txtFechaHasta.Value);
+            }
+            else
+            {
+                filtro.fechaDesde = new DateTime(2000, 1, 1);
+                filtro.fechaHasta = new DateTime(2030, 1, 1);
+            }
 
             filtro.Socio = null;
 
@@ -111,14 +118,16 @@ namespace Fitzone.Front.Membresias
             {
                 filtro.Socio = new Socio();
                 filtro.Socio.nombre = txtNombre.Text.Trim();
-                filtro.Socio.apellido = "";
+                //filtro.Socio.apellido = txtNombre.Text.Trim();
+                //filtro.Socio.numeroDocumento = txtNombre.Text.Trim();
             }
 
             _listaMembresias = new MembresiaController().GetAllFilters(filtro);
 
             bindingSource1.DataSource = _listaMembresias;
 
-            ucCantidadregistros1._cantidad = _listaMembresias.Count();
+            ucCantidadregistros1._cantidad = _listaMembresias?.Count() ?? 0;
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -217,20 +226,33 @@ namespace Fitzone.Front.Membresias
             {
                 // Cambiar el color de fondo de la fila
                 row.DefaultCellStyle.BackColor = Color.LightCoral; // Cambia el color según tus preferencias
-              //  row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+                                                                   //  row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
             }
             else if (Convert.ToString(row.Cells["colEstado"].Value) == "Deshabilitada")
             {
                 // Cambiar el color de fondo de la fila
                 row.DefaultCellStyle.BackColor = Color.LightGray; // Cambia el color según tus preferencias
-               // row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+                                                                  // row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
             }
             else if (Convert.ToString(row.Cells["colEstado"].Value) == "Finalizada")
             {
                 // Cambiar el color de fondo de la fila
                 row.DefaultCellStyle.BackColor = Color.LightBlue; // Cambia el color según tus preferencias
-              //  row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+                                                                  //  row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
             }
+        }
+
+        public void SetSocio(string nrodocumento)
+        {   
+            txtNombre.Text = nrodocumento;
+            chkFecha.Checked = false;
+        }
+
+        private void chkFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            txtFechaDesde.Enabled = txtFechaHasta.Enabled = chkFecha.Checked;
+            
+
         }
     }
 }

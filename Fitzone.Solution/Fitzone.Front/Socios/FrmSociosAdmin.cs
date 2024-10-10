@@ -109,7 +109,7 @@ namespace Fitzone.Front.Socios
             //txtFechaHasta.Checked = true;
             txtFechaDesde.Value = Statics.DateTimeNowSinHora().AddMonths(-6);
             txtFechaHasta.Value = Statics.DateTimeNow235959();
-
+            
 
             txtFechaDesde.Checked = false;
             txtFechaHasta.Checked = false;
@@ -146,7 +146,7 @@ namespace Fitzone.Front.Socios
                 btnAceptar.Visible = false;
                 this.WindowState = FormWindowState.Maximized;
             }
-            
+
             CargarGrilla();
         }
         private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -408,7 +408,7 @@ namespace Fitzone.Front.Socios
                 {
                     column.Item().Row(row =>
                     {
-                      
+
 
                         row.ConstantItem(100)
                             .AlignLeft()
@@ -434,7 +434,7 @@ namespace Fitzone.Front.Socios
 
                     });
 
-                   
+
                 });
             };
         }
@@ -614,13 +614,13 @@ namespace Fitzone.Front.Socios
 
             if (socio.anulado)
             {
-                
+
                 var msg = new MessageBoxCustom("Desea habilitar el socio [" + socio.NombreCompleto + "]?", EnumModoMessageBoxCustom.YesNo);
                 msg.ShowDialog();
 
                 if (msg.response == DialogResult.Yes)
                 {
-                    new SocioController().AnularHabilitar(socio.idSocio, !socio.anulado);                    
+                    new SocioController().AnularHabilitar(socio.idSocio, !socio.anulado);
                     new MessageBoxCustom("El socio se habilitó correctamente", EnumModoMessageBoxCustom.Aceptar).ShowDialog();
                     CargarGrilla();
                     btnAnular.TextButton = "Anular";
@@ -629,7 +629,7 @@ namespace Fitzone.Front.Socios
             }
             else
             {
-                
+
 
                 var msg = new MessageBoxCustom("Desea anular el socio [" + socio.NombreCompleto + "]?", EnumModoMessageBoxCustom.YesNo);
                 msg.ShowDialog();
@@ -667,6 +667,20 @@ namespace Fitzone.Front.Socios
 
 
         }
-   
+
+        private void btnConsultarMembresias_Click(object sender, EventArgs e)
+        {
+
+            var socio = bindingSource1.Current as Socio;
+
+            if (socio == null)
+            {
+                new MessageBoxCustom("Seleccione un socio", EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                return;
+            }
+            FrmMembresiaAdmin frm = new FrmMembresiaAdmin();                        
+            frm.SetSocio(socio.numeroDocumento??"");
+            frm.ShowDialog();
+        }
     }
 }

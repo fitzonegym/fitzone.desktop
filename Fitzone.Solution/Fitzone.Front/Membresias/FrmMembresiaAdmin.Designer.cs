@@ -63,6 +63,7 @@
             thunderLabel7 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel6 = new ReaLTaiizor.Controls.ThunderLabel();
             groupBox1 = new GroupBox();
+            chkFecha = new CheckBox();
             BtnCuotas = new ReaLTaiizor.Controls.CyberButton();
             btnModificar = new ReaLTaiizor.Controls.CyberButton();
             ucCantidadregistros1 = new UserControls.UCCantidadregistros();
@@ -75,9 +76,9 @@
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 478);
+            ucBordertd2.Location = new Point(2, 477);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(1154, 3);
+            ucBordertd2.Size = new Size(1146, 3);
             ucBordertd2.TabIndex = 47;
             // 
             // ucBordertd1
@@ -86,16 +87,16 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(1154, 3);
+            ucBordertd1.Size = new Size(1146, 3);
             ucBordertd1.TabIndex = 46;
             // 
             // ucBorderlr2
             // 
             ucBorderlr2.BackColor = Color.White;
             ucBorderlr2.Dock = DockStyle.Right;
-            ucBorderlr2.Location = new Point(1156, 0);
+            ucBorderlr2.Location = new Point(1148, 0);
             ucBorderlr2.Name = "ucBorderlr2";
-            ucBorderlr2.Size = new Size(2, 481);
+            ucBorderlr2.Size = new Size(2, 480);
             ucBorderlr2.TabIndex = 45;
             // 
             // ucBorderlr1
@@ -104,7 +105,7 @@
             ucBorderlr1.Dock = DockStyle.Left;
             ucBorderlr1.Location = new Point(0, 0);
             ucBorderlr1.Name = "ucBorderlr1";
-            ucBorderlr1.Size = new Size(2, 481);
+            ucBorderlr1.Size = new Size(2, 480);
             ucBorderlr1.TabIndex = 44;
             // 
             // ucTituloLabel1
@@ -120,7 +121,7 @@
             // 
             botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(1108, 5);
+            botonesForms2.Location = new Point(1100, 5);
             botonesForms2.Name = "botonesForms2";
             botonesForms2.Size = new Size(46, 20);
             botonesForms2.TabIndex = 29;
@@ -152,7 +153,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(1048, 429);
+            btnCancelar.Location = new Point(1040, 428);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -194,7 +195,7 @@
             btnAgregar.Lighting = false;
             btnAgregar.LinearGradient_Background = false;
             btnAgregar.LinearGradientPen = false;
-            btnAgregar.Location = new Point(8, 429);
+            btnAgregar.Location = new Point(8, 428);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.PenWidth = 15;
             btnAgregar.Rounding = true;
@@ -225,7 +226,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(1138, 278);
+            dataGridView1.Size = new Size(1130, 277);
             dataGridView1.TabIndex = 39;
             dataGridView1.RowPrePaint += dataGridView1_RowPrePaint;
             // 
@@ -418,7 +419,7 @@
             // 
             txtFechaHasta.CustomFormat = "dd/MM/yyyy";
             txtFechaHasta.Format = DateTimePickerFormat.Custom;
-            txtFechaHasta.Location = new Point(501, 18);
+            txtFechaHasta.Location = new Point(597, 14);
             txtFechaHasta.Name = "txtFechaHasta";
             txtFechaHasta.Size = new Size(86, 23);
             txtFechaHasta.TabIndex = 62;
@@ -427,7 +428,7 @@
             // 
             txtFechaDesde.CustomFormat = "dd/MM/yyyy";
             txtFechaDesde.Format = DateTimePickerFormat.Custom;
-            txtFechaDesde.Location = new Point(364, 18);
+            txtFechaDesde.Location = new Point(460, 14);
             txtFechaDesde.Name = "txtFechaDesde";
             txtFechaDesde.Size = new Size(86, 23);
             txtFechaDesde.TabIndex = 61;
@@ -436,7 +437,7 @@
             // 
             thunderLabel7.BackColor = Color.Transparent;
             thunderLabel7.ForeColor = Color.WhiteSmoke;
-            thunderLabel7.Location = new Point(455, 25);
+            thunderLabel7.Location = new Point(551, 21);
             thunderLabel7.Name = "thunderLabel7";
             thunderLabel7.Size = new Size(57, 16);
             thunderLabel7.TabIndex = 60;
@@ -446,7 +447,7 @@
             // 
             thunderLabel6.BackColor = Color.Transparent;
             thunderLabel6.ForeColor = Color.WhiteSmoke;
-            thunderLabel6.Location = new Point(319, 25);
+            thunderLabel6.Location = new Point(415, 21);
             thunderLabel6.Name = "thunderLabel6";
             thunderLabel6.Size = new Size(57, 16);
             thunderLabel6.TabIndex = 59;
@@ -455,6 +456,7 @@
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.Controls.Add(chkFecha);
             groupBox1.Controls.Add(txtFechaHasta);
             groupBox1.Controls.Add(txtNombre);
             groupBox1.Controls.Add(txtFechaDesde);
@@ -464,9 +466,23 @@
             groupBox1.Controls.Add(thunderLabel1);
             groupBox1.Location = new Point(8, 38);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1138, 56);
+            groupBox1.Size = new Size(1130, 56);
             groupBox1.TabIndex = 63;
             groupBox1.TabStop = false;
+            // 
+            // chkFecha
+            // 
+            chkFecha.AutoSize = true;
+            chkFecha.Checked = true;
+            chkFecha.CheckState = CheckState.Checked;
+            chkFecha.ForeColor = Color.White;
+            chkFecha.Location = new Point(352, 19);
+            chkFecha.Name = "chkFecha";
+            chkFecha.Size = new Size(57, 19);
+            chkFecha.TabIndex = 64;
+            chkFecha.Text = "Fecha";
+            chkFecha.UseVisualStyleBackColor = true;
+            chkFecha.CheckedChanged += chkFecha_CheckedChanged;
             // 
             // BtnCuotas
             // 
@@ -495,7 +511,7 @@
             BtnCuotas.Lighting = false;
             BtnCuotas.LinearGradient_Background = false;
             BtnCuotas.LinearGradientPen = false;
-            BtnCuotas.Location = new Point(203, 429);
+            BtnCuotas.Location = new Point(203, 428);
             BtnCuotas.Name = "BtnCuotas";
             BtnCuotas.PenWidth = 15;
             BtnCuotas.Rounding = true;
@@ -537,7 +553,7 @@
             btnModificar.Lighting = false;
             btnModificar.LinearGradient_Background = false;
             btnModificar.LinearGradientPen = false;
-            btnModificar.Location = new Point(105, 429);
+            btnModificar.Location = new Point(105, 428);
             btnModificar.Name = "btnModificar";
             btnModificar.PenWidth = 15;
             btnModificar.Rounding = true;
@@ -557,7 +573,7 @@
             ucCantidadregistros1._cantidad = 0;
             ucCantidadregistros1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ucCantidadregistros1.BackColor = Color.Transparent;
-            ucCantidadregistros1.Location = new Point(1043, 124);
+            ucCantidadregistros1.Location = new Point(1035, 124);
             ucCantidadregistros1.Name = "ucCantidadregistros1";
             ucCantidadregistros1.Size = new Size(103, 16);
             ucCantidadregistros1.TabIndex = 65;
@@ -567,7 +583,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(1158, 481);
+            ClientSize = new Size(1150, 480);
             Controls.Add(ucCantidadregistros1);
             Controls.Add(btnModificar);
             Controls.Add(groupBox1);
@@ -590,6 +606,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -637,5 +654,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn colEstado;
         private DataGridViewTextBoxColumn estadoMembresiaDataGridViewTextBoxColumn;
+        private CheckBox chkFecha;
     }
 }

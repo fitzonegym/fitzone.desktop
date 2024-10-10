@@ -65,16 +65,22 @@ namespace Fitzone.Controller
             //devuelvo membresias en la fecha pero en cualquier estado
             return contexto.Membresia.Include("TipoMembresia").Where(m => m.idSocio == idSocio && fecha >= m.fechaDesde && fecha <= m.fechaHasta).ToList();
         }
-        public List<Membresia>? GetAllFilters(Membresia membresia)
+        public List<Membresia>? GetAllFilters(Membresia filtro)
         {
 
-            string? nombre = membresia.SocioNombre.ToUpper().Trim();
+            if (filtro.Socio == null)
+            {
+                filtro.Socio = new Socio();
+                filtro.Socio.nombre = "";
+                filtro.Socio.idSocio = 0;
+            }
 
             var membresias = contexto.Membresia
                 .Include("Socio")
-                .Include("EstadoMembresia")                
-                .Where(c => (c.Socio != null && (c.Socio.nombre.Trim()+ c.Socio.apellido.Trim()).ToUpper().Contains(nombre)))
-                .Where(c => c.fechaAlta >= membresia.fechaDesde && c.fechaAlta <= membresia.fechaHasta)                
+                .Include("EstadoMembresia")
+                .Where(c => (filtro.idSocio == 0 || c.idSocio == filtro.idSocio))
+                .Where(c => (c.Socio != null && (c.Socio.numeroDocumento + c.Socio.nombre??"".ToUpper() + c.Socio.apellido??"".ToUpper()).Contains(filtro.Socio.nombre??"")))
+                .Where(c => c.fechaAlta >= filtro.fechaDesde && c.fechaAlta <= filtro.fechaHasta)                
                 .OrderByDescending(c => c.fechaAlta)
                 .ToList();
 
