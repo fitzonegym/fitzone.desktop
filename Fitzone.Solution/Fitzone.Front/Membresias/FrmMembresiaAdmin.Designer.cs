@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             ucBordertd2 = new UserControls.UCBorderTD();
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
@@ -67,6 +67,7 @@
             BtnCuotas = new ReaLTaiizor.Controls.CyberButton();
             btnModificar = new ReaLTaiizor.Controls.CyberButton();
             ucCantidadregistros1 = new UserControls.UCCantidadregistros();
+            btnDeshabilitar = new ReaLTaiizor.Controls.CyberButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -292,9 +293,9 @@
             // horadesdeDataGridViewTextBoxColumn
             // 
             horadesdeDataGridViewTextBoxColumn.DataPropertyName = "horadesde";
-            dataGridViewCellStyle1.Format = "t";
-            dataGridViewCellStyle1.NullValue = null;
-            horadesdeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Format = "t";
+            dataGridViewCellStyle5.NullValue = null;
+            horadesdeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             horadesdeDataGridViewTextBoxColumn.HeaderText = "Hora Desde";
             horadesdeDataGridViewTextBoxColumn.Name = "horadesdeDataGridViewTextBoxColumn";
             horadesdeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -303,9 +304,9 @@
             // horaHastaDataGridViewTextBoxColumn
             // 
             horaHastaDataGridViewTextBoxColumn.DataPropertyName = "horaHasta";
-            dataGridViewCellStyle2.Format = "t";
-            dataGridViewCellStyle2.NullValue = null;
-            horaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "t";
+            dataGridViewCellStyle6.NullValue = null;
+            horaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             horaHastaDataGridViewTextBoxColumn.HeaderText = "Hora Hasta";
             horaHastaDataGridViewTextBoxColumn.Name = "horaHastaDataGridViewTextBoxColumn";
             horaHastaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -578,12 +579,55 @@
             ucCantidadregistros1.Size = new Size(103, 16);
             ucCantidadregistros1.TabIndex = 65;
             // 
+            // btnDeshabilitar
+            // 
+            btnDeshabilitar.Alpha = 20;
+            btnDeshabilitar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btnDeshabilitar.BackColor = Color.Transparent;
+            btnDeshabilitar.Background = true;
+            btnDeshabilitar.Background_WidthPen = 4F;
+            btnDeshabilitar.BackgroundPen = true;
+            btnDeshabilitar.ColorBackground = Color.Black;
+            btnDeshabilitar.ColorBackground_1 = Color.Black;
+            btnDeshabilitar.ColorBackground_2 = Color.Gray;
+            btnDeshabilitar.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btnDeshabilitar.ColorLighting = Color.FromArgb(81, 45, 168);
+            btnDeshabilitar.ColorPen_1 = Color.Black;
+            btnDeshabilitar.ColorPen_2 = Color.Gray;
+            btnDeshabilitar.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnDeshabilitar.Effect_1 = true;
+            btnDeshabilitar.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            btnDeshabilitar.Effect_1_Transparency = 25;
+            btnDeshabilitar.Effect_2 = true;
+            btnDeshabilitar.Effect_2_ColorBackground = Color.White;
+            btnDeshabilitar.Effect_2_Transparency = 20;
+            btnDeshabilitar.Font = new Font("Arial", 11F);
+            btnDeshabilitar.ForeColor = Color.FromArgb(245, 245, 245);
+            btnDeshabilitar.Lighting = false;
+            btnDeshabilitar.LinearGradient_Background = false;
+            btnDeshabilitar.LinearGradientPen = false;
+            btnDeshabilitar.Location = new Point(304, 428);
+            btnDeshabilitar.Name = "btnDeshabilitar";
+            btnDeshabilitar.PenWidth = 15;
+            btnDeshabilitar.Rounding = true;
+            btnDeshabilitar.RoundingInt = 70;
+            btnDeshabilitar.Size = new Size(99, 40);
+            btnDeshabilitar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnDeshabilitar.TabIndex = 66;
+            btnDeshabilitar.Tag = "Cyber";
+            btnDeshabilitar.TextButton = "Deshabilitar";
+            btnDeshabilitar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnDeshabilitar.Timer_Effect_1 = 5;
+            btnDeshabilitar.Timer_RGB = 300;
+            btnDeshabilitar.Click += btnDeshabilitar_Click;
+            // 
             // FrmMembresiaAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
             ClientSize = new Size(1150, 480);
+            Controls.Add(btnDeshabilitar);
             Controls.Add(ucCantidadregistros1);
             Controls.Add(btnModificar);
             Controls.Add(groupBox1);
@@ -655,5 +699,6 @@
         private DataGridViewTextBoxColumn colEstado;
         private DataGridViewTextBoxColumn estadoMembresiaDataGridViewTextBoxColumn;
         private CheckBox chkFecha;
+        private ReaLTaiizor.Controls.CyberButton btnDeshabilitar;
     }
 }

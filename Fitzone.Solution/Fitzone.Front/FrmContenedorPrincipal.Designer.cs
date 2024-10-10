@@ -42,11 +42,13 @@
             membresíaToolStripMenuItem = new ToolStripMenuItem();
             admnistraciónToolStripMenuItem = new ToolStripMenuItem();
             altaToolStripMenuItem1 = new ToolStripMenuItem();
-            controlDeAccesosToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
+            administraciónToolStripMenuItem1 = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
             tipoDeMembresíaToolStripMenuItem = new ToolStripMenuItem();
             instructoresToolStripMenuItem1 = new ToolStripMenuItem();
             usuariosToolStripMenuItem = new ToolStripMenuItem();
+            controlDeAccesosToolStripMenuItem = new ToolStripMenuItem();
             salirToolStripMenuItem = new ToolStripMenuItem();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
@@ -97,7 +99,7 @@
             splitContainer1.Size = new Size(1197, 645);
             splitContainer1.SplitterDistance = 200;
             splitContainer1.TabIndex = 6;
-            splitContainer1.SplitterMoved += splitContainer1_SplitterMoved;
+            
             // 
             // panel2
             // 
@@ -124,12 +126,12 @@
             // 
             menuStrip1.BackColor = Color.Transparent;
             menuStrip1.Dock = DockStyle.Fill;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, membresíaToolStripMenuItem, controlDeAccesosToolStripMenuItem, configuraciónToolStripMenuItem, salirToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, membresíaToolStripMenuItem, toolStripMenuItem1, configuraciónToolStripMenuItem, controlDeAccesosToolStripMenuItem, salirToolStripMenuItem });
             menuStrip1.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(189, 191);
+            menuStrip1.Size = new Size(191, 259);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -140,9 +142,10 @@
             sociosToolStripMenuItem.ForeColor = Color.Black;
             sociosToolStripMenuItem.Margin = new Padding(5);
             sociosToolStripMenuItem.Name = "sociosToolStripMenuItem";
-            sociosToolStripMenuItem.Size = new Size(172, 29);
+            sociosToolStripMenuItem.Size = new Size(174, 29);
             sociosToolStripMenuItem.Text = "Socios";
             sociosToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
+            
             // 
             // administraciónToolStripMenuItem
             // 
@@ -168,7 +171,7 @@
             membresíaToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             membresíaToolStripMenuItem.Margin = new Padding(5);
             membresíaToolStripMenuItem.Name = "membresíaToolStripMenuItem";
-            membresíaToolStripMenuItem.Size = new Size(172, 29);
+            membresíaToolStripMenuItem.Size = new Size(174, 29);
             membresíaToolStripMenuItem.Text = "Membresía";
             membresíaToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -190,13 +193,25 @@
             altaToolStripMenuItem1.Text = "Agregar";
             altaToolStripMenuItem1.Click += altaToolStripMenuItem1_Click;
             // 
-            // controlDeAccesosToolStripMenuItem
+            // toolStripMenuItem1
             // 
-            controlDeAccesosToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            controlDeAccesosToolStripMenuItem.Name = "controlDeAccesosToolStripMenuItem";
-            controlDeAccesosToolStripMenuItem.Size = new Size(182, 29);
-            controlDeAccesosToolStripMenuItem.Text = "Control de accesos";
-            controlDeAccesosToolStripMenuItem.Click += controlDeAccesosToolStripMenuItem_Click;
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { administraciónToolStripMenuItem1 });
+            toolStripMenuItem1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            toolStripMenuItem1.Margin = new Padding(5);
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(174, 29);
+            toolStripMenuItem1.Text = "Facturas";
+            toolStripMenuItem1.TextAlign = ContentAlignment.MiddleLeft;
+            
+            // 
+            // administraciónToolStripMenuItem1
+            // 
+            administraciónToolStripMenuItem1.BackColor = Color.FromArgb(81, 45, 168);
+            administraciónToolStripMenuItem1.ForeColor = Color.White;
+            administraciónToolStripMenuItem1.Name = "administraciónToolStripMenuItem1";
+            administraciónToolStripMenuItem1.Size = new Size(213, 30);
+            administraciónToolStripMenuItem1.Text = "Administración";
+            administraciónToolStripMenuItem1.Click += administraciónToolStripMenuItem1_Click_1;
             // 
             // configuraciónToolStripMenuItem
             // 
@@ -205,7 +220,7 @@
             configuraciónToolStripMenuItem.ForeColor = Color.Black;
             configuraciónToolStripMenuItem.Margin = new Padding(5);
             configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            configuraciónToolStripMenuItem.Size = new Size(172, 29);
+            configuraciónToolStripMenuItem.Size = new Size(174, 29);
             configuraciónToolStripMenuItem.Text = "Configuración";
             configuraciónToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -236,13 +251,24 @@
             usuariosToolStripMenuItem.Text = "Usuarios";
             usuariosToolStripMenuItem.Click += usuariosToolStripMenuItem_Click;
             // 
+            // controlDeAccesosToolStripMenuItem
+            // 
+            controlDeAccesosToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            controlDeAccesosToolStripMenuItem.Margin = new Padding(5);
+            controlDeAccesosToolStripMenuItem.Name = "controlDeAccesosToolStripMenuItem";
+            controlDeAccesosToolStripMenuItem.Padding = new Padding(0);
+            controlDeAccesosToolStripMenuItem.Size = new Size(174, 29);
+            controlDeAccesosToolStripMenuItem.Text = "Control de accesos";
+            controlDeAccesosToolStripMenuItem.Click += controlDeAccesosToolStripMenuItem_Click;
+            // 
             // salirToolStripMenuItem
             // 
             salirToolStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             salirToolStripMenuItem.ForeColor = Color.Black;
             salirToolStripMenuItem.Margin = new Padding(5);
             salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            salirToolStripMenuItem.Size = new Size(172, 29);
+            salirToolStripMenuItem.Padding = new Padding(0);
+            salirToolStripMenuItem.Size = new Size(174, 29);
             salirToolStripMenuItem.Text = "Salir";
             salirToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             salirToolStripMenuItem.Click += salirToolStripMenuItem_Click;
@@ -341,6 +367,8 @@
         private ToolStripMenuItem controlDeAccesosToolStripMenuItem;
         private ToolStripMenuItem instructoresToolStripMenuItem1;
         private ToolStripMenuItem usuariosToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem administraciónToolStripMenuItem1;
     }
 }
 

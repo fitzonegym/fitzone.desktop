@@ -243,5 +243,19 @@ namespace Fitzone.Controller
 
         }
 
+        public bool Deshabilitar(int id)
+        {
+            var membresia = contexto.Membresia.FirstOrDefault(m=>m.idMembresia == id);
+                           
+            if (membresia == null)
+                return false;
+
+            membresia.idEstadoMembresia = 3;
+
+            contexto.SaveChanges();
+
+            return true;
+
+        }
     }
 }

@@ -100,7 +100,7 @@ namespace Fitzone.Front.Socios
         }
         private void VisibleBotones(bool visible)
         {
-            btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnMembresía.Visible = btnConsultar.Visible = btnCuota.Visible = btnAnular.Visible = visible;
+            btnAceptar.Visible = btnAgregar.Visible = btnCancelar.Visible = btnModificar.Visible = BtnMembresía.Visible = btnConsultar.Visible = btnCuota.Visible = btnAnular.Visible = btnConsultarMembresias.Visible = visible;
         }
 
         private void LimpiarFiltros()

@@ -116,6 +116,8 @@ namespace Fitzone.Front.Instructores
 
         private void FrmInstructoresAdmin_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
+
             LimpiarFiltros();
 
             CargarTipos();

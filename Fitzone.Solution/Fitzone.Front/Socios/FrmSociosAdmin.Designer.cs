@@ -113,7 +113,7 @@
             btnModificar.Lighting = false;
             btnModificar.LinearGradient_Background = false;
             btnModificar.LinearGradientPen = false;
-            btnModificar.Location = new Point(104, 429);
+            btnModificar.Location = new Point(104, 513);
             btnModificar.Name = "btnModificar";
             btnModificar.PenWidth = 15;
             btnModificar.Rounding = true;
@@ -155,7 +155,7 @@
             BtnMembresía.Lighting = false;
             BtnMembresía.LinearGradient_Background = false;
             BtnMembresía.LinearGradientPen = false;
-            BtnMembresía.Location = new Point(549, 428);
+            BtnMembresía.Location = new Point(549, 512);
             BtnMembresía.Name = "BtnMembresía";
             BtnMembresía.PenWidth = 15;
             BtnMembresía.Rounding = true;
@@ -197,7 +197,7 @@
             btnAgregar.Lighting = false;
             btnAgregar.LinearGradient_Background = false;
             btnAgregar.LinearGradientPen = false;
-            btnAgregar.Location = new Point(7, 429);
+            btnAgregar.Location = new Point(7, 513);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.PenWidth = 15;
             btnAgregar.Rounding = true;
@@ -228,7 +228,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(981, 215);
+            dataGridView1.Size = new Size(1024, 299);
             dataGridView1.TabIndex = 20;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             dataGridView1.ColumnHeaderMouseClick += dataGridView1_ColumnHeaderMouseClick;
@@ -382,7 +382,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(894, 429);
+            btnCancelar.Location = new Point(937, 513);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -425,7 +425,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(798, 429);
+            btnAceptar.Location = new Point(841, 513);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -568,7 +568,7 @@
             // 
             botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(959, 6);
+            botonesForms2.Location = new Point(1002, 6);
             botonesForms2.Name = "botonesForms2";
             botonesForms2.Size = new Size(46, 20);
             botonesForms2.TabIndex = 1;
@@ -588,16 +588,16 @@
             ucBorderlr1.Dock = DockStyle.Left;
             ucBorderlr1.Location = new Point(0, 0);
             ucBorderlr1.Name = "ucBorderlr1";
-            ucBorderlr1.Size = new Size(2, 480);
+            ucBorderlr1.Size = new Size(2, 564);
             ucBorderlr1.TabIndex = 25;
             // 
             // ucBorderlr2
             // 
             ucBorderlr2.BackColor = Color.White;
             ucBorderlr2.Dock = DockStyle.Right;
-            ucBorderlr2.Location = new Point(1006, 0);
+            ucBorderlr2.Location = new Point(1049, 0);
             ucBorderlr2.Name = "ucBorderlr2";
-            ucBorderlr2.Size = new Size(2, 480);
+            ucBorderlr2.Size = new Size(2, 564);
             ucBorderlr2.TabIndex = 26;
             // 
             // ucBordertd1
@@ -606,16 +606,16 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(1004, 3);
+            ucBordertd1.Size = new Size(1047, 3);
             ucBordertd1.TabIndex = 27;
             // 
             // ucBordertd2
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 477);
+            ucBordertd2.Location = new Point(2, 561);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(1004, 3);
+            ucBordertd2.Size = new Size(1047, 3);
             ucBordertd2.TabIndex = 28;
             // 
             // btnImprimir
@@ -729,7 +729,7 @@
             groupBox1.Controls.Add(txtDocumento);
             groupBox1.Location = new Point(12, 37);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(981, 118);
+            groupBox1.Size = new Size(1024, 118);
             groupBox1.TabIndex = 62;
             groupBox1.TabStop = false;
             // 
@@ -759,7 +759,7 @@
             ucCantidadregistros1._cantidad = 0;
             ucCantidadregistros1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ucCantidadregistros1.BackColor = Color.Transparent;
-            ucCantidadregistros1.Location = new Point(894, 186);
+            ucCantidadregistros1.Location = new Point(937, 186);
             ucCantidadregistros1.Name = "ucCantidadregistros1";
             ucCantidadregistros1.Size = new Size(103, 16);
             ucCantidadregistros1.TabIndex = 63;
@@ -791,7 +791,7 @@
             btnConsultar.Lighting = false;
             btnConsultar.LinearGradient_Background = false;
             btnConsultar.LinearGradientPen = false;
-            btnConsultar.Location = new Point(202, 429);
+            btnConsultar.Location = new Point(202, 513);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.PenWidth = 15;
             btnConsultar.Rounding = true;
@@ -833,7 +833,7 @@
             btnCuota.Lighting = false;
             btnCuota.LinearGradient_Background = false;
             btnCuota.LinearGradientPen = false;
-            btnCuota.Location = new Point(453, 428);
+            btnCuota.Location = new Point(453, 512);
             btnCuota.Name = "btnCuota";
             btnCuota.PenWidth = 15;
             btnCuota.Rounding = true;
@@ -875,7 +875,7 @@
             btnAnular.Lighting = false;
             btnAnular.LinearGradient_Background = false;
             btnAnular.LinearGradientPen = false;
-            btnAnular.Location = new Point(300, 429);
+            btnAnular.Location = new Point(300, 513);
             btnAnular.Name = "btnAnular";
             btnAnular.PenWidth = 15;
             btnAnular.Rounding = true;
@@ -917,7 +917,7 @@
             btnConsultarMembresias.Lighting = false;
             btnConsultarMembresias.LinearGradient_Background = false;
             btnConsultarMembresias.LinearGradientPen = false;
-            btnConsultarMembresias.Location = new Point(648, 428);
+            btnConsultarMembresias.Location = new Point(648, 512);
             btnConsultarMembresias.Name = "btnConsultarMembresias";
             btnConsultarMembresias.PenWidth = 15;
             btnConsultarMembresias.Rounding = true;
@@ -937,7 +937,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(1008, 480);
+            ClientSize = new Size(1051, 564);
             Controls.Add(btnConsultarMembresias);
             Controls.Add(btnAnular);
             Controls.Add(btnCuota);

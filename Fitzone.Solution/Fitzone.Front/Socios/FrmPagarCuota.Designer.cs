@@ -62,6 +62,7 @@
             groupBox1 = new GroupBox();
             thunderLabel2 = new ReaLTaiizor.Controls.ThunderLabel();
             cmbTipoPago = new ReaLTaiizor.Controls.AloneComboBox();
+            bindingSourceMetodoPago = new BindingSource(components);
             aloneTextBox2 = new ReaLTaiizor.Controls.AloneTextBox();
             groupBox2 = new GroupBox();
             txtTotal = new ReaLTaiizor.Controls.AloneTextBox();
@@ -71,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)bindingSourceCuotas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceMembresia).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceMetodoPago).BeginInit();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -80,16 +82,16 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(0, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(688, 3);
+            ucBordertd1.Size = new Size(690, 3);
             ucBordertd1.TabIndex = 28;
             // 
             // ucBorderlr2
             // 
             ucBorderlr2.BackColor = Color.White;
             ucBorderlr2.Dock = DockStyle.Right;
-            ucBorderlr2.Location = new Point(686, 3);
+            ucBorderlr2.Location = new Point(688, 3);
             ucBorderlr2.Name = "ucBorderlr2";
-            ucBorderlr2.Size = new Size(2, 569);
+            ucBorderlr2.Size = new Size(2, 567);
             ucBorderlr2.TabIndex = 29;
             // 
             // ucBorderlr1
@@ -98,16 +100,16 @@
             ucBorderlr1.Dock = DockStyle.Left;
             ucBorderlr1.Location = new Point(0, 3);
             ucBorderlr1.Name = "ucBorderlr1";
-            ucBorderlr1.Size = new Size(2, 569);
+            ucBorderlr1.Size = new Size(2, 567);
             ucBorderlr1.TabIndex = 30;
             // 
             // ucBordertd2
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 569);
+            ucBordertd2.Location = new Point(2, 567);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(684, 3);
+            ucBordertd2.Size = new Size(686, 3);
             ucBordertd2.TabIndex = 31;
             // 
             // ucTituloLabel1
@@ -124,7 +126,7 @@
             // 
             botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(630, 9);
+            botonesForms2.Location = new Point(632, 9);
             botonesForms2.Name = "botonesForms2";
             botonesForms2.Size = new Size(46, 20);
             botonesForms2.TabIndex = 33;
@@ -143,7 +145,7 @@
             dataGridView1.Location = new Point(12, 229);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(664, 288);
+            dataGridView1.Size = new Size(666, 286);
             dataGridView1.TabIndex = 40;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             dataGridView1.CellFormatting += dataGridView1_CellFormatting;
@@ -244,7 +246,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(581, 523);
+            btnCancelar.Location = new Point(583, 521);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -286,7 +288,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(483, 523);
+            btnAceptar.Location = new Point(485, 521);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -431,7 +433,7 @@
             groupBox1.ForeColor = Color.White;
             groupBox1.Location = new Point(12, 52);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(661, 101);
+            groupBox1.Size = new Size(663, 101);
             groupBox1.TabIndex = 85;
             groupBox1.TabStop = false;
             groupBox1.Text = "Filtros";
@@ -448,16 +450,22 @@
             // 
             // cmbTipoPago
             // 
+            cmbTipoPago.DataSource = bindingSourceMetodoPago;
+            cmbTipoPago.DisplayMember = "nombre";
             cmbTipoPago.DrawMode = DrawMode.OwnerDrawFixed;
             cmbTipoPago.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoPago.EnabledCalc = true;
             cmbTipoPago.FormattingEnabled = true;
             cmbTipoPago.ItemHeight = 20;
-            cmbTipoPago.Items.AddRange(new object[] { "CONTADO", "DEBITO", "TRANSFERENCIA", "TARJETA CRÉDITO" });
             cmbTipoPago.Location = new Point(127, 22);
             cmbTipoPago.Name = "cmbTipoPago";
             cmbTipoPago.Size = new Size(148, 26);
             cmbTipoPago.TabIndex = 86;
+            cmbTipoPago.ValueMember = "nombre";
+            // 
+            // bindingSourceMetodoPago
+            // 
+            bindingSourceMetodoPago.DataSource = typeof(Entidades.MetodoPago);
             // 
             // aloneTextBox2
             // 
@@ -545,7 +553,7 @@
             cyberButton1.Lighting = false;
             cyberButton1.LinearGradient_Background = false;
             cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(8, 520);
+            cyberButton1.Location = new Point(10, 518);
             cyberButton1.Name = "cyberButton1";
             cyberButton1.PenWidth = 15;
             cyberButton1.Rounding = true;
@@ -566,7 +574,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(688, 572);
+            ClientSize = new Size(690, 570);
             Controls.Add(cyberButton1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -588,6 +596,7 @@
             ((System.ComponentModel.ISupportInitialize)bindingSourceMembresia).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)bindingSourceMetodoPago).EndInit();
             groupBox2.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -629,5 +638,6 @@
         private DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
         private DataGridViewCheckBoxColumn pagadaCol;
         private ReaLTaiizor.Controls.CyberButton cyberButton1;
+        private BindingSource bindingSourceMetodoPago;
     }
 }

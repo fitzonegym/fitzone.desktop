@@ -1,23 +1,23 @@
-﻿using Fitzone.Controller;
-using Fitzone.Entidades;
-using Fitzone.Front.Socios;
+﻿using Fitzone.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fitzone.Front.Facturas
 {
-    public partial class FrmFacturasAdmin : Form
+    public partial class FrmDetalleAlta : Form
     {
-        List<Factura> _facturaList = new List<Factura>();
-        Socio? _Socio;
+        public Factura _factura;
+        public FrmDetalleAlta()
+        {
+            InitializeComponent();
+        }
 
         #region redimensionar
 
@@ -80,119 +80,29 @@ namespace Fitzone.Front.Facturas
             }
         }
         #endregion
-        public FrmFacturasAdmin()
+        private void FrmDetalleAlta_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
+            CargarFactura();
         }
 
-        private void FrmFacturasAdmin_Load(object sender, EventArgs e)
+        private void CargarFactura()
         {
-            this.WindowState = FormWindowState.Maximized;
+            txtCliente.Text = _factura.clienteNombre;
+            txtDireccion.Text = _factura.clienteDireccion;
+            txtFecha.Text = _factura.fecha.ToString();
+            txtLetra.Text = _factura.letra;
+            txtMetodo.Text = _factura.metodoDePago;
+            txtNro.Text = _factura.numero;
+            txtTipo.Text = _factura.tipoFactura;
+            txtTotal.Text = "$ " + _factura.total.ToString();
 
-            Limpiar();
-            //CargarFacturas();
-
-        }
-
-        private void CargarFacturas()
-        {
-            Factura f = new Factura();
-
-            f.idSocio = _Socio?.idSocio ?? 0; // Si _socio es null, asigna 0
-
-            _facturaList = new FacturaController().GetAll(f);
-
-            if (chkFecha.Checked)
-            {
-                var desde = Statics.DateTimeSinHora(txtFechaDesde.Value);
-                var hasta = Statics.DateTime235959(txtFechaHasta.Value);
-
-                _facturaList = _facturaList.Where(f => f.fecha >= desde
-                    && f.fecha <= hasta).ToList();
-            }
-
-
-
-            bindingFactura.DataSource = _facturaList;
-
-            ucCantidadregistros1._cantidad = _facturaList?.Count() ?? 0;
+            bindingSourceDetalle.DataSource = _factura.DetalleFactura;
 
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            Close();
+            Close();    
         }
-
-        private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            var factura = bindingFactura.Current as Factura;
-
-            if (factura == null)
-                return;
-
-            FrmDetalleAlta frm = new FrmDetalleAlta();
-            frm._factura = factura;
-            frm.ShowDialog();
-
-        }
-
-        private void dataGridView1_DoubleClick(object sender, EventArgs e)
-        {
-            var factura = bindingFactura.Current as Factura;
-
-            if (factura == null)
-                return;
-
-            FrmDetalleAlta frm = new FrmDetalleAlta();
-            frm._factura = factura;
-            frm.ShowDialog();
-
-        }
-        private void ucBuscar1__ClickUC(object sender, EventArgs e)
-        {
-            FrmSociosAdmin frm = new FrmSociosAdmin();
-            frm._EnumModoFormulario = Enumeraciones.EnumModoFormulario.Consulta;
-
-            frm.ShowDialog();
-
-            if (frm._SocioSeleccionado == null)
-            {
-                return;
-            }
-
-            _Socio = frm._SocioSeleccionado;
-
-            txtSocio.Text = _Socio.NombreCompleto;
-        }
-
-        private void chkFecha_CheckedChanged(object sender, EventArgs e)
-        {
-            txtFechaDesde.Enabled = txtFechaHasta.Enabled = chkFecha.Checked;
-        }
-
-        private void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            CargarFacturas();
-        }
-
-        private void ucClearFilters1__ClickUCAgregar(object sender, EventArgs e)
-        {
-            Limpiar();
-        }
-
-        private void Limpiar()
-        {
-            _Socio = null;
-            txtSocio.Text = "";
-            chkFecha.Checked = false;
-
-            chkFecha.Checked = true;    
-
-            txtFechaDesde.Value = Statics.DateTimeSinHora(DateTime.Now.AddMonths(-1));
-            txtFechaHasta.Value = Statics.DateTimeNow235959();
-
-        }
-
     }
 }

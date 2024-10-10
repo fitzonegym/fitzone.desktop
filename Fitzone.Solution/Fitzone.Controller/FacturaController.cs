@@ -14,9 +14,16 @@ namespace Fitzone.Controller
     {
         Contexto contexto = new Contexto();
 
-        public List<Factura>? GetAll()
+        public List<Factura> GetAll()
         {
-            throw new NotImplementedException();
+            return contexto.Factura.ToList();
+        }
+
+        public List<Factura> GetAll( Factura filtro)
+        {
+            return contexto.Factura.Include("DetalleFactura")
+                .Where(f=> filtro.idSocio == 0 || f.idSocio == filtro.idSocio)                
+                .ToList();
         }
 
         public Factura? GetById(int id)

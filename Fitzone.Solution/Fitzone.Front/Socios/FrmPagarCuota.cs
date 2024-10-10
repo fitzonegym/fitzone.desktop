@@ -16,6 +16,7 @@ namespace Fitzone.Front.Socios
         List<Membresia> _membresias = new List<Membresia>();
         Socio _socio;
         List<Cuota> _cuotas = new List<Cuota>();
+        List<MetodoPago> _metodosPago = new List<MetodoPago>();
         public FrmPagarCuota()
         {
             InitializeComponent();
@@ -88,6 +89,19 @@ namespace Fitzone.Front.Socios
             CargarSocio();
             CargarMembresia();
             CargarCuotas();
+            CargarMetodosPago();
+        }
+        private void CargarMetodosPago()
+        {
+            _metodosPago = new List<MetodoPago>{
+                new MetodoPago { nombre = "CONTADO" },
+                new MetodoPago { nombre = "DEBITO" },
+                new MetodoPago { nombre = "TRANSFERENCIA" },
+                new MetodoPago { nombre = "TARJETA CRÉDITO" } 
+            };
+
+            bindingSourceMetodoPago.DataSource = _metodosPago;
+           
         }
 
         private void CargarMembresia()
@@ -171,12 +185,12 @@ namespace Fitzone.Front.Socios
             f.tipoFactura = "F";
             f.fecha = DateTime.Now;
             f.letra = "C";
-            f.metodoDePago = cmbTipoPago.Text;
+            f.metodoDePago = cmbTipoPago.SelectedValue.ToString();
             f.numero = new FacturaController().getNumeroProximo();
             f.total = _cuotas.Where(c => c.seleccionada).Sum(c => c.precio);
             f.clienteNombre = _socio.NombreCompleto;
             f.clienteDireccion = String.Join(" ", _socio.calle, _socio.calleNumero, _socio.BarrioNombre);
-
+            f.idSocio = _socio.idSocio;
             f.DetalleFactura = new List<DetalleFactura>();
 
             FacturaController facturaController = new FacturaController();

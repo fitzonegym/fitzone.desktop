@@ -88,7 +88,7 @@ namespace Fitzone.Front.Membresias
         }
 
         private void FrmMembresiaAdmin_Load(object sender, EventArgs e)
-        {            
+        {
             txtFechaDesde.Value = DateTime.Now.AddDays(-10);
             txtFechaHasta.Value = DateTime.Now.AddMonths(1);
 
@@ -99,7 +99,7 @@ namespace Fitzone.Front.Membresias
 
         private void CargarGrilla()
         {
-            Membresia filtro = new Membresia();  
+            Membresia filtro = new Membresia();
 
             if (chkFecha.Checked)
             {
@@ -243,7 +243,7 @@ namespace Fitzone.Front.Membresias
         }
 
         public void SetSocio(string nrodocumento)
-        {   
+        {
             txtNombre.Text = nrodocumento;
             chkFecha.Checked = false;
         }
@@ -251,8 +251,28 @@ namespace Fitzone.Front.Membresias
         private void chkFecha_CheckedChanged(object sender, EventArgs e)
         {
             txtFechaDesde.Enabled = txtFechaHasta.Enabled = chkFecha.Checked;
-            
 
+
+        }
+
+        private void btnDeshabilitar_Click(object sender, EventArgs e)
+        {
+            if (bindingSource1.DataSource == null || bindingSource1.Current == null)
+                return;
+
+            
+            var id = ((Membresia)bindingSource1.Current).idMembresia;
+
+            var mes = new MessageBoxCustom("¿Desea deshabilitar la membresía seleccionada?",EnumModoMessageBoxCustom.YesNo,75);
+            mes.ShowDialog();
+            if (mes.response == DialogResult.No)
+            {
+                return;
+            }
+
+            new MembresiaController().Deshabilitar(id);
+
+            CargarGrilla();
         }
     }
 }

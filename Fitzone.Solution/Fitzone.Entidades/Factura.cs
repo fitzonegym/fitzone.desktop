@@ -23,6 +23,11 @@ namespace Fitzone.Entidades
 
         public string letra { get; set; }
 
+        //[ForeignKey("Socio")]
+        public int idSocio{ get; set; }
+            
+        //public Socio? Socio { get; set; }
+
         public DateTime fecha { get; set; }
 
         [MaxLength(50)]
