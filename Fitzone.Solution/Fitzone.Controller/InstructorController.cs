@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,11 +21,9 @@ namespace Fitzone.Controller
                .OrderBy(i=>i.apellido)
                .ToList();
         }
-
-        public List<Instructor>? GetAll(Instructor instructor)
+        public List<Instructor>? GetAll(Instructor instructor, bool verAnulados = false)
         {
-            var instructores = contexto.Instructor
-               .Where(i => i.anulado == false)
+            var instructores = contexto.Instructor               
                .Where(i => i.nombre.Contains(instructor.nombre))
                .Where(i => i.apellido.Contains(instructor.apellido))
                .Where(i => i.numeroDocumento.Contains(instructor.numeroDocumento))
@@ -33,6 +32,11 @@ namespace Fitzone.Controller
                .ThenInclude(ia => ia.Actividad)
                .ToList();
 
+
+            if (!verAnulados)
+                instructores = instructores
+                    .Where(c => !c.anulado)
+                    .ToList();
 
             return instructores;
         }
@@ -53,12 +57,10 @@ namespace Fitzone.Controller
 
             return inst;   
         }
-
         public Instructor? GetByName(string nombre)
         {
             throw new NotImplementedException();
         }           
-
         public List<Instructor>? GetInstructoresActividad(int idActividad)
         {
            List<Instructor> lista = new List<Instructor>();
@@ -75,7 +77,6 @@ namespace Fitzone.Controller
 
             return lista; 
         }
-
         public bool Insert(Instructor entidad)
         {
             entidad.idInstructor = 0;
@@ -146,8 +147,38 @@ namespace Fitzone.Controller
             {
                 throw;
             }
+        }    
+        public bool PuedeAnular(int idInstructor)
+        {
+            //se puede anular un instructor si NO tiene membresias activas o vencidas
+
+            var membresiasActivas = contexto.Membresia.Where(m => m.idInstructor == idInstructor && (m.idEstadoMembresia == 1 || m.idEstadoMembresia == 2)).ToList();
+
+            return membresiasActivas.Count == 0;
         }
 
+        public bool Anular(int id)
+        {
+            try
+            {
+                //busco en la BD el objeto a anular
+                var instructor = contexto.Instructor.FirstOrDefault(i => i.idInstructor == id);
+                if (instructor == null)
+                    return false;
+
+                //actualizo los valores
+                instructor.anulado = true;
+
+                contexto.SaveChanges(true);
+
+                return true;
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
     }
 }

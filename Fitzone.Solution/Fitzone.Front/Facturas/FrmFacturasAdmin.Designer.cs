@@ -40,6 +40,7 @@
             thunderLabel7 = new ReaLTaiizor.Controls.ThunderLabel();
             thunderLabel6 = new ReaLTaiizor.Controls.ThunderLabel();
             groupBox1 = new GroupBox();
+            ucClearFilters1 = new UserControls.UCClearFilters();
             txtSocio = new TextBox();
             ucBuscar1 = new UserControls.UCBuscar();
             chkFecha = new CheckBox();
@@ -60,7 +61,7 @@
             metodoDePagoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             totalDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ucPintarFilasPares1 = new UserControls.UCPintarFilasPares();
-            ucClearFilters1 = new UserControls.UCClearFilters();
+            btnImprimir = new ReaLTaiizor.Controls.CyberButton();
             ((System.ComponentModel.ISupportInitialize)bindingFactura).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -204,6 +205,14 @@
             groupBox1.Size = new Size(750, 56);
             groupBox1.TabIndex = 77;
             groupBox1.TabStop = false;
+            // 
+            // ucClearFilters1
+            // 
+            ucClearFilters1.Location = new Point(647, 16);
+            ucClearFilters1.Name = "ucClearFilters1";
+            ucClearFilters1.Size = new Size(25, 25);
+            ucClearFilters1.TabIndex = 83;
+            ucClearFilters1._ClickUCAgregar += ucClearFilters1__ClickUCAgregar;
             // 
             // txtSocio
             // 
@@ -454,13 +463,46 @@
             ucPintarFilasPares1.Size = new Size(33, 27);
             ucPintarFilasPares1.TabIndex = 80;
             // 
-            // ucClearFilters1
+            // btnImprimir
             // 
-            ucClearFilters1.Location = new Point(647, 16);
-            ucClearFilters1.Name = "ucClearFilters1";
-            ucClearFilters1.Size = new Size(25, 25);
-            ucClearFilters1.TabIndex = 83;
-            ucClearFilters1._ClickUCAgregar += ucClearFilters1__ClickUCAgregar;
+            btnImprimir.Alpha = 20;
+            btnImprimir.BackColor = Color.Transparent;
+            btnImprimir.Background = true;
+            btnImprimir.Background_WidthPen = 4F;
+            btnImprimir.BackgroundPen = true;
+            btnImprimir.ColorBackground = Color.Black;
+            btnImprimir.ColorBackground_1 = Color.Black;
+            btnImprimir.ColorBackground_2 = Color.Gray;
+            btnImprimir.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btnImprimir.ColorLighting = Color.FromArgb(81, 45, 168);
+            btnImprimir.ColorPen_1 = Color.Black;
+            btnImprimir.ColorPen_2 = Color.Gray;
+            btnImprimir.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnImprimir.Effect_1 = true;
+            btnImprimir.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            btnImprimir.Effect_1_Transparency = 25;
+            btnImprimir.Effect_2 = true;
+            btnImprimir.Effect_2_ColorBackground = Color.White;
+            btnImprimir.Effect_2_Transparency = 20;
+            btnImprimir.Font = new Font("Arial", 11F);
+            btnImprimir.ForeColor = Color.FromArgb(245, 245, 245);
+            btnImprimir.Lighting = false;
+            btnImprimir.LinearGradient_Background = false;
+            btnImprimir.LinearGradientPen = false;
+            btnImprimir.Location = new Point(107, 101);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.PenWidth = 15;
+            btnImprimir.Rounding = true;
+            btnImprimir.RoundingInt = 70;
+            btnImprimir.Size = new Size(99, 40);
+            btnImprimir.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnImprimir.TabIndex = 81;
+            btnImprimir.Tag = "Cyber";
+            btnImprimir.TextButton = "Imprimir";
+            btnImprimir.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnImprimir.Timer_Effect_1 = 5;
+            btnImprimir.Timer_RGB = 300;
+            btnImprimir.Click += btnImprimir_Click;
             // 
             // FrmFacturasAdmin
             // 
@@ -468,6 +510,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
             ClientSize = new Size(770, 548);
+            Controls.Add(btnImprimir);
             Controls.Add(ucPintarFilasPares1);
             Controls.Add(ucCantidadregistros1);
             Controls.Add(btnConsultar);
@@ -525,5 +568,6 @@
         private TextBox txtSocio;
         private UserControls.UCBuscar ucBuscar1;
         private UserControls.UCClearFilters ucClearFilters1;
+        private ReaLTaiizor.Controls.CyberButton btnImprimir;
     }
 }

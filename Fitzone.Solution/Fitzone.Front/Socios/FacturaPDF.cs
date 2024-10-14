@@ -3,22 +3,20 @@ using Fitzone.Entidades;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
-using System;
-using System.Collections.Generic;
 
-public class FacturaDocument : IDocument
+public class FacturaPDF : IDocument
 {
     Factura fac;
     
 
     //public FacturaDocument(string nombreCliente, string direccionCliente, string fecha, List<(string, int, decimal)> items, decimal impuestoPorcentaje)
-        public FacturaDocument(Factura f)
+    public FacturaPDF(Factura f)
     {
         fac = f;    
         
     }
 
-    public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
+    //public DocumentMetadata GetMetadata() => DocumentMetadata.Default;
 
     public void Compose(IDocumentContainer container)
     {
@@ -71,7 +69,6 @@ public class FacturaDocument : IDocument
                     row.ConstantItem(150).Image(logo).FitArea();//logo  
                 });
     }
-
     void ComposeContent(IContainer container)
     {
         int size_col1 = 12;
@@ -118,7 +115,6 @@ public class FacturaDocument : IDocument
                 });
         });
     }
-
     void ComposeTable(IContainer container)
     {
         int size_col1 = 10;
@@ -158,13 +154,11 @@ public class FacturaDocument : IDocument
             }
         });
     }
-
     void ComposeFooter(IContainer container)
     {
         container.AlignCenter().Text("Gracias por su compra.").FontSize(12);
         //container.AlignCenter().Text("Términos y condiciones aplicables.").FontSize(10).Italic();
     }
-
     // Método auxiliar para darle estilo a las celdas
     IContainer CellStyle(IContainer container)
     {

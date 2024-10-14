@@ -2,19 +2,15 @@
 using Fitzone.Entidades;
 using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Fitzone.Front.Membresias;
 using Microsoft.IdentityModel.Tokens;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Windows.Forms;
-using IContainer = QuestPDF.Infrastructure.IContainer;
-using System.Diagnostics;
 using ReaLTaiizor.Controls;
-using Fitzone.Front.Membresias;
+using System.Diagnostics;
 using Color = System.Drawing.Color;
+using IContainer = QuestPDF.Infrastructure.IContainer;
 
 
 namespace Fitzone.Front.Socios

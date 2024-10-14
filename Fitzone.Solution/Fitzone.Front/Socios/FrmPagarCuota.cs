@@ -285,7 +285,7 @@ namespace Fitzone.Front.Socios
 
         private void ImprimirFactura(Factura fac)
         {
-            var facturaDocument = new FacturaDocument(fac);
+            var facturaDocument = new FacturaPDF(fac);
 
             string fileName = "c:\\Reportes\\" + Statics.GenerarNombreArchivoUnico("Factura", "PDF");
             facturaDocument.GeneratePdf(fileName);

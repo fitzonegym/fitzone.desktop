@@ -111,7 +111,7 @@ namespace Fitzone.Front.Instructores
                 e.Handled = true;
 
             }
-            
+
         }
 
         private void FrmInstructoresAdmin_Load(object sender, EventArgs e)
@@ -155,7 +155,7 @@ namespace Fitzone.Front.Instructores
 
             string acti = ((Actividad)bindingActividad.Current).nombre;
 
-            _listaInstructores = c.GetAll(filter).Where(c =>  c.ActividadesNames.Contains(acti) || acti == "TODOS").ToList();
+            _listaInstructores = c.GetAll(filter, chkAnulados.Checked).Where(c => c.ActividadesNames.Contains(acti) || acti == "TODOS").ToList();
 
             bindingGrilla.DataSource = null;
             bindingGrilla.DataSource = _listaInstructores;
@@ -238,7 +238,7 @@ namespace Fitzone.Front.Instructores
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             Close();
-        }     
+        }
 
         private void ucClearFilters1__ClickUCAgregar(object sender, EventArgs e)
         {
@@ -248,10 +248,56 @@ namespace Fitzone.Front.Instructores
         {
             ActividadController membresiaController = new ActividadController();
             var membresias = membresiaController.GetAll();
-            membresias.Insert(0,new Actividad{ idActividad = 0, nombre = "TODOS" });
+            membresias.Insert(0, new Actividad { idActividad = 0, nombre = "TODOS" });
             bindingActividad.DataSource = membresias;
 
+        }
 
+        private void btnAnular_Click(object sender, EventArgs e)
+        {
+            var instructor = bindingGrilla.Current as Instructor;
+            if (instructor == null)
+            {
+                new MessageBoxCustom("Seleccione un instructor", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                return;
+            }
+
+            bool puedeAnular = new InstructorController().PuedeAnular(instructor.idInstructor);
+
+            if (!puedeAnular)
+            {
+                new MessageBoxCustom("El instructor seleccionado tiene membresías activas/vencidas.\nSolo se pueden anular instructores con membresías deshabilitadas/finalizadas", Enumeraciones.EnumModoMessageBoxCustom.Aceptar, 250, 50).ShowDialog();
+                return;
+            }
+
+
+
+            var msg = new MessageBoxCustom("Desea anular el instructor [" + instructor.NombreCompleto + "]?", EnumModoMessageBoxCustom.YesNo, 75);
+            msg.ShowDialog();
+
+            if (msg.response == DialogResult.Yes)
+            {
+                new InstructorController().Anular(instructor.idInstructor);
+                new MessageBoxCustom("El instructor se anuló correctamente", EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+                CargarGrilla();
+
+            }
+
+        }
+
+        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            // Obtener la fila actual
+            DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+            // Verificar si la columna "anulado" tiene el valor true
+            if (Convert.ToBoolean(row.Cells["colAnulado"].Value) == true)
+            {
+                // Cambiar el color de fondo de la fila
+                row.DefaultCellStyle.BackColor = Color.LightCoral; // Cambia el color según tus preferencias
+                //row.DefaultCellStyle.ForeColor = Color.White; // Cambia el color de texto si es necesario
+            }
+            
         }
     }
 }

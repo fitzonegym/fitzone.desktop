@@ -37,14 +37,12 @@
             horadesde = new DataGridViewTextBoxColumn();
             horaHasta = new DataGridViewTextBoxColumn();
             precioTotal = new DataGridViewTextBoxColumn();
-            
             diasHabilitados = new DataGridViewTextBoxColumn();
             cantidadCuotas = new DataGridViewTextBoxColumn();
             cupoClase = new DataGridViewTextBoxColumn();
             cuotaUnica = new DataGridViewCheckBoxColumn();
             tipoMembresiaBindingSource = new BindingSource(components);
             btnModificar = new ReaLTaiizor.Controls.CyberButton();
-            BtnAnular = new ReaLTaiizor.Controls.CyberButton();
             ucBordertd2 = new UserControls.UCBorderTD();
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
@@ -130,7 +128,6 @@
             precioTotal.Name = "precioTotal";
             precioTotal.ReadOnly = true;
             precioTotal.Width = 70;
-
             // 
             // diasHabilitados
             // 
@@ -207,47 +204,6 @@
             btnModificar.Timer_Effect_1 = 5;
             btnModificar.Timer_RGB = 300;
             btnModificar.Click += btnModificar_Click;
-            // 
-            // BtnAnular
-            // 
-            BtnAnular.Alpha = 20;
-            BtnAnular.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            BtnAnular.BackColor = Color.Transparent;
-            BtnAnular.Background = true;
-            BtnAnular.Background_WidthPen = 4F;
-            BtnAnular.BackgroundPen = true;
-            BtnAnular.ColorBackground = Color.Black;
-            BtnAnular.ColorBackground_1 = Color.Black;
-            BtnAnular.ColorBackground_2 = Color.Gray;
-            BtnAnular.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
-            BtnAnular.ColorLighting = Color.FromArgb(81, 45, 168);
-            BtnAnular.ColorPen_1 = Color.Black;
-            BtnAnular.ColorPen_2 = Color.Gray;
-            BtnAnular.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
-            BtnAnular.Effect_1 = true;
-            BtnAnular.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
-            BtnAnular.Effect_1_Transparency = 25;
-            BtnAnular.Effect_2 = true;
-            BtnAnular.Effect_2_ColorBackground = Color.White;
-            BtnAnular.Effect_2_Transparency = 20;
-            BtnAnular.Font = new Font("Arial", 11F);
-            BtnAnular.ForeColor = Color.FromArgb(245, 245, 245);
-            BtnAnular.Lighting = false;
-            BtnAnular.LinearGradient_Background = false;
-            BtnAnular.LinearGradientPen = false;
-            BtnAnular.Location = new Point(310, 441);
-            BtnAnular.Name = "BtnAnular";
-            BtnAnular.PenWidth = 15;
-            BtnAnular.Rounding = true;
-            BtnAnular.RoundingInt = 70;
-            BtnAnular.Size = new Size(99, 40);
-            BtnAnular.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            BtnAnular.TabIndex = 71;
-            BtnAnular.Tag = "Cyber";
-            BtnAnular.TextButton = "Anular";
-            BtnAnular.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-            BtnAnular.Timer_Effect_1 = 5;
-            BtnAnular.Timer_RGB = 300;
             // 
             // ucBordertd2
             // 
@@ -446,7 +402,6 @@
             ClientSize = new Size(1095, 490);
             Controls.Add(btnConsultar);
             Controls.Add(btnModificar);
-            Controls.Add(BtnAnular);
             Controls.Add(ucBordertd2);
             Controls.Add(ucBordertd1);
             Controls.Add(ucBorderlr2);
@@ -469,7 +424,6 @@
         #endregion
         private DataGridView dataGridView1;
         private ReaLTaiizor.Controls.CyberButton btnModificar;
-        private ReaLTaiizor.Controls.CyberButton BtnAnular;
         private UserControls.UCBorderTD ucBordertd2;
         private UserControls.UCBorderTD ucBordertd1;
         private UserControls.UCBorderLR ucBorderlr2;

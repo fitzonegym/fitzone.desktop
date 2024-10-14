@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             ucBordertd2 = new UserControls.UCBorderTD();
             ucBordertd1 = new UserControls.UCBorderTD();
             ucBorderlr2 = new UserControls.UCBorderLR();
@@ -68,6 +68,7 @@
             btnModificar = new ReaLTaiizor.Controls.CyberButton();
             ucCantidadregistros1 = new UserControls.UCCantidadregistros();
             btnDeshabilitar = new ReaLTaiizor.Controls.CyberButton();
+            btnImprimir = new ReaLTaiizor.Controls.CyberButton();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -293,9 +294,9 @@
             // horadesdeDataGridViewTextBoxColumn
             // 
             horadesdeDataGridViewTextBoxColumn.DataPropertyName = "horadesde";
-            dataGridViewCellStyle5.Format = "t";
-            dataGridViewCellStyle5.NullValue = null;
-            horadesdeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Format = "t";
+            dataGridViewCellStyle3.NullValue = null;
+            horadesdeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             horadesdeDataGridViewTextBoxColumn.HeaderText = "Hora Desde";
             horadesdeDataGridViewTextBoxColumn.Name = "horadesdeDataGridViewTextBoxColumn";
             horadesdeDataGridViewTextBoxColumn.ReadOnly = true;
@@ -304,9 +305,9 @@
             // horaHastaDataGridViewTextBoxColumn
             // 
             horaHastaDataGridViewTextBoxColumn.DataPropertyName = "horaHasta";
-            dataGridViewCellStyle6.Format = "t";
-            dataGridViewCellStyle6.NullValue = null;
-            horaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Format = "t";
+            dataGridViewCellStyle4.NullValue = null;
+            horaHastaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             horaHastaDataGridViewTextBoxColumn.HeaderText = "Hora Hasta";
             horaHastaDataGridViewTextBoxColumn.Name = "horaHastaDataGridViewTextBoxColumn";
             horaHastaDataGridViewTextBoxColumn.ReadOnly = true;
@@ -621,12 +622,54 @@
             btnDeshabilitar.Timer_RGB = 300;
             btnDeshabilitar.Click += btnDeshabilitar_Click;
             // 
+            // btnImprimir
+            // 
+            btnImprimir.Alpha = 20;
+            btnImprimir.BackColor = Color.Transparent;
+            btnImprimir.Background = true;
+            btnImprimir.Background_WidthPen = 4F;
+            btnImprimir.BackgroundPen = true;
+            btnImprimir.ColorBackground = Color.Black;
+            btnImprimir.ColorBackground_1 = Color.Black;
+            btnImprimir.ColorBackground_2 = Color.Gray;
+            btnImprimir.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btnImprimir.ColorLighting = Color.FromArgb(81, 45, 168);
+            btnImprimir.ColorPen_1 = Color.Black;
+            btnImprimir.ColorPen_2 = Color.Gray;
+            btnImprimir.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnImprimir.Effect_1 = true;
+            btnImprimir.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            btnImprimir.Effect_1_Transparency = 25;
+            btnImprimir.Effect_2 = true;
+            btnImprimir.Effect_2_ColorBackground = Color.White;
+            btnImprimir.Effect_2_Transparency = 20;
+            btnImprimir.Font = new Font("Arial", 11F);
+            btnImprimir.ForeColor = Color.FromArgb(245, 245, 245);
+            btnImprimir.Lighting = false;
+            btnImprimir.LinearGradient_Background = false;
+            btnImprimir.LinearGradientPen = false;
+            btnImprimir.Location = new Point(113, 100);
+            btnImprimir.Name = "btnImprimir";
+            btnImprimir.PenWidth = 15;
+            btnImprimir.Rounding = true;
+            btnImprimir.RoundingInt = 70;
+            btnImprimir.Size = new Size(99, 40);
+            btnImprimir.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnImprimir.TabIndex = 67;
+            btnImprimir.Tag = "Cyber";
+            btnImprimir.TextButton = "Imprimir";
+            btnImprimir.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnImprimir.Timer_Effect_1 = 5;
+            btnImprimir.Timer_RGB = 300;
+            btnImprimir.Click += btnImprimir_Click;
+            // 
             // FrmMembresiaAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
             ClientSize = new Size(1150, 480);
+            Controls.Add(btnImprimir);
             Controls.Add(btnDeshabilitar);
             Controls.Add(ucCantidadregistros1);
             Controls.Add(btnModificar);
@@ -700,5 +743,6 @@
         private DataGridViewTextBoxColumn estadoMembresiaDataGridViewTextBoxColumn;
         private CheckBox chkFecha;
         private ReaLTaiizor.Controls.CyberButton btnDeshabilitar;
+        private ReaLTaiizor.Controls.CyberButton btnImprimir;
     }
 }

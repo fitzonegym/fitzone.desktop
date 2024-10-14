@@ -3,15 +3,13 @@ using Fitzone.Entidades;
 using Fitzone.Front.Enumeraciones;
 using Fitzone.Front.FormsExtras;
 using Fitzone.Front.Socios;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Microsoft.IdentityModel.Tokens;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
+using System.Diagnostics;
+using Color = System.Drawing.Color;
+using IContainer = QuestPDF.Infrastructure.IContainer;
 
 namespace Fitzone.Front.Membresias
 {
@@ -260,10 +258,10 @@ namespace Fitzone.Front.Membresias
             if (bindingSource1.DataSource == null || bindingSource1.Current == null)
                 return;
 
-            
+
             var id = ((Membresia)bindingSource1.Current).idMembresia;
 
-            var mes = new MessageBoxCustom("¿Desea deshabilitar la membresía seleccionada?",EnumModoMessageBoxCustom.YesNo,75);
+            var mes = new MessageBoxCustom("¿Desea deshabilitar la membresía seleccionada?", EnumModoMessageBoxCustom.YesNo, 75);
             mes.ShowDialog();
             if (mes.response == DialogResult.No)
             {
@@ -273,6 +271,178 @@ namespace Fitzone.Front.Membresias
             new MembresiaController().Deshabilitar(id);
 
             CargarGrilla();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            string fileName = "c:\\Reportes\\" + Statics.GenerarNombreArchivoUnico("Reporte_membresias", "PDF");
+            string filtrosAplicados = "";
+
+            if (!txtNombre.Text.IsNullOrEmpty())
+                filtrosAplicados += "\nSocio: " + txtNombre.Text;
+
+            if (chkFecha.Checked)
+            {
+                filtrosAplicados += "\nFecha desde: " + (!txtFechaDesde.Checked ? "Todos" : txtFechaDesde.Value.ToShortDateString());
+                filtrosAplicados += "\nFecha hasta: " + (!txtFechaHasta.Checked ? "Todos" : txtFechaHasta.Value.ToShortDateString());
+            }
+
+            if (filtrosAplicados == "")
+                filtrosAplicados = "\nFiltros: TODOS" ;
+            else            
+                filtrosAplicados = "\nFiltros: " + filtrosAplicados;
+                
+
+            //if (!String.IsNullOrWhiteSpace(ordenadoPor))
+            //  filtrosAplicados += "\nOrdenado por: " + ordenadoPor;
+
+
+            var data = _listaMembresias;
+
+            System.Drawing.Image im = Fitzone.Front.Properties.Resources.logo3;
+            var logo = Fitzone.Front.Statics.ImageToByteArray(im);
+
+            // Crear el documento PDF
+            Document.Create(document =>
+            {
+                document.Page(page =>
+                {
+                    page.Size(PageSizes.A4);
+                    page.Margin(2, Unit.Centimetre);
+                    page.PageColor(Colors.White);
+                    page.DefaultTextStyle(x => x.FontSize(8))
+                    ;
+
+                    page.Header()
+                    .Background(Colors.White) // Asegurar que el fondo del encabezado sea blanco
+                    .Padding(5)
+                    .Element(ComposeHeader(logo, filtrosAplicados));
+
+                    /*page.Header()                    
+                        .Text("Informe de Socios")
+                        .SemiBold().FontSize(20).FontColor(Colors.Blue.Medium)
+                        ;
+                    */
+                    page.Content()
+                        .PaddingVertical(1, Unit.Centimetre)
+                        .Table(table =>
+                        {
+                            // Definir columnas de la tabla
+                            table.ColumnsDefinition(columns =>
+                            {   //columns.RelativeColumn();
+
+                                columns.ConstantColumn(90);//socio
+                                columns.ConstantColumn(60);//tipo
+                                columns.ConstantColumn(60);//estado
+                                columns.ConstantColumn(50);//precio
+                                columns.ConstantColumn(100);//dias
+                                columns.ConstantColumn(50);//desde
+                                columns.ConstantColumn(50);//hasta
+                            });
+
+                            // Encabezados de la tabla
+                            table.Header(header =>
+                            {
+
+                                header.Cell().Element(CellStyle).Text("Socio").Bold();
+                                header.Cell().Element(CellStyle).Text("Tipo").Bold();
+                                header.Cell().Element(CellStyle).Text("Estado").Bold();
+                                header.Cell().Element(CellStyle).Text("Precio").Bold();
+                                header.Cell().Element(CellStyle).Text("Días").Bold();
+                                header.Cell().Element(CellStyle).Text("Desde").Bold();
+                                header.Cell().Element(CellStyle).Text("Hasta").Bold();
+                            });
+
+                            // Rellenar datos de la tabla
+                            foreach (var item in data)
+                            {
+                                table.Cell().Element(CellStyle).Text(item.SocioNombre);
+                                table.Cell().Element(CellStyle).Text(item.TipoMembresiaNombre);                                
+                                table.Cell().Element(CellStyle).Text(item.EstadoMembresiaNombre);                                
+                                table.Cell().Element(CellStyle).Text("$ "+item.precio);
+                                table.Cell().Element(CellStyle).Text(item.diasHabilitados);
+                                table.Cell().Element(CellStyle).Text(item.fechaDesde.ToString("dd/MM/yyyy"));
+                                table.Cell().Element(CellStyle).Text(item.fechaHasta.ToString("dd/MM/yyyy"));
+
+                                //table.Cell().Element(CellStyle).Text(item.Price.ToString("C"));
+                            }
+                        });
+
+                    page.Footer()
+                        .AlignCenter()
+                        .Text(x =>
+                        {
+                            x.Span("Página ");
+                            x.CurrentPageNumber();
+                            x.Span(" de ");
+                            x.TotalPages();
+                        });
+                });
+            })
+            .GeneratePdf(fileName);
+
+
+            var mes = new MessageBoxCustom(fileName, EnumModoMessageBoxCustom.ReporteGenerado, 250, 50);
+            mes.ShowDialog();
+            if (mes.response == DialogResult.Yes)
+            {
+                try
+                {
+                    Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("No se pudo abrir el archivo PDF: " + ex.Message);
+                }
+            }
+        }
+
+        static Action<IContainer> ComposeHeader(byte[] imagePath, string filtrosAplicados)
+        {
+            return container =>
+            {
+                container.Column(column =>
+                {
+                    column.Item().Row(row =>
+                    {
+
+
+                        row.ConstantItem(100)
+                            .AlignLeft()
+                            //.Height(150)
+                            .Background(Colors.White)
+                            .Image(imagePath);
+
+
+                        row.RelativeItem()
+                            .AlignMiddle()
+                            .AlignTop()
+                            .Padding(10)
+                            .Background(Colors.White)
+                            .Text("Informe de Membresías")
+                            .SemiBold().FontSize(15).FontColor(Colors.Blue.Medium);
+
+                        row.RelativeItem()
+                            .AlignRight()
+                            .Padding(10)
+                            .Background(Colors.White)
+                            .Text("Fecha: " + DateTime.Now.ToString() + filtrosAplicados)
+                            .SemiBold().FontSize(10).FontColor(Colors.Grey.Medium);
+
+                    });
+
+
+                });
+            };
+        }
+        static IContainer CellStyle(IContainer container)
+        {
+            return container
+                .Border(1)
+                .BorderColor(Colors.Grey.Lighten2)
+                .Padding(3)
+                .AlignMiddle()
+                .AlignCenter();
         }
     }
 }
