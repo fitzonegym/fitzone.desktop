@@ -320,6 +320,7 @@
             // 
             // panel6
             // 
+            panel6.BackColor = Color.FromArgb(103, 58, 183);
             panel6.Controls.Add(pictureBox2);
             panel6.Dock = DockStyle.Left;
             panel6.Location = new Point(0, 0);
@@ -329,12 +330,12 @@
             // 
             // pictureBox2
             // 
-            pictureBox2.Dock = DockStyle.Fill;
+            pictureBox2.Dock = DockStyle.Top;
             pictureBox2.Enabled = false;
             pictureBox2.Image = Properties.Resources.no_foto_img;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(277, 479);
+            pictureBox2.Size = new Size(277, 345);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 0;
             pictureBox2.TabStop = false;

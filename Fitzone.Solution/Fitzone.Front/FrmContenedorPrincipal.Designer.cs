@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             statusStrip = new StatusStrip();
-            toolStripStatusLabel = new ToolStripStatusLabel();
+            toolStripStatusLabelUsuario = new ToolStripStatusLabel();
             toolTip = new ToolTip(components);
             splitContainer1 = new SplitContainer();
             panel2 = new Panel();
@@ -42,7 +42,7 @@
             membresíaToolStripMenuItem = new ToolStripMenuItem();
             admnistraciónToolStripMenuItem = new ToolStripMenuItem();
             altaToolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
+            facturaStripMenuItem = new ToolStripMenuItem();
             administraciónToolStripMenuItem1 = new ToolStripMenuItem();
             configuraciónToolStripMenuItem = new ToolStripMenuItem();
             tipoDeMembresíaToolStripMenuItem = new ToolStripMenuItem();
@@ -67,7 +67,7 @@
             // 
             // statusStrip
             // 
-            statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel });
+            statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelUsuario });
             statusStrip.Location = new Point(0, 645);
             statusStrip.Name = "statusStrip";
             statusStrip.Padding = new Padding(1, 0, 16, 0);
@@ -75,11 +75,11 @@
             statusStrip.TabIndex = 2;
             statusStrip.Text = "StatusStrip";
             // 
-            // toolStripStatusLabel
+            // toolStripStatusLabelUsuario
             // 
-            toolStripStatusLabel.Name = "toolStripStatusLabel";
-            toolStripStatusLabel.Size = new Size(42, 17);
-            toolStripStatusLabel.Text = "Estado";
+            toolStripStatusLabelUsuario.Name = "toolStripStatusLabelUsuario";
+            toolStripStatusLabelUsuario.Size = new Size(42, 17);
+            toolStripStatusLabelUsuario.Text = "Estado";
             // 
             // splitContainer1
             // 
@@ -99,7 +99,6 @@
             splitContainer1.Size = new Size(1197, 645);
             splitContainer1.SplitterDistance = 200;
             splitContainer1.TabIndex = 6;
-            
             // 
             // panel2
             // 
@@ -126,12 +125,12 @@
             // 
             menuStrip1.BackColor = Color.Transparent;
             menuStrip1.Dock = DockStyle.Fill;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, membresíaToolStripMenuItem, toolStripMenuItem1, configuraciónToolStripMenuItem, controlDeAccesosToolStripMenuItem, salirToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, membresíaToolStripMenuItem, facturaStripMenuItem, configuraciónToolStripMenuItem, controlDeAccesosToolStripMenuItem, salirToolStripMenuItem });
             menuStrip1.LayoutStyle = ToolStripLayoutStyle.VerticalStackWithOverflow;
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.RenderMode = ToolStripRenderMode.Professional;
-            menuStrip1.Size = new Size(191, 259);
+            menuStrip1.Size = new Size(191, 240);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -145,7 +144,6 @@
             sociosToolStripMenuItem.Size = new Size(174, 29);
             sociosToolStripMenuItem.Text = "Socios";
             sociosToolStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
-            
             // 
             // administraciónToolStripMenuItem
             // 
@@ -193,16 +191,15 @@
             altaToolStripMenuItem1.Text = "Agregar";
             altaToolStripMenuItem1.Click += altaToolStripMenuItem1_Click;
             // 
-            // toolStripMenuItem1
+            // facturaStripMenuItem
             // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { administraciónToolStripMenuItem1 });
-            toolStripMenuItem1.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
-            toolStripMenuItem1.Margin = new Padding(5);
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(174, 29);
-            toolStripMenuItem1.Text = "Facturas";
-            toolStripMenuItem1.TextAlign = ContentAlignment.MiddleLeft;
-            
+            facturaStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { administraciónToolStripMenuItem1 });
+            facturaStripMenuItem.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            facturaStripMenuItem.Margin = new Padding(5);
+            facturaStripMenuItem.Name = "facturaStripMenuItem";
+            facturaStripMenuItem.Size = new Size(174, 29);
+            facturaStripMenuItem.Text = "Facturas";
+            facturaStripMenuItem.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // administraciónToolStripMenuItem1
             // 
@@ -346,7 +343,7 @@
 
         #endregion
         private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelUsuario;
         private System.Windows.Forms.ToolTip toolTip;
         private SplitContainer splitContainer1;
         private FlowLayoutPanel flowLayoutPanel1;
@@ -367,7 +364,7 @@
         private ToolStripMenuItem controlDeAccesosToolStripMenuItem;
         private ToolStripMenuItem instructoresToolStripMenuItem1;
         private ToolStripMenuItem usuariosToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem facturaStripMenuItem;
         private ToolStripMenuItem administraciónToolStripMenuItem1;
     }
 }

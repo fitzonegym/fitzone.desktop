@@ -176,6 +176,16 @@ namespace Fitzone.Front.Socios
             lblMensaje.BackColor = ingreso.respuesta.Color;
 
             txtNroDoc.Text = "";
+
+            if (ingreso.idSocio != null)
+            {
+                var imagen = socioController.GetImagen((int)ingreso.idSocio);
+                if (imagen!=null)
+                    pictureBox2.Image = Statics.ImageByteArrayToImage(imagen);
+            }
+            
+
+
         }
 
         private void FRMIngresosRegistrar_KeyPress(object sender, KeyPressEventArgs e)

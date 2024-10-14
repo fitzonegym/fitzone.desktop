@@ -9,7 +9,16 @@ Paleta de colores
 -Color terciario
 	209; 196; 234
 
-
+      /*
+   1-admin
+      hace todo
+   2-control accesos
+      solo se puede abrir el control de accesos
+   3-operador
+      todo menos configuraciones y reportes
+   4-director
+      todo 
+   */
 
 
 

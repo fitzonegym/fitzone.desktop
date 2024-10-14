@@ -2,8 +2,9 @@
 using Fitzone.EF;
 using Fitzone.Entidades;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
 using System.Drawing;
-using System.Linq.Expressions;
+using Color = System.Drawing.Color;
 
 namespace Fitzone.Controller
 {
@@ -446,7 +447,12 @@ namespace Fitzone.Controller
             }
 
         }
-        
+
+        public byte[]? GetImagen(int idsocio)
+        {
+            return contexto.Socio.First(c=>c.idSocio == idsocio).imagen;
+        }
+
 
     }
 }

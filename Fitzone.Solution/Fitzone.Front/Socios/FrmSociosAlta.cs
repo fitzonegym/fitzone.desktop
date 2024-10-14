@@ -7,9 +7,7 @@ using Fitzone.Front.FormsExtras;
 using ReaLTaiizor.Controls;
 using System.ComponentModel;
 using System.Data;
-using System.Globalization;
 using System.Net.Mail;
-using static QuestPDF.Helpers.Colors;
 
 namespace Fitzone.Front.Socios
 {
@@ -17,7 +15,7 @@ namespace Fitzone.Front.Socios
     {
         private VideoCapture _capture;
         private Mat _frame;
-        public int _id_socio = 1;
+        public int _id_socio = 0;
         Socio? _socio;
         public EnumModoForm _EnumModoForm = EnumModoForm.Consulta;
 
@@ -118,9 +116,7 @@ namespace Fitzone.Front.Socios
         }
 
         private async void FrmSociosAlta_Load(object sender, EventArgs e)
-        {
-            //            _EnumModoForm = EnumModoForm.Modificacion;
-            //          _id_socio = 1;
+        {      
 
             txtFechaNac.Value = DateTime.Now;
 
@@ -170,7 +166,7 @@ namespace Fitzone.Front.Socios
             txtCelular.Text = _socio.telefono1;
             txtTelefono.Text = _socio.telefono2;
 
-            _Validating(null,null);
+            _Validating(null, null);
 
             //imagen            
             //pictureBoxImagen.Image = ArrayBytesToImage(_socio.imagen);
@@ -182,16 +178,16 @@ namespace Fitzone.Front.Socios
 
             txtMail.Enabled = _enabled;
             txtCalle.Enabled = _enabled;
-            txtCalleNro.Enabled = _enabled  ;
+            txtCalleNro.Enabled = _enabled;
 
             txtNombre.Enabled = _enabled;
-            txtApellido.Enabled = _enabled  ;
+            txtApellido.Enabled = _enabled;
             txtNroDoc.Enabled = _enabled;
 
             txtFechaNac.Enabled = _enabled;
-            
+
             rdbDNI.Enabled = _enabled;
-            rdbOtro.Enabled = _enabled;    
+            rdbOtro.Enabled = _enabled;
 
             txtCelular.Enabled = _enabled;
             txtTelefono.Enabled = _enabled;
@@ -216,19 +212,20 @@ namespace Fitzone.Front.Socios
             txtNroDoc.Text = _socio.numeroDocumento;
 
             rdbDNI.Checked = _socio.tipoDocumento == "DNI";
-            rdbOtro.Checked = _socio.tipoDocumento != "DNI";            
+            rdbOtro.Checked = _socio.tipoDocumento != "DNI";
 
             txtCelular.Text = _socio.telefono1;
             txtTelefono.Text = _socio.telefono2;
-            
+
             txtFechaNac.Value = _socio.fechaNacimiento;
 
             //imagen            
-            //pictureBoxImagen.Image = null;
+            if (_socio.imagen!=null)
+                pictureBoxImagen.Image = Statics.ImageByteArrayToImage(_socio.imagen);
 
             _Validating(null, null);
         }
-        
+
         private void cyberButton2_Click(object sender, EventArgs e)
         {
             Guardar();
@@ -249,7 +246,7 @@ namespace Fitzone.Front.Socios
                 mensaje += "\nIngrese el apellido";
             }
 
-            string caracteresIndeseados = "()-., ";            
+            string caracteresIndeseados = "()-., ";
 
             string nrodoc = new string(e.numeroDocumento.Where(c => !caracteresIndeseados.Contains(c)).ToArray());
             if (nrodoc.Length != 8)
@@ -384,7 +381,7 @@ namespace Fitzone.Front.Socios
             {
                 msg = new MessageBoxCustom("Se actualizaron los datos del socio", EnumModoMessageBoxCustom.Aceptar);
                 msg.ShowDialog();
-                Close();    
+                Close();
             }
 
             if (_EnumModoForm == EnumModoForm.Alta)
@@ -396,7 +393,7 @@ namespace Fitzone.Front.Socios
             }
 
             LimpiarTodo();
-            
+
         }
 
         private void _Validating(object sender, CancelEventArgs e)
@@ -418,7 +415,7 @@ namespace Fitzone.Front.Socios
 
             ucErrorIconoMail.Visible = !String.IsNullOrWhiteSpace(txtMail.Text) && !IsValidEmail(txtMail.Text);
 
-        }     
+        }
 
         private void txtNroDoc_Click_1(object sender, EventArgs e)
         {
@@ -556,7 +553,7 @@ namespace Fitzone.Front.Socios
             {
 
                 string filePath = Guid.NewGuid().ToString();
-                Bitmap bitmap = _frame.ToImage<Bgr, Byte>().ToBitmap();                
+                Bitmap bitmap = _frame.ToImage<Bgr, Byte>().ToBitmap();
                 pictureBoxImagen.Image = bitmap;
             }
         }
@@ -596,7 +593,7 @@ namespace Fitzone.Front.Socios
             }
             return null;
         }
-       
+
         private Image? ArrayBytesToImage(byte[]? bytes)
         {
             if (bytes == null)
@@ -644,6 +641,28 @@ namespace Fitzone.Front.Socios
         {
             new MessageBoxCustom(EnumModoMessageBoxCustom.Proximamente).ShowDialog();
             return;
+        }
+
+        private void btnCargar_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string rutaImagen = openFileDialog.FileName;
+                    CargarImagenEnPictureBox(rutaImagen);
+                }
+            }            
+        }
+
+        private void CargarImagenEnPictureBox(string rutaImagen)
+        {
+            if (System.IO.File.Exists(rutaImagen)) // Verifica si el archivo existe
+            {
+                pictureBoxImagen.Image = Image.FromFile(rutaImagen);                
+            }
+            
         }
     }
 }

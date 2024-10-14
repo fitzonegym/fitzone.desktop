@@ -34,22 +34,6 @@
             BtnMembresía = new ReaLTaiizor.Controls.CyberButton();
             btnAgregar = new ReaLTaiizor.Controls.CyberButton();
             dataGridView1 = new DataGridView();
-            idSocioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            tipoDocumentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            numeroDocumentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            telefono1DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            telefono2DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            mailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            calleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            calleNumeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            barrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fechaAlta = new DataGridViewTextBoxColumn();
-            idBarrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            TieneImagen = new DataGridViewCheckBoxColumn();
-            colAnulado = new DataGridViewCheckBoxColumn();
-            colDeudor = new DataGridViewCheckBoxColumn();
             bindingSource1 = new BindingSource(components);
             btnCancelar = new ReaLTaiizor.Controls.CyberButton();
             btnAceptar = new ReaLTaiizor.Controls.CyberButton();
@@ -81,6 +65,22 @@
             btnCuota = new ReaLTaiizor.Controls.CyberButton();
             btnAnular = new ReaLTaiizor.Controls.CyberButton();
             btnConsultarMembresias = new ReaLTaiizor.Controls.CyberButton();
+            idSocioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nombreDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            apellidoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            tipoDocumentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            numeroDocumentoDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            telefono1DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            telefono2DataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            mailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            calleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            calleNumeroDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            barrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fechaAlta = new DataGridViewTextBoxColumn();
+            idBarrioDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            colAnulado = new DataGridViewCheckBoxColumn();
+            colDeudor = new DataGridViewCheckBoxColumn();
+            TieneImagen = new DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             groupBox1.SuspendLayout();
@@ -113,7 +113,7 @@
             btnModificar.Lighting = false;
             btnModificar.LinearGradient_Background = false;
             btnModificar.LinearGradientPen = false;
-            btnModificar.Location = new Point(104, 513);
+            btnModificar.Location = new Point(104, 668);
             btnModificar.Name = "btnModificar";
             btnModificar.PenWidth = 15;
             btnModificar.Rounding = true;
@@ -155,7 +155,7 @@
             BtnMembresía.Lighting = false;
             BtnMembresía.LinearGradient_Background = false;
             BtnMembresía.LinearGradientPen = false;
-            BtnMembresía.Location = new Point(549, 512);
+            BtnMembresía.Location = new Point(549, 667);
             BtnMembresía.Name = "BtnMembresía";
             BtnMembresía.PenWidth = 15;
             BtnMembresía.Rounding = true;
@@ -197,7 +197,7 @@
             btnAgregar.Lighting = false;
             btnAgregar.LinearGradient_Background = false;
             btnAgregar.LinearGradientPen = false;
-            btnAgregar.Location = new Point(7, 513);
+            btnAgregar.Location = new Point(7, 668);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.PenWidth = 15;
             btnAgregar.Rounding = true;
@@ -221,134 +221,18 @@
             dataGridView1.AutoGenerateColumns = false;
             dataGridView1.BackgroundColor = Color.FromArgb(81, 45, 168);
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSocioDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, fechaAlta, idBarrioDataGridViewTextBoxColumn, TieneImagen, colAnulado, colDeudor });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { idSocioDataGridViewTextBoxColumn, nombreDataGridViewTextBoxColumn, apellidoDataGridViewTextBoxColumn, tipoDocumentoDataGridViewTextBoxColumn, numeroDocumentoDataGridViewTextBoxColumn, telefono1DataGridViewTextBoxColumn, telefono2DataGridViewTextBoxColumn, mailDataGridViewTextBoxColumn, calleDataGridViewTextBoxColumn, calleNumeroDataGridViewTextBoxColumn, barrioDataGridViewTextBoxColumn, fechaAlta, idBarrioDataGridViewTextBoxColumn, colAnulado, colDeudor, TieneImagen });
             dataGridView1.DataSource = bindingSource1;
             dataGridView1.GridColor = SystemColors.InfoText;
             dataGridView1.Location = new Point(12, 208);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.Size = new Size(1024, 299);
+            dataGridView1.Size = new Size(1223, 454);
             dataGridView1.TabIndex = 20;
             dataGridView1.CellDoubleClick += dataGridView1_CellDoubleClick;
             dataGridView1.ColumnHeaderMouseClick += dataGridView1_ColumnHeaderMouseClick;
             dataGridView1.RowPrePaint += dataGridView1_RowPrePaint;
-            // 
-            // idSocioDataGridViewTextBoxColumn
-            // 
-            idSocioDataGridViewTextBoxColumn.DataPropertyName = "idSocio";
-            idSocioDataGridViewTextBoxColumn.HeaderText = "Nro";
-            idSocioDataGridViewTextBoxColumn.Name = "idSocioDataGridViewTextBoxColumn";
-            idSocioDataGridViewTextBoxColumn.ReadOnly = true;
-            idSocioDataGridViewTextBoxColumn.Visible = false;
-            idSocioDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // nombreDataGridViewTextBoxColumn
-            // 
-            nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
-            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
-            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
-            nombreDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // apellidoDataGridViewTextBoxColumn
-            // 
-            apellidoDataGridViewTextBoxColumn.DataPropertyName = "apellido";
-            apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
-            apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
-            apellidoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // tipoDocumentoDataGridViewTextBoxColumn
-            // 
-            tipoDocumentoDataGridViewTextBoxColumn.DataPropertyName = "tipoDocumento";
-            tipoDocumentoDataGridViewTextBoxColumn.HeaderText = "Tipo Doc.";
-            tipoDocumentoDataGridViewTextBoxColumn.Name = "tipoDocumentoDataGridViewTextBoxColumn";
-            tipoDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // numeroDocumentoDataGridViewTextBoxColumn
-            // 
-            numeroDocumentoDataGridViewTextBoxColumn.DataPropertyName = "numeroDocumento";
-            numeroDocumentoDataGridViewTextBoxColumn.HeaderText = "Nro. Documento";
-            numeroDocumentoDataGridViewTextBoxColumn.Name = "numeroDocumentoDataGridViewTextBoxColumn";
-            numeroDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // telefono1DataGridViewTextBoxColumn
-            // 
-            telefono1DataGridViewTextBoxColumn.DataPropertyName = "telefono1";
-            telefono1DataGridViewTextBoxColumn.HeaderText = "Celular";
-            telefono1DataGridViewTextBoxColumn.Name = "telefono1DataGridViewTextBoxColumn";
-            telefono1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // telefono2DataGridViewTextBoxColumn
-            // 
-            telefono2DataGridViewTextBoxColumn.DataPropertyName = "telefono2";
-            telefono2DataGridViewTextBoxColumn.HeaderText = "Teléfono";
-            telefono2DataGridViewTextBoxColumn.Name = "telefono2DataGridViewTextBoxColumn";
-            telefono2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // mailDataGridViewTextBoxColumn
-            // 
-            mailDataGridViewTextBoxColumn.DataPropertyName = "mail";
-            mailDataGridViewTextBoxColumn.HeaderText = "E-Mail";
-            mailDataGridViewTextBoxColumn.Name = "mailDataGridViewTextBoxColumn";
-            mailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // calleDataGridViewTextBoxColumn
-            // 
-            calleDataGridViewTextBoxColumn.DataPropertyName = "calle";
-            calleDataGridViewTextBoxColumn.HeaderText = "Calle";
-            calleDataGridViewTextBoxColumn.Name = "calleDataGridViewTextBoxColumn";
-            calleDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // calleNumeroDataGridViewTextBoxColumn
-            // 
-            calleNumeroDataGridViewTextBoxColumn.DataPropertyName = "calleNumero";
-            calleNumeroDataGridViewTextBoxColumn.HeaderText = "Calle Nro.";
-            calleNumeroDataGridViewTextBoxColumn.Name = "calleNumeroDataGridViewTextBoxColumn";
-            calleNumeroDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // barrioDataGridViewTextBoxColumn
-            // 
-            barrioDataGridViewTextBoxColumn.DataPropertyName = "BarrioNombre";
-            barrioDataGridViewTextBoxColumn.HeaderText = "Barrio";
-            barrioDataGridViewTextBoxColumn.Name = "barrioDataGridViewTextBoxColumn";
-            barrioDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fechaAlta
-            // 
-            fechaAlta.DataPropertyName = "fechaAlta";
-            fechaAlta.HeaderText = "Fecha Alta";
-            fechaAlta.Name = "fechaAlta";
-            fechaAlta.ReadOnly = true;
-            // 
-            // idBarrioDataGridViewTextBoxColumn
-            // 
-            idBarrioDataGridViewTextBoxColumn.DataPropertyName = "idBarrio";
-            idBarrioDataGridViewTextBoxColumn.HeaderText = "idBarrio";
-            idBarrioDataGridViewTextBoxColumn.Name = "idBarrioDataGridViewTextBoxColumn";
-            idBarrioDataGridViewTextBoxColumn.ReadOnly = true;
-            idBarrioDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // TieneImagen
-            // 
-            TieneImagen.DataPropertyName = "TieneImagen";
-            TieneImagen.HeaderText = "Imagen [S/N]";
-            TieneImagen.Name = "TieneImagen";
-            TieneImagen.ReadOnly = true;
-            TieneImagen.Visible = false;
-            // 
-            // colAnulado
-            // 
-            colAnulado.DataPropertyName = "anulado";
-            colAnulado.HeaderText = "Anulado";
-            colAnulado.Name = "colAnulado";
-            colAnulado.ReadOnly = true;
-            // 
-            // colDeudor
-            // 
-            colDeudor.DataPropertyName = "deudor";
-            colDeudor.HeaderText = "Mem. Venc.";
-            colDeudor.Name = "colDeudor";
-            colDeudor.ReadOnly = true;
             // 
             // bindingSource1
             // 
@@ -382,7 +266,7 @@
             btnCancelar.Lighting = false;
             btnCancelar.LinearGradient_Background = false;
             btnCancelar.LinearGradientPen = false;
-            btnCancelar.Location = new Point(937, 513);
+            btnCancelar.Location = new Point(1136, 668);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.PenWidth = 15;
             btnCancelar.Rounding = true;
@@ -425,7 +309,7 @@
             btnAceptar.Lighting = false;
             btnAceptar.LinearGradient_Background = false;
             btnAceptar.LinearGradientPen = false;
-            btnAceptar.Location = new Point(841, 513);
+            btnAceptar.Location = new Point(1040, 668);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.PenWidth = 15;
             btnAceptar.Rounding = true;
@@ -568,7 +452,7 @@
             // 
             botonesForms2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms2.BackColor = Color.Transparent;
-            botonesForms2.Location = new Point(1002, 6);
+            botonesForms2.Location = new Point(1201, 6);
             botonesForms2.Name = "botonesForms2";
             botonesForms2.Size = new Size(46, 20);
             botonesForms2.TabIndex = 1;
@@ -588,16 +472,16 @@
             ucBorderlr1.Dock = DockStyle.Left;
             ucBorderlr1.Location = new Point(0, 0);
             ucBorderlr1.Name = "ucBorderlr1";
-            ucBorderlr1.Size = new Size(2, 564);
+            ucBorderlr1.Size = new Size(2, 719);
             ucBorderlr1.TabIndex = 25;
             // 
             // ucBorderlr2
             // 
             ucBorderlr2.BackColor = Color.White;
             ucBorderlr2.Dock = DockStyle.Right;
-            ucBorderlr2.Location = new Point(1049, 0);
+            ucBorderlr2.Location = new Point(1248, 0);
             ucBorderlr2.Name = "ucBorderlr2";
-            ucBorderlr2.Size = new Size(2, 564);
+            ucBorderlr2.Size = new Size(2, 719);
             ucBorderlr2.TabIndex = 26;
             // 
             // ucBordertd1
@@ -606,16 +490,16 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(1047, 3);
+            ucBordertd1.Size = new Size(1246, 3);
             ucBordertd1.TabIndex = 27;
             // 
             // ucBordertd2
             // 
             ucBordertd2.BackColor = Color.White;
             ucBordertd2.Dock = DockStyle.Bottom;
-            ucBordertd2.Location = new Point(2, 561);
+            ucBordertd2.Location = new Point(2, 716);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(1047, 3);
+            ucBordertd2.Size = new Size(1246, 3);
             ucBordertd2.TabIndex = 28;
             // 
             // btnImprimir
@@ -729,7 +613,7 @@
             groupBox1.Controls.Add(txtDocumento);
             groupBox1.Location = new Point(12, 37);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1024, 118);
+            groupBox1.Size = new Size(1223, 118);
             groupBox1.TabIndex = 62;
             groupBox1.TabStop = false;
             // 
@@ -759,7 +643,7 @@
             ucCantidadregistros1._cantidad = 0;
             ucCantidadregistros1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ucCantidadregistros1.BackColor = Color.Transparent;
-            ucCantidadregistros1.Location = new Point(937, 186);
+            ucCantidadregistros1.Location = new Point(1136, 186);
             ucCantidadregistros1.Name = "ucCantidadregistros1";
             ucCantidadregistros1.Size = new Size(103, 16);
             ucCantidadregistros1.TabIndex = 63;
@@ -791,7 +675,7 @@
             btnConsultar.Lighting = false;
             btnConsultar.LinearGradient_Background = false;
             btnConsultar.LinearGradientPen = false;
-            btnConsultar.Location = new Point(202, 513);
+            btnConsultar.Location = new Point(202, 668);
             btnConsultar.Name = "btnConsultar";
             btnConsultar.PenWidth = 15;
             btnConsultar.Rounding = true;
@@ -833,7 +717,7 @@
             btnCuota.Lighting = false;
             btnCuota.LinearGradient_Background = false;
             btnCuota.LinearGradientPen = false;
-            btnCuota.Location = new Point(453, 512);
+            btnCuota.Location = new Point(453, 667);
             btnCuota.Name = "btnCuota";
             btnCuota.PenWidth = 15;
             btnCuota.Rounding = true;
@@ -875,7 +759,7 @@
             btnAnular.Lighting = false;
             btnAnular.LinearGradient_Background = false;
             btnAnular.LinearGradientPen = false;
-            btnAnular.Location = new Point(300, 513);
+            btnAnular.Location = new Point(300, 668);
             btnAnular.Name = "btnAnular";
             btnAnular.PenWidth = 15;
             btnAnular.Rounding = true;
@@ -917,7 +801,7 @@
             btnConsultarMembresias.Lighting = false;
             btnConsultarMembresias.LinearGradient_Background = false;
             btnConsultarMembresias.LinearGradientPen = false;
-            btnConsultarMembresias.Location = new Point(648, 512);
+            btnConsultarMembresias.Location = new Point(648, 667);
             btnConsultarMembresias.Name = "btnConsultarMembresias";
             btnConsultarMembresias.PenWidth = 15;
             btnConsultarMembresias.Rounding = true;
@@ -932,12 +816,132 @@
             btnConsultarMembresias.Timer_RGB = 300;
             btnConsultarMembresias.Click += btnConsultarMembresias_Click;
             // 
+            // idSocioDataGridViewTextBoxColumn
+            // 
+            idSocioDataGridViewTextBoxColumn.DataPropertyName = "idSocio";
+            idSocioDataGridViewTextBoxColumn.HeaderText = "Nro";
+            idSocioDataGridViewTextBoxColumn.Name = "idSocioDataGridViewTextBoxColumn";
+            idSocioDataGridViewTextBoxColumn.ReadOnly = true;
+            idSocioDataGridViewTextBoxColumn.Visible = false;
+            idSocioDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // nombreDataGridViewTextBoxColumn
+            // 
+            nombreDataGridViewTextBoxColumn.DataPropertyName = "nombre";
+            nombreDataGridViewTextBoxColumn.HeaderText = "Nombre";
+            nombreDataGridViewTextBoxColumn.Name = "nombreDataGridViewTextBoxColumn";
+            nombreDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // apellidoDataGridViewTextBoxColumn
+            // 
+            apellidoDataGridViewTextBoxColumn.DataPropertyName = "apellido";
+            apellidoDataGridViewTextBoxColumn.HeaderText = "Apellido";
+            apellidoDataGridViewTextBoxColumn.Name = "apellidoDataGridViewTextBoxColumn";
+            apellidoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tipoDocumentoDataGridViewTextBoxColumn
+            // 
+            tipoDocumentoDataGridViewTextBoxColumn.DataPropertyName = "tipoDocumento";
+            tipoDocumentoDataGridViewTextBoxColumn.HeaderText = "Tipo Doc.";
+            tipoDocumentoDataGridViewTextBoxColumn.Name = "tipoDocumentoDataGridViewTextBoxColumn";
+            tipoDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
+            tipoDocumentoDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // numeroDocumentoDataGridViewTextBoxColumn
+            // 
+            numeroDocumentoDataGridViewTextBoxColumn.DataPropertyName = "numeroDocumento";
+            numeroDocumentoDataGridViewTextBoxColumn.HeaderText = "Nro. Documento";
+            numeroDocumentoDataGridViewTextBoxColumn.Name = "numeroDocumentoDataGridViewTextBoxColumn";
+            numeroDocumentoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // telefono1DataGridViewTextBoxColumn
+            // 
+            telefono1DataGridViewTextBoxColumn.DataPropertyName = "telefono1";
+            telefono1DataGridViewTextBoxColumn.HeaderText = "Celular";
+            telefono1DataGridViewTextBoxColumn.Name = "telefono1DataGridViewTextBoxColumn";
+            telefono1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // telefono2DataGridViewTextBoxColumn
+            // 
+            telefono2DataGridViewTextBoxColumn.DataPropertyName = "telefono2";
+            telefono2DataGridViewTextBoxColumn.HeaderText = "Teléfono";
+            telefono2DataGridViewTextBoxColumn.Name = "telefono2DataGridViewTextBoxColumn";
+            telefono2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // mailDataGridViewTextBoxColumn
+            // 
+            mailDataGridViewTextBoxColumn.DataPropertyName = "mail";
+            mailDataGridViewTextBoxColumn.HeaderText = "E-Mail";
+            mailDataGridViewTextBoxColumn.Name = "mailDataGridViewTextBoxColumn";
+            mailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // calleDataGridViewTextBoxColumn
+            // 
+            calleDataGridViewTextBoxColumn.DataPropertyName = "calle";
+            calleDataGridViewTextBoxColumn.HeaderText = "Calle";
+            calleDataGridViewTextBoxColumn.Name = "calleDataGridViewTextBoxColumn";
+            calleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // calleNumeroDataGridViewTextBoxColumn
+            // 
+            calleNumeroDataGridViewTextBoxColumn.DataPropertyName = "calleNumero";
+            calleNumeroDataGridViewTextBoxColumn.HeaderText = "Calle Nro.";
+            calleNumeroDataGridViewTextBoxColumn.Name = "calleNumeroDataGridViewTextBoxColumn";
+            calleNumeroDataGridViewTextBoxColumn.ReadOnly = true;
+            calleNumeroDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // barrioDataGridViewTextBoxColumn
+            // 
+            barrioDataGridViewTextBoxColumn.DataPropertyName = "BarrioNombre";
+            barrioDataGridViewTextBoxColumn.HeaderText = "Barrio";
+            barrioDataGridViewTextBoxColumn.Name = "barrioDataGridViewTextBoxColumn";
+            barrioDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fechaAlta
+            // 
+            fechaAlta.DataPropertyName = "fechaAlta";
+            fechaAlta.HeaderText = "Fecha Alta";
+            fechaAlta.Name = "fechaAlta";
+            fechaAlta.ReadOnly = true;
+            // 
+            // idBarrioDataGridViewTextBoxColumn
+            // 
+            idBarrioDataGridViewTextBoxColumn.DataPropertyName = "idBarrio";
+            idBarrioDataGridViewTextBoxColumn.HeaderText = "idBarrio";
+            idBarrioDataGridViewTextBoxColumn.Name = "idBarrioDataGridViewTextBoxColumn";
+            idBarrioDataGridViewTextBoxColumn.ReadOnly = true;
+            idBarrioDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // colAnulado
+            // 
+            colAnulado.DataPropertyName = "anulado";
+            colAnulado.HeaderText = "Anulado";
+            colAnulado.Name = "colAnulado";
+            colAnulado.ReadOnly = true;
+            colAnulado.Width = 50;
+            // 
+            // colDeudor
+            // 
+            colDeudor.DataPropertyName = "deudor";
+            colDeudor.HeaderText = "Mem. Venc.";
+            colDeudor.Name = "colDeudor";
+            colDeudor.ReadOnly = true;
+            colDeudor.Width = 50;
+            // 
+            // TieneImagen
+            // 
+            TieneImagen.DataPropertyName = "TieneImagen";
+            TieneImagen.HeaderText = "Imagen [S/N]";
+            TieneImagen.Name = "TieneImagen";
+            TieneImagen.ReadOnly = true;
+            TieneImagen.Width = 50;
+            // 
             // FrmSociosAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(1051, 564);
+            ClientSize = new Size(1250, 719);
             Controls.Add(btnConsultarMembresias);
             Controls.Add(btnAnular);
             Controls.Add(btnCuota);
@@ -1005,6 +1009,7 @@
         private ReaLTaiizor.Controls.CyberButton btnCuota;
         private ReaLTaiizor.Controls.CyberButton btnAnular;
         private ReaLTaiizor.Controls.AloneCheckBox chkAnulados;
+        private ReaLTaiizor.Controls.CyberButton btnConsultarMembresias;
         private DataGridViewTextBoxColumn idSocioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn apellidoDataGridViewTextBoxColumn;
@@ -1018,9 +1023,8 @@
         private DataGridViewTextBoxColumn barrioDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fechaAlta;
         private DataGridViewTextBoxColumn idBarrioDataGridViewTextBoxColumn;
-        private DataGridViewCheckBoxColumn TieneImagen;
         private DataGridViewCheckBoxColumn colAnulado;
         private DataGridViewCheckBoxColumn colDeudor;
-        private ReaLTaiizor.Controls.CyberButton btnConsultarMembresias;
+        private DataGridViewCheckBoxColumn TieneImagen;
     }
 }

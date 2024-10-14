@@ -1,5 +1,6 @@
 ﻿using Fitzone.Controller;
 using Fitzone.Entidades;
+using Fitzone.Front.FormsExtras;
 using Fitzone.Front.Socios;
 using Fitzone.Front.UserControls;
 using System;
@@ -87,8 +88,16 @@ namespace Fitzone.Front.Membresias
         #endregion
         private void FrmTipoMembresiaAdmin_Load(object sender, EventArgs e)
         {
-
             CargarGrilla();
+
+            ////no pueden ingresar 
+            //if (Statics.UsuarioLogueado.idPerfil == (int)EnumPerfil.Control_accesos ||
+            //    Statics.UsuarioLogueado.idPerfil == (int)EnumPerfil.Operador)
+            //{
+            //    MessageBoxAccessDenied frm = new MessageBoxAccessDenied();
+            //    frm.ShowDialog();
+            //    Close();
+            //}
         }
 
         private void CargarGrilla()

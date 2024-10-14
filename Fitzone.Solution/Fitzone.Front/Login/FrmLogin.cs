@@ -116,13 +116,19 @@ namespace Fitzone.Front.Login
             {
                 FrmContenedorPrincipal form2 = new FrmContenedorPrincipal();
                 this.Visible = false;
+                Statics.UsuarioLogueado = usuario;
                 form2.ShowDialog();
 
                 Close();
+
+                
+
             }
             else
             {
                 new MessageBoxCustom("Contraseña incorrecta", Enumeraciones.EnumModoMessageBoxCustom.Aceptar).ShowDialog();
+
+                Statics.UsuarioLogueado = null;
                 return;
             }
             

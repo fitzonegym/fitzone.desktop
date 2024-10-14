@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             groupBox2 = new GroupBox();
+            btnCargar = new ReaLTaiizor.Controls.CyberButton();
             label2 = new Label();
             label1 = new Label();
             pictureBoxImagen = new PictureBox();
@@ -44,7 +45,6 @@
             txtNroDoc = new MaskedTextBox();
             txtCelular = new MaskedTextBox();
             ucErrorIconoCel = new UserControls.UCErrorIcono();
-            ucAgregar1 = new UserControls.UCAgregar();
             ucErrorIconoNroDoc = new UserControls.UCErrorIcono();
             ucErrorIconoApellido = new UserControls.UCErrorIcono();
             ucErrorIconoNombre = new UserControls.UCErrorIcono();
@@ -92,6 +92,7 @@
             // 
             groupBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             groupBox2.BackColor = Color.Transparent;
+            groupBox2.Controls.Add(btnCargar);
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(pictureBoxImagen);
@@ -102,17 +103,59 @@
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(431, 37);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(198, 397);
+            groupBox2.Size = new Size(287, 397);
             groupBox2.TabIndex = 48;
             groupBox2.TabStop = false;
             groupBox2.Text = "Imagen";
+            // 
+            // btnCargar
+            // 
+            btnCargar.Alpha = 20;
+            btnCargar.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnCargar.BackColor = Color.Transparent;
+            btnCargar.Background = true;
+            btnCargar.Background_WidthPen = 4F;
+            btnCargar.BackgroundPen = true;
+            btnCargar.ColorBackground = Color.Black;
+            btnCargar.ColorBackground_1 = Color.Black;
+            btnCargar.ColorBackground_2 = Color.Gray;
+            btnCargar.ColorBackground_Pen = Color.FromArgb(81, 45, 168);
+            btnCargar.ColorLighting = Color.FromArgb(81, 45, 168);
+            btnCargar.ColorPen_1 = Color.Black;
+            btnCargar.ColorPen_2 = Color.Gray;
+            btnCargar.CyberButtonStyle = ReaLTaiizor.Enum.Cyber.StateStyle.Custom;
+            btnCargar.Effect_1 = true;
+            btnCargar.Effect_1_ColorBackground = Color.FromArgb(81, 45, 168);
+            btnCargar.Effect_1_Transparency = 25;
+            btnCargar.Effect_2 = true;
+            btnCargar.Effect_2_ColorBackground = Color.White;
+            btnCargar.Effect_2_Transparency = 20;
+            btnCargar.Font = new Font("Arial", 11F);
+            btnCargar.ForeColor = Color.FromArgb(245, 245, 245);
+            btnCargar.Lighting = false;
+            btnCargar.LinearGradient_Background = false;
+            btnCargar.LinearGradientPen = false;
+            btnCargar.Location = new Point(202, 357);
+            btnCargar.Name = "btnCargar";
+            btnCargar.PenWidth = 15;
+            btnCargar.Rounding = true;
+            btnCargar.RoundingInt = 70;
+            btnCargar.Size = new Size(79, 31);
+            btnCargar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+            btnCargar.TabIndex = 53;
+            btnCargar.Tag = "Cyber";
+            btnCargar.TextButton = "Cargar";
+            btnCargar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            btnCargar.Timer_Effect_1 = 5;
+            btnCargar.Timer_RGB = 300;
+            btnCargar.Click += btnCargar_Click;
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 7F);
-            label2.Location = new Point(144, 306);
+            label2.Location = new Point(233, 306);
             label2.Name = "label2";
             label2.Size = new Size(39, 12);
             label2.TabIndex = 52;
@@ -124,7 +167,7 @@
             label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 7F);
-            label1.Location = new Point(147, 131);
+            label1.Location = new Point(236, 131);
             label1.Name = "label1";
             label1.Size = new Size(38, 12);
             label1.TabIndex = 51;
@@ -139,7 +182,7 @@
             pictureBoxImagen.Image = Properties.Resources.no_foto_img;
             pictureBoxImagen.Location = new Point(6, 19);
             pictureBoxImagen.Name = "pictureBoxImagen";
-            pictureBoxImagen.Size = new Size(186, 332);
+            pictureBoxImagen.Size = new Size(275, 332);
             pictureBoxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxImagen.TabIndex = 50;
             pictureBoxImagen.TabStop = false;
@@ -150,7 +193,7 @@
             lblCargandoCamara.Font = new Font("Segoe UI", 7F);
             lblCargandoCamara.Location = new Point(24, 68);
             lblCargandoCamara.Name = "lblCargandoCamara";
-            lblCargandoCamara.Size = new Size(149, 27);
+            lblCargandoCamara.Size = new Size(238, 27);
             lblCargandoCamara.TabIndex = 49;
             lblCargandoCamara.Text = "Cargando cámara en segundo plano...";
             lblCargandoCamara.TextAlign = ContentAlignment.MiddleCenter;
@@ -221,12 +264,12 @@
             btnCapturar.Lighting = false;
             btnCapturar.LinearGradient_Background = false;
             btnCapturar.LinearGradientPen = false;
-            btnCapturar.Location = new Point(88, 357);
+            btnCapturar.Location = new Point(124, 357);
             btnCapturar.Name = "btnCapturar";
             btnCapturar.PenWidth = 15;
             btnCapturar.Rounding = true;
             btnCapturar.RoundingInt = 70;
-            btnCapturar.Size = new Size(104, 31);
+            btnCapturar.Size = new Size(79, 31);
             btnCapturar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             btnCapturar.TabIndex = 46;
             btnCapturar.Tag = "Cyber";
@@ -242,7 +285,7 @@
             pictureBoxVideo.BackColor = Color.Snow;
             pictureBoxVideo.Location = new Point(6, 19);
             pictureBoxVideo.Name = "pictureBoxVideo";
-            pictureBoxVideo.Size = new Size(186, 130);
+            pictureBoxVideo.Size = new Size(275, 130);
             pictureBoxVideo.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBoxVideo.TabIndex = 44;
             pictureBoxVideo.TabStop = false;
@@ -305,15 +348,6 @@
             ucErrorIconoCel.Size = new Size(20, 20);
             ucErrorIconoCel.TabIndex = 42;
             // 
-            // ucAgregar1
-            // 
-            ucAgregar1.BackColor = Color.Transparent;
-            ucAgregar1.Location = new Point(351, 216);
-            ucAgregar1.Name = "ucAgregar1";
-            ucAgregar1.Size = new Size(20, 20);
-            ucAgregar1.TabIndex = 43;
-            ucAgregar1._ClickUCAgregar += ucAgregar1__ClickUCAgregar;
-            // 
             // ucErrorIconoNroDoc
             // 
             ucErrorIconoNroDoc.BackColor = Color.Transparent;
@@ -342,7 +376,7 @@
             // 
             botonesForms3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             botonesForms3.BackColor = Color.Transparent;
-            botonesForms3.Location = new Point(589, 6);
+            botonesForms3.Location = new Point(678, 6);
             botonesForms3.Name = "botonesForms3";
             botonesForms3.Size = new Size(44, 20);
             botonesForms3.TabIndex = 37;
@@ -557,7 +591,7 @@
             cyberButton1.Lighting = false;
             cyberButton1.LinearGradient_Background = false;
             cyberButton1.LinearGradientPen = false;
-            cyberButton1.Location = new Point(529, 438);
+            cyberButton1.Location = new Point(618, 438);
             cyberButton1.Name = "cyberButton1";
             cyberButton1.PenWidth = 15;
             cyberButton1.Rounding = true;
@@ -599,7 +633,7 @@
             btnGuardar.Lighting = false;
             btnGuardar.LinearGradient_Background = false;
             btnGuardar.LinearGradientPen = false;
-            btnGuardar.Location = new Point(431, 438);
+            btnGuardar.Location = new Point(520, 438);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.PenWidth = 15;
             btnGuardar.Rounding = true;
@@ -719,7 +753,7 @@
             // 
             ucBorder2.BackColor = Color.White;
             ucBorder2.Dock = DockStyle.Right;
-            ucBorder2.Location = new Point(638, 0);
+            ucBorder2.Location = new Point(727, 0);
             ucBorder2.Name = "ucBorder2";
             ucBorder2.Size = new Size(2, 490);
             ucBorder2.TabIndex = 51;
@@ -730,7 +764,7 @@
             ucBordertd1.Dock = DockStyle.Top;
             ucBordertd1.Location = new Point(2, 0);
             ucBordertd1.Name = "ucBordertd1";
-            ucBordertd1.Size = new Size(636, 3);
+            ucBordertd1.Size = new Size(725, 3);
             ucBordertd1.TabIndex = 52;
             // 
             // ucBordertd2
@@ -739,7 +773,7 @@
             ucBordertd2.Dock = DockStyle.Bottom;
             ucBordertd2.Location = new Point(2, 487);
             ucBordertd2.Name = "ucBordertd2";
-            ucBordertd2.Size = new Size(636, 3);
+            ucBordertd2.Size = new Size(725, 3);
             ucBordertd2.TabIndex = 53;
             // 
             // groupBox3
@@ -768,7 +802,6 @@
             groupBox3.Controls.Add(thunderLabel9);
             groupBox3.Controls.Add(txtApellido);
             groupBox3.Controls.Add(txtCalleNro);
-            groupBox3.Controls.Add(ucAgregar1);
             groupBox3.Controls.Add(thunderLabel3);
             groupBox3.Controls.Add(thunderLabel10);
             groupBox3.Controls.Add(ucErrorIconoNroDoc);
@@ -814,7 +847,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(103, 58, 183);
-            ClientSize = new Size(640, 490);
+            ClientSize = new Size(729, 490);
             Controls.Add(groupBox3);
             Controls.Add(ucBordertd2);
             Controls.Add(ucBordertd1);
@@ -873,7 +906,6 @@
         private UserControls.UCErrorIcono ucErrorIconoNombre;
         private UserControls.UCErrorIcono ucErrorIconoCel;
         private UserControls.UCErrorIcono ucErrorIconoNroDoc;
-        private UserControls.UCAgregar ucAgregar1;
         private MaskedTextBox txtCelular;
         private MaskedTextBox txtNroDoc;
         private PictureBox pictureBoxVideo;
@@ -895,5 +927,6 @@
         private UserControls.UCErrorIcono ucErrorIconoMail;
         private ReaLTaiizor.Controls.ThunderLabel thunderLabel11;
         private DateTimePicker txtFechaNac;
+        private ReaLTaiizor.Controls.CyberButton btnCargar;
     }
 }

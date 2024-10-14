@@ -33,4 +33,12 @@ namespace Fitzone.Entidades
          */
     }
 
+    public enum EnumPerfil
+    {
+        Administrador = 1,
+        Control_accesos = 2,
+        Operador = 3,
+        Gerente = 4
+    }
+
 }

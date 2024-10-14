@@ -1,18 +1,10 @@
-﻿using Fitzone.Front.Facturas;
+﻿using Fitzone.Entidades;
+using Fitzone.Front.Facturas;
 using Fitzone.Front.FormsExtras;
 using Fitzone.Front.Instructores;
 using Fitzone.Front.Membresias;
 using Fitzone.Front.Socios;
 using Fitzone.Front.Usuarios;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Fitzone.Front
 {
@@ -92,6 +84,29 @@ namespace Fitzone.Front
         {
             MyRenderer rend = new MyRenderer();
             menuStrip1.Renderer = rend;
+
+            sociosToolStripMenuItem.Visible = Statics.VerificarAcceso(EnumOpcionesMenu.Socios);
+            membresíaToolStripMenuItem.Visible = Statics.VerificarAcceso(EnumOpcionesMenu.Membresia);
+            facturaStripMenuItem.Visible = Statics.VerificarAcceso(EnumOpcionesMenu.Facturas);
+            configuraciónToolStripMenuItem.Visible = Statics.VerificarAcceso(EnumOpcionesMenu.Configuracion);
+            controlDeAccesosToolStripMenuItem.Visible = Statics.VerificarAcceso(EnumOpcionesMenu.ControlAccesos);
+            //tipoDeMembresíaToolStripMenuItem.Visible = Statics.VerificarAcceso(EnumOpcionesMenu.ControlAccesos);
+
+            toolStripStatusLabelUsuario.Text = String.Format("Usuario: {0} [{1}]", 
+                Statics.UsuarioLogueado.Nombre + " " + Statics.UsuarioLogueado.Apellido,
+                Statics.UsuarioLogueado.NombreUsuario);
+
+            string perfil = "";
+            if (Statics.UsuarioLogueado.idPerfil == (int)EnumPerfil.Administrador)
+                perfil = EnumPerfil.Administrador.ToString();
+            if (Statics.UsuarioLogueado.idPerfil == (int)EnumPerfil.Operador)
+                perfil = EnumPerfil.Operador.ToString();
+            if (Statics.UsuarioLogueado.idPerfil == (int)EnumPerfil.Gerente)
+                perfil = EnumPerfil.Gerente.ToString();
+            if (Statics.UsuarioLogueado.idPerfil == (int)EnumPerfil.Control_accesos)
+                perfil = EnumPerfil.Control_accesos.ToString();
+            toolStripStatusLabelUsuario.Text += " [" + perfil + "]";
+
         }
         private void administraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -136,19 +151,7 @@ namespace Fitzone.Front
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-
-            //FrmSociosAlta frm = new FrmSociosAlta();
-            //frm._id_socio = 0;
-            //frm.TopMost = true;
-            //frm.MdiParent = this;
-            //frm._EnumModoForm = EnumModoForm.Alta;
-            //panelPrincipal.Controls.Add(frm);
-            //frm.StartPosition = FormStartPosition.CenterParent;
-
-            //frm.Show();
-            //frm.BringToFront();
+        {      
 
             // Verificar si el formulario ya está abierto
             FrmSociosAlta frm = null;
@@ -170,7 +173,7 @@ namespace Fitzone.Front
                 frm.MdiParent = this;
                 this.panelPrincipal.Controls.Add(frm);
                 frm.StartPosition = FormStartPosition.CenterParent;
-                //frm._EnumModoFormulario = Enumeraciones.EnumModoFormulario.Administracion;
+                frm._EnumModoForm = EnumModoForm.Alta;
                 frm.Show();
             }
 
@@ -182,15 +185,7 @@ namespace Fitzone.Front
 
         private void admnistraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //FrmMembresiaAdmin frm = new FrmMembresiaAdmin();
-            //frm.TopMost = true;
-            //frm.MdiParent = this;
-            //panelPrincipal.Controls.Add(frm);
-            //frm.StartPosition = FormStartPosition.CenterParent;
-
-            //frm.Show();
-            //frm.BringToFront();
-
+  
 
 
             // Verificar si el formulario ya está abierto
@@ -227,14 +222,7 @@ namespace Fitzone.Front
 
         private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //FrmMembresiaAlta frm = new FrmMembresiaAlta();
-            //frm.TopMost = true;
-            //frm.MdiParent = this;
-            //frm._EnumModoForm = EnumModoForm.Alta;
-            //panelPrincipal.Controls.Add(frm);
-            //frm.StartPosition = FormStartPosition.CenterParent;
-            //frm.Show();
-            //frm.BringToFront();
+
 
             // Verificar si el formulario ya está abierto
             FrmMembresiaAlta frm = null;
@@ -297,15 +285,7 @@ namespace Fitzone.Front
 
         private void tipoDeMembresíaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //FrmTipoMembresiaAdmin frm = new FrmTipoMembresiaAdmin();
-            //frm.TopMost = true;
-            //frm.MdiParent = this;
-            //panelPrincipal.Controls.Add(frm);
-            //frm.StartPosition = FormStartPosition.CenterParent;
-            //frm.Show();
-            //frm.BringToFront();
-            //frm.WindowState = FormWindowState.Maximized;
-
+       
             FrmTipoMembresiaAdmin frm = null;
 
             //foreach (Form frmAbierto in this.MdiChildren)
@@ -341,47 +321,14 @@ namespace Fitzone.Front
             FRMControlAcceso frm = new FRMControlAcceso();
             frm.Show();
 
-            //// Verificar si el formulario ya está abierto
-            //FRMControlAcceso frm = null;
-
-            ////foreach (Form frmAbierto in this.MdiChildren)
-            //foreach (Form frmAbierto in this.panelPrincipal.Controls)
-            //{
-            //    if (frmAbierto is FRMControlAcceso)
-            //    {
-            //        frm = (FRMControlAcceso)frmAbierto;
-            //        break;
-            //    }
-            //}
-
-            //// Si no se encontró una instancia abierta, se crea una nueva
-            //if (frm == null)
-            //{
-            //    frm = new FRMControlAcceso();
-            //    //frm.MdiParent = this;
-            //    //this.panelPrincipal.Controls.Add(frm);
-            //    frm.StartPosition = FormStartPosition.CenterParent;
-            //    //frm._EnumModoFormulario = Enumeraciones.EnumModoFormulario.Administracion;
-            //    frm.Show();
-            //}
-
-            //// Traer el formulario al frente si ya existía o si es nuevo
-            //frm.TopMost = true;
-            //frm.BringToFront();
+         
 
         }
 
 
         private void instructoresToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //FrmInstructoresAdmin frm = new FrmInstructoresAdmin();
-            //frm.TopMost = true;
-            //frm.MdiParent = this;
-            //panelPrincipal.Controls.Add(frm);
-            //frm.StartPosition = FormStartPosition.CenterParent;
-            //frm.Show();
-            //frm.BringToFront();
-            //frm.WindowState = FormWindowState.Maximized;
+           
 
             FrmInstructoresAdmin frm = null;
 
@@ -414,14 +361,7 @@ namespace Fitzone.Front
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //FrmUsuariosAlta frm = new FrmUsuariosAlta();
-            //frm.TopMost = true;
-            //frm.MdiParent = this;
-            //panelPrincipal.Controls.Add(frm);
-            //frm.StartPosition = FormStartPosition.CenterParent;
-            //frm.Show();
-            //frm.BringToFront();
-            //frm.WindowState = FormWindowState.Maximized;
+          
 
             FrmUsuariosAlta frm = null;
 
